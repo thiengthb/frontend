@@ -1,0 +1,12 @@
+---
+### XXX-000 — <Tên ngắn>
+- **Loại:** standard | heuristic | preference
+- **Trạng thái:** draft | adopted | deprecated (lý do: …)
+- **Luật:** <một câu, kiểm chứng được>
+- **Lý do:** <vì sao, dựa trên nguyên lý nào>
+- **Áp dụng khi:** …
+- **Không áp dụng khi / lưu ý:** …
+- **Ví dụ:** ✅ … / ❌ …
+- **Token liên quan:** (nếu có, ví dụ `--space-4`, `--color-accent`)
+- **Nguồn:** (ghi "không chắc" nếu không rõ)
+- **Bài học gốc:** M?-??
