@@ -35,6 +35,12 @@ Mỗi module trong lộ trình chia thành các bài nhỏ. Mỗi bài đi qua 6
 | 5. Review | Claude | Critique theo checklist của bài, chỉ ra cụ thể chỗ nào và vì sao |
 | 6. Chắt lọc luật | Cả hai | Viết thành luật trong `rules/` (trạng thái `draft`). **Người dùng duyệt** thì chuyển sang `adopted` |
 
+### 3b. Chế độ hiện tại: Crash course + Critique Loop (D-008, D-009)
+Trong crash course 3 ngày, mỗi khối chạy theo **Critique Loop** ở `docs/05-crash-course.md` thay cho bảng trên:
+bài giảng ngắn → video → **subagent làm bài** (chạy nền, xuất HTML 360×800, publish thành artifact) → người dùng dự đoán, rồi phê bình theo
+`templates/critique.md` → Claude viết **phê bình tham chiếu trước khi đọc** bài của người dùng, rồi chấm cả hai → ghi `log/critique-scores.md`.
+Subagent nhận đề bài đầy đủ ngữ cảnh (nó không thấy hội thoại): mô tả màn lab2, luật đã có, và yêu cầu làm *tốt nhất có thể*.
+
 Kết quả của mỗi bài là file `lessons/<module>-<số>-<slug>.md` (theo `templates/lesson.md`) cùng các luật mới hoặc
 đã cập nhật trong `rules/`.
 
@@ -43,7 +49,8 @@ Kết quả của mỗi bài là file `lessons/<module>-<số>-<slug>.md` (theo 
 - Mỗi lời khen phải có bằng chứng; mỗi lời chê phải chỉ **chỗ nào, vì sao, sửa hướng nào**. Không làm mềm kết luận để người dùng dễ chịu.
 - Nhưng **không cực đoan ngược**: ghi nhận điểm mạnh thật, và nói rõ khi chính Claude không chắc.
 - Chẩn đoán gốc nằm ở `lessons/M0-01-baseline.md` (W1–W9). Khi review, đối chiếu xem người dùng đã vượt điểm yếu nào chưa.
-- Người dùng hay làm việc qua AI. Trong lộ trình học, giữ luật **PRC-003 "tay trước, AI sau"**.
+- Người dùng hay làm việc qua AI. Trong crash course dùng **PRC-004 (Critique Loop)**; PRC-003 "tay trước" đã deprecated.
+- Người dùng **chưa nắm kiến thức nền** sau các artefact AI đã làm hộ (W10, M0-01 §8). Đừng giả định người dùng hiểu một thuật ngữ chỉ vì nó có trong repo của họ: **giải thích từ gốc**.
 
 ## 4. Quy tắc giao tiếp và đồng thuận
 - **Không tự ý sửa luật đã `adopted`.** Muốn đổi thì đề xuất trong phiên, nêu lý do, chờ người dùng đồng ý, rồi ghi vào `DECISIONS.md`.

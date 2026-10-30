@@ -11,3 +11,6 @@
 | D-005 | 2026-10-30 | Claude đóng vai người phê bình khắt khe, không chiều lòng (CLAUDE.md mục 4a) | Người dùng yêu cầu "đập đi đập lại" | người dùng |
 | D-006 | 2026-10-30 | Thêm M5 tâm lý hành vi, M6 nghiên cứu người dùng, M7 quy chuẩn & tỉ lệ, M9 Animation riêng | Người dùng yêu cầu | người dùng |
 | D-007 | 2026-10-30 | Repo `thiengthb/frontend` là nơi chứa playbook (thay cho zip) | Người dùng tạo repo | người dùng |
+| D-008 | 2026-10-30 | Học dồn bằng crash course 3 ngày trước, rồi làm lại lab2; lộ trình 12 tháng thành deep track | Người dùng muốn áp dụng nhanh vào lab2 | người dùng |
+| D-009 | 2026-10-30 | Critique Loop: subagent làm bài, người dùng phê bình, Claude chấm cả hai (PRC-004); PRC-003 deprecated | Người dùng đề xuất; luyện đúng kỹ năng art-direct AI | người dùng (Claude thêm bước dự đoán, chờ duyệt) |
+| D-010 | 2026-10-30 | Ưu tiên tài liệu video, link phải được kiểm là có tồn tại, đánh dấu ⚠ nếu chưa rõ chất lượng | Người dùng học trực quan | người dùng |

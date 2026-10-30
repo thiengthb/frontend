@@ -76,3 +76,30 @@
 ## F. Làm việc với AI & quy trình (M11)
 - 📗 *Articulating Design Decisions* — Tom Greever. Nói lý do thiết kế bằng lời, cũng chính là kỹ năng ra đề cho AI
 - 🌐 Hướng dẫn prompt của Anthropic (docs.claude.com) cho phần viết brief
+
+## G. Video (cho crash course `docs/05-crash-course.md`)
+> Các link dưới đây Claude **đã kiểm là có tồn tại** qua tìm kiếm ngày 2026-10-30, nhưng **chưa xem nội dung**.
+> Dấu ⚠ = chưa rõ kênh hoặc chất lượng; bạn tự đánh giá sau khi xem, đó cũng là một bài luyện mắt.
+
+**Ngày 1 · Thị giác**
+- ⭐ Steve Schoger, *Practical Solutions to Common UI Design Problems*: https://www.youtube.com/watch?v=VfRE0ah3NxE
+- ⭐ Steve Schoger, *How to Think Like a Visual Designer*: https://www.youtube.com/watch?v=hlI6xGfBjkQ
+- Config 2025, *Typography is the foundation of any design system* (Elliot Jay Stocks): https://www.youtube.com/watch?v=n0iAYEpU0Fk
+- ⚠ *The ONLY Video On Visual Hierarchy ANY Graphic Designer Needs*: https://www.youtube.com/watch?v=4QNEDhrsRLo
+- ⚠ *Fast Color Theory in UI Design*: https://www.youtube.com/watch?v=wj6TOn82d4o
+- ⚠ *Layouts Crash Course for UI/UX Designers in 1 hour*: https://www.youtube.com/watch?v=ZQwEp27y5ZQ
+
+**Ngày 2 · Tâm lý & UX**
+- ⭐ Jon Yablonski, *Laws of UX: Using Psychology to Design Better Products & Services*: https://www.youtube.com/watch?v=Qc5F07l1Fjs
+- ⭐ Kênh Nielsen Norman Group: https://www.youtube.com/@NNgroup (tìm loạt "Usability Heuristic 1–10")
+- ⚠ *Visibility of System Status*: https://www.youtube.com/watch?v=woUpmVytCag
+- ⚠ *How to Conduct a Heuristic Evaluation*: https://www.youtube.com/watch?v=sqi0-Lz_ZTY
+- ⚠ *Rob Fitzpatrick's The Mom Test*: https://www.youtube.com/watch?v=QIuEQo3WkP4
+- Apple WWDC18, *The Life of a Button*: https://developer.apple.com/videos/play/wwdc2018/804/
+- Apple WWDC18, *Intentional Design*: https://developer.apple.com/videos/play/wwdc2018/802/
+
+**Ngày 3 · Chuyển động**
+- ⭐ Alan Becker, *12 Principles of Animation (Official Full Series)*: https://www.youtube.com/watch?v=uDqjIdI4bF4
+- ⭐ Apple WWDC18, *Designing Fluid Interfaces*: https://developer.apple.com/videos/play/wwdc2018/803/
+- ⭐ Apple WWDC23, *Animate with springs*: https://www.youtube.com/watch?v=HaZ2jw9rx9M
+- Emil Kowalski, ví dụ tương tác *Trash interaction*: https://emilkowal.ski/ui/trash-interaction

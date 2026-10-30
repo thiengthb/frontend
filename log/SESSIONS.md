@@ -11,3 +11,9 @@
 - Phát hiện lỗi spring `[object Object]` trong thienui motion-tokens.
 - Viết lại roadmap v2 (thêm M5–M7, M9 Animation; nhịp 4 giờ/tuần), thêm `docs/03-reading-list.md`.
 - 8 luật draft mới. Giao BT-M0-01. Đẩy lên repo `thiengthb/frontend`.
+
+## 2026-10-30 · Phiên 3 · Chuyển sang crash course
+- Người dùng thú thực điểm mạnh chủ yếu do AI làm; đồng ý W1–W9; thầy chê bản cam. Hiệu chỉnh M0-01 (§8, thêm W10).
+- Chốt crash course 3 ngày + Critique Loop (subagent làm, người dùng phê bình, Claude chấm cả hai).
+- Thêm `docs/05-crash-course.md` (13 khối, mindmap), `templates/critique.md`, `log/critique-scores.md`, danh sách video đã kiểm link.
+- Giải thích spring bằng demo tương tác.

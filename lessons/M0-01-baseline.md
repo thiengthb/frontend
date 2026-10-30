@@ -184,3 +184,19 @@ Mang cả ba vào buổi sau, ta sẽ critique theo `templates/review-checklist.
 1. Bạn **không đồng ý** điểm nào ở trên? Hãy phản biện. Đó là bước 3 của Lesson Loop, và mình cũng có thể sai.
 2. Thầy nhận xét "đơn điệu" trên **bản cam hiện tại** hay trên bản teal? (Ảnh trong repo là bản teal ngày 22/10.)
 3. Lỗi spring `[object Object]` trong thienui: bạn muốn tự sửa, coi như bài tập mở màn cho M9, hay để mình mở PR?
+
+---
+
+## 8. Hiệu chỉnh sau phản biện của người dùng (2026-10-30, 22:34)
+
+Người dùng thú thực: phần lớn S1–S5 là **AI đề xuất và làm**. Người dùng giữ vai trò chính (đặt hàng, duyệt, tạo routine),
+nhưng **chưa hiểu** WCAG, vùng chạm 44/48 hay focus ring là gì. Người dùng **đồng ý toàn bộ W1–W9**. Thầy chê **bản cam**.
+
+**Hệ quả với chẩn đoán:**
+- Tách hai thứ trước đây mình gộp làm một:
+  - *Kỹ năng điều phối hệ thống qua AI*: **thật, giữ 4/5**. Biết đòi guard, đòi debt list, đòi retro là năng lực thật.
+  - *Hiểu biết nền về vì sao*: **1.5/5**.
+- Trục "Trạng thái & trợ năng" hạ từ 4 xuống **2** (hiểu biết); phần artefact vẫn tốt.
+- Thêm **W10 — Ảo giác năng lực**: sản phẩm vượt xa hiểu biết của người làm ra nó. Rủi ro cụ thể: thầy hỏi *"vì sao nút cao 48dp?"* mà bạn không trả lời được, thì toàn bộ độ kỹ của tài liệu quay sang phản tác dụng. Crash course khối CC-08 nhắm thẳng vào việc này.
+- Thầy chê bản cam, tức là đúng bản đã thêm lưới KPI, gờ nổi khắp nơi và 35 switch. **Đổi màu không phải là thuốc**; bản cam còn đơn điệu hơn vì thêm "đồng phục" (W2). Câu hỏi mở số 2 đã được trả lời.
+- Spring: người dùng chưa biết khái niệm. Lỗi `[object Object]` chuyển thành bài thực hành ở CC-11.

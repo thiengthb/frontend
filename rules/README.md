@@ -27,6 +27,6 @@ Luật cấp pixel (cỡ icon, chiều cao nút) vẫn thuộc về design syste
 | `interaction.md` | INT | — | M9 (animation) |
 | `a11y.md` | A11Y | — | M7 |
 | `tokens.md` | — | — | M10 |
-| `process.md` | PRC | 001–003 (draft) | từ M0-01 |
+| `process.md` | PRC | 001–002, 004 (draft); 003 (deprecated) | từ M0-01; 004 là Critique Loop |
 
 > Cập nhật bảng này mỗi khi thêm hoặc đổi trạng thái luật.

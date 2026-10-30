@@ -1,4 +1,6 @@
-# 02 — Lộ trình học (Roadmap) · v2
+# 02 — Lộ trình học (Roadmap) · v2 · *deep track*
+
+> **Từ 2026-10-30:** học trước bằng **crash course 3 ngày** (`docs/05-crash-course.md`), làm lại lab2, rồi mới quay lại lộ trình này như deep track 4 giờ/tuần (D-008).
 
 > **v2 · 2026-10-30.** Viết lại sau chẩn đoán `lessons/M0-01-baseline.md`.
 > - Thêm: tâm lý học hành vi (M5), nghiên cứu người dùng (M6), quy chuẩn & tỉ lệ (M7), **chuyên mục Animation riêng (M9)**.
