@@ -27,6 +27,6 @@ Luật cấp pixel (cỡ icon, chiều cao nút) vẫn thuộc về design syste
 | `interaction.md` | INT | — | M9 (animation) |
 | `a11y.md` | A11Y | — | M7 |
 | `tokens.md` | — | — | M10 |
-| `process.md` | PRC | 004, 006 (adopted); 001, 002, 005 (draft); 003 (deprecated) | 004 Critique Loop; 005 Figma chỉ đọc; 006 mỗi Mốc một chat |
+| `process.md` | PRC | 004, 006 (adopted); 001, 002, 005 (draft); 003 (deprecated) | 004 Critique Loop; 005 Figma chỉ đọc; 006 mỗi khối một chat |
 
 > Cập nhật bảng này mỗi khi thêm hoặc đổi trạng thái luật.

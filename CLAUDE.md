@@ -91,7 +91,7 @@ Câu hỏi mở: …
 ```
 
 ## 8. Chuyển giữa các tài khoản/phiên Claude
-- **Mỗi Mốc một chat mới** (PRC-006): Ngày 1, Ngày 2, Ngày 3 của crash course, rồi Làm lại lab2. Claude đề nghị sang chat mới sớm hơn nếu ngữ cảnh đã nặng.
+- **Mỗi khối CC-xx một chat mới** (PRC-006). Chat chỉ biết những gì nằm trong repo, nên **kết thúc khối** bắt buộc gồm: lesson file có "Tóm tắt cho khối sau" và 3 câu quiz, điểm trong `critique-scores.md`, **brief của khối kế tiếp**, PROGRESS, rồi push. Cuối cùng đưa người dùng câu mở chat tiếp theo.
 - **Khởi động chat mới:** gắn repo `thiengthb/frontend` (quyền push), clone, đọc theo mục 2. Nếu khối sắp làm có file `docs/briefs/CC-xx.md` thì **giao ngay cho subagent chạy nền** rồi mới giảng bài, để bài subagent xong đúng lúc người dùng xem video.
 - **Nguồn sự thật duy nhất là repo GitHub** (D-003). Mọi thứ chỉ tồn tại trong chat thì coi như chưa có.
 - Phiên mới: clone/pull, đọc theo mục 2, tóm tắt, rồi tiếp tục. Phiên cũ: phải kết thúc theo mục 5 rồi push.

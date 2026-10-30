@@ -17,3 +17,4 @@
 | D-011 | 2026-10-30 | Duyệt PRC-004 kèm bước dự đoán 2 phút | Người dùng đồng ý | người dùng |
 | D-012 | 2026-10-30 | Mỗi Mốc một chat mới (PRC-006); Claude chủ động đề xuất cải tiến cách học | Tránh ngữ cảnh quá dài | người dùng |
 | D-013 | 2026-10-30 | Figma của người dùng mặc định chỉ đọc (PRC-005, draft) | Phiên trước đã làm hỏng file lab2 | Claude đề xuất |
+| D-014 | 2026-10-30 | Sửa D-012: mỗi **khối** CC-xx một chat (không phải mỗi Mốc); chat kết thúc phải viết sẵn brief khối sau | Người dùng làm rõ | người dùng |

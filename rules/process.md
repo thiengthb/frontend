@@ -41,9 +41,9 @@
 - **Bài học gốc:** phiên 2026-10-30 (lời kể của người dùng)
 
 ---
-### PRC-006 — Mỗi Mốc một chat mới
+### PRC-006 — Mỗi khối một chat mới
 - **Loại:** preference (quy trình)
-- **Trạng thái:** adopted (người dùng đề xuất, 2026-10-30)
-- **Luật:** Mỗi Mốc (Ngày 1, Ngày 2, Ngày 3 của crash course, rồi Làm lại lab2) chạy trong một chat mới. Claude **chủ động đề nghị** sang chat mới sớm hơn nếu chat đã có nhiều ảnh hoặc bài subagent (khoảng sau 3 khối).
+- **Trạng thái:** adopted (người dùng đề xuất, 2026-10-30; sửa cùng ngày: từ "mỗi Mốc" thành "mỗi khối CC-xx")
+- **Luật:** Mỗi khối CC-01..CC-13 chạy trong **một chat riêng**; phần làm lại lab2 cũng mỗi màn một chat. Trước khi kết thúc chat, Claude phải: (1) ghi `lessons/CC-xx-*.md` kèm mục **"Tóm tắt cho khối sau"** (≤ 5 dòng, kèm 3 câu quiz); (2) ghi điểm vào `log/critique-scores.md`; (3) **viết sẵn `docs/briefs/CC-(xx+1).md`**; (4) cập nhật PROGRESS; (5) push.
 - **Lý do:** Ngữ cảnh dài làm Claude kém minh mẫn và dễ lẫn lộn, mà repo đã giữ đủ trạng thái để bàn giao.
 - **Bài học gốc:** người dùng, 2026-10-30

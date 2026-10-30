@@ -54,7 +54,10 @@ mindmap
 | 6 | **Chắt luật**: điểm nào đáng thành luật thì viết `draft` | Cả hai | 5' |
 
 **Giảm ma sát:** bạn cứ gõ dự đoán và phê bình thẳng vào chat, dạng gạch đầu dòng là đủ. Claude chép vào `lessons/CC-xx-*.md` theo mẫu `templates/critique.md`.
-**Mỗi Mốc một chat mới** (PRC-006). Mốc 1 = Ngày 1 (CC-01..04), Mốc 2 = Ngày 2 (CC-05..09), Mốc 3 = Ngày 3 (CC-10..13), Mốc 4 = Làm lại lab2.
+**Mỗi khối một chat mới** (PRC-006). Chuỗi bàn giao giữa hai chat:
+`chat CC-n` kết thúc bằng: lesson file (có "Tóm tắt cho khối sau" + 3 câu quiz) → điểm → **brief CC-(n+1)** → PROGRESS → push
+`chat CC-(n+1)` mở bằng: clone → đọc → **giao brief cho subagent ngay** → quiz 3 câu từ tóm tắt khối trước → giảng.
+Câu mở chat (giống nhau cho mọi khối): *"Gắn repo thiengthb/frontend (quyền push), clone, đọc CLAUDE.md và log/PROGRESS.md rồi bắt đầu khối tiếp theo."*
 
 **Điểm phê bình của bạn** (lưu ở `log/critique-scores.md`) chấm theo 5 trục, mỗi trục 0–2 điểm, tổng 10:
 - **Recall**: tìm được bao nhiêu vấn đề quan trọng trong bản tham chiếu
