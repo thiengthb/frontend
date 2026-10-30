@@ -27,7 +27,23 @@
 ---
 ### PRC-004 — Dự đoán trước, AI làm, phê bình có cấu trúc (Critique Loop)
 - **Loại:** preference (quy ước học tập)
-- **Trạng thái:** draft (khung do người dùng đề xuất; bước "dự đoán 2 phút" do Claude thêm, chờ người dùng duyệt)
+- **Trạng thái:** adopted (2026-10-30, người dùng duyệt cả bước dự đoán 2 phút)
 - **Luật:** Mỗi bài tập: (1) người dùng ghi dự đoán 2 phút; (2) subagent làm bài; (3) người dùng phê bình theo `templates/critique.md`; (4) Claude viết phê bình tham chiếu **trước khi đọc** bài của người dùng, rồi chấm cả hai.
 - **Lý do:** Mục tiêu dài hạn của người dùng là *art-direct AI*, nên luyện mắt phê bình trên output AI là đúng kỹ năng cần. Bước dự đoán giữ lại một phần "tưởng tượng" của PRC-003 với chi phí rất nhỏ.
 - **Bài học gốc:** M0-01 §8; `docs/05-crash-course.md`
+
+---
+### PRC-005 — Figma của người dùng mặc định chỉ đọc
+- **Loại:** preference (an toàn làm việc)
+- **Trạng thái:** draft (Claude đề xuất sau khi người dùng kể một phiên trước đã làm hỏng file Figma lab2)
+- **Luật:** Claude chỉ **đọc** Figma (metadata, screenshot). Muốn ghi thì phải được người dùng cho phép rõ **cho từng lần**, và ghi vào **bản sao** (duplicate file hoặc trang mới), không bao giờ ghi vào trang đang nộp bài.
+- **Lý do:** Ghi đè trên file thật thì không hoàn tác được dễ dàng, nhất là khi AI sửa hàng loạt node.
+- **Bài học gốc:** phiên 2026-10-30 (lời kể của người dùng)
+
+---
+### PRC-006 — Mỗi Mốc một chat mới
+- **Loại:** preference (quy trình)
+- **Trạng thái:** adopted (người dùng đề xuất, 2026-10-30)
+- **Luật:** Mỗi Mốc (Ngày 1, Ngày 2, Ngày 3 của crash course, rồi Làm lại lab2) chạy trong một chat mới. Claude **chủ động đề nghị** sang chat mới sớm hơn nếu chat đã có nhiều ảnh hoặc bài subagent (khoảng sau 3 khối).
+- **Lý do:** Ngữ cảnh dài làm Claude kém minh mẫn và dễ lẫn lộn, mà repo đã giữ đủ trạng thái để bàn giao.
+- **Bài học gốc:** người dùng, 2026-10-30

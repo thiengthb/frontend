@@ -17,3 +17,4 @@
 - Chốt crash course 3 ngày + Critique Loop (subagent làm, người dùng phê bình, Claude chấm cả hai).
 - Thêm `docs/05-crash-course.md` (13 khối, mindmap), `templates/critique.md`, `log/critique-scores.md`, danh sách video đã kiểm link.
 - Giải thích spring bằng demo tương tác.
+- (Phiên 3, tiếp) Duyệt PRC-004; thêm PRC-005 (Figma chỉ đọc) và PRC-006 (mỗi Mốc một chat); thêm bước quiz nhớ lại đầu khối; viết sẵn `docs/briefs/CC-01.md`. Kết thúc chat, Mốc 1 mở ở chat mới.

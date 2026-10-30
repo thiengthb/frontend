@@ -45,12 +45,16 @@ mindmap
 ## Critique Loop: một khối học (~75–90 phút)
 | # | Bước | Ai | Thời lượng |
 |---|---|---|---|
+| 0 | **Nhớ lại 3 câu** (quiz) về khối trước. Gợi lại từ trí nhớ giúp nhớ lâu hơn đọc lại nhiều lần (retrieval practice). Bỏ qua ở CC-01 | Claude / bạn | 3' |
 | 1 | **Bài giảng ngắn**: khái niệm, vì sao, demo trực quan, phản biện | Claude | 15–20' |
 | 2 | **Video bắt buộc** của khối. Subagent làm bài **chạy song song** trong lúc bạn xem | Bạn / subagent | 10–20' |
 | 3 | **Dự đoán 2 phút**: trước khi mở bài của subagent, ghi 2–3 dòng "mình đoán AI sẽ làm thế này / sai ở chỗ này" | Bạn | 2' |
 | 4 | **Bạn phê bình bài subagent** theo `templates/critique.md`: ≥ 5 vấn đề, ≥ 2 điểm tốt, mỗi điểm có thuật ngữ và hướng sửa | Bạn | 15–20' |
 | 5 | **Claude chấm cả hai**: bài subagent, và bài phê bình của bạn. Claude viết bản phê bình tham chiếu **trước khi đọc bài của bạn** để không bị ảnh hưởng | Claude | 10' |
 | 6 | **Chắt luật**: điểm nào đáng thành luật thì viết `draft` | Cả hai | 5' |
+
+**Giảm ma sát:** bạn cứ gõ dự đoán và phê bình thẳng vào chat, dạng gạch đầu dòng là đủ. Claude chép vào `lessons/CC-xx-*.md` theo mẫu `templates/critique.md`.
+**Mỗi Mốc một chat mới** (PRC-006). Mốc 1 = Ngày 1 (CC-01..04), Mốc 2 = Ngày 2 (CC-05..09), Mốc 3 = Ngày 3 (CC-10..13), Mốc 4 = Làm lại lab2.
 
 **Điểm phê bình của bạn** (lưu ở `log/critique-scores.md`) chấm theo 5 trục, mỗi trục 0–2 điểm, tổng 10:
 - **Recall**: tìm được bao nhiêu vấn đề quan trọng trong bản tham chiếu

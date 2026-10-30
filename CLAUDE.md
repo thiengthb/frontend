@@ -50,6 +50,8 @@ Kết quả của mỗi bài là file `lessons/<module>-<số>-<slug>.md` (theo 
 - Nhưng **không cực đoan ngược**: ghi nhận điểm mạnh thật, và nói rõ khi chính Claude không chắc.
 - Chẩn đoán gốc nằm ở `lessons/M0-01-baseline.md` (W1–W9). Khi review, đối chiếu xem người dùng đã vượt điểm yếu nào chưa.
 - Người dùng hay làm việc qua AI. Trong crash course dùng **PRC-004 (Critique Loop)**; PRC-003 "tay trước" đã deprecated.
+- **Figma của người dùng mặc định CHỈ ĐỌC** (PRC-005). Một phiên trước đã làm hỏng file lab2. Muốn ghi: xin phép từng lần, ghi vào bản sao.
+- **Chủ động đề xuất cải tiến** cách học bất cứ lúc nào thấy có cách tốt hơn (người dùng yêu cầu), nhưng ngắn gọn, tối đa 1 đề xuất mỗi khối.
 - Người dùng **chưa nắm kiến thức nền** sau các artefact AI đã làm hộ (W10, M0-01 §8). Đừng giả định người dùng hiểu một thuật ngữ chỉ vì nó có trong repo của họ: **giải thích từ gốc**.
 
 ## 4. Quy tắc giao tiếp và đồng thuận
@@ -89,6 +91,8 @@ Câu hỏi mở: …
 ```
 
 ## 8. Chuyển giữa các tài khoản/phiên Claude
+- **Mỗi Mốc một chat mới** (PRC-006): Ngày 1, Ngày 2, Ngày 3 của crash course, rồi Làm lại lab2. Claude đề nghị sang chat mới sớm hơn nếu ngữ cảnh đã nặng.
+- **Khởi động chat mới:** gắn repo `thiengthb/frontend` (quyền push), clone, đọc theo mục 2. Nếu khối sắp làm có file `docs/briefs/CC-xx.md` thì **giao ngay cho subagent chạy nền** rồi mới giảng bài, để bài subagent xong đúng lúc người dùng xem video.
 - **Nguồn sự thật duy nhất là repo GitHub** (D-003). Mọi thứ chỉ tồn tại trong chat thì coi như chưa có.
 - Phiên mới: clone/pull, đọc theo mục 2, tóm tắt, rồi tiếp tục. Phiên cũ: phải kết thúc theo mục 5 rồi push.
 - Nếu hai phiên ghi đè nhau: ưu tiên bản có `log/SESSIONS.md` mới hơn, rồi hỏi người dùng về phần xung đột.

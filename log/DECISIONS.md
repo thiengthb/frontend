@@ -14,3 +14,6 @@
 | D-008 | 2026-10-30 | Học dồn bằng crash course 3 ngày trước, rồi làm lại lab2; lộ trình 12 tháng thành deep track | Người dùng muốn áp dụng nhanh vào lab2 | người dùng |
 | D-009 | 2026-10-30 | Critique Loop: subagent làm bài, người dùng phê bình, Claude chấm cả hai (PRC-004); PRC-003 deprecated | Người dùng đề xuất; luyện đúng kỹ năng art-direct AI | người dùng (Claude thêm bước dự đoán, chờ duyệt) |
 | D-010 | 2026-10-30 | Ưu tiên tài liệu video, link phải được kiểm là có tồn tại, đánh dấu ⚠ nếu chưa rõ chất lượng | Người dùng học trực quan | người dùng |
+| D-011 | 2026-10-30 | Duyệt PRC-004 kèm bước dự đoán 2 phút | Người dùng đồng ý | người dùng |
+| D-012 | 2026-10-30 | Mỗi Mốc một chat mới (PRC-006); Claude chủ động đề xuất cải tiến cách học | Tránh ngữ cảnh quá dài | người dùng |
+| D-013 | 2026-10-30 | Figma của người dùng mặc định chỉ đọc (PRC-005, draft) | Phiên trước đã làm hỏng file lab2 | Claude đề xuất |
