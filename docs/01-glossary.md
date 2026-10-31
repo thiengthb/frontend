@@ -6,9 +6,12 @@
 ## A. Nền tảng thị giác (Visual design)
 | Thuật ngữ | Nghĩa | Vì sao quan trọng |
 |---|---|---|
-| **Visual hierarchy** | Thứ tự mắt người đọc lướt qua các phần tử | Quyết định người dùng thấy gì trước, hiểu gì trước |
+| **Visual hierarchy** ✅ | Thứ tự mắt người đọc lướt qua các phần tử | Quyết định người dùng thấy gì trước, hiểu gì trước |
+| **De-emphasize** ✅ | Hạ cấp: làm phần phụ nhỏ hơn, nhạt hơn, nhẹ hơn để phần chính nổi | Cách rẻ nhất để tạo điểm nhấn, không cần phóng to (V-01) |
+| **Consistency ≠ uniformity** ✅ | Nhất quán = cùng một thang; đồng phục = chỉ dùng một bậc của thang | Đồng phục xoá tương phản, sinh ra "đơn điệu" (V-01, W2) |
+| **Concentric radius** ✅ | Bo góc lồng nhau đồng tâm: bán kính trong = ngoài − padding | Sai thì khe góc phình, trông rẻ (VIS-005, V-01) |
 | **Contrast** | Sự khác biệt (kích thước, màu, độ đậm, khoảng cách, hình dạng) | Không có tương phản thì không có phân cấp, dẫn đến "đơn điệu" |
-| **Emphasis / Focal point** | Điểm nhấn, nơi mắt dừng lại đầu tiên | Mỗi màn hình nên có một điểm nhấn chính |
+| **Emphasis / Focal point** ✅ | Điểm nhấn, nơi mắt dừng lại đầu tiên | Mỗi màn hình nên có một điểm nhấn chính |
 | **Balance** | Cân bằng thị giác (đối xứng hoặc bất đối xứng) | Tạo cảm giác ổn định hoặc động |
 | **Rhythm / Repetition** | Lặp lại có chủ đích (spacing, kiểu section) | Tạo nhất quán. Lặp mà không biến tấu thì sinh ra nhàm chán |
 | **Proximity** | Phần tử gần nhau được xem là một nhóm | Là công cụ nhóm thông tin mạnh nhất, mạnh hơn cả khung viền |
@@ -63,7 +66,7 @@
 | **Tesler's Law** | Độ phức tạp không biến mất, chỉ chuyển từ người dùng sang hệ thống |
 | **Doherty Threshold** | Phản hồi dưới ~400ms giữ được dòng tương tác |
 | **Peak-End Rule** | Người dùng nhớ đỉnh cảm xúc và lúc kết thúc trải nghiệm |
-| **Von Restorff Effect** | Thứ khác biệt sẽ được nhớ. Đây là cơ sở của màu nhấn |
+| **Von Restorff Effect** ✅ | Thứ khác biệt sẽ được nhớ. Đây là cơ sở của màu nhấn |
 | **Aesthetic-Usability Effect** | Thứ đẹp được cảm nhận là dễ dùng hơn. ⚠️ Có thể che giấu lỗi UX |
 | **Cognitive load** | Tải nhận thức, tức người dùng phải nghĩ bao nhiêu |
 | **Progressive disclosure** | Hé lộ dần, chỉ cho thấy cái cần lúc cần |
@@ -114,8 +117,8 @@
 ## I. Thuật ngữ từ chẩn đoán M0-01
 | Thuật ngữ | Nghĩa ngắn |
 |---|---|
-| **Vanity metric** | Số liệu đẹp nhưng không dẫn tới quyết định hay hành động |
-| **Squint test** | Nheo mắt nhìn màn hình: cái gì còn nổi bật là điểm nhấn thật |
+| **Vanity metric** ✅ | Số liệu đẹp nhưng không dẫn tới quyết định hay hành động |
+| **Squint test** ✅ | Nheo mắt nhìn màn hình: cái gì còn nổi bật là điểm nhấn thật |
 | **Recognition vs recall** | Nhận ra (thấy nhãn) dễ hơn nhớ lại (đoán icon) — Nielsen #6 |
 | **Signifier** | Dấu hiệu cho biết có thể tương tác (Norman). Khác với affordance là khả năng thật |
 | **Figure–ground** | Tách hình khỏi nền. Tầng màu phụ 20% thường đóng vai trò "nền tổ chức" |

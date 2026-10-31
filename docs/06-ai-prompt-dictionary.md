@@ -10,6 +10,7 @@
 | "Màn này để làm gì?" | "Màn bắt đầu từ **hành động chính**, không bắt đầu từ số liệu. Hành động chính phải nằm trong **viewport đầu tiên**. Bỏ **vanity metric** (số không dẫn tới quyết định)." |
 | "Tiêu đề to quá" | "Tiêu đề màn **không phải điểm nhấn mặc định**: đặt nó 13–16px; cỡ lớn nhất dành cho [điều người dùng mở màn để làm]." |
 | "Bo góc trông lệch" | "Bo góc lồng nhau **đồng tâm**: bán kính trong = bán kính ngoài − padding." |
+| "Màu cam ở khắp nơi" | "Màu nhấn chỉ dùng cho **một mảng**: nút hành động chính. Link, tab đang chọn, chấm trạng thái chuyển về **trung tính đậm**." |
 | "Thống nhất quá thành cứng" | "**Nhất quán ≠ đồng phục**: dùng cùng một thang, nhưng dùng nhiều bậc cách xa nhau (chữ, bo, độ nổi)." |
 
 ## V-02 · Typography (đã học sơ ở nửa đầu CC-02)

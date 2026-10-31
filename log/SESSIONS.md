@@ -29,3 +29,8 @@
 - Quiz CC-01 1.5/3; 0b bỏ qua (Claude làm mẫu). Subagent làm thang chữ + GV-103 (`demos/CC-02/`), phê bình tham chiếu đã khoá trong lesson (6/10).
 - Giảng typography (modular scale, đậm/nghiêng/gạch chân, tabular, dấu chồng) kèm demo inline.
 - Người dùng yêu cầu đổi sang học trực quan, chỉ đọc: viết `docs/05-crash-course.md` v2 (V-01..V-15), PRC-007, D-018, D-019, `docs/06-ai-prompt-dictionary.md`, brief V-01.
+
+## 2026-10-31 · Phiên 6 · V-01
+- Dựng và publish artifact V-01 Phân cấp (`demos/V-01/hierarchy.html`): 7 đòn bẩy bật tắt, squint test, thanh tỉ lệ bước, 5 cặp tệ/tốt, công thức mặc định, 3 phương án CC-01 có chú thích, 6 câu lệnh AI, tự kiểm tra.
+- Glossary đánh ✅ 5 thuật ngữ, thêm de-emphasize, consistency ≠ uniformity, concentric radius. Từ điển thêm dòng "cam ở khắp nơi".
+- Viết `docs/briefs/V-02.md`. Tiếp theo: V-02 Typography.
