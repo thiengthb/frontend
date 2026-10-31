@@ -17,11 +17,11 @@ Luật cấp pixel (cỡ icon, chiều cao nút) vẫn thuộc về design syste
 ## Mục lục
 | File | Nhóm | Luật | Ghi chú |
 |---|---|---|---|
-| `visual.md` | VIS | 001–003 (draft) | từ M0-01; kiểm chứng ở M1 |
+| `visual.md` | VIS | 001–005 (draft) | 001–003 từ M0-01; 004–005 từ CC-01 |
 | `typography.md` | TYP | — | M2 |
 | `color.md` | COL | 001 (draft) | góp ý 70-20-10 của thầy, cập nhật sau M0-01 |
 | `layout.md` | LAY | — | M1, M4 |
-| `ux.md` | UX | 001 (draft) | từ M0-01 |
+| `ux.md` | UX | 001–002 (draft) | 002 từ CC-01 |
 | `content.md` | CNT | — | M5 |
 | `components.md` | CMP | 001 (draft) | từ M0-01 |
 | `interaction.md` | INT | — | M9 (animation) |

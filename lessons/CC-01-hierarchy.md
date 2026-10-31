@@ -36,7 +36,11 @@ Schoger, *Practical Solutions to Common UI Design Problems*. Tóm tắt dựa tr
 
 ## 4. Bài tập (Critique Loop)
 - Dự đoán của người dùng: (chờ)
-- Phê bình của người dùng: (chờ, chép theo `templates/critique.md`)
+- Phê bình của người dùng (2026-10-31, nguyên văn ý chính, gửi trong chat):
+  - Squint: A thắng (khối có nút trắng), B thấy nút cam giữa màn, C "hơi hơi".
+  - A: khối điểm danh quá to, chiếm hết diện tích; bo góc "rất xấu"; chữ tiêu đề card (PRM393) to hơn tiêu đề ngày; "hạ bộ" nhìn không tốt.
+  - B: nhẹ nhàng hơn A nhưng vẫn tập trung vào chức năng chính.
+  - C: bố cục ổn hơn nhưng không tập trung; thiếu thông tin tổng quan, chỉ để một góc; **hợp làm màn Lịch của ngày hơn là Tổng quan**.
 
 <details>
 <summary>⛔ Phê bình tham chiếu của Claude — viết TRƯỚC khi đọc bài của người dùng. Người dùng: đừng mở trước khi tự phê bình.</summary>
@@ -77,10 +81,23 @@ Vấn đề "phải tìm thấy" để Recall 2/2: ít nhất 3 trong {#1, #2, #
 </details>
 
 ## 5. Review
-(chờ, Claude chấm cả hai sau khi người dùng phê bình)
+**Bài subagent: 7/10** (xem phê bình tham chiếu). **Phê bình của người dùng: 3/10.**
+| Trục | Điểm | Ghi chú |
+|---|---|---|
+| Recall | 1 | Tìm được: A khối quá to (gần #11), C mất tập trung (gần #1, nhưng không chỉ ra 94% là thủ phạm), C mất thông tin tổng quan (gần #2). Bỏ sót #3 thứ tự giờ đảo, #4 vùng chạm lồng, #7 cam pha loãng, #8 B nhóm sai |
+| Precision | 1 | "Tiêu đề card to hơn tiêu đề ngày" là chê **sai hướng** (ngày nên nhỏ đi, VIS-004). "Bo góc xấu" và "hạ bộ không tốt" đúng cảm giác nhưng mơ hồ |
+| Ngôn ngữ | 0 | Chưa dùng thuật ngữ nào (focal point, hierarchy, IA, signifier…) |
+| Ưu tiên | 0 | Không xếp mức nặng nhẹ |
+| Hướng sửa | 1 | Có một hướng thật: C chuyển sang tab Lịch. Các vấn đề khác không có hướng sửa |
+
+**Người dùng thắng Claude ở một điểm:** C trùng câu hỏi với tab Lịch (IA). Phê bình tham chiếu bỏ sót → UX-002.
+**Cảm giác đúng, cần đặt tên:** "bo góc xấu" ở A = bo lồng không đồng tâm (24 ngoài, đệm 20, trong 16) → VIS-005.
+**Hiểu lầm cần sửa:** tiêu đề ngày không phải điểm nhấn → VIS-004.
 
 ## 6. Luật rút ra
-(chờ)
+- `VIS-004` (draft) — Tiêu đề màn không phải điểm nhấn mặc định
+- `VIS-005` (draft) — Bo góc lồng nhau phải đồng tâm
+- `UX-002` (draft) — Mỗi tab trả lời một câu hỏi khác nhau
 
 ## Tóm tắt cho khối sau
 (viết khi kết thúc khối)
