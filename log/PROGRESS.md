@@ -15,14 +15,15 @@
 - **Đã xong (v2):** **V-07 Nút & điều khiển** (2026-10-31): `demos/V-07/controls.html`, artifact "V-07 Nút & điều khiển" (https://claude.ai/artifact/HzziX3fF9nDyDw2B4WaZmT).
 - **Đã xong (v2):** **V-08 Điều hướng & kiến trúc thông tin** (2026-11-01): `demos/V-08/navigation.html`, artifact "V-08 Điều hướng" (https://claude.ai/artifact/4vcSrpMqk2CZ4C6n4epvKa).
 - **Đã xong (v2):** **V-09 Trạng thái & phản hồi** (2026-11-01): `demos/V-09/states.html`, artifact "V-09 Trạng thái" (https://claude.ai/artifact/38ZdD6wwdfebeFhT4UNW6T).
+- **Đã xong (v2):** **V-10 Định luật UX bằng hình** (2026-11-01): `demos/V-10/laws.html`, artifact "V-10 Định luật UX" (https://claude.ai/artifact/Sf2VdJPWUVJnNh3A35acK3). **Hết Ngày 2 · PATTERN.**
 - **Cách viết mới (D-020):** từ V-06, chat và artifact theo `docs/07-communication-style.md`. Có thể sửa lại chữ V-01..V-05 theo chuẩn này nếu người dùng muốn.
-- **Khối tiếp theo:** **V-10 Định luật UX bằng hình** (brief: `docs/briefs/V-10.md`), khối cuối Ngày 2. Chat V-08..V-09: làm V-10 trong chat này nếu còn ngắn, không thì mở chat mới.
+- **Khối tiếp theo:** **V-11 Trợ năng bằng con số** (brief: `docs/briefs/V-11.md`), mở đầu Ngày 3. Chat V-08..V-10 đã dài: **mở chat mới**.
 - **Luật:** adopted: PRC-004 (tạm ngưng), PRC-006 (sửa D-019), PRC-007, VIS-004, VIS-005, UX-002. Draft: VIS-001..003, UX-001, CMP-001, COL-001, PRC-001, 002, 005. Deprecated: PRC-003
-- **Từ điển ra lệnh AI:** `docs/06-ai-prompt-dictionary.md` (đã có V-01..V-09; mỗi mục 6 câu)
+- **Từ điển ra lệnh AI:** `docs/06-ai-prompt-dictionary.md` (đã có V-01..V-10; mỗi mục 6 câu)
 
 ## Bước tiếp theo
-**Dựng ngay V-10** theo `docs/briefs/V-10.md` (load `artifact-design`, tái dùng khung `demos/V-09/states.html`, publish "V-10 Định luật UX") → giải thích ≤ 10 dòng theo ba nhịp (quy tắc 10) → hết Ngày 2, gợi ý mở chat mới cho V-11.
-Cuối mỗi khối: `demos/V-xx/`, từ điển, glossary, brief khối kế, PROGRESS, push.
+**Chat mới:** clone → đọc file này → tóm tắt ≤ 2 dòng → **dựng ngay V-11** theo `docs/briefs/V-11.md` (load `artifact-design`, tái dùng khung `demos/V-10/laws.html`, kiểm nguồn WCAG trước khi ghi số, publish "V-11 Trợ năng") → giải thích ≤ 10 dòng theo ba nhịp (quy tắc 10) → V-12 nếu chat còn ngắn.
+Cuối mỗi khối: `demos/V-xx/`, từ điển, glossary, brief khối kế, PROGRESS, push. Sau khi push, đồng bộ `log/PROGRESS.md` sang Project claude.ai (bản Project hay bị cũ).
 
 ## Câu hỏi còn mở
 - Lỗi spring `[object Object]` trong thienui: minh hoạ ở V-13.

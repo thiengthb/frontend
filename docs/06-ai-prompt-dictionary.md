@@ -93,3 +93,13 @@
 | "Báo lỗi khó hiểu" | "Mọi **error state** trả lời ba câu bằng lời người dùng: hỏng gì, dữ liệu vừa nhập còn không, bấm gì để sửa (Thử lại, Để sau). Không hiện mã lỗi hay "Đã có lỗi xảy ra"." |
 | "Mất mạng là mất hết" | "Khi **offline**, giữ dữ liệu đã tải và hiện một dải báo có giờ cập nhật cuối, không thay cả màn bằng màn lỗi. Thao tác cần mạng thì lưu vào hàng chờ trên máy và tự gửi khi có mạng." |
 | "Hỏi Bạn có chắc hoài, phiền" | "Thao tác đảo được thì làm luôn và hiện **snackbar** có nút **Hoàn tác (undo)** trong khoảng 5 giây. Chỉ dùng hộp xác nhận cho thao tác không đảo được, ghi rõ hậu quả và nút có nhãn động từ." |
+
+## V-10 · Định luật UX bằng hình
+| Bạn cảm thấy | Câu lệnh cho AI |
+|---|---|
+| "Nút chính khó bấm, hay trượt" | "Áp **Fitts's law**: hành động chính rộng hết màn, cao 48–56dp, đặt ở vùng ngón cái (đáy màn). Hành động phụ có thể nhỏ hơn nhưng vùng chạm không dưới 48dp." |
+| "Danh sách dài, tìm mãi" | "Áp **Hick's law** đúng cách: không cắt bớt mục mà sắp xếp theo việc của người dùng. Đưa mục liên quan tới hôm nay lên đầu thành nhóm riêng, phần còn lại sắp theo mã hoặc chữ cái." |
+| "Mã dài khó đọc khó gõ" | "Hiển thị mã, số và ID theo **chunking**: chia thành nhóm 3–4 ký tự có khoảng cách (vd "4829 1736"), font monospace, chữ to. Ô nhập mã cũng tự chèn khoảng cách theo nhóm." |
+| "AI bảo menu tối đa 7 mục" | "Không áp luật **Miller** cho menu đang hiển thị: người dùng nhận ra mục chứ không phải nhớ. Giữ đủ mục cần thiết, chia thành nhóm có tiêu đề, mục hay dùng ở đầu." |
+| "Xong việc mà không thấy gì" | "Áp **peak-end rule**: mỗi luồng chính có màn kết thúc rõ ràng (kết quả cụ thể, vd "34 có mặt, 1 vắng", kèm Hoàn tác). Tìm bước gây khó chịu nhất của luồng và sửa nó trước khi trau chuốt các bước khác." |
+| "Thử với người dùng ai cũng khen" | "Nhớ **aesthetic-usability effect**: thử luồng bằng bản wireframe xám trước để người dùng báo lỗi thật, sau đó mới thử bản đẹp. Ghi lại lỗi thao tác, không chỉ lời khen." |

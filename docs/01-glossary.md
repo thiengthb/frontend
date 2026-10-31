@@ -79,15 +79,16 @@
 | Thuật ngữ | Nghĩa ngắn |
 |---|---|
 | **Nielsen's 10 Heuristics** | 10 nguyên tắc đánh giá khả dụng (trạng thái hệ thống, kiểm soát, nhất quán, ngăn lỗi…) |
-| **Fitts's Law** | Mục tiêu càng to và càng gần thì càng dễ bấm. Ảnh hưởng đến kích thước nút và vị trí CTA |
-| **Hick's Law** | Càng nhiều lựa chọn thì quyết định càng chậm. Dẫn đến giảm hoặc nhóm lựa chọn |
+| **Fitts's Law** ✅ | Mục tiêu càng to và càng gần thì chạm càng nhanh; độ khó = log₂(1 + khoảng cách ÷ bề rộng). Fitts 1954 (V-10) |
+| **Hick's Law** ✅ | Nhiều lựa chọn ngang nhau thì chọn chậm, nhưng tăng chậm dần (log). Sắp xếp theo việc của người dùng làm nó yếu đi. Hick 1952, Hyman 1953 (V-10) |
 | **Jakob's Law** ✅ | Người dùng mong web của bạn hoạt động giống các web họ đã quen. Dẫn đến tôn trọng quy ước |
-| **Miller's Law** | Bộ nhớ ngắn hạn có giới hạn, nên chia nhỏ (chunking). ⚠️ Không phải "tối đa 7 mục" |
+| **Miller's Law / Chunking** ✅ | Trí nhớ ngắn hạn giữ ít (Miller 1956: ~7; Cowan 2001: ~4 nhóm); gom nhóm để giữ nhiều hơn. ⚠️ Không phải "menu tối đa 7 mục" (V-10) |
 | **Tesler's Law** | Độ phức tạp không biến mất, chỉ chuyển từ người dùng sang hệ thống |
 | **Doherty Threshold** | Phản hồi dưới ~400ms giữ được dòng tương tác |
-| **Peak-End Rule** | Người dùng nhớ đỉnh cảm xúc và lúc kết thúc trải nghiệm |
+| **Peak-End Rule** ✅ | Người dùng nhớ lúc tệ (hay) nhất và lúc kết thúc, ít nhớ độ dài. Kahneman 1993, thí nghiệm nước lạnh (V-10) |
 | **Von Restorff Effect** ✅ | Thứ khác biệt sẽ được nhớ. Đây là cơ sở của màu nhấn |
-| **Aesthetic-Usability Effect** | Thứ đẹp được cảm nhận là dễ dùng hơn. ⚠️ Có thể che giấu lỗi UX |
+| **Aesthetic-Usability Effect** ✅ | Thứ đẹp được chấm là dễ dùng hơn (Kurosu & Kashimura 1995, ATM). ⚠️ Che lỗi khi thử bản mẫu đẹp: thử luồng bằng wireframe trước (V-10) |
+| **Serial position effect** ✅ | Mục đầu và cuối danh sách dễ nhớ hơn mục giữa (V-10) |
 | **Cognitive load** | Tải nhận thức, tức người dùng phải nghĩ bao nhiêu |
 | **Progressive disclosure** | Hé lộ dần, chỉ cho thấy cái cần lúc cần |
 | **Mental model** | Hình dung của người dùng về cách hệ thống hoạt động |
