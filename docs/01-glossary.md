@@ -97,7 +97,7 @@
 |---|---|
 | **User persona / JTBD** | Chân dung người dùng / công việc họ cần hoàn thành |
 | **User flow / Journey map** | Luồng các bước / hành trình cảm xúc |
-| **Information Architecture (IA)** | Tổ chức và đặt tên nội dung, điều hướng |
+| **Information Architecture (IA)** ✅ | Cách chia nội dung app thành các khu, các tầng và đặt tên. Mỗi tab trả lời một câu hỏi (UX-002, V-08) |
 | **Wireframe → Mockup → Prototype** | Khung xương → hình ảnh hoàn chỉnh → bản tương tác được |
 | **Design system** | Token, component, pattern và nguyên tắc dùng chung |
 | **Design tokens** | Biến thiết kế (màu, spacing, radius…) dạng dữ liệu |
@@ -117,6 +117,14 @@
 | **Chip (filter / choice)** ✅ | Viên nhãn bấm được; filter chip bật tắt bộ lọc, có ✓ khi bật. Chip khác nghĩa không được trông giống nhau (V-07) |
 | **Icon button** ✅ | Nút chỉ có hình; chỉ ổn với icon quy ước (‹, ✕, tìm kiếm). Tooltip không có trên điện thoại (V-07) |
 | **Button label (động từ + đối tượng)** ✅ | "Chốt điểm danh" thay cho "OK"; đọc riêng nút vẫn hiểu (V-07) |
+| **Navigation bar (thanh tab dưới)** ✅ | 3–5 tab cố định ở đáy, mỗi tab một khu chính ngang hàng (quy ước Material). Không đổi theo màn (V-08) |
+| **Top tabs (tab trên)** ✅ | Hàng tab gạch chân dưới tiêu đề, đổi góc nhìn của cùng một nội dung (Hôm nay / Tuần). Không đưa góc nhìn lên tab dưới (V-08) |
+| **Back stack (ngăn xếp màn)** ✅ | Chồng các màn đã đi qua; chạm mục thì chồng thêm, ‹ thì rút ra. Mỗi tab giữ ngăn xếp riêng (V-08) |
+| **Up / Back (‹ và quay lại hệ thống)** ✅ | ‹ luôn lên màn cha theo quan hệ cha–con; nút hệ thống còn bấm được ở màn gốc (V-08) |
+| **Hierarchy (cha–con)** ✅ | Màn nằm bên trong màn khác: Lớp > SE1801 > Lê Thu Trang. Đi dọc = xuống con / lên cha; đi ngang = đổi khu (V-08) |
+| **Breadcrumb** ✅ | Đường dẫn "Lớp › SE1801 › Lê Thu Trang", mỗi bậc là link. Hay dùng trên web; mobile thay bằng tiêu đề + ‹ (V-08) |
+| **Navigation drawer (menu ☰)** ✅ | Danh sách khu giấu sau nút ☰. Chỉ cho mục ít dùng hoặc app > 5 khu; giấu khu chính là tệ (V-08) |
+| **Deep link** ✅ | Mở thẳng màn sâu (vd từ thông báo); phải dựng sẵn back stack để ‹ đi lên từng bậc (V-08) |
 | **CTA (Call to action)** | Hành động chính mà ta muốn người dùng làm |
 | **Empty state / Error state / Loading state** | Các trạng thái bị bỏ quên nhiều nhất, và là chỗ AI hay quên |
 | **Microcopy / UX writing** | Chữ nhỏ trên nút, lỗi, gợi ý |

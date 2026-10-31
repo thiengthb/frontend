@@ -73,3 +73,13 @@
 | "Hàng chip lẫn lộn" | "Hai nhóm khác nghĩa phải khác hình: chọn một dùng **segmented control**; bật tắt bộ lọc dùng **filter chip** có dấu ✓ khi bật. Mỗi nhóm có nhãn nhỏ và cách nhau một khoảng." |
 | "Icon khó hiểu" | "Chỉ dùng **icon button** không nhãn cho icon quy ước (quay lại, đóng, tìm kiếm, thêm). Hành động riêng của app thì icon kèm nhãn chữ. Không dựa vào **tooltip**. Vùng chạm tối thiểu 48dp." |
 | "Sợ bấm nhầm xoá" | "Nút **destructive** dạng chữ hoặc viền đỏ, đặt xa primary và ngoài vùng ngón cái, kèm hộp xác nhận ghi rõ hậu quả hoặc snackbar có nút **Hoàn tác (undo)**." |
+
+## V-08 · Điều hướng & kiến trúc thông tin
+| Bạn cảm thấy | Câu lệnh cho AI |
+|---|---|
+| "Vào sâu một chút là không biết mình đang ở đâu" | "Mỗi màn có **top app bar** ghi tên mục đang xem (vd "Lê Thu Trang", không ghi "Chi tiết"); tab của khu hiện tại luôn được tô trên **navigation bar**; mọi màn con có nút ‹ ở góc trên trái." |
+| "Menu bị giấu hết, phải mở mới thấy" | "Dùng **navigation bar** cố định 3–5 tab cho các khu chính, mỗi tab trả lời một câu hỏi, nhãn 1–2 từ. Không giấu khu chính trong **navigation drawer** (menu ☰); drawer chỉ cho mục ít dùng." |
+| "Bấm quay lại bị nhảy lung tung" | "Nút ‹ luôn về **màn cha** theo hierarchy, giữ vị trí cuộn. Mỗi tab giữ **back stack** riêng: đổi tab rồi quay lại thì về đúng màn đang xem; bấm lại tab đang mở thì về màn gốc của tab." |
+| "Mở từ thông báo, bấm quay lại là thoát app" | "**Deep link** vào màn sâu phải dựng sẵn back stack đầy đủ (vd Lớp, SE1801, Lê Thu Trang) và chọn đúng tab, để nút ‹ đi lên từng bậc." |
+| "Thanh tab dưới chật, chữ bị cắt" | "Navigation bar tối đa 5 mục, nhãn không bị cắt. Quá 5 khu thì gộp khu ít dùng vào Tài khoản hoặc đưa vào drawer. Không để thanh tab đổi nội dung theo từng màn." |
+| "Tab chồng tab, lạc" | "Tab dưới chỉ cho các khu ngang hàng; các góc nhìn của cùng một nội dung (Hôm nay / Tuần) dùng **top tabs** hoặc segmented trong màn đó. Mỗi màn tối đa một tầng tab." |

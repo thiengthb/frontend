@@ -3,7 +3,7 @@
 > Cập nhật cuối mỗi phiên. Phiên Claude mới đọc file này đầu tiên.
 
 ## Trạng thái hiện tại
-- **Ngày cập nhật:** 2026-10-31
+- **Ngày cập nhật:** 2026-11-01
 - **Chế độ:** **Crash course TRỰC QUAN v2** (`docs/05-crash-course.md`, D-018, PRC-007): mỗi khối V-xx là một artifact tương tác Claude dựng sẵn; người dùng chỉ đọc và nghịch. **Không bài tập, không chấm, không quiz đầu khối.**
 - **Đã học theo cách cũ (v1):** CC-01 phân cấp (xong), nửa đầu CC-02 typography (bài giảng + demo inline). Tài liệu tái dùng cho V-01, V-02.
 - **Đã xong (v2):** **V-01 Phân cấp & điểm nhấn** (2026-10-31): `demos/V-01/hierarchy.html`, artifact "V-01 Phân cấp" (https://claude.ai/artifact/UUdsaDzKfNx3L3FchPDvf6).
@@ -13,17 +13,19 @@
 - **Đã xong (v2):** **V-05 Chiều sâu & hình khối** (2026-10-31): `demos/V-05/depth.html`, artifact "V-05 Chiều sâu" (https://claude.ai/artifact/5Y7Mfy4v46H5zAPk8fJiJN). **Hết Ngày 1 · NHÌN.**
 - **Đã xong (v2):** **V-06 Bố cục màn mobile** (2026-10-31): `demos/V-06/layouts.html`, artifact "V-06 Bố cục mobile" (https://claude.ai/artifact/DGMcrKEfwBinoTshtD9hhA). Mở đầu Ngày 2 · PATTERN. Viết theo D-020.
 - **Đã xong (v2):** **V-07 Nút & điều khiển** (2026-10-31): `demos/V-07/controls.html`, artifact "V-07 Nút & điều khiển" (https://claude.ai/artifact/HzziX3fF9nDyDw2B4WaZmT).
+- **Đã xong (v2):** **V-08 Điều hướng & kiến trúc thông tin** (2026-11-01): `demos/V-08/navigation.html`, artifact "V-08 Điều hướng" (https://claude.ai/artifact/4vcSrpMqk2CZ4C6n4epvKa).
 - **Cách viết mới (D-020):** từ V-06, chat và artifact theo `docs/07-communication-style.md`. Có thể sửa lại chữ V-01..V-05 theo chuẩn này nếu người dùng muốn.
-- **Khối tiếp theo:** **V-08 Điều hướng & kiến trúc thông tin** (brief: `docs/briefs/V-08.md`). Chat V-06..V-07 đã dài: **mở chat mới**.
+- **Khối tiếp theo:** **V-09 Trạng thái & phản hồi** (brief: `docs/briefs/V-09.md`). Chat này mới làm V-08: làm tiếp V-09 trong cùng chat nếu người dùng đồng ý.
 - **Luật:** adopted: PRC-004 (tạm ngưng), PRC-006 (sửa D-019), PRC-007, VIS-004, VIS-005, UX-002. Draft: VIS-001..003, UX-001, CMP-001, COL-001, PRC-001, 002, 005. Deprecated: PRC-003
-- **Từ điển ra lệnh AI:** `docs/06-ai-prompt-dictionary.md` (đã có V-01..V-07; mỗi mục 6 câu)
+- **Từ điển ra lệnh AI:** `docs/06-ai-prompt-dictionary.md` (đã có V-01..V-08; mỗi mục 6 câu)
 
 ## Bước tiếp theo
-**Chat mới:** clone → đọc file này → tóm tắt ≤ 2 dòng → **dựng ngay V-08** theo `docs/briefs/V-08.md` (load `artifact-design`, tái dùng khung `demos/V-07/controls.html`, publish "V-08 Điều hướng") → giải thích ≤ 10 dòng theo ba nhịp (quy tắc 10) → V-09 nếu chat còn ngắn.
+**Dựng ngay V-09** theo `docs/briefs/V-09.md` (load `artifact-design`, tái dùng khung `demos/V-08/navigation.html`, publish "V-09 Trạng thái") → giải thích ≤ 10 dòng theo ba nhịp (quy tắc 10) → V-10 nếu chat còn ngắn, không thì mở chat mới.
 Cuối mỗi khối: `demos/V-xx/`, từ điển, glossary, brief khối kế, PROGRESS, push.
 
 ## Câu hỏi còn mở
 - Lỗi spring `[object Object]` trong thienui: minh hoạ ở V-13.
+- Ba câu IA còn mập mờ của lab2 (ghi ở V-08, mục Trên lab2): yêu cầu sửa điểm danh ở Tổng quan hay Lớp; màn Điểm danh hai lối vào thì ‹ về đâu; chạm em sinh viên ở Tổng quan thì mở trong ngăn xếp Tổng quan hay nhảy sang Lớp. Người dùng tự chọn khi làm lại lab2.
 
 ## Bối cảnh người dùng
 - Thiết kế chủ yếu qua AI; chưa hiểu nền tảng sau các artefact AI làm hộ (W10)
