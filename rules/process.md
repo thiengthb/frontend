@@ -27,7 +27,7 @@
 ---
 ### PRC-004 — Dự đoán trước, AI làm, phê bình có cấu trúc (Critique Loop)
 - **Loại:** preference (quy ước học tập)
-- **Trạng thái:** adopted (2026-10-30, người dùng duyệt cả bước dự đoán 2 phút)
+- **Trạng thái:** adopted (2026-10-30, người dùng duyệt cả bước dự đoán 2 phút) · **tạm ngưng** trong crash course trực quan (D-018, 2026-10-31); bật lại khi làm lab2 nếu người dùng muốn
 - **Luật:** Mỗi bài tập: (1) người dùng ghi dự đoán 2 phút; (2) subagent làm bài; (3) người dùng phê bình theo `templates/critique.md`; (4) Claude viết phê bình tham chiếu **trước khi đọc** bài của người dùng, rồi chấm cả hai.
 - **Lý do:** Mục tiêu dài hạn của người dùng là *art-direct AI*, nên luyện mắt phê bình trên output AI là đúng kỹ năng cần. Bước dự đoán giữ lại một phần "tưởng tượng" của PRC-003 với chi phí rất nhỏ.
 - **Bài học gốc:** M0-01 §8; `docs/05-crash-course.md`
@@ -43,7 +43,15 @@
 ---
 ### PRC-006 — Mỗi khối một chat mới
 - **Loại:** preference (quy trình)
-- **Trạng thái:** adopted (người dùng đề xuất, 2026-10-30; sửa cùng ngày: từ "mỗi Mốc" thành "mỗi khối CC-xx")
+- **Trạng thái:** adopted (người dùng đề xuất, 2026-10-30; sửa cùng ngày: từ "mỗi Mốc" thành "mỗi khối CC-xx") · **sửa 2026-10-31 (D-019):** trong crash course trực quan, một chat làm liên tiếp 2–3 khối V-xx, mở chat mới khi chat dài; bàn giao chỉ cần PROGRESS + brief khối kế (không quiz, không điểm)
 - **Luật:** Mỗi khối CC-01..CC-13 chạy trong **một chat riêng**; phần làm lại lab2 cũng mỗi màn một chat. Trước khi kết thúc chat, Claude phải: (1) ghi `lessons/CC-xx-*.md` kèm mục **"Tóm tắt cho khối sau"** (≤ 5 dòng, kèm 3 câu quiz); (2) ghi điểm vào `log/critique-scores.md`; (3) **viết sẵn `docs/briefs/CC-(xx+1).md`**; (4) cập nhật PROGRESS; (5) push.
 - **Lý do:** Ngữ cảnh dài làm Claude kém minh mẫn và dễ lẫn lộn, mà repo đã giữ đủ trạng thái để bàn giao.
 - **Bài học gốc:** người dùng, 2026-10-30
+
+---
+### PRC-007 — Crash course trực quan: đọc và nghịch, không làm bài
+- **Loại:** preference (quy ước học tập)
+- **Trạng thái:** adopted (người dùng yêu cầu, 2026-10-31, D-018)
+- **Luật:** Trong giai đoạn học lướt, mỗi khối là một artifact tương tác Claude dựng sẵn (cặp tệ↔tốt, nút gạt, thanh trượt, ví dụ lab2, câu lệnh mẫu cho AI). Claude **không giao bài, không chấm, không hỏi kiểm tra**; tự kiểm tra chỉ là tuỳ chọn bấm lộ đáp án.
+- **Lý do:** Người dùng đang ở tầng "nhớ và nhận diện" (Bloom), cần đi nhanh và liên tục; làm bài và phê bình có cấu trúc tiêu tốn năng lượng mà tầng này chưa cần. Rủi ro ảo giác năng lực (W10) được chấp nhận có ý thức và bù bằng lab2.
+- **Bài học gốc:** phiên 2026-10-31 (giữa CC-02); `docs/05-crash-course.md` v2

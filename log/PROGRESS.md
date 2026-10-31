@@ -4,29 +4,22 @@
 
 ## Trạng thái hiện tại
 - **Ngày cập nhật:** 2026-10-31
-- **Chế độ:** **Crash course 3 ngày + Critique Loop** (`docs/05-crash-course.md`). Lộ trình dài là deep track, làm sau lab2
-- **M0-01:** xong
-- **Crash course:** **CC-01 xong** (`lessons/CC-01-hierarchy.md`; subagent 7/10, người dùng 3/10). Khối tiếp theo là **CC-02** (typography)
-- **Luật:** adopted: PRC-004, PRC-006, **VIS-004, VIS-005, UX-002**. Draft: VIS-001..003, UX-001, CMP-001, COL-001, PRC-001, 002, 005. Deprecated: PRC-003
-- Artifact CC-01: "GV-001 ba bố cục" (bài subagent, publish từ `demos/CC-01/`)
+- **Chế độ:** **Crash course TRỰC QUAN v2** (`docs/05-crash-course.md`, D-018, PRC-007): mỗi khối V-xx là một artifact tương tác Claude dựng sẵn; người dùng chỉ đọc và nghịch. **Không bài tập, không chấm, không quiz đầu khối.**
+- **Đã học theo cách cũ (v1):** CC-01 phân cấp (xong), nửa đầu CC-02 typography (bài giảng + demo inline). Tài liệu tái dùng cho V-01, V-02.
+- **Khối tiếp theo:** **V-01 Phân cấp & điểm nhấn** (brief: `docs/briefs/V-01.md`), rồi V-02 Typography trong cùng chat.
+- **Luật:** adopted: PRC-004 (tạm ngưng), PRC-006 (sửa D-019), PRC-007, VIS-004, VIS-005, UX-002. Draft: VIS-001..003, UX-001, CMP-001, COL-001, PRC-001, 002, 005. Deprecated: PRC-003
+- **Từ điển ra lệnh AI:** `docs/06-ai-prompt-dictionary.md` (đã có V-01, V-02)
 
 ## Bước tiếp theo
-**Chat mới = khối CC-02.** Trình tự:
-1. Gắn và clone `thiengthb/frontend`, đọc PROGRESS và DECISIONS, tóm tắt 3 dòng.
-2. **Giao ngay `docs/briefs/CC-02.md` cho subagent chạy nền.**
-3. **Quiz nhớ lại** 3 câu ở cuối `lessons/CC-01-hierarchy.md`.
-4. **5 phút phê bình lại phương án B của CC-01** (D-016): mỗi ý phải có thuật ngữ + mức + hướng sửa. Ghi dòng "CC-01b" vào `critique-scores.md`. Người dùng có thể bác bước này.
-5. Giảng CC-02 (thang tỉ lệ, đậm/nghiêng/gạch chân khi nào, chữ số tabular, tiếng Việt dấu chồng và line-height). Nối từ CC-01: thang lab2 có bậc ×1.06–1.07.
-6. Video Elliot Jay Stocks, Config 2025 *Typography is the foundation of any design system* — nếu người dùng thiếu thời gian thì Claude tóm tắt thay (D-017). Kiểm tra link trước khi đưa.
-7. Dự đoán 2 phút (bỏ được nếu gấp) → publish bài subagent thành artifact → người dùng phê bình → Claude viết phê bình tham chiếu **trước khi đọc**, rồi chấm cả hai.
-8. Kết thúc khối theo PRC-006: lesson `lessons/CC-02-typography.md` (tóm tắt + quiz), điểm, **viết `docs/briefs/CC-03.md`**, PROGRESS, push, đưa câu mở chat CC-03.
+**Chat mới:** clone → đọc file này → tóm tắt ≤ 2 dòng → **dựng ngay V-01** theo brief (load `artifact-design`, publish "V-01 Phân cấp") → giải thích ≤ 10 dòng nên bấm gì → hỏi "Sang V-02?" → làm V-02 (viết brief V-02 nếu cần, nguồn ở cuối `docs/briefs/V-01.md`).
+Cuối mỗi khối: `demos/V-xx/`, từ điển, glossary, brief khối kế, PROGRESS, push.
 
 ## Câu hỏi còn mở
-- Lỗi spring `[object Object]` trong thienui: sẽ làm ở CC-11.
-- Quy tắc "khối < 4/10 thì làm lại" mâu thuẫn với mục tiêu "khối 1 khoảng 3–4/10" trong `docs/05-crash-course.md`. Tạm xử lý bằng D-016; nên sửa câu chữ trong doc khi người dùng đồng ý.
+- Lỗi spring `[object Object]` trong thienui: minh hoạ ở V-13.
+- Bài subagent CC-02 (`demos/CC-02/`) chưa publish cho người dùng; phê bình tham chiếu trong `lessons/CC-02-typography.md` dùng làm chú thích ví dụ ở V-02.
 
 ## Bối cảnh người dùng
-- Thiết kế chủ yếu qua AI; tự nhận phần lớn artefact (WCAG, vùng chạm, focus ring) là AI đề xuất, chưa hiểu nền tảng
+- Thiết kế chủ yếu qua AI; chưa hiểu nền tảng sau các artefact AI làm hộ (W10)
+- Giai đoạn hiện tại: **học vẹt, biết và hiểu sơ** để nhận diện pattern, thuật ngữ, và ra lệnh cho AI; muốn học trực quan, đọc nhanh, liên tục, ít tốn năng lượng
 - Stack: React, Vite, Next.js. Học dồn 2–3 ngày, sau đó 4 giờ/tuần
-- Thời gian eo hẹp: ở CC-01 bỏ video, nhờ tóm tắt và làm bài luôn
 - Mục tiêu gần: làm lại lab2 (thầy chê bản cam là đơn điệu)

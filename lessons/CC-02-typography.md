@@ -1,16 +1,21 @@
 # CC-02 — Typography: thang tỉ lệ, độ đậm, chữ số, tiếng Việt
 - **Ngày:** 2026-10-31
-- **Trạng thái:** đang học
+- **Trạng thái:** dừng giữa khối (2026-10-31): người dùng đổi sang crash course trực quan (D-018). Nội dung chuyển vào V-02.
 - **Bài subagent:** `demos/CC-02/type-scale-gv103.html` (thang chữ mới + GV-103 Chi tiết lớp)
 
 ## 0. Quiz nhớ lại CC-01 — 1.5/3
 - C1 ½: chẩn đoán đúng (bước sát nhau), nhưng trả lời bằng cỡ chữ (đề hỏi đòn bẩy khác cỡ) và đề xuất 16→12→8 (8px dưới ngưỡng đọc). Muốn bước lớn thì đi **lên** (display), đừng đi xuống.
 - C2 0: trả lời 16px; đúng là ≈4px (24 − 20), bo góc không đồng tâm (VIS-005). Đã giải thích lại bằng tâm cung chung.
 - C3 1: đúng lý do; ví dụ "trang giới thiệu" chấp nhận được.
-- 0b (phê bình lại B của CC-01): (chờ người dùng chọn làm hay bỏ)
+- 0b: người dùng bỏ qua; Claude làm mẫu (common region nhóm sai · vanity metric chỉ bị hạ · ngày 22 vs PRM393 24 · cam pha loãng).
 
-## 1. Khái niệm
-(điền sau bài giảng)
+## 1. Khái niệm (bài giảng đã trình bày trong chat)
+- **Modular scale:** gốc + tỉ lệ (1.2 quãng ba thứ, 1.25 quãng ba trưởng, 1.333 quãng bốn, 1.5 quãng năm). Mắt so theo tỉ lệ: ×1.07 vô hình, ×1.6 ra tầng. App dày/màn nhỏ 1.2–1.25; landing 1.333–1.5. Dùng 4–6 bậc, được bỏ bậc. Có **sàn** ~12–13px: tương phản đi lên, không đi xuống. Phản biện: heuristic; giá trị thật là ít bậc và cách xa.
+- **Đậm / nghiêng / gạch chân / in hoa:** đậm tách tầng khi cùng cỡ (đừng 600 khắp nơi); nghiêng nhấn trong câu, không cho nhãn; gạch chân chỉ cho link; in hoa chỉ nhãn 1–2 từ + tracking, cẩn thận dấu chồng.
+- **Chữ số:** proportional cho văn; **tabular** cho bảng, cột x/4, giờ, số đếm.
+- **Tiếng Việt:** dấu chồng (ễ, ữ, ẫ) cao hơn Latin; line-height đoạn 1.4–1.6, dưới ~1.25 dấu chạm dòng trên; display một dòng được thấp hơn; chọn font vẽ dấu tốt.
+- Demo inline: thang cũ ×1.07 vs ×1.25 cùng Nunito; proportional vs tabular; thanh trượt line-height với chữ hoa có dấu.
+- Video Elliot Jay Stocks: trang phiên Config tồn tại, không tìm được bản ghi (⚠); đề xuất bỏ (D-017).
 
 ## 4. Bài tập (Critique Loop)
 - Dự đoán của người dùng: (chờ)

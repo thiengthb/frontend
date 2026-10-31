@@ -35,11 +35,10 @@ Mỗi module trong lộ trình chia thành các bài nhỏ. Mỗi bài đi qua 6
 | 5. Review | Claude | Critique theo checklist của bài, chỉ ra cụ thể chỗ nào và vì sao |
 | 6. Chắt lọc luật | Cả hai | Viết thành luật trong `rules/` (trạng thái `draft`). **Người dùng duyệt** thì chuyển sang `adopted` |
 
-### 3b. Chế độ hiện tại: Crash course + Critique Loop (D-008, D-009)
-Trong crash course 3 ngày, mỗi khối chạy theo **Critique Loop** ở `docs/05-crash-course.md` thay cho bảng trên:
-bài giảng ngắn → video → **subagent làm bài** (chạy nền, xuất HTML 360×800, publish thành artifact) → người dùng dự đoán, rồi phê bình theo
-`templates/critique.md` → Claude viết **phê bình tham chiếu trước khi đọc** bài của người dùng, rồi chấm cả hai → ghi `log/critique-scores.md`.
-Subagent nhận đề bài đầy đủ ngữ cảnh (nó không thấy hội thoại): mô tả màn lab2, luật đã có, và yêu cầu làm *tốt nhất có thể*.
+### 3b. Chế độ hiện tại: Crash course TRỰC QUAN (D-018, PRC-007)
+Người dùng đang học để **biết và nhận diện**, chưa học để tự làm. Mỗi khối V-xx là **một artifact tương tác Claude dựng sẵn**
+(cặp tệ↔tốt, nút gạt, thanh trượt, ví dụ trên lab2, câu lệnh mẫu cho AI), theo `docs/05-crash-course.md` v2.
+**Không giao bài, không chấm, không quiz đầu khối, không hỏi kiểm tra.** Critique Loop (PRC-004) tạm ngưng, để dành khi làm lab2.
 
 Kết quả của mỗi bài là file `lessons/<module>-<số>-<slug>.md` (theo `templates/lesson.md`) cùng các luật mới hoặc
 đã cập nhật trong `rules/`.
@@ -49,7 +48,7 @@ Kết quả của mỗi bài là file `lessons/<module>-<số>-<slug>.md` (theo 
 - Mỗi lời khen phải có bằng chứng; mỗi lời chê phải chỉ **chỗ nào, vì sao, sửa hướng nào**. Không làm mềm kết luận để người dùng dễ chịu.
 - Nhưng **không cực đoan ngược**: ghi nhận điểm mạnh thật, và nói rõ khi chính Claude không chắc.
 - Chẩn đoán gốc nằm ở `lessons/M0-01-baseline.md` (W1–W9). Khi review, đối chiếu xem người dùng đã vượt điểm yếu nào chưa.
-- Người dùng hay làm việc qua AI. Trong crash course dùng **PRC-004 (Critique Loop)**; PRC-003 "tay trước" đã deprecated.
+- Người dùng hay làm việc qua AI. Crash course hiện là **trực quan, chỉ đọc** (PRC-007). Vai "phê bình khắt khe" áp vào **ví dụ và output AI trong bài giảng** (chỉ thẳng cái tệ, gọi tên lỗi), không áp vào việc chấm người dùng.
 - **Figma của người dùng mặc định CHỈ ĐỌC** (PRC-005). Một phiên trước đã làm hỏng file lab2. Muốn ghi: xin phép từng lần, ghi vào bản sao.
 - **Chủ động đề xuất cải tiến** cách học bất cứ lúc nào thấy có cách tốt hơn (người dùng yêu cầu), nhưng ngắn gọn, tối đa 1 đề xuất mỗi khối.
 - Người dùng **chưa nắm kiến thức nền** sau các artefact AI đã làm hộ (W10, M0-01 §8). Đừng giả định người dùng hiểu một thuật ngữ chỉ vì nó có trong repo của họ: **giải thích từ gốc**.
@@ -91,8 +90,8 @@ Câu hỏi mở: …
 ```
 
 ## 8. Chuyển giữa các tài khoản/phiên Claude
-- **Mỗi khối CC-xx một chat mới** (PRC-006). Chat chỉ biết những gì nằm trong repo, nên **kết thúc khối** bắt buộc gồm: lesson file có "Tóm tắt cho khối sau" và 3 câu quiz, điểm trong `critique-scores.md`, **brief của khối kế tiếp**, PROGRESS, rồi push. Cuối cùng đưa người dùng câu mở chat tiếp theo.
-- **Khởi động chat mới:** gắn repo `thiengthb/frontend` (quyền push), clone, đọc theo mục 2. Nếu khối sắp làm có file `docs/briefs/CC-xx.md` thì **giao ngay cho subagent chạy nền** rồi mới giảng bài, để bài subagent xong đúng lúc người dùng xem video.
+- **Một chat làm liên tiếp 2–3 khối V-xx** (PRC-006 sửa theo D-019), mở chat mới khi chat dài. Chat chỉ biết những gì nằm trong repo, nên cuối mỗi khối: artifact nguồn trong `demos/V-xx/`, mục mới trong `docs/06-ai-prompt-dictionary.md`, glossary, **brief khối kế** (`docs/briefs/V-xx.md`), PROGRESS, push.
+- **Khởi động chat mới:** gắn repo `thiengthb/frontend` (quyền push), clone, đọc PROGRESS, tóm tắt ≤ 2 dòng, rồi **dựng ngay** khối tiếp theo theo `docs/briefs/V-xx.md`. Không hỏi trước khi làm.
 - **Nguồn sự thật duy nhất là repo GitHub** (D-003). Mọi thứ chỉ tồn tại trong chat thì coi như chưa có.
 - Phiên mới: clone/pull, đọc theo mục 2, tóm tắt, rồi tiếp tục. Phiên cũ: phải kết thúc theo mục 5 rồi push.
 - Nếu hai phiên ghi đè nhau: ưu tiên bản có `log/SESSIONS.md` mới hơn, rồi hỏi người dùng về phần xung đột.

@@ -24,3 +24,8 @@
 - Người dùng phê bình 3/10 (mắt đúng, thiếu thuật ngữ và hướng sửa); subagent 7/10. Người dùng tìm ra C trùng tab Lịch, Claude bỏ sót.
 - Adopted VIS-004, VIS-005, UX-002 (D-015). D-016: không làm lại CC-01, phê bình lại phương án B ở đầu CC-02.
 - Viết `docs/briefs/CC-02.md` (thang chữ mới + GV-103). Tiếp theo: CC-02 ở chat mới.
+
+## 2026-10-31 · Phiên 5 · Nửa CC-02 → thiết kế lại crash course
+- Quiz CC-01 1.5/3; 0b bỏ qua (Claude làm mẫu). Subagent làm thang chữ + GV-103 (`demos/CC-02/`), phê bình tham chiếu đã khoá trong lesson (6/10).
+- Giảng typography (modular scale, đậm/nghiêng/gạch chân, tabular, dấu chồng) kèm demo inline.
+- Người dùng yêu cầu đổi sang học trực quan, chỉ đọc: viết `docs/05-crash-course.md` v2 (V-01..V-15), PRC-007, D-018, D-019, `docs/06-ai-prompt-dictionary.md`, brief V-01.
