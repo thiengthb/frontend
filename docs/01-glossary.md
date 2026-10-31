@@ -126,7 +126,15 @@
 | **Navigation drawer (menu ☰)** ✅ | Danh sách khu giấu sau nút ☰. Chỉ cho mục ít dùng hoặc app > 5 khu; giấu khu chính là tệ (V-08) |
 | **Deep link** ✅ | Mở thẳng màn sâu (vd từ thông báo); phải dựng sẵn back stack để ‹ đi lên từng bậc (V-08) |
 | **CTA (Call to action)** | Hành động chính mà ta muốn người dùng làm |
-| **Empty state / Error state / Loading state** | Các trạng thái bị bỏ quên nhiều nhất, và là chỗ AI hay quên |
+| **State (trạng thái màn)** ✅ | Một khuôn mặt của màn theo tình huống; lab2 dùng mã .D .D1 .L .E .E2 .X .S. Mọi trạng thái giữ cùng bố cục với .D (V-09) |
+| **Loading: spinner / skeleton** ✅ | Vòng xoay chỉ nói "đang làm"; khung xám đúng hình nội dung giữ chỗ, bố cục không nhảy. Màn bố cục cố định dùng skeleton; chờ trong nút dùng spinner nhỏ (V-09) |
+| **Empty state** ✅ | Màn không có dữ liệu: lần đầu thì dạy và có nút bước đầu; xử lý hết thì báo là xong. Không dùng "Không có dữ liệu" (V-09) |
+| **Error state** ✅ | Lỗi trả lời ba câu: hỏng gì, dữ liệu còn không, bấm gì để sửa (V-09) |
+| **Offline** ✅ | Mất mạng: giữ dữ liệu đã tải + dải báo có giờ cập nhật; thao tác cần mạng vào hàng chờ, tự gửi lại (V-09) |
+| **Toast / Snackbar** ✅ | Toast: dòng báo tự tắt, không nút. Snackbar: dòng báo ở đáy có một nút, thường là Hoàn tác (V-09) |
+| **Undo (hoàn tác)** ✅ | Rút lại thao tác vừa làm; thay được hộp "Bạn có chắc?" cho thao tác đảo được (V-09) |
+| **Optimistic UI** ✅ | Hiện kết quả ngay như đã xong, gửi máy chủ sau; hỏng thì báo và trả lại (V-09) |
+| **Response time limits (0,1 / 1 / 10 giây)** ✅ | Tức thì / còn theo mạch / hết kiên nhẫn (Miller 1968, Nielsen). Heuristic, không phải chuẩn (V-09) |
 | **Microcopy / UX writing** | Chữ nhỏ trên nút, lỗi, gợi ý |
 | **Microinteraction / Motion** | Phản hồi nhỏ khi thao tác, chuyển động có mục đích |
 | **Easing / Duration** | Đường cong và thời lượng chuyển động (thường 150–300ms) |

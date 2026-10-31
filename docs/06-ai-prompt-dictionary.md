@@ -83,3 +83,13 @@
 | "Mở từ thông báo, bấm quay lại là thoát app" | "**Deep link** vào màn sâu phải dựng sẵn back stack đầy đủ (vd Lớp, SE1801, Lê Thu Trang) và chọn đúng tab, để nút ‹ đi lên từng bậc." |
 | "Thanh tab dưới chật, chữ bị cắt" | "Navigation bar tối đa 5 mục, nhãn không bị cắt. Quá 5 khu thì gộp khu ít dùng vào Tài khoản hoặc đưa vào drawer. Không để thanh tab đổi nội dung theo từng màn." |
 | "Tab chồng tab, lạc" | "Tab dưới chỉ cho các khu ngang hàng; các góc nhìn của cùng một nội dung (Hôm nay / Tuần) dùng **top tabs** hoặc segmented trong màn đó. Mỗi màn tối đa một tầng tab." |
+
+## V-09 · Trạng thái & phản hồi
+| Bạn cảm thấy | Câu lệnh cho AI |
+|---|---|
+| "Mở màn ra trắng trơn một lúc" | "Vẽ **loading state** bằng **skeleton** đúng hình nội dung (thẻ, dòng, ô số), không dùng màn trắng hay spinner giữa màn cho màn có bố cục cố định. Dữ liệu về thì đổ vào đúng chỗ, không khối nào đổi vị trí." |
+| "Bấm nút không biết đã ăn chưa" | "Mọi nút đổi trạng thái trong **0,1 giây** khi chạm. Chờ quá **1 giây** thì nút thành "Đang [động từ]…" có spinner nhỏ và bị khoá để không gửi trùng. Quá **10 giây** thì báo tiến độ và cho rời màn." |
+| "Màn trống trông như lỗi" | "Mỗi danh sách có **empty state** riêng: lần đầu thì một câu giải thích màn này để làm gì và nút cho bước đầu tiên; đã xử lý hết thì báo là xong. Không dùng "Không có dữ liệu"." |
+| "Báo lỗi khó hiểu" | "Mọi **error state** trả lời ba câu bằng lời người dùng: hỏng gì, dữ liệu vừa nhập còn không, bấm gì để sửa (Thử lại, Để sau). Không hiện mã lỗi hay "Đã có lỗi xảy ra"." |
+| "Mất mạng là mất hết" | "Khi **offline**, giữ dữ liệu đã tải và hiện một dải báo có giờ cập nhật cuối, không thay cả màn bằng màn lỗi. Thao tác cần mạng thì lưu vào hàng chờ trên máy và tự gửi khi có mạng." |
+| "Hỏi Bạn có chắc hoài, phiền" | "Thao tác đảo được thì làm luôn và hiện **snackbar** có nút **Hoàn tác (undo)** trong khoảng 5 giây. Chỉ dùng hộp xác nhận cho thao tác không đảo được, ghi rõ hậu quả và nút có nhãn động từ." |

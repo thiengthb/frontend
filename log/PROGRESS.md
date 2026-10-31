@@ -14,18 +14,20 @@
 - **Đã xong (v2):** **V-06 Bố cục màn mobile** (2026-10-31): `demos/V-06/layouts.html`, artifact "V-06 Bố cục mobile" (https://claude.ai/artifact/DGMcrKEfwBinoTshtD9hhA). Mở đầu Ngày 2 · PATTERN. Viết theo D-020.
 - **Đã xong (v2):** **V-07 Nút & điều khiển** (2026-10-31): `demos/V-07/controls.html`, artifact "V-07 Nút & điều khiển" (https://claude.ai/artifact/HzziX3fF9nDyDw2B4WaZmT).
 - **Đã xong (v2):** **V-08 Điều hướng & kiến trúc thông tin** (2026-11-01): `demos/V-08/navigation.html`, artifact "V-08 Điều hướng" (https://claude.ai/artifact/4vcSrpMqk2CZ4C6n4epvKa).
+- **Đã xong (v2):** **V-09 Trạng thái & phản hồi** (2026-11-01): `demos/V-09/states.html`, artifact "V-09 Trạng thái" (https://claude.ai/artifact/38ZdD6wwdfebeFhT4UNW6T).
 - **Cách viết mới (D-020):** từ V-06, chat và artifact theo `docs/07-communication-style.md`. Có thể sửa lại chữ V-01..V-05 theo chuẩn này nếu người dùng muốn.
-- **Khối tiếp theo:** **V-09 Trạng thái & phản hồi** (brief: `docs/briefs/V-09.md`). Chat này mới làm V-08: làm tiếp V-09 trong cùng chat nếu người dùng đồng ý.
+- **Khối tiếp theo:** **V-10 Định luật UX bằng hình** (brief: `docs/briefs/V-10.md`), khối cuối Ngày 2. Chat V-08..V-09: làm V-10 trong chat này nếu còn ngắn, không thì mở chat mới.
 - **Luật:** adopted: PRC-004 (tạm ngưng), PRC-006 (sửa D-019), PRC-007, VIS-004, VIS-005, UX-002. Draft: VIS-001..003, UX-001, CMP-001, COL-001, PRC-001, 002, 005. Deprecated: PRC-003
-- **Từ điển ra lệnh AI:** `docs/06-ai-prompt-dictionary.md` (đã có V-01..V-08; mỗi mục 6 câu)
+- **Từ điển ra lệnh AI:** `docs/06-ai-prompt-dictionary.md` (đã có V-01..V-09; mỗi mục 6 câu)
 
 ## Bước tiếp theo
-**Dựng ngay V-09** theo `docs/briefs/V-09.md` (load `artifact-design`, tái dùng khung `demos/V-08/navigation.html`, publish "V-09 Trạng thái") → giải thích ≤ 10 dòng theo ba nhịp (quy tắc 10) → V-10 nếu chat còn ngắn, không thì mở chat mới.
+**Dựng ngay V-10** theo `docs/briefs/V-10.md` (load `artifact-design`, tái dùng khung `demos/V-09/states.html`, publish "V-10 Định luật UX") → giải thích ≤ 10 dòng theo ba nhịp (quy tắc 10) → hết Ngày 2, gợi ý mở chat mới cho V-11.
 Cuối mỗi khối: `demos/V-xx/`, từ điển, glossary, brief khối kế, PROGRESS, push.
 
 ## Câu hỏi còn mở
 - Lỗi spring `[object Object]` trong thienui: minh hoạ ở V-13.
 - Ba câu IA còn mập mờ của lab2 (ghi ở V-08, mục Trên lab2): yêu cầu sửa điểm danh ở Tổng quan hay Lớp; màn Điểm danh hai lối vào thì ‹ về đâu; chạm em sinh viên ở Tổng quan thì mở trong ngăn xếp Tổng quan hay nhảy sang Lớp. Người dùng tự chọn khi làm lại lab2.
+- Hai quyết định trạng thái cho lab2 (ghi ở V-09): GV-001 .X nên giữ dữ liệu cũ kèm dải báo thay vì thay cả màn (Claude đề xuất); nút Chốt có cả hộp xác nhận lẫn Hoàn tác, giữ hay bỏ hộp. Thêm gợi ý tự gửi lại khi có mạng và empty state "đã xử lý hết" cho GV-105.
 
 ## Bối cảnh người dùng
 - Thiết kế chủ yếu qua AI; chưa hiểu nền tảng sau các artefact AI làm hộ (W10)
