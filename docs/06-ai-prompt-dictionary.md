@@ -63,3 +63,13 @@
 | "Danh sách đọc mệt, toàn chữ" | "Mỗi hàng của **list** đưa từ khoá lên đầu dòng (tên in đậm) và trạng thái thành nhãn ở cuối dòng, để mắt không phải quét theo **F-pattern** qua cả câu dài." |
 | "Form dài, nản" | "Gom các ô liên quan thành nhóm có tiêu đề; nếu quá 6–7 ô thì chia thành **multi-step form** có chỉ báo bước. Nút gửi luôn thấy trong bottom bar." |
 | "Hai tab trông na ná nhau" | "Viết câu hỏi mà mỗi tab trả lời; nếu bố cục của tab này trả lời câu hỏi của tab khác thì bỏ phần trùng. **Mỗi tab một câu hỏi** (information architecture)." |
+
+## V-07 · Nút & điều khiển đúng nghĩa
+| Bạn cảm thấy | Câu lệnh cho AI |
+|---|---|
+| "Nhiều nút quá, không biết bấm cái nào" | "Áp **button hierarchy**: mỗi màn đúng một **primary** (đặc màu); việc thay thế là **secondary** (viền); thoát hoặc xem thêm là **tertiary** (chỉ chữ). Không đặt hai nút đặc màu cạnh nhau." |
+| "Nút ghi OK, Xác nhận chung chung" | "Nhãn nút là **động từ cộng đối tượng**, nói đúng điều sẽ xảy ra ("Chốt điểm danh", "Gửi yêu cầu"). Nút huỷ ghi "Quay lại", không dùng cặp Có/Không." |
+| "Dùng công tắc lung tung" | "Chọn control theo ý nghĩa: **switch** chỉ cho cài đặt có hiệu lực ngay, không cần nút Lưu; đánh dấu nhiều mục rồi xác nhận dùng **checkbox**; chọn một trong vài lựa chọn dùng **radio** hoặc **segmented control**." |
+| "Hàng chip lẫn lộn" | "Hai nhóm khác nghĩa phải khác hình: chọn một dùng **segmented control**; bật tắt bộ lọc dùng **filter chip** có dấu ✓ khi bật. Mỗi nhóm có nhãn nhỏ và cách nhau một khoảng." |
+| "Icon khó hiểu" | "Chỉ dùng **icon button** không nhãn cho icon quy ước (quay lại, đóng, tìm kiếm, thêm). Hành động riêng của app thì icon kèm nhãn chữ. Không dựa vào **tooltip**. Vùng chạm tối thiểu 48dp." |
+| "Sợ bấm nhầm xoá" | "Nút **destructive** dạng chữ hoặc viền đỏ, đặt xa primary và ngoài vùng ngón cái, kèm hộp xác nhận ghi rõ hậu quả hoặc snackbar có nút **Hoàn tác (undo)**." |

@@ -81,7 +81,7 @@
 | **Nielsen's 10 Heuristics** | 10 nguyên tắc đánh giá khả dụng (trạng thái hệ thống, kiểm soát, nhất quán, ngăn lỗi…) |
 | **Fitts's Law** | Mục tiêu càng to và càng gần thì càng dễ bấm. Ảnh hưởng đến kích thước nút và vị trí CTA |
 | **Hick's Law** | Càng nhiều lựa chọn thì quyết định càng chậm. Dẫn đến giảm hoặc nhóm lựa chọn |
-| **Jakob's Law** | Người dùng mong web của bạn hoạt động giống các web họ đã quen. Dẫn đến tôn trọng quy ước |
+| **Jakob's Law** ✅ | Người dùng mong web của bạn hoạt động giống các web họ đã quen. Dẫn đến tôn trọng quy ước |
 | **Miller's Law** | Bộ nhớ ngắn hạn có giới hạn, nên chia nhỏ (chunking). ⚠️ Không phải "tối đa 7 mục" |
 | **Tesler's Law** | Độ phức tạp không biến mất, chỉ chuyển từ người dùng sang hệ thống |
 | **Doherty Threshold** | Phản hồi dưới ~400ms giữ được dòng tương tác |
@@ -110,7 +110,13 @@
 | Thuật ngữ | Nghĩa ngắn |
 |---|---|
 | **Component states** | default, hover, focus, active, disabled, loading, error, empty |
-| **Primary / Secondary / Tertiary button** | Phân cấp nút theo mức quan trọng của hành động |
+| **Primary / Secondary / Tertiary button** ✅ | Phân cấp nút: đặc màu (việc chính, một nút mỗi màn) / viền (việc thay thế) / chỉ chữ (thoát, xem thêm). Thử nheo mắt: chỉ nút chính còn rõ (V-07) |
+| **Destructive button** ✅ | Nút xoá hoặc làm mất dữ liệu: chữ hoặc viền đỏ, tách xa nút chính, kèm xác nhận hoặc undo (V-07) |
+| **Checkbox / Radio / Switch** ✅ | Chọn nhiều rồi xác nhận / chọn một trong vài lựa chọn đang hiện / bật tắt cài đặt có hiệu lực ngay, không cần nút Lưu (CMP-001, V-07) |
+| **Segmented control** ✅ | Thanh 2–4 ô, chọn một chế độ xem, nội dung đổi ngay (V-07) |
+| **Chip (filter / choice)** ✅ | Viên nhãn bấm được; filter chip bật tắt bộ lọc, có ✓ khi bật. Chip khác nghĩa không được trông giống nhau (V-07) |
+| **Icon button** ✅ | Nút chỉ có hình; chỉ ổn với icon quy ước (‹, ✕, tìm kiếm). Tooltip không có trên điện thoại (V-07) |
+| **Button label (động từ + đối tượng)** ✅ | "Chốt điểm danh" thay cho "OK"; đọc riêng nút vẫn hiểu (V-07) |
 | **CTA (Call to action)** | Hành động chính mà ta muốn người dùng làm |
 | **Empty state / Error state / Loading state** | Các trạng thái bị bỏ quên nhiều nhất, và là chỗ AI hay quên |
 | **Microcopy / UX writing** | Chữ nhỏ trên nút, lỗi, gợi ý |

@@ -1,0 +1,647 @@
+<title>V-07 Nút & điều khiển</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* Bố cục: cùng khung V-01..V-05 (cột đọc 760px, demo bung 1100px). Màn mẫu là khung xương xám, chỉ hành động chính mang màu cam lab2. */
+:root{
+  --bg:#FBFAF8; --surface:#FFFFFF; --sunk:#F4F1EE;
+  --ink:#1F1F1F; --ink2:#3C3C3C; --ink3:#6B6B6B; --line:#E7E2DD;
+  --accent:#B9551F; --accent-ink:#9A4518; --accent-soft:#FBEFE8;
+  --bad:#B42318; --bad-soft:#FEF0EF; --ok:#15803D; --ok-soft:#ECFDF3; --warn:#A15C00; --warn-soft:#FFF6DD;
+  --s-bg:#FFFFFF; --s-muted:#F4F4F4; --s-line:#E5E5E5; --s-t1:#1F1F1F; --s-t2:#3C3C3C; --s-t3:#6B6B6B;
+  --s-p:#B9551F; --s-p-soft:#FBEFE8; --s-p-ink:#9A4518; --s-bad:#B42318; --s-bad-soft:#FEF0EF; --s-warn:#A15C00; --s-warn-soft:#FFF6DD; --s-ok:#15803D; --s-ok-soft:#ECFDF3;
+  --wf:#DCDCDC; --wf2:#EDEDED;
+  --f-body:"Nunito", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#161412; --surface:#1F1C1A; --sunk:#262220;
+  --ink:#F2EEEA; --ink2:#D3CCC5; --ink3:#A39A92; --line:#3A3531;
+  --accent:#E8925E; --accent-ink:#F0A97E; --accent-soft:#3A2418;
+  --bad:#F2877E; --bad-soft:#3A1C1A; --ok:#6CCB8D; --ok-soft:#15301F; --warn:#E3AE55; --warn-soft:#352A14; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#161412; --surface:#1F1C1A; --sunk:#262220;
+  --ink:#F2EEEA; --ink2:#D3CCC5; --ink3:#A39A92; --line:#3A3531;
+  --accent:#E8925E; --accent-ink:#F0A97E; --accent-soft:#3A2418;
+  --bad:#F2877E; --bad-soft:#3A1C1A; --ok:#6CCB8D; --ok-soft:#15301F; --warn:#E3AE55; --warn-soft:#352A14; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 80px}
+h1,h2,h3{line-height:1.2;text-wrap:balance;margin:0}
+p{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+.spine{max-width:760px;margin:0 auto}
+.wide{max-width:1100px;margin:0 auto}
+.head{max-width:760px}
+section{padding-top:72px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink)}
+h2{font-size:28px;font-weight:900;margin-top:6px}
+.lead{color:var(--ink2);margin-top:10px;max-width:65ch}
+.lead+.lead{margin-top:10px}
+.small{font-size:14px;color:var(--ink3)}
+code,.mono{font-family:var(--f-mono);font-size:.88em}
+.term{font-weight:800;color:var(--ink)}
+.rk{font-family:var(--f-mono);font-size:11px;color:var(--ink3);font-weight:500}
+
+.hero{padding-top:48px}
+.hero .tag{font-family:var(--f-mono);font-size:13px;color:var(--ink3)}
+.hero h1{font-size:clamp(34px,7vw,56px);font-weight:900;letter-spacing:-.02em;margin-top:14px;max-width:18ch}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{margin-top:16px;color:var(--ink2);max-width:60ch;font-size:17px}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.toc a{font-size:14px;font-weight:700;color:var(--ink2);text-decoration:none;padding:6px 12px;border:1px solid var(--line);border-radius:999px}
+.toc a:hover{border-color:var(--accent);color:var(--accent-ink)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:20px}
+.terms div{padding:14px 16px;background:var(--surface);border-left:3px solid var(--line)}
+.terms div:first-child{border-left-color:var(--accent)}
+.terms b{display:block;font-size:16px}
+.terms span{display:block;font-size:14px;color:var(--ink2);margin-top:2px;line-height:1.45}
+
+.ctl{display:flex;align-items:center;gap:12px 16px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin-top:20px}
+.ctl .lab{font-weight:800;font-size:15px}
+.ctl+.ctl{margin-top:10px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;flex-wrap:wrap}
+.seg button{border:0;background:none;padding:8px 12px;font-size:14px;font-weight:700;color:var(--ink2);min-height:40px}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.badge{font-size:13px;font-weight:800;padding:4px 10px;border-radius:999px;white-space:nowrap}
+.b-bad{background:var(--bad-soft);color:var(--bad)}
+.b-ok{background:var(--ok-soft);color:var(--ok)}
+.b-warn{background:var(--warn-soft);color:var(--warn)}
+.sliders{display:flex;flex-direction:column;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-top:20px}
+.sl{display:grid;grid-template-columns:150px minmax(0,1fr) 72px;gap:12px;align-items:center}
+.sl label{font-weight:800;font-size:15px}
+.sl input{width:100%;accent-color:var(--accent)}
+.sl output{font-family:var(--f-mono);font-size:13px;color:var(--ink3)}
+.duo{display:flex;flex-wrap:wrap;gap:28px;margin-top:20px;align-items:flex-start}
+.note-col{flex:1;min-width:240px;display:flex;flex-direction:column;gap:14px;font-size:15px;color:var(--ink2)}
+.kv{display:flex;flex-direction:column;gap:2px}
+.kv b{font-size:12px;font-family:var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);font-weight:700}
+.kv span{font-size:16px;color:var(--ink)}
+.kv .q{font-size:20px;font-weight:900;line-height:1.3}
+
+/* Màn mẫu */
+.ph{width:320px;max-width:100%;background:var(--s-bg);color:var(--s-t1);border-radius:24px;overflow:hidden;position:relative;
+  box-shadow:0 0 0 1px var(--line),0 12px 30px -18px rgba(0,0,0,.35);font-family:var(--f-body);display:flex;flex-direction:column;flex:none;line-height:1.3}
+.ph.tall{min-height:600px}
+.ph.wide{width:600px}
+.sb{height:24px;display:flex;justify-content:space-between;align-items:center;padding:0 18px;font-size:11px;font-weight:800;flex:none;color:var(--s-t1)}
+.scr{padding:4px 16px 16px;display:flex;flex-direction:column;gap:12px;flex:1;min-height:0}
+.bar{display:block;height:8px;border-radius:4px;background:var(--wf)}
+.bar.s{height:6px;background:var(--wf2)}
+.bar.h{height:14px;border-radius:6px}
+.blk{background:var(--wf2);border-radius:12px}
+.circ{width:28px;height:28px;border-radius:50%;background:var(--wf);flex:none}
+.tb{height:48px;display:flex;align-items:center;gap:10px;padding:0 12px;border-bottom:1px solid var(--s-line);flex:none;font-size:14px;font-weight:800;color:var(--s-t1)}
+.tb .ico{width:18px;font-size:22px;line-height:1;font-weight:700;color:var(--s-t2);flex:none}
+.tb .t{flex:1;min-width:0}
+.tb .act{font-size:13px;font-weight:800;color:var(--s-p);padding:6px 4px}
+.wrow{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--s-line)}
+.wrow .lines{flex:1;display:flex;flex-direction:column;gap:6px;min-width:0}
+.chk{width:20px;height:20px;border-radius:5px;border:2px solid var(--wf);flex:none}
+.cta{background:var(--s-p);color:#fff;border-radius:10px;text-align:center;font-weight:800;font-size:14px;padding:12px;flex:none}
+.cta.ghost{background:transparent;color:var(--s-t2);box-shadow:inset 0 0 0 1px #CFCFCF}
+.botbar{padding:10px 16px 14px;border-top:1px solid var(--s-line);background:var(--s-bg);flex:none}
+.nav{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--s-line);padding:6px 4px 8px;background:var(--s-bg);flex:none}
+.nav>*{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10px;color:var(--s-t3);font-weight:700;background:none;border:0;padding:0;min-height:40px;font-family:var(--f-body)}
+.nav i{display:block;width:40px;height:22px;border-radius:11px;position:relative}
+.nav i::after{content:"";position:absolute;inset:6px 15px;border-radius:3px;border:2px solid var(--s-t3)}
+.nav .on{color:var(--s-t1)}.nav .on i{background:var(--s-muted)}.nav .on i::after{border-color:var(--s-t1)}
+.fl{display:flex;flex-direction:column;gap:6px}
+.fl .in{height:40px;border-radius:8px;box-shadow:inset 0 0 0 1px #CFCFCF}
+.grp{font-size:11px;font-weight:800;color:var(--s-t3);letter-spacing:.04em;text-transform:uppercase}
+.md{display:grid;grid-template-columns:210px minmax(0,1fr);flex:1;min-height:0}
+.md .ml{border-right:1px solid var(--s-line);padding:8px 12px;display:flex;flex-direction:column}
+.md .ml .wrow.sel{background:var(--s-p-soft);margin:0 -12px;padding:8px 12px;border-bottom-color:transparent}
+.md .mr{padding:14px 18px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.cam{font-size:12px;color:var(--s-t3)}
+.lbl-s{font-size:12px;font-weight:800;color:var(--s-t2)}
+
+/* Thumb zone + quét mắt: lớp phủ SVG */
+.ov{position:absolute;inset:0;pointer-events:none;width:100%;height:100%}
+.ov text{font-family:var(--f-body);font-weight:900;font-size:13px}
+.hide-ov .ov{display:none}
+
+/* Fold */
+.fold-ph{}
+.fold-ph .scr{overflow:hidden}
+.fold-ph .nav{position:absolute;left:0;right:0;bottom:0}
+.foldline{position:absolute;left:0;right:0;border-top:2px dashed var(--s-bad);pointer-events:none}
+.foldline span{position:absolute;right:8px;top:-20px;font-family:var(--f-mono);font-size:10px;font-weight:700;color:var(--s-bad);background:var(--s-bg);padding:0 4px}
+.fz .kp{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.fz .kp div{border-radius:12px;padding:calc(var(--fs)*12px);box-shadow:0 0 0 1px var(--s-line);display:flex;flex-direction:column;gap:4px}
+.fz .kp i{width:calc(var(--fs)*26px);height:calc(var(--fs)*26px);border-radius:8px;background:var(--s-p-soft)}
+.fz .kp b{font-size:calc(var(--fs)*24px);font-weight:900;line-height:1.1}
+.fz .kp span{font-size:calc(var(--fs)*12px);color:var(--s-t3)}
+.fz .hd small{display:block;font-size:calc(var(--fs)*12px);color:var(--s-t3)}
+.fz .hd b{display:block;font-size:calc(var(--fs)*22px);font-weight:900}
+.fz .cd{border-radius:12px;padding:calc(var(--fs)*14px);box-shadow:0 0 0 1px var(--s-line);display:flex;flex-direction:column;gap:4px}
+.fz .cd.hot{background:var(--s-p-soft);box-shadow:none}
+.fz .cd .lb{font-size:calc(var(--fs)*11px);font-weight:800;color:var(--s-t3)}
+.fz .cd .tt{font-size:calc(var(--fs)*17px);font-weight:900}
+.fz .cd .mm{font-size:calc(var(--fs)*12px);color:var(--s-t3)}
+.fz .cta{font-size:calc(var(--fs)*15px);padding:calc(var(--fs)*13px);margin-top:6px}
+.fz .ln{font-size:calc(var(--fs)*13px)}
+.fz .meta{font-size:calc(var(--fs)*12px);color:var(--s-t3)}
+
+/* Cặp */
+.pair{margin-top:40px}
+.pair h3{font-size:20px;font-weight:900}
+.pair .why{color:var(--ink2);margin-top:6px;max-width:68ch;font-size:15px}
+.pair-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:16px}
+.side{border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;align-items:center;background:var(--sunk);min-width:0}
+.side .lbl{align-self:flex-start;font-family:var(--f-mono);font-size:12px;font-weight:700;letter-spacing:.06em;padding:3px 9px;border-radius:6px}
+.side.bad .lbl{background:var(--bad-soft);color:var(--bad)}
+.side.good .lbl{background:var(--ok-soft);color:var(--ok)}
+.side .note{align-self:stretch;font-size:13.5px;color:var(--ink2);line-height:1.45}
+.mini{width:260px;max-width:100%;height:400px;background:var(--s-bg);color:var(--s-t1);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;line-height:1.3;font-size:13px;box-shadow:0 0 0 1px var(--line);position:relative}
+.mini .scr{gap:10px;overflow:hidden}
+
+/* Bảng mặc định */
+.tbl-wrap{overflow-x:auto;margin-top:20px}
+table{border-collapse:collapse;width:100%;min-width:520px;background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);font-size:15px;vertical-align:top}
+th{font-size:12px;font-family:var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);font-weight:700;background:var(--sunk)}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)}
+.recipe{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin-top:16px}
+.recipe div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.recipe b{display:block;font-size:13px;font-family:var(--f-mono);color:var(--accent-ink);font-weight:700}
+.recipe span{display:block;margin-top:4px;font-size:15px;color:var(--ink2)}
+.counter{margin-top:20px;padding:14px 18px;border-left:3px solid var(--accent);background:var(--accent-soft);font-size:15px;color:var(--ink)}
+
+/* lab2 */
+.lab{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin-top:24px}
+.lab article{display:flex;flex-direction:column;gap:12px;min-width:0}
+.lab .mini{width:100%;height:330px}
+.lab h3{font-size:17px;font-weight:900}
+.lab .pt{font-family:var(--f-mono);font-size:12px;font-weight:700;color:var(--accent-ink)}
+.lab p{font-size:14px;color:var(--ink2);line-height:1.45}
+.lab p b{color:var(--ink)}
+
+.prompts{display:flex;flex-direction:column;gap:12px;margin-top:20px}
+.prompt{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 14px;align-items:start}
+.prompt .feel{font-size:13px;color:var(--ink3);font-weight:700}
+.prompt .say{font-size:15px;color:var(--ink);grid-column:1}
+.copy{grid-row:1 / span 2;grid-column:2;background:var(--ink);color:var(--bg);border:0;border-radius:10px;padding:8px 14px;font-size:13px;font-weight:800;min-height:40px}
+.copy.done{background:var(--ok)}
+details.q{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-top:12px}
+details.q summary{cursor:pointer;font-weight:800;list-style:none;display:flex;gap:10px}
+details.q summary::-webkit-details-marker{display:none}
+details.q summary::before{content:"+";font-family:var(--f-mono);color:var(--accent-ink);font-weight:700}
+details.q[open] summary::before{content:"−"}
+details.q .ans{margin-top:10px;color:var(--ink2);font-size:15px;padding-left:20px}
+footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--line);font-size:14px;color:var(--ink3)}
+
+@media (max-width:980px){.lab{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.pair-grid{grid-template-columns:1fr}h2{font-size:24px}.prompt{grid-template-columns:1fr}.copy{grid-row:auto;grid-column:1;justify-self:start}.sl{grid-template-columns:1fr 72px}.sl label{grid-column:1 / -1}.lab{grid-template-columns:1fr}.md{grid-template-columns:120px minmax(0,1fr)}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* V-07: điều khiển thật trong màn mẫu */
+.btnrow{display:flex;flex-direction:column;gap:10px}
+.b1,.b2,.b3,.bd{border-radius:10px;text-align:center;font-weight:800;font-size:14px;padding:12px;border:0;font-family:var(--f-body);min-height:44px}
+.b1{background:var(--s-p);color:#fff}
+.b2{background:transparent;color:var(--s-t1);box-shadow:inset 0 0 0 1.5px #BDBDBD}
+.b3{background:transparent;color:var(--s-p-ink);padding:8px}
+.bd{background:var(--s-bad);color:#fff}
+.bd.out{background:transparent;color:var(--s-bad);box-shadow:inset 0 0 0 1.5px var(--s-bad)}
+.squint .ph,.squint .mini{filter:blur(5px)}
+.dlg{position:absolute;inset:0;background:rgba(0,0,0,.38);display:flex;align-items:flex-end}
+.dlg .sheet{background:var(--s-bg);width:100%;border-radius:20px 20px 0 0;padding:20px 16px 18px;display:flex;flex-direction:column;gap:10px}
+.dlg .sheet b{font-size:18px;font-weight:900}
+.dlg .sheet p{font-size:13px;color:var(--s-t2);line-height:1.45}
+.dlg .acts{display:flex;gap:8px;margin-top:6px}
+.dlg .acts>*{flex:1}
+/* Điều khiển */
+.cx{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--s-line);font-size:14px;cursor:pointer;background:none;border-left:0;border-right:0;border-top:0;width:100%;text-align:left;color:var(--s-t1);font-family:var(--f-body);min-height:48px}
+.cx .nm{flex:1;min-width:0}
+.cx .nm small{display:block;font-size:11px;color:var(--s-t3)}
+.box{width:22px;height:22px;border-radius:6px;box-shadow:inset 0 0 0 2px #9E9E9E;flex:none;display:grid;place-items:center;color:#fff;font-size:14px;font-weight:900}
+.cx[aria-checked="true"] .box{background:var(--s-p);box-shadow:none}
+.rad{width:22px;height:22px;border-radius:50%;box-shadow:inset 0 0 0 2px #9E9E9E;flex:none;position:relative}
+.cx[aria-checked="true"] .rad{box-shadow:inset 0 0 0 2px var(--s-p)}
+.cx[aria-checked="true"] .rad::after{content:"";position:absolute;inset:5px;border-radius:50%;background:var(--s-p)}
+.sw{width:42px;height:26px;border-radius:13px;background:#BDBDBD;flex:none;position:relative;transition:background .15s}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .15s;box-shadow:0 1px 2px rgba(0,0,0,.25)}
+.on .sw,.cx[aria-checked="true"] .sw{background:var(--s-ok)}
+.on .sw::after,.cx[aria-checked="true"] .sw::after{transform:translateX(16px)}
+.sg{display:flex;background:var(--s-muted);border-radius:10px;padding:3px;gap:3px}
+.sg button{flex:1;border:0;background:none;border-radius:8px;padding:8px 4px;font-size:13px;font-weight:800;color:var(--s-t3);font-family:var(--f-body);min-height:36px}
+.sg button[aria-pressed="true"]{background:var(--s-bg);color:var(--s-t1);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:0;border-radius:999px;padding:7px 12px;font-size:13px;font-weight:700;color:var(--s-t2);background:transparent;box-shadow:inset 0 0 0 1px #BDBDBD;font-family:var(--f-body);min-height:34px}
+.chip[aria-pressed="true"]{background:var(--s-p-soft);color:var(--s-p-ink);box-shadow:inset 0 0 0 1px var(--s-p)}
+.chip[aria-pressed="true"]::before{content:"✓ "}
+.chip.same[aria-pressed="true"]::before{content:""}
+.chip.same{background:var(--s-muted);box-shadow:none}
+.chip.same[aria-pressed="true"]{background:var(--s-t1);color:#fff;box-shadow:none}
+.ja{font-family:"Hiragino Sans","Noto Sans JP","Yu Gothic",var(--f-body)}
+.mk{outline:2px dashed var(--s-bad);outline-offset:2px;border-radius:8px}
+/* Máy đếm */
+.count{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.count div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.count b{display:block;font-size:28px;font-weight:900;font-variant-numeric:tabular-nums;line-height:1.1}
+.count span{font-size:13px;color:var(--ink2)}
+.count .hot b{color:var(--bad)}
+.att{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--s-line);font-size:13px}
+.att .nm{flex:1;min-width:0}
+.att .nm small{display:block;font-size:10.5px;color:var(--s-t3)}
+.mini-btn{border-radius:8px;padding:6px 10px;font-size:12px;font-weight:800;box-shadow:inset 0 0 0 1px #BDBDBD;color:var(--s-t2)}
+/* Icon */
+.icons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px}
+.ic{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+.ic .ib{width:48px;height:48px;border-radius:12px;background:var(--s-muted);display:grid;place-items:center;color:#1F1F1F}
+.ic .il{font-size:13px;font-weight:800;color:var(--ink)}
+.ic .il[hidden]{display:none}
+.ic .iv{font-size:12px}
+.icgroup h3{font-size:17px;font-weight:900;margin-top:24px}
+@media (max-width:620px){.count{grid-template-columns:1fr}.icons{grid-template-columns:repeat(3,minmax(0,1fr))}}
+</style>
+
+<header class="spine hero">
+  <div class="tag">Crash course trực quan · khối V-07 / 15 · Ngày 2 · ~25 phút</div>
+  <h1>Chọn điều khiển theo <em>ý nghĩa của hành động</em>, không theo hình dáng đẹp.</h1>
+  <p>Ở V-06 bạn đã đặt nút chính vào đúng chỗ trên màn: viewport đầu tiên và vùng ngón cái. Khối này đi vào bên trong từng nút và từng ô chọn. Mỗi loại điều khiển (control) là một lời hứa với người dùng về điều sẽ xảy ra khi chạm vào. Dùng sai loại thì người dùng đoán sai hậu quả, dù màn trông vẫn đẹp.</p>
+  <nav class="toc" aria-label="Mục lục">
+    <a href="#ban-do">Bản đồ</a><a href="#phan-cap">Phân cấp nút</a><a href="#nhan">Nhãn nút</a><a href="#nam-dieu-khien">Năm cách chọn</a><a href="#dem">Máy đếm</a><a href="#hai-nghia">Hai nghĩa, một hình</a><a href="#icon">Nút chỉ icon</a><a href="#cap">Tệ và tốt</a><a href="#mac-dinh">Mặc định</a><a href="#lab2">Trên lab2</a><a href="#lenh">Lệnh cho AI</a><a href="#kiem-tra">Tự kiểm tra</a>
+  </nav>
+</header>
+
+<section id="ban-do" class="spine">
+  <div class="eyebrow">Bản đồ nhanh</div>
+  <h2>Mười tên gọi, chia làm hai nhóm</h2>
+  <p class="lead">Nhóm đầu là các loại nút, khác nhau ở mức độ quan trọng. Nhóm sau là các cách chọn, khác nhau ở ý nghĩa. Mỗi ô tả hiện tượng trước rồi mới đưa tên.</p>
+  <div class="terms">
+    <div><b>Primary button (nút chính)</b><span>Nút đặc màu, việc chính của màn, như "Chốt điểm danh". Mỗi màn một nút.</span></div>
+    <div><b>Secondary button (nút phụ)</b><span>Nút viền mỏng, việc thay thế, như "Điểm danh tay" bên cạnh "Mở mã QR".</span></div>
+    <div><b>Tertiary button (nút chữ)</b><span>Chỉ có chữ màu, việc ít quan trọng, như "Xem tất cả" hay "Huỷ".</span></div>
+    <div><b>Destructive (nút phá huỷ)</b><span>Nút xoá hoặc làm mất dữ liệu. Màu đỏ, đặt xa nút chính, có bước xác nhận hoặc nút hoàn tác.</span></div>
+    <div><b>Checkbox (ô đánh dấu)</b><span>Ô vuông, chọn nhiều mục cùng lúc. Chọn xong thường còn một nút xác nhận.</span></div>
+    <div><b>Radio (nút tròn)</b><span>Vòng tròn, chọn đúng một trong vài lựa chọn đang hiện cả ra.</span></div>
+    <div><b>Switch (công tắc)</b><span>Bật hoặc tắt một cài đặt, có hiệu lực ngay khi gạt, không cần nút Lưu.</span></div>
+    <div><b>Segmented control (nút chia đoạn)</b><span>Một thanh chia 2–4 ô, chọn một chế độ xem. Như "Hôm nay | Tuần" ở tab Lịch.</span></div>
+    <div><b>Chip (nhãn bấm được)</b><span>Viên thuốc nhỏ, thường để bật tắt bộ lọc, như "Chưa quét" trên danh sách.</span></div>
+    <div><b>Icon button (nút chỉ icon)</b><span>Nút không có chữ, chỉ có hình. Chỉ ổn khi hình đó ai cũng hiểu, như ‹ quay lại.</span></div>
+  </div>
+</section>
+
+<section id="phan-cap" class="wide">
+  <div class="head">
+    <div class="eyebrow">Phân cấp nút</div>
+    <h2>Ba nút nói to như nhau thì không nút nào được nghe</h2>
+    <p class="lead">Hãy xem màn gửi yêu cầu sửa điểm danh. Màn có ba việc: gửi yêu cầu, lưu nháp để gửi sau, và huỷ. Ba việc này không quan trọng ngang nhau. Gửi là lý do người dùng mở màn; lưu nháp thỉnh thoảng mới dùng; huỷ là lối thoát.</p>
+    <p class="lead">Vì vậy ba nút nên có ba "giọng" khác nhau: nút đặc màu, nút viền, nút chữ. Thứ bậc này gọi là <span class="term">button hierarchy</span> (phân cấp nút). Bấm nút gạt để so, rồi bấm "Nheo mắt" để làm mờ màn như bài thử nheo mắt ở V-01: nút nào còn thấy rõ thì nút đó đang thắng.</p>
+  </div>
+  <div class="ctl">
+    <span class="lab" id="h-lab">Ba nút</span>
+    <div class="seg" role="group" aria-labelledby="h-lab" id="h-seg">
+      <button type="button" data-h="flat" aria-pressed="true">Cùng đặc màu</button>
+      <button type="button" data-h="tier" aria-pressed="false">Đặc, viền, chữ</button>
+    </div>
+    <div class="seg" role="group" aria-label="Nheo mắt" id="h-sq">
+      <button type="button" data-s="off" aria-pressed="true">Nhìn thường</button>
+      <button type="button" data-s="on" aria-pressed="false">Nheo mắt</button>
+    </div>
+  </div>
+  <div class="duo">
+    <div id="h-wrap"><div class="ph tall" id="h-ph"></div></div>
+    <div class="note-col"><p id="h-text"></p>
+      <p class="small">Nút phụ không có nghĩa là nút bị giấu. Nó vẫn đủ lớn để bấm (cao ít nhất 44–48dp); nó chỉ nói nhỏ hơn.</p></div>
+  </div>
+</section>
+
+<section id="nhan" class="wide">
+  <div class="head">
+    <div class="eyebrow">Nhãn nút</div>
+    <h2>Nhãn nút nói rõ điều sẽ xảy ra</h2>
+    <p class="lead">Thứ bậc cho biết nút nào quan trọng. Nhãn cho biết nút đó làm gì. Hãy tưởng tượng giảng viên đang vội, chỉ kịp đọc chữ trên nút. "OK" không nói gì về hậu quả; "Chốt điểm danh" thì có. Nhãn tốt là <span class="term">động từ cộng đối tượng</span>: làm gì, với cái gì.</p>
+  </div>
+  <div class="ctl">
+    <span class="lab" id="n-lab">Nhãn nút xác nhận</span>
+    <div class="seg" role="group" aria-labelledby="n-lab" id="n-seg">
+      <button type="button" data-n="ok" aria-pressed="true">OK</button>
+      <button type="button" data-n="xn" aria-pressed="false">Xác nhận</button>
+      <button type="button" data-n="vb" aria-pressed="false">Chốt điểm danh</button>
+    </div>
+  </div>
+  <div class="duo">
+    <div class="ph tall" id="n-ph"></div>
+    <div class="note-col"><p id="n-text"></p>
+      <p>Nút huỷ cũng nên rõ. Nếu hai nút là "Có" và "Không", người dùng phải đọc lại câu hỏi để biết "Có" nghĩa là gì. "Quay lại" và "Chốt điểm danh" thì đọc riêng từng nút vẫn hiểu.</p></div>
+  </div>
+</section>
+
+<section id="nam-dieu-khien" class="wide">
+  <div class="head">
+    <div class="eyebrow">Năm cách chọn</div>
+    <h2>Mỗi cách chọn trả lời một câu hỏi khác nhau</h2>
+    <p class="lead">Từ nút bấm, ta sang các điều khiển để chọn. Năm loại dưới đây trông khác nhau vì chúng hứa những điều khác nhau. Người dùng đã gặp chúng hàng nghìn lần ở app khác, nên họ đoán hành vi qua hình dáng. Hiện tượng này có tên là <span class="term">Jakob's law</span> (luật Jakob): người dùng mong app của bạn hoạt động giống các app họ đã quen. Bấm từng loại, rồi bấm thử điều khiển ngay trên màn mẫu.</p>
+  </div>
+  <div class="ctl">
+    <span class="lab" id="c-lab">Điều khiển</span>
+    <div class="seg" role="group" aria-labelledby="c-lab" id="c-seg">
+      <button type="button" data-c="cb" aria-pressed="true">Checkbox</button>
+      <button type="button" data-c="rd" aria-pressed="false">Radio</button>
+      <button type="button" data-c="sw" aria-pressed="false">Switch</button>
+      <button type="button" data-c="sg" aria-pressed="false">Segmented</button>
+      <button type="button" data-c="ch" aria-pressed="false">Chip</button>
+    </div>
+  </div>
+  <div class="duo">
+    <div class="ph tall" id="c-ph"></div>
+    <div class="note-col">
+      <div class="kv"><b>Câu hỏi người dùng</b><span class="q" id="c-q"></span></div>
+      <div class="kv"><b>Dùng khi</b><span id="c-use"></span></div>
+      <div class="kv"><b>Không dùng khi</b><span id="c-no"></span></div>
+      <div class="kv"><b>Điều nó hứa</b><span id="c-promise"></span></div>
+    </div>
+  </div>
+</section>
+
+<section id="dem" class="wide">
+  <div class="head">
+    <div class="eyebrow">Máy đếm</div>
+    <h2>35 công tắc ở GV-102: sai nghĩa và làm loãng nút chính</h2>
+    <p class="lead">Bây giờ áp năm cách chọn vào màn Điểm danh bản cam. Bản cam dùng một công tắc cho mỗi em, tổng cộng 35 công tắc. Có hai vấn đề. Thứ nhất, công tắc hứa "có hiệu lực ngay", nên giảng viên không biết gạt xong đã lưu chưa, trong khi màn vẫn còn nút Chốt ở dưới. Thứ hai, 32 công tắc đang bật tạo thành mảng xanh lá lớn nhất màn, lớn hơn cả nút Chốt.</p>
+    <p class="lead">Máy đếm dưới đây xem ba thứ trên toàn màn, kể cả phần phải cuộn: số lời mời mạnh (thứ đặc màu, gọi mắt), số hàng giảng viên phải nhìn qua, và mảng màu nào lớn nhất.</p>
+  </div>
+  <div class="ctl">
+    <span class="lab" id="d-lab">GV-102</span>
+    <div class="seg" role="group" aria-labelledby="d-lab" id="d-seg">
+      <button type="button" data-d="cam" aria-pressed="true">Bản cam: 35 công tắc</button>
+      <button type="button" data-d="tach" aria-pressed="false">Tách 3 em chưa quét</button>
+    </div>
+  </div>
+  <div class="duo">
+    <div class="ph tall" id="d-ph" style="height:600px"></div>
+    <div class="note-col">
+      <div class="count"><div class="hot"><b id="k1">0</b><span>lời mời mạnh</span></div><div><b id="k2">0</b><span>hàng phải nhìn</span></div><div><b id="k3" style="font-size:20px;padding-block:4px">–</b><span>mảng màu lớn nhất màn</span></div></div>
+      <p id="d-text"></p>
+    </div>
+  </div>
+</section>
+
+<section id="hai-nghia" class="wide">
+  <div class="head">
+    <div class="eyebrow">Hai nghĩa, một hình</div>
+    <h2>Khác nghĩa thì phải trông khác nhau</h2>
+    <p class="lead">Ở V-04 bạn đã gặp ý này dưới dạng khoảng cách: thứ trông giống nhau thì mắt xếp vào cùng một nhóm (Gestalt similarity, luật giống nhau thì cùng loại). Màn Hội thoại của sakubun có một hàng chip. Ba chip đầu chọn vai của bạn trong đoạn hội thoại, nên chỉ chọn được một. Hai chip sau bật tắt cách hiển thị, nên bật được cả hai cùng lúc. Nhưng cả năm chip trông giống hệt nhau.</p>
+  </div>
+  <div class="ctl">
+    <span class="lab" id="s-lab">Hàng chip</span>
+    <div class="seg" role="group" aria-labelledby="s-lab" id="s-seg">
+      <button type="button" data-s="same" aria-pressed="true">Cùng hình</button>
+      <button type="button" data-s="diff" aria-pressed="false">Khác hình</button>
+    </div>
+  </div>
+  <div class="duo">
+    <div class="ph" id="s-ph" style="min-height:300px"></div>
+    <div class="note-col"><p id="s-text"></p></div>
+  </div>
+</section>
+
+<section id="icon" class="wide">
+  <div class="head">
+    <div class="eyebrow">Nút chỉ icon</div>
+    <h2>Icon không nhãn chỉ ổn khi ai cũng đã biết nghĩa</h2>
+    <p class="lead">Nút chỉ có hình thì gọn, nhưng người dùng phải đoán. Một số icon đã thành quy ước chung, nên đoán đúng gần như chắc chắn. Icon tự vẽ cho một việc riêng của app thì không ai đoán được. Trên máy tính, người ta hay vá bằng <span class="term">tooltip</span> (chữ hiện khi rê chuột). Trên điện thoại không có rê chuột, nên tooltip không cứu được. Đó là lý do bản chẩn đoán gọi tooltip là nạng chống. Bấm nút gạt để hiện nhãn và tự đoán trước.</p>
+  </div>
+  <div class="ctl">
+    <span class="lab" id="i-lab">Nhãn</span>
+    <div class="seg" role="group" aria-labelledby="i-lab" id="i-seg">
+      <button type="button" data-i="off" aria-pressed="true">Ẩn nhãn, tự đoán</button>
+      <button type="button" data-i="on" aria-pressed="false">Hiện nhãn</button>
+    </div>
+  </div>
+  <div class="icgroup"><h3>Icon quy ước: chỉ icon là được</h3><div class="icons" id="i-good"></div></div>
+  <div class="icgroup"><h3>Icon tự đặt nghĩa: cần nhãn chữ</h3><div class="icons" id="i-bad"></div></div>
+</section>
+
+<section id="cap" class="wide">
+  <div class="head">
+    <div class="eyebrow">Tệ và tốt</div>
+    <h2>Năm cặp lỗi điều khiển, mỗi cặp chỉ đổi một quyết định</h2>
+    <p class="lead">Các mục trên cho bạn từng công cụ. Giờ gom lại thành năm lỗi hay gặp, nhất là trong giao diện AI tự làm.</p>
+  </div>
+  <div class="pair"><h3>Ba nút chính trên một màn</h3>
+    <p class="why">Ba nút cùng đặc màu thì mắt không biết chọn nút nào. Lỗi này gọi là <span class="term">phân cấp nút phẳng</span>. Giữ một nút chính, hạ các nút còn lại.</p>
+    <div class="pair-grid"><div class="side bad"><span class="lbl">TỆ</span><div class="mini" id="p1a"></div><p class="note">Ba lời mời ngang nhau.</p></div><div class="side good"><span class="lbl">TỐT</span><div class="mini" id="p1b"></div><p class="note">Một đặc, một viền, một chữ.</p></div></div></div>
+  <div class="pair"><h3>Nút "OK"</h3>
+    <p class="why">"OK" bắt người dùng đọc lại câu hỏi mới biết bấm vào sẽ ra sao. Nhãn nên là <span class="term">động từ cộng đối tượng</span>.</p>
+    <div class="pair-grid"><div class="side bad"><span class="lbl">TỆ</span><div class="mini" id="p2a"></div><p class="note">Có và Không: phải đọc câu hỏi.</p></div><div class="side good"><span class="lbl">TỐT</span><div class="mini" id="p2b"></div><p class="note">Đọc riêng từng nút vẫn hiểu.</p></div></div></div>
+  <div class="pair"><h3>Công tắc để đánh dấu có mặt</h3>
+    <p class="why">Công tắc hứa "bật tắt một cài đặt, có hiệu lực ngay". Đánh dấu có mặt là đánh dấu một mục rồi chốt cả danh sách, nên hợp với nút có mặt/vắng hoặc ô đánh dấu (luật CMP-001, bản nháp).</p>
+    <div class="pair-grid"><div class="side bad"><span class="lbl">TỆ</span><div class="mini" id="p3a"></div><p class="note">Gạt xong đã lưu chưa? Nút Chốt ở dưới để làm gì?</p></div><div class="side good"><span class="lbl">TỐT</span><div class="mini" id="p3b"></div><p class="note">Chỉ em chưa quét mới cần chọn; xong thì chốt.</p></div></div></div>
+  <div class="pair"><h3>Nút tròn cho một cài đặt bật tắt</h3>
+    <p class="why">Hai nút tròn "Bật" và "Tắt" cho một cài đặt là thừa một dòng và bắt người dùng đọc. Cài đặt có hai trạng thái và có hiệu lực ngay thì dùng công tắc. Đây là trường hợp công tắc đúng nghĩa.</p>
+    <div class="pair-grid"><div class="side bad"><span class="lbl">TỆ</span><div class="mini" id="p4a"></div><p class="note">Hai dòng, hai nút tròn, cho một câu có hoặc không.</p></div><div class="side good"><span class="lbl">TỐT</span><div class="mini" id="p4b"></div><p class="note">Một dòng, một công tắc, gạt là xong.</p></div></div></div>
+  <div class="pair"><h3>Nút xoá đặt sát nút chính</h3>
+    <p class="why">Nút xoá đỏ đặc cạnh nút Gửi dễ bị bấm nhầm, và đỏ đặc còn tranh điểm nhấn với nút chính. Nút <span class="term">destructive</span> nên tách xa, dạng viền hoặc chữ đỏ, và có bước xác nhận hoặc nút hoàn tác (undo).</p>
+    <div class="pair-grid"><div class="side bad"><span class="lbl">TỆ</span><div class="mini" id="p5a"></div><p class="note">Hai nút đặc cạnh nhau, một cái xoá cả yêu cầu.</p></div><div class="side good"><span class="lbl">TỐT</span><div class="mini" id="p5b"></div><p class="note">Xoá lên top app bar dạng chữ đỏ, xa ngón cái; nút Gửi một mình ở đáy.</p></div></div></div>
+</section>
+
+<section id="mac-dinh" class="spine">
+  <div class="eyebrow">Phương án tốt nhất mặc định</div>
+  <h2>Nếu chưa biết chọn gì, tra bảng này</h2>
+  <p class="lead">Bảng dưới đi từ ý nghĩa của hành động sang điều khiển. Bạn đọc cột trái để tìm việc người dùng đang làm.</p>
+  <div class="tbl-wrap"><table>
+    <thead><tr><th>Người dùng đang</th><th>Dùng</th><th>Không dùng</th></tr></thead>
+    <tbody>
+      <tr><td>Làm việc chính của màn</td><td><b>Một</b> nút đặc màu, nhãn động từ</td><td>Hai nút đặc cạnh nhau</td></tr>
+      <tr><td>Làm việc thay thế</td><td>Nút viền</td><td>Nút đặc màu khác</td></tr>
+      <tr><td>Thoát, xem thêm</td><td>Nút chữ</td><td>Nút viền to ngang nút chính</td></tr>
+      <tr><td>Chọn nhiều mục rồi xác nhận</td><td><b>Checkbox</b></td><td>Công tắc</td></tr>
+      <tr><td>Chọn một trong 2–5, cần thấy hết</td><td><b>Radio</b>; ngắn và đổi chế độ xem thì <b>segmented</b></td><td>Danh sách thả xuống cho 2–3 lựa chọn</td></tr>
+      <tr><td>Bật tắt một cài đặt có hiệu lực ngay</td><td><b>Switch</b></td><td>Switch trong form có nút Lưu</td></tr>
+      <tr><td>Lọc danh sách</td><td><b>Filter chip</b> có dấu ✓ khi bật</td><td>Chip trông giống chip chọn một</td></tr>
+      <tr><td>Xoá, làm mất dữ liệu</td><td>Chữ hoặc viền đỏ, tách xa, kèm xác nhận hoặc undo</td><td>Nút đỏ đặc cạnh nút chính</td></tr>
+    </tbody></table></div>
+  <p class="counter">Bảng này là quy ước của Material Design và Apple HIG, nên nó gần với luật cứng hơn là gu riêng. Ngoại lệ hợp lý thường đến từ nền tảng: ví dụ iOS hay dùng nút chữ ở top app bar cho "Xong", và người dùng iPhone đã quen điều đó.</p>
+</section>
+
+<section id="lab2" class="wide">
+  <div class="head">
+    <div class="eyebrow">Trên lab2</div>
+    <h2>GV-102 và GV-001, trước và sau</h2>
+    <p class="lead">Áp bảng trên vào hai màn lab2 bạn đã biết. Bản teal cũ của GV-102 thật ra đúng hơn bản cam: nó chỉ hỏi về 3 em chưa quét và gộp 32 em còn lại thành một dòng.</p>
+  </div>
+  <div class="lab" style="grid-template-columns:repeat(4,minmax(0,1fr))">
+    <article><div class="mini" id="lb1"></div><span class="pt">GV-102 · BẢN CAM</span><p><b>35 công tắc</b>, sai nghĩa và thành mảng màu lớn nhất. Nút Chốt bị nhạt đi.</p></article>
+    <article><div class="mini" id="lb2"></div><span class="pt">GV-102 · SAU</span><p>3 em chưa quét có hai nút <b>Có mặt</b> và <b>Vắng</b> dạng viền; 32 em gộp một dòng; một nút chính ở đáy.</p></article>
+    <article><div class="mini" id="lb3"></div><span class="pt">GV-001 · BẢN CAM</span><p>Ô số, thẻ và pill đều có gờ nên trông như nút (V-05). "Xem tất cả" ngang hàng với tiêu đề nhóm.</p></article>
+    <article><div class="mini" id="lb4"></div><span class="pt">GV-001 · SAU</span><p><b>Điểm danh</b> là nút đặc duy nhất. Slot kế tiếp là hàng có ›. "Xem tất cả" là nút chữ.</p></article>
+  </div>
+</section>
+
+<section id="lenh" class="spine">
+  <div class="eyebrow">Câu lệnh mẫu cho AI</div>
+  <h2>Sáu câu copy được</h2>
+  <p class="lead">Mỗi câu bắt đầu từ điều bạn cảm thấy khi nhìn màn AI làm ra, rồi dịch thành lệnh có thuật ngữ. Các câu này cũng nằm trong từ điển ra lệnh AI của repo.</p>
+  <div class="prompts" id="prompts"></div>
+</section>
+
+<section id="kiem-tra" class="spine">
+  <div class="eyebrow">Tự kiểm tra · tuỳ chọn</div>
+  <h2>Ba câu, bấm để xem đáp án</h2>
+  <p class="lead">Phần này không chấm điểm, chỉ để bạn thử nhớ lại.</p>
+  <details class="q"><summary>Công tắc khác ô đánh dấu ở đâu?</summary>
+    <div class="ans">Công tắc bật tắt một cài đặt và có hiệu lực ngay khi gạt, không cần nút Lưu. Ô đánh dấu chỉ đánh dấu mục; việc thật xảy ra khi người dùng bấm nút xác nhận sau đó. Vì vậy điểm danh từng em rồi chốt cả lớp hợp với ô đánh dấu hoặc nút có mặt/vắng, không hợp với công tắc.</div></details>
+  <details class="q"><summary>Một màn nên có mấy nút chính?</summary>
+    <div class="ans">Một. Các việc khác hạ thành nút viền (việc thay thế) hoặc nút chữ (thoát, xem thêm). Hai nút đặc màu cạnh nhau thì không nút nào thắng.</div></details>
+  <details class="q"><summary>Khi nào nút chỉ có icon là được?</summary>
+    <div class="ans">Khi icon là quy ước ai cũng biết (quay lại, đóng, tìm kiếm, thêm) và vẫn có vùng chạm đủ lớn. Với việc riêng của app hoặc việc ít dùng, thêm nhãn chữ; tooltip không có trên điện thoại.</div></details>
+</section>
+
+<footer class="spine">Khối V-07 của crash course trực quan. Khối sau, V-08, lùi ra cả app: điều hướng, thanh tab, nút quay lại, và cách chia nội dung giữa các màn.</footer>
+
+<script>
+(function(){
+  function $(id){return document.getElementById(id)}
+  function seg(id,cb){var g=$(id),bs=[].slice.call(g.querySelectorAll('button'));
+    bs.forEach(function(b){b.addEventListener('click',function(){bs.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});cb(b)})});}
+  var SB='<div class="sb"><span>07:05</span><span>▮▮ ◔</span></div>';
+  function bar(w,cls){return '<span class="bar'+(cls?' '+cls:'')+'" style="width:'+w+'"></span>'}
+  function tb(title,act,back){return '<div class="tb">'+(back?'<span class="ico">‹</span>':'')+'<span class="t">'+title+'</span>'+(act||'')+'</div>'}
+  function field(lbl,val){return '<div class="fl"><span style="font-size:11px;font-weight:800;color:var(--s-t3)">'+lbl+'</span><div class="in" style="display:flex;align-items:center;padding:0 12px;font-size:13px">'+val+'</div></div>'}
+
+  /* ---- Phân cấp ---- */
+  var hs={h:'flat',s:'off'};
+  function hr(){var f=hs.h==='flat';
+    $('h-ph').innerHTML=SB+tb('Sửa điểm danh','',true)+'<div class="scr">'+field('Buổi học','Thứ Ba 20/10 · 07:00 · PRM393')+field('Sinh viên','Lê Thu Trang · SE190142')+field('Trạng thái mới','Có mặt')+field('Lý do','Em quét mã nhưng máy báo lỗi')+'</div><div class="botbar btnrow">'+
+      (f?'<div class="b1">Gửi yêu cầu</div><div class="b1">Lưu nháp</div><div class="b1">Huỷ</div>':'<div class="b1">Gửi yêu cầu</div><div class="b2">Lưu nháp</div><div class="b3">Huỷ</div>')+'</div>';
+    $('h-wrap').classList.toggle('squint',hs.s==='on');
+    $('h-text').innerHTML=f?(hs.s==='on'?'<span class="badge b-bad">ba khối cam ngang nhau</span> Khi nheo mắt, bạn chỉ thấy ba mảng cam to bằng nhau. Không mảng nào nói "bấm tôi trước".':'<span class="badge b-bad">phân cấp phẳng</span> Ba nút cùng màu, cùng cỡ. Giảng viên phải đọc cả ba nhãn mới biết nút nào là việc chính. Tệ hơn, nút Huỷ to và đặc như nút Gửi nên dễ bấm nhầm.')
+      :(hs.s==='on'?'<span class="badge b-ok">một mảng thắng</span> Khi nheo mắt, chỉ còn một mảng cam rõ. Nút viền thành một đường mờ, nút chữ gần như biến mất. Đó là đúng thứ tự quan trọng.':'<span class="badge b-ok">ba giọng</span> Gửi yêu cầu đặc màu (nút chính), Lưu nháp viền mỏng (nút phụ), Huỷ chỉ là chữ (nút chữ). Mắt tới nút Gửi trước, nhưng hai nút kia vẫn ở đó khi cần.');}
+  seg('h-seg',function(b){hs.h=b.dataset.h;hr()});seg('h-sq',function(b){hs.s=b.dataset.s;hr()});hr();
+
+  /* ---- Nhãn ---- */
+  var NL={ok:['Không','OK','<span class="badge b-bad">mơ hồ</span> "OK" chỉ nói "tôi đã đọc", không nói chuyện gì sẽ xảy ra. Nút bên cạnh là "Không", nên người dùng phải đọc lại câu hỏi để hiểu "Không" là không chốt hay không ghi vắng.'],
+    xn:['Huỷ','Xác nhận','<span class="badge b-warn">khá hơn, vẫn chung chung</span> "Xác nhận" cho biết đây là bước cuối, nhưng xác nhận điều gì thì vẫn phải đọc câu hỏi. Nhãn này dùng được cho mọi hộp thoại, nên nó không nói gì riêng về hộp thoại này.'],
+    vb:['Quay lại','Chốt điểm danh','<span class="badge b-ok">động từ cộng đối tượng</span> "Chốt điểm danh" lặp lại đúng việc sẽ xảy ra. Giảng viên chỉ cần đọc nút là đủ, kể cả khi bỏ qua câu hỏi phía trên. Nút còn lại là "Quay lại", nói rõ là chưa chốt.']};
+  function nr(k){var n=NL[k];
+    $('n-ph').innerHTML=SB+tb('Điểm danh · SE1801','',true)+'<div class="scr">'+bar('60%')+bar('40%','s')+bar('70%')+bar('50%','s')+'</div><div class="dlg"><div class="sheet"><b>Chốt điểm danh SE1801?</b><p>3 em chưa quét mã sẽ được ghi vắng. Sau khi chốt, muốn sửa phải gửi yêu cầu.</p><div class="acts"><div class="b2">'+n[0]+'</div><div class="b1">'+n[1]+'</div></div></div></div>';
+    $('n-text').innerHTML=n[2];}
+  seg('n-seg',function(b){nr(b.dataset.n)});nr('ok');
+
+  /* ---- Năm điều khiển ---- */
+  function cx(role,kind,nm,sub,on){return '<button type="button" class="cx" role="'+role+'" aria-checked="'+(on?'true':'false')+'" data-k="'+kind+'"><span class="'+(kind==='cb'?'box':kind==='rd'?'rad':'nm')+'">'+(kind==='cb'?(on?'✓':''):'')+(kind==='sw'?nm+'<small>'+sub+'</small>':'')+'</span>'+(kind!=='sw'?'<span class="nm">'+nm+(sub?'<small>'+sub+'</small>':'')+'</span>':'')+(kind==='sw'?'<span class="sw"></span>':'')+'</button>'}
+  var CT={
+    cb:{q:'"Những mục nào tôi muốn chọn?"',use:'Chọn nhiều mục cùng lúc, rồi bấm một nút để làm việc với các mục đó.',no:'Chỉ được chọn một (dùng radio), hoặc gạt là có hiệu lực ngay (dùng switch).',p:'"Tôi chỉ đánh dấu. Việc thật xảy ra khi bạn bấm nút."',
+      h:function(){return SB+tb('Gửi nhắc nhở · SE1801','',true)+'<div class="scr" style="gap:0"><span style="font-size:12px;color:var(--s-t3);padding:4px 0 6px">Chọn các em sẽ nhận nhắc nhở</span>'+cx('checkbox','cb','Lê Thu Trang','vắng 5/4',1)+cx('checkbox','cb','Trần Minh Long','vắng 3/4',1)+cx('checkbox','cb','Phạm Gia Huy','vắng 3/4',0)+cx('checkbox','cb','Ngô Bảo Anh','vắng 2/4',0)+'</div><div class="botbar"><div class="b1" id="cb-btn">Gửi nhắc nhở cho 2 em</div></div>'}},
+    rd:{q:'"Tôi chọn cái nào trong mấy lựa chọn này?"',use:'Chọn đúng một trong 2–5 lựa chọn, và người dùng cần thấy hết các lựa chọn để so.',no:'Chọn được nhiều (dùng checkbox), hoặc chỉ có hai trạng thái bật tắt (dùng switch).',p:'"Chọn cái này thì cái kia tự bỏ."',
+      h:function(){return SB+tb('Sửa điểm danh','',true)+'<div class="scr" style="gap:0"><span style="font-size:12px;font-weight:800;color:var(--s-t3);padding:4px 0 6px">LÝ DO SỬA</span><div role="radiogroup">'+cx('radio','rd','Em quét mã nhưng máy báo lỗi','',1)+cx('radio','rd','Em đi muộn có phép','',0)+cx('radio','rd','Tôi điểm danh nhầm','',0)+cx('radio','rd','Lý do khác','',0)+'</div></div><div class="botbar"><div class="b1">Tiếp tục</div></div>'}},
+    sw:{q:'"Tôi muốn bật hay tắt cài đặt này?"',use:'Một cài đặt có hai trạng thái, và thay đổi có hiệu lực ngay khi gạt, không cần nút Lưu.',no:'Đánh dấu mục trong danh sách rồi xác nhận (dùng checkbox), hoặc nằm trong form có nút Lưu.',p:'"Gạt là xong, không cần lưu."',
+      h:function(){return SB+tb('Tài khoản','',false)+'<div class="scr" style="gap:0"><span style="font-size:12px;font-weight:800;color:var(--s-t3);padding:4px 0 6px">THÔNG BÁO</span>'+cx('switch','sw','Nhắc trước slot','5 phút trước giờ dạy',1)+cx('switch','sw','Báo khi em sắp chạm ngưỡng','khi vắng 3/4 buổi',1)+cx('switch','sw','Tóm tắt cuối tuần','tối Chủ nhật',0)+'<p id="sw-toast" style="font-size:12px;color:var(--s-ok);font-weight:800;padding-top:10px;min-height:28px"></p></div>'}},
+    sg:{q:'"Tôi muốn xem theo cách nào?"',use:'Chọn một trong 2–4 chế độ xem ngắn, và nội dung bên dưới đổi ngay.',no:'Lựa chọn dài, nhiều hơn 4, hoặc là dữ liệu cần gửi đi (dùng radio).',p:'"Đổi cách nhìn, không đổi dữ liệu."',
+      h:function(){return SB+tb('Lịch','',false)+'<div class="scr"><div class="sg" role="group" aria-label="Chế độ xem"><button type="button" aria-pressed="true" data-v="d">Hôm nay</button><button type="button" aria-pressed="false" data-v="w">Tuần</button><button type="button" aria-pressed="false" data-v="m">Tháng</button></div><div id="sg-body"></div></div>'}},
+    ch:{q:'"Tôi muốn lọc danh sách theo gì?"',use:'Bật tắt bộ lọc trên một danh sách; bật được nhiều chip cùng lúc. Chip đang bật có dấu ✓.',no:'Chọn đúng một chế độ (dùng segmented), hoặc là hành động chính của màn.',p:'"Lọc bớt cho dễ nhìn, bỏ lọc lúc nào cũng được."',
+      h:function(){return SB+tb('Điểm danh · SE1801','',true)+'<div class="scr"><div class="chips"><button type="button" class="chip" aria-pressed="true" data-f="chua">Chưa quét</button><button type="button" class="chip" aria-pressed="false" data-f="vang">Vắng nhiều</button><button type="button" class="chip" aria-pressed="false" data-f="co">Đã quét</button></div><div id="ch-body"></div></div>'}}
+  };
+  var SVs=[['Nguyễn Văn An','chua'],['Lê Thu Trang','vang'],['Hoàng Mai','chua'],['Trần Minh Long','vang'],['Võ Thảo','chua'],['Đỗ Khánh Vy','co'],['Ngô Bảo Anh','co']];
+  function chb(){var on=[].map.call(document.querySelectorAll('#c-ph .chip[aria-pressed="true"]'),function(c){return c.dataset.f});
+    var L=SVs.filter(function(s){return !on.length||on.indexOf(s[1])>=0});
+    $('ch-body').innerHTML='<p style="font-size:12px;color:var(--s-t3);padding:4px 0">'+L.length+' em</p>'+L.map(function(s){return '<div class="att"><span class="av" style="width:28px;height:28px;border-radius:50%;background:var(--s-muted);display:grid;place-items:center;font-size:10px;font-weight:800">'+s[0].split(' ').slice(-1)[0][0]+'</span><span class="nm">'+s[0]+'</span></div>'}).join('');}
+  var SGB={d:[['07:00','PRM393 · SE1801 · P.305'],['12:30','MMA301 · SE1805 · P.402']],w:[['T2','2 slot'],['T3','2 slot'],['T4','3 slot'],['T5','1 slot'],['T6','2 slot']],m:[['Tuần 1','9 slot'],['Tuần 2','10 slot'],['Tuần 3','10 slot'],['Tuần 4','8 slot']]};
+  function cr(k){var c=CT[k],ph=$('c-ph');ph.innerHTML=c.h();
+    $('c-q').textContent=c.q;$('c-use').textContent=c.use;$('c-no').textContent=c.no;$('c-promise').textContent=c.p;
+    [].forEach.call(ph.querySelectorAll('.cx'),function(b){b.addEventListener('click',function(){
+      if(k==='rd'){[].forEach.call(ph.querySelectorAll('.cx'),function(x){x.setAttribute('aria-checked','false')});b.setAttribute('aria-checked','true');return}
+      var on=b.getAttribute('aria-checked')!=='true';b.setAttribute('aria-checked',on);
+      if(k==='cb'){b.querySelector('.box').textContent=on?'✓':'';var n=ph.querySelectorAll('.cx[aria-checked="true"]').length;var bt=$('cb-btn');bt.textContent=n?'Gửi nhắc nhở cho '+n+' em':'Chọn ít nhất một em';bt.style.opacity=n?1:.45}
+      if(k==='sw'){$('sw-toast').textContent='Đã lưu: '+b.querySelector('.nm').firstChild.textContent+(on?' đang bật':' đã tắt')}
+    })});
+    if(k==='sg'){var bs=ph.querySelectorAll('.sg button');function sb(v){$('sg-body').innerHTML=SGB[v].map(function(r){return '<div class="att"><b style="width:56px">'+r[0]+'</b><span class="nm">'+r[1]+'</span></div>'}).join('')}
+      [].forEach.call(bs,function(b){b.addEventListener('click',function(){[].forEach.call(bs,function(x){x.setAttribute('aria-pressed',x===b)});sb(b.dataset.v)})});sb('d')}
+    if(k==='ch'){[].forEach.call(ph.querySelectorAll('.chip'),function(c){c.addEventListener('click',function(){c.setAttribute('aria-pressed',c.getAttribute('aria-pressed')!=='true');chb()})});chb()}
+  }
+  seg('c-seg',function(b){cr(b.dataset.c)});cr('cb');
+
+  /* ---- Máy đếm GV-102 ---- */
+  var N35=['Nguyễn Văn An','Hoàng Mai','Võ Thảo','Bùi Đức Anh','Cao Minh Châu','Đặng Gia Bảo','Đinh Hà My','Đoàn Khôi','Hà Thanh Tâm','Huỳnh Nhật','Kiều Linh','Lâm Phúc','Lê Thu Trang','Lương Tú','Lý Gia Hân','Mai Quốc','Nguyễn Hải','Nguyễn Mỹ','Ngô Bảo Anh','Phan Duy','Phạm Gia Huy','Phùng Yến','Quách Nam','Tạ Minh','Tô Ngân','Trần Minh Long','Trịnh Khoa','Trương Vy','Văn Lộc','Vũ An','Vương Hạnh','Đỗ Khánh Vy','Ông Thịnh','Dương Quân','Hồ Sương'];
+  function ini(n){return n.split(' ').slice(-1)[0][0]}
+  function gcam(compact){var h=SB+tb('Điểm danh · SE1801','',true)+'<div class="scr" style="gap:0;overflow:hidden"><span style="font-size:12px;color:var(--s-t3);padding:4px 0 6px">32/35 đã quét mã</span>';
+    N35.forEach(function(n,i){var on=i>2;h+='<div class="att'+(on?' on':'')+'" data-strong="'+(on?1:0)+'" data-look="1"><span class="av" style="width:26px;height:26px;border-radius:50%;background:var(--s-muted);display:grid;place-items:center;font-size:10px;font-weight:800">'+ini(n)+'</span><span class="nm">'+n+'<small>SE1901'+(40+i)+'</small></span><span class="sw"></span></div>'});
+    return h+'</div><div class="botbar"><div class="b1" data-strong="1">Chốt điểm danh</div></div>'}
+  function gtach(){var h=SB+tb('Điểm danh · SE1801','',true)+'<div class="scr" style="gap:0"><span style="font-size:12px;font-weight:800;color:var(--s-t2);padding:4px 0 6px">3 em chưa quét mã</span>';
+    N35.slice(0,3).forEach(function(n,i){h+='<div class="att" data-look="1"><span class="av" style="width:26px;height:26px;border-radius:50%;background:var(--s-muted);display:grid;place-items:center;font-size:10px;font-weight:800">'+ini(n)+'</span><span class="nm">'+n+'<small>SE1901'+(40+i)+'</small></span><span class="mini-btn">Có mặt</span><span class="mini-btn">Vắng</span></div>'});
+    h+='<div class="att" data-look="1" style="margin-top:12px;color:var(--s-ok);font-weight:800"><span style="width:26px;text-align:center">✓</span><span class="nm" style="color:var(--s-t1)">32 em đã quét mã<small>Xem danh sách ›</small></span></div>';
+    return h+'</div><div class="botbar"><div class="b1" data-strong="1">Chốt điểm danh</div></div>'}
+  function dr(k){var ph=$('d-ph');ph.innerHTML=k==='cam'?gcam():gtach();
+    $('k1').textContent=ph.querySelectorAll('[data-strong="1"]').length;$('k2').textContent=ph.querySelectorAll('[data-look]').length;$('k3').textContent=k==='cam'?'32 công tắc':'Nút Chốt';
+    $('d-text').innerHTML=k==='cam'?'<span class="badge b-bad">33 lời mời mạnh</span> 32 công tắc xanh cộng nút Chốt. Nút Chốt chỉ là một trong 33 mảng màu đậm, và không phải mảng lớn nhất. Giảng viên phải lướt 35 hàng để tìm 3 em có công tắc tắt, mà công tắc tắt lại là thứ nhạt nhất màn.'
+      :'<span class="badge b-ok">1 lời mời mạnh</span> Chỉ nút Chốt đặc màu. 3 em cần xử lý nằm ngay trên cùng, mỗi em có hai nút viền Có mặt và Vắng. 32 em đã xong gộp thành một dòng. Số hàng phải nhìn giảm từ 35 xuống 4, và mảng màu lớn nhất bây giờ chính là việc chính của màn.';}
+  seg('d-seg',function(b){dr(b.dataset.d)});dr('cam');
+
+  /* ---- Hai nghĩa ---- */
+  function sr(k){var ph=$('s-ph'),same=k==='same';
+    var role='<span style="font-size:11px;font-weight:800;color:var(--s-t3)">'+(same?'':'TÔI ĐÓNG VAI')+'</span>';
+    var h=SB+tb('Hội thoại · Ở cửa hàng','',true)+'<div class="scr">';
+    if(same)h+='<div class="chips"><button type="button" class="chip same ja" aria-pressed="true" data-g="r">Tôi là 店員</button><button type="button" class="chip same ja" aria-pressed="false" data-g="r">Tôi là グエン</button><button type="button" class="chip same ja" aria-pressed="false" data-g="r">Tôi là 田中</button><button type="button" class="chip same" aria-pressed="true" data-g="t">Ẩn nghĩa</button><button type="button" class="chip same" aria-pressed="false" data-g="t">Che câu của tôi</button></div>';
+    else h+=role+'<div class="sg ja" role="group" aria-label="Vai"><button type="button" aria-pressed="true">店員</button><button type="button" aria-pressed="false">グエン</button><button type="button" aria-pressed="false">田中</button></div><span style="font-size:11px;font-weight:800;color:var(--s-t3);margin-top:6px">HIỂN THỊ</span><div class="chips"><button type="button" class="chip" aria-pressed="true">Ẩn nghĩa</button><button type="button" class="chip" aria-pressed="false">Che câu của tôi</button></div>';
+    h+='<div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">'+bar('70%')+bar('50%','s')+bar('60%')+'</div></div>';
+    ph.innerHTML=h;
+    [].forEach.call(ph.querySelectorAll('.sg button'),function(b,_,all){b.addEventListener('click',function(){[].forEach.call(ph.querySelectorAll('.sg button'),function(x){x.setAttribute('aria-pressed',x===b)})})});
+    [].forEach.call(ph.querySelectorAll('.chip'),function(c){c.addEventListener('click',function(){
+      if(c.dataset.g==='r'){[].forEach.call(ph.querySelectorAll('.chip[data-g="r"]'),function(x){x.setAttribute('aria-pressed',x===c)})}
+      else c.setAttribute('aria-pressed',c.getAttribute('aria-pressed')!=='true')})});
+    $('s-text').innerHTML=same?'<span class="badge b-bad">cùng hình, khác nghĩa</span> Thử bấm các chip. Ba chip vai tự bỏ chọn lẫn nhau, hai chip sau thì không. Người dùng chỉ biết điều đó sau khi bấm thử, vì nhìn vào thì năm chip là một loại. Mắt đoán sai, tay phải sửa.'
+      :'<span class="badge b-ok">khác hình theo nghĩa</span> Vai là một thanh <b>segmented</b>: nhìn là biết chọn một. Hai tuỳ chọn hiển thị là <b>filter chip</b> có dấu ✓: nhìn là biết bật được riêng từng cái. Mỗi nhóm có nhãn nhỏ phía trên, và hai nhóm cách nhau một khoảng (proximity ở V-04).';}
+  seg('s-seg',function(b){sr(b.dataset.s)});sr('same');
+
+  /* ---- Icon ---- */
+  function svg(p){return '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+p+'</svg>'}
+  var IG=[[svg('<path d="M15 5l-7 7 7 7"/>'),'Quay lại'],[svg('<path d="M6 6l12 12M18 6L6 18"/>'),'Đóng'],[svg('<circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/>'),'Tìm kiếm']];
+  var IB=[[svg('<rect x="4" y="4" width="10" height="10" rx="2"/><path d="M10 20h10V10"/>'),'Nhân bản buổi học'],[svg('<path d="M13 3L5 14h6l-1 7 8-11h-6z"/>'),'Điểm danh nhanh'],[svg('<path d="M7 17a4 4 0 010-8 5 5 0 019.6-1A3.5 3.5 0 0117 17"/><path d="M12 12v8M9 17l3 3 3-3"/>'),'Tải về file điểm danh']];
+  function ic(list,box,good){$(box).innerHTML=list.map(function(x){return '<div class="ic"><span class="ib">'+x[0]+'</span><span class="il" hidden>'+x[1]+'</span><span class="iv badge '+(good?'b-ok':'b-warn')+'" hidden>'+(good?'đoán đúng dễ':'khó đoán')+'</span></div>'}).join('')}
+  ic(IG,'i-good',1);ic(IB,'i-bad',0);
+  seg('i-seg',function(b){var on=b.dataset.i==='on';[].forEach.call(document.querySelectorAll('.ic .il,.ic .iv'),function(e){e.hidden=!on})});
+
+  /* ---- Cặp ---- */
+  var dlgq='<div class="scr">'+bar('60%')+bar('40%','s')+'</div><div class="dlg"><div class="sheet"><b style="font-size:16px">Chốt điểm danh SE1801?</b><p>3 em chưa quét sẽ được ghi vắng.</p><div class="acts">';
+  $('p1a').innerHTML=SB+tb('Sửa điểm danh','',true)+'<div class="scr">'+bar('40%','s')+'<div class="fl"><div class="in"></div></div>'+bar('30%','s')+'<div class="fl"><div class="in"></div></div></div><div class="botbar btnrow"><div class="b1">Gửi yêu cầu</div><div class="b1">Lưu nháp</div><div class="b1">Huỷ</div></div>';
+  $('p1b').innerHTML=SB+tb('Sửa điểm danh','',true)+'<div class="scr">'+bar('40%','s')+'<div class="fl"><div class="in"></div></div>'+bar('30%','s')+'<div class="fl"><div class="in"></div></div></div><div class="botbar btnrow"><div class="b1">Gửi yêu cầu</div><div class="b2">Lưu nháp</div><div class="b3">Huỷ</div></div>';
+  $('p2a').innerHTML=SB+dlgq+'<div class="b2">Không</div><div class="b1">Có</div></div></div></div>';
+  $('p2b').innerHTML=SB+dlgq+'<div class="b2">Quay lại</div><div class="b1">Chốt</div></div></div></div>';
+  var r4='';for(var i=3;i<9;i++)r4+='<div class="att on"><span class="nm">'+N35[i]+'</span><span class="sw"></span></div>';
+  $('p3a').innerHTML=SB+tb('Điểm danh','',true)+'<div class="scr" style="gap:0">'+r4+'</div><div class="botbar"><div class="b1">Chốt điểm danh</div></div>';
+  $('p3b').innerHTML=SB+tb('Điểm danh','',true)+'<div class="scr" style="gap:0">'+N35.slice(0,3).map(function(n){return '<div class="att"><span class="nm">'+n+'</span><span class="mini-btn">Có mặt</span><span class="mini-btn">Vắng</span></div>'}).join('')+'<div class="att" style="color:var(--s-ok);font-weight:800">✓ <span class="nm" style="color:var(--s-t1)">32 em đã quét</span></div></div><div class="botbar"><div class="b1">Chốt điểm danh</div></div>';
+  $('p4a').innerHTML=SB+tb('Tài khoản')+'<div class="scr" style="gap:0"><span style="font-size:13px;font-weight:800;padding:8px 0 4px">Nhắc trước slot</span><div class="cx" aria-checked="true"><span class="rad"></span><span class="nm">Bật</span></div><div class="cx" aria-checked="false"><span class="rad"></span><span class="nm">Tắt</span></div></div>';
+  $('p4b').innerHTML=SB+tb('Tài khoản')+'<div class="scr" style="gap:0"><div class="cx" aria-checked="true"><span class="nm">Nhắc trước slot<small>5 phút trước giờ dạy</small></span><span class="sw"></span></div></div>';
+  var f5='<div class="scr">'+field('Sinh viên','Lê Thu Trang')+field('Lý do','Máy báo lỗi')+'</div>';
+  $('p5a').innerHTML=SB+tb('Yêu cầu sửa','',true)+f5+'<div class="botbar" style="display:flex;gap:8px"><div class="bd" style="flex:1">Xoá yêu cầu</div><div class="b1" style="flex:1">Gửi</div></div>';
+  $('p5b').innerHTML=SB+tb('Yêu cầu sửa','<span class="act" style="color:var(--s-bad)">Xoá</span>',true)+f5+'<div class="botbar"><div class="b1">Gửi yêu cầu</div></div>';
+
+  /* ---- lab2 ---- */
+  $('lb1').innerHTML=gcam();
+  $('lb2').innerHTML=gtach();
+  $('lb3').innerHTML=SB+'<div class="scr">'+bar('50%','h')+'<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">'+['4','131','94%','2'].map(function(x){return '<div style="border-radius:10px;padding:8px;box-shadow:0 0 0 1px var(--s-line),0 2px 0 1px var(--s-line)"><b style="font-size:16px">'+x+'</b></div>'}).join('')+'</div><div style="border-radius:12px;padding:10px;background:var(--s-p-soft);box-shadow:0 2px 0 #E9C7B3"><b style="font-size:14px">PRM393 · SE1801</b><div class="b1" style="margin-top:8px;padding:9px;box-shadow:0 2px 0 #8A3D14">Điểm danh</div></div><div style="display:flex;justify-content:space-between;font-size:12px"><b>Cần chú ý</b><span style="border-radius:8px;padding:2px 8px;box-shadow:0 0 0 1px var(--s-line),0 2px 0 1px var(--s-line)">Xem tất cả</span></div></div>';
+  $('lb4').innerHTML=SB+'<div class="scr">'+bar('50%','h')+'<div style="border-radius:12px;padding:10px;background:var(--s-p-soft)"><b style="font-size:14px">PRM393 · SE1801</b><div class="b1" style="margin-top:8px;padding:9px;min-height:0">Điểm danh</div></div><div class="att"><span class="nm"><b>12:30</b> MMA301 · SE1805</span><span style="color:var(--s-t3)">›</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:12px"><b>Cần chú ý</b><span class="b3" style="padding:4px;font-size:12px;min-height:0">Xem tất cả</span></div></div>';
+
+  /* ---- Prompt ---- */
+  var P=[
+    ['"Nhiều nút quá, không biết bấm cái nào"','Áp button hierarchy: mỗi màn đúng một primary button (đặc màu); việc thay thế là secondary (viền); thoát hoặc xem thêm là tertiary (chỉ chữ). Không đặt hai nút đặc màu cạnh nhau.'],
+    ['"Nút ghi OK, Xác nhận chung chung"','Nhãn nút là động từ cộng đối tượng, nói đúng điều sẽ xảy ra ("Chốt điểm danh", "Gửi yêu cầu"). Nút huỷ ghi "Quay lại", không dùng cặp Có/Không.'],
+    ['"Dùng công tắc lung tung"','Chọn control theo ý nghĩa: switch chỉ cho cài đặt có hiệu lực ngay, không cần nút Lưu; đánh dấu nhiều mục rồi xác nhận dùng checkbox; chọn một trong vài lựa chọn dùng radio hoặc segmented control.'],
+    ['"Hàng chip lẫn lộn"','Hai nhóm khác nghĩa phải khác hình: chọn một dùng segmented control; bật tắt bộ lọc dùng filter chip có dấu ✓ khi bật. Mỗi nhóm có nhãn nhỏ và cách nhau một khoảng.'],
+    ['"Icon khó hiểu"','Chỉ dùng icon button không nhãn cho icon quy ước (quay lại, đóng, tìm kiếm, thêm). Hành động riêng của app thì icon kèm nhãn chữ. Không dựa vào tooltip vì điện thoại không có rê chuột. Vùng chạm tối thiểu 48dp.'],
+    ['"Sợ bấm nhầm xoá"','Nút destructive dạng chữ hoặc viền đỏ, đặt xa primary button và ngoài vùng ngón cái, kèm hộp xác nhận ghi rõ hậu quả hoặc snackbar có nút Hoàn tác (undo).']
+  ];
+  var box=$('prompts');
+  P.forEach(function(p,i){
+    var d=document.createElement('div'); d.className='prompt';
+    d.innerHTML='<div class="feel"></div><div class="say"></div><button type="button" class="copy" id="copy-'+i+'">Copy</button>';
+    d.querySelector('.feel').textContent='Bạn thấy: '+p[0]; d.querySelector('.say').textContent=p[1];
+    var btn=d.querySelector('.copy');
+    btn.addEventListener('click',function(){
+      function ok(){btn.textContent='Đã copy';btn.classList.add('done');setTimeout(function(){btn.textContent='Copy';btn.classList.remove('done')},1600)}
+      function fallback(){var s=window.getSelection(),rg=document.createRange();rg.selectNodeContents(d.querySelector('.say'));s.removeAllRanges();s.addRange(rg);btn.textContent='Đã chọn, nhấn Ctrl+C'}
+      try{navigator.clipboard.writeText(p[1]).then(ok,fallback)}catch(e){fallback()}
+    });
+    box.appendChild(d);
+  });
+})();
+</script>
