@@ -103,3 +103,13 @@
 | "AI bảo menu tối đa 7 mục" | "Không áp luật **Miller** cho menu đang hiển thị: người dùng nhận ra mục chứ không phải nhớ. Giữ đủ mục cần thiết, chia thành nhóm có tiêu đề, mục hay dùng ở đầu." |
 | "Xong việc mà không thấy gì" | "Áp **peak-end rule**: mỗi luồng chính có màn kết thúc rõ ràng (kết quả cụ thể, vd "34 có mặt, 1 vắng", kèm Hoàn tác). Tìm bước gây khó chịu nhất của luồng và sửa nó trước khi trau chuốt các bước khác." |
 | "Thử với người dùng ai cũng khen" | "Nhớ **aesthetic-usability effect**: thử luồng bằng bản wireframe xám trước để người dùng báo lỗi thật, sau đó mới thử bản đẹp. Ghi lại lỗi thao tác, không chỉ lời khen." |
+
+## V-11 · Trợ năng bằng con số
+| Bạn cảm thấy | Câu lệnh cho AI |
+|---|---|
+| "Chữ xám mờ, khó đọc" | "Mọi chữ đạt tương phản **WCAG 2.2 AA**: tối thiểu **4.5:1** cho chữ thường, **3:1** cho chữ từ 24px (hoặc từ 18.7px đậm). Ghi tỉ lệ cạnh mỗi màu chữ trong bảng token. Trên nền trắng, không dùng xám nhạt hơn #6B6B6B cho chữ." |
+| "Nút nhỏ, bấm hay trượt" | "Mọi thứ bấm được có **vùng chạm** tối thiểu **48×48dp** (Android) hoặc **44×44pt** (iOS), cách nhau ít nhất 8dp. Nút trông nhỏ hơn thì mở rộng vùng chạm vô hình. Tách nút phá huỷ (Xoá) xa các nút khác." |
+| "Trạng thái chỉ khác nhau ở màu" | "Áp **color-not-alone** (WCAG 1.4.1): mỗi trạng thái và mỗi lỗi có đủ màu, icon và chữ. Kiểm bằng cách chuyển ảnh màn sang xám: vẫn phải phân biệt được mọi trạng thái." |
+| "Dùng bàn phím không biết đang ở đâu" | "Không dùng outline:none mà không thay thế. Mọi phần tử bấm được có **vòng focus** rõ qua **:focus-visible**: viền 2–3px, outline-offset 2px, tương phản tối thiểu 3:1 với nền. Thứ tự Tab đi theo thứ tự đọc." |
+| "Nút icon không ai biết là gì" | "Mỗi nút chỉ có icon phải có **nhãn cho máy đọc màn hình** (aria-label trên web, contentDescription trên Android) là động từ kèm đối tượng. Mỗi ô nhập có nhãn thật nằm ngoài ô, không dùng placeholder thay nhãn." |
+| "Chuyển động làm chóng mặt" | "Tôn trọng **prefers-reduced-motion**: khi người dùng bật giảm chuyển động, thay trượt, phóng to và nảy bằng mờ dần ngắn (≤150ms). Không tắt hẳn phản hồi." |

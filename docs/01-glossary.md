@@ -139,7 +139,7 @@
 | **Microcopy / UX writing** | Chữ nhỏ trên nút, lỗi, gợi ý |
 | **Microinteraction / Motion** | Phản hồi nhỏ khi thao tác, chuyển động có mục đích |
 | **Easing / Duration** | Đường cong và thời lượng chuyển động (thường 150–300ms) |
-| **Accessibility (a11y)** | Trợ năng: bàn phím, screen reader, tương phản, focus ring |
+| **Accessibility (a11y)** ✅ | Trợ năng: bàn phím, screen reader, tương phản, focus ring |
 
 ## H. Animation & motion (M9)
 | Thuật ngữ | Nghĩa ngắn |
@@ -154,7 +154,7 @@
 | **View Transitions API** | API trình duyệt cho chuyển cảnh giữa hai trạng thái DOM hoặc giữa hai trang |
 | **FLIP** | First–Last–Invert–Play: kỹ thuật animate thay đổi layout bằng transform |
 | **Microinteraction** | Trigger → rules → feedback → loops/modes (Dan Saffer) |
-| **Reduced motion** | `prefers-reduced-motion`: người dùng nhạy cảm tiền đình; thay chuyển động bằng opacity, đừng tắt phản hồi |
+| **Reduced motion** ✅ | `prefers-reduced-motion`: người dùng nhạy cảm tiền đình; thay chuyển động bằng opacity, đừng tắt phản hồi |
 | **Compositor-only properties** | `transform`, `opacity`: animate mượt vì không gây layout hay paint lại |
 
 ## I. Thuật ngữ từ chẩn đoán M0-01
@@ -165,3 +165,9 @@
 | **Recognition vs recall** | Nhận ra (thấy nhãn) dễ hơn nhớ lại (đoán icon) — Nielsen #6 |
 | **Signifier** ✅ | Dấu hiệu cho biết có thể tương tác (Norman). Khác với affordance là khả năng thật (V-05) |
 | **Figure–ground** ✅ | Tách hình khỏi nền. Tầng màu phụ 20% thường đóng vai trò "nền tổ chức" (V-03) |
+| **WCAG 2.2 (A / AA / AAA)** ✅ | Chuẩn trợ năng web của W3C; AA là mức thường bị đòi | Là tầng "chuẩn", khác Material/HIG là "quy ước" (V-11) |
+| **Relative luminance** ✅ | Độ sáng tương đối của một màu (0 đen, 1 trắng), kênh xanh lá nặng nhất | Contrast ratio = (L sáng + 0,05)/(L tối + 0,05) (V-11) |
+| **Target size (vùng chạm)** ✅ | Vùng bấm được, có thể lớn hơn phần nút nhìn thấy | WCAG 2.5.8 AA 24px, 2.5.5 AAA 44px; Material 48dp (~9 mm), HIG 44pt (V-11) |
+| **dp / pt / CSS px** ✅ | Đơn vị không phụ thuộc mật độ màn của Android / iOS / web | So sánh coi như gần bằng nhau (V-11) |
+| **Focus ring** ✅ | Vòng hiện quanh mục đang chọn bằng bàn phím; dùng `:focus-visible` | WCAG 2.4.7 AA; xoá bằng `outline:none` là lỗi AI hay mắc (V-11) |
+| **Screen reader và label** ✅ | Máy đọc màn hình (TalkBack, VoiceOver) chỉ đọc được nhãn bằng chữ: `aria-label`, `contentDescription` | Nút icon không nhãn chỉ được đọc là "Nút" (V-11) |
