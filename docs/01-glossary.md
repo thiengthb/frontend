@@ -63,8 +63,14 @@
 | **8pt grid / Spacing scale** ✅ | Thang spacing 4/8/12/16/24/32/48 | Chỉ chọn trong thang; bậc cách xa nhau (V-04) |
 | **Whitespace (micro / macro)** ✅ | Khoảng trống trong khối (chữ, nút) / giữa khối, section | Macro tạo nhóm và nhịp (V-04) |
 | **Padding vs gap** ✅ | Padding: mép hộp → nội dung. Gap: giữa các phần tử anh em | Padding thẻ ≥ gap bên trong thẻ (V-04) |
-| **F-pattern / Z-pattern** | Kiểu mắt quét trang | Đặt nội dung quan trọng đúng vị trí mắt nhìn |
-| **Above the fold** | Phần hiển thị trước khi cuộn | Ảnh hưởng đến ấn tượng đầu |
+| **F-pattern / Z-pattern** ✅ | Hình đường mắt khi lướt: chữ F trên màn nhiều chữ đều nhau, chữ Z trên màn ít chữ | F là triệu chứng của nội dung thiếu điểm bám (NN/g), không phải mục tiêu; Z là kinh nghiệm, ít bằng chứng hơn (V-06) |
+| **Above the fold (viewport đầu tiên)** ✅ | Phần thấy được ngay khi mở màn, chưa cuộn | Hành động chính phải nằm ở đây, kể cả ở màn 640dp, cỡ chữ 115% (UX-001, V-06) |
+| **List / Detail** ✅ | List: nhiều mục cùng loại để quét và chọn. Detail: mọi thứ về một mục đã chọn | Cặp pattern cơ bản nhất của app; detail nên là một cột cuộn (V-06) |
+| **Overview** ✅ | Màn trả lời "bây giờ cần làm gì, có gì bất thường" | Hay bị biến thành dashboard lưới số liệu (W3, V-06) |
+| **Master–detail** ✅ | List bên trái, detail bên phải trên cùng một màn rộng | Hợp tablet và máy tính; trên điện thoại tách thành list rồi detail (V-06) |
+| **Thumb zone (vùng ngón cái)** ✅ | Phần màn ngón cái tới dễ khi cầm máy một tay, chủ yếu nửa dưới | Nút chính đặt ở đáy; mô hình gần đúng từ quan sát của Steven Hoober (V-06) |
+| **Top app bar / Bottom bar** ✅ | Thanh trên: tiêu đề, quay lại, hành động phụ. Thanh dưới: nút hành động chính hoặc thanh tab | Top bar ở vùng khó với, không đặt nút chính (V-06) |
+| **Multi-step form** | Form chia thành vài bước ngắn có chỉ báo bước | Bớt nản với form dài; nút tiếp tục luôn thấy (V-06) |
 | **Responsive / Breakpoint** | Thích ứng theo kích thước màn hình | Mobile chiếm phần lớn lượng truy cập |
 | **Container / Max-width** | Giới hạn chiều rộng nội dung | Giữ độ dài dòng hợp lý |
 | **Density** ✅ | Mật độ thông tin: compact / comfortable / spacious | Chọn theo việc; vùng chạm luôn ≥ 48 (V-04) |

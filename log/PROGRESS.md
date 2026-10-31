@@ -11,13 +11,14 @@
 - **Đã xong (v2):** **V-03 Màu** (2026-10-31): `demos/V-03/color.html`, artifact "V-03 Màu" (https://claude.ai/artifact/2v5aB6144b1NQLVfwagqr8).
 - **Đã xong (v2):** **V-04 Khoảng cách, lưới, nhịp** (2026-10-31): `demos/V-04/spacing.html`, artifact "V-04 Khoảng cách" (https://claude.ai/artifact/KGywbwkZMX8xFHQVYe3rXW).
 - **Đã xong (v2):** **V-05 Chiều sâu & hình khối** (2026-10-31): `demos/V-05/depth.html`, artifact "V-05 Chiều sâu" (https://claude.ai/artifact/5Y7Mfy4v46H5zAPk8fJiJN). **Hết Ngày 1 · NHÌN.**
+- **Đã xong (v2):** **V-06 Bố cục màn mobile** (2026-10-31): `demos/V-06/layouts.html`, artifact "V-06 Bố cục mobile" (https://claude.ai/artifact/DGMcrKEfwBinoTshtD9hhA). Mở đầu Ngày 2 · PATTERN. Viết theo D-020.
 - **Cách viết mới (D-020):** từ V-06, chat và artifact theo `docs/07-communication-style.md`. Có thể sửa lại chữ V-01..V-05 theo chuẩn này nếu người dùng muốn.
-- **Khối tiếp theo:** **V-06 Bố cục màn mobile kinh điển** (brief: `docs/briefs/V-06.md`). Chat V-03..V-05 đã dài: **mở chat mới**.
+- **Khối tiếp theo:** **V-07 Nút & điều khiển đúng nghĩa** (brief: `docs/briefs/V-07.md`). Chat V-06 còn ngắn: có thể làm tiếp trong cùng chat.
 - **Luật:** adopted: PRC-004 (tạm ngưng), PRC-006 (sửa D-019), PRC-007, VIS-004, VIS-005, UX-002. Draft: VIS-001..003, UX-001, CMP-001, COL-001, PRC-001, 002, 005. Deprecated: PRC-003
-- **Từ điển ra lệnh AI:** `docs/06-ai-prompt-dictionary.md` (đã có V-01..V-05; mỗi mục 6 câu)
+- **Từ điển ra lệnh AI:** `docs/06-ai-prompt-dictionary.md` (đã có V-01..V-06; mỗi mục 6 câu)
 
 ## Bước tiếp theo
-**Chat mới:** clone → đọc file này → tóm tắt ≤ 2 dòng → **dựng ngay V-06** theo `docs/briefs/V-06.md` (load `artifact-design`, tái dùng khung `demos/V-05/depth.html`, publish "V-06 Bố cục mobile") → giải thích ≤ 10 dòng nên bấm gì → V-07 nếu chat còn ngắn.
+**Chat mới:** clone → đọc file này → tóm tắt ≤ 2 dòng → **dựng ngay V-07** theo `docs/briefs/V-07.md` (load `artifact-design`, tái dùng khung `demos/V-06/layouts.html`, publish "V-07 Nút & điều khiển") → giải thích ≤ 10 dòng theo ba nhịp (quy tắc 10) → V-08 nếu chat còn ngắn.
 Cuối mỗi khối: `demos/V-xx/`, từ điển, glossary, brief khối kế, PROGRESS, push.
 
 ## Câu hỏi còn mở

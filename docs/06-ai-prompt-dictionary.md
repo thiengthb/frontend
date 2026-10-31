@@ -53,3 +53,13 @@
 | "Dark mode phẳng lì" | "Trong dark mode bỏ bóng; thể hiện elevation bằng **surface tint** (nền sáng dần theo độ cao), vd #161412 → #24201D → #332E2A." |
 | "Muốn vui như app học" | "Nút **gờ dày** chỉ dùng khi cả hệ cùng giọng: chữ to đậm, màu bão hoà, minh hoạ, chuyển động nảy. Nếu không, giữ phẳng và chỉ nút chính có gờ 2–4px." |
 
+
+## V-06 · Bố cục màn mobile
+| Bạn cảm thấy | Câu lệnh cho AI |
+|---|---|
+| "Màn mở ra toàn số liệu, không biết bấm gì" | "Bắt đầu màn từ **hành động chính**, không từ dữ liệu: hành động chính nằm trong **viewport đầu tiên** (above the fold) ở màn cao 640dp, cỡ chữ 115%. Số liệu không dẫn tới quyết định thì gom thành một dòng phụ ở cuối." |
+| "Nút chính khó bấm khi cầm một tay" | "Đặt hành động chính trong **thumb zone**: nút rộng hết màn, dính đáy trong **bottom bar**. **Top app bar** chỉ chứa tiêu đề, nút quay lại và hành động phụ." |
+| "Không biết màn này nên trông thế nào" | "Trước khi vẽ, viết một câu: người dùng mở màn này để làm gì. Rồi chọn **pattern** khớp câu đó (list, detail, overview, form, master–detail) và nói rõ vì sao chọn." |
+| "Danh sách đọc mệt, toàn chữ" | "Mỗi hàng của **list** đưa từ khoá lên đầu dòng (tên in đậm) và trạng thái thành nhãn ở cuối dòng, để mắt không phải quét theo **F-pattern** qua cả câu dài." |
+| "Form dài, nản" | "Gom các ô liên quan thành nhóm có tiêu đề; nếu quá 6–7 ô thì chia thành **multi-step form** có chỉ báo bước. Nút gửi luôn thấy trong bottom bar." |
+| "Hai tab trông na ná nhau" | "Viết câu hỏi mà mỗi tab trả lời; nếu bố cục của tab này trả lời câu hỏi của tab khác thì bỏ phần trùng. **Mỗi tab một câu hỏi** (information architecture)." |
