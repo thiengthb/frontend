@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thang chữ GV-103</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ Bảng màu (chỉ dùng các giá trị được cấp) ============ */
+:root{
+  color-scheme: light;
+  --bg:#FFFFFF; --muted:#F4F4F4; --border:#E5E5E5;
+  --ink-1:#1F1F1F; --ink-2:#3C3C3C; --ink-3:#6B6B6B;
+  --primary:#B9551F; --primary-pressed:#8A3D14; --primary-soft:#FBEFE8; --on-primary-soft:#9A4518;
+  --success:#15803D; --success-soft:#ECFDF3;
+  --warning:#A15C00; --warning-soft:#FFF6DD;
+  --danger:#B42318; --danger-soft:#FEF0EF;
+
+  --font: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ============ THANG CHỮ MỚI — 7 kiểu, 5 cỡ (13 · 15 · 18 · 24 · 36) ============ */
+.t-display     {font:700 36px/44px var(--font); letter-spacing:-0.02em;  font-variant-numeric:tabular-nums;}
+.t-headline    {font:700 24px/32px var(--font); letter-spacing:-0.01em;}
+.t-title       {font:600 18px/24px var(--font); letter-spacing:-0.005em; font-variant-numeric:tabular-nums;}
+.t-body        {font:400 15px/22px var(--font); letter-spacing:0;}
+.t-body-strong {font:600 15px/22px var(--font); letter-spacing:0;}
+.t-meta        {font:400 13px/18px var(--font); letter-spacing:0.01em;  font-variant-numeric:tabular-nums;}
+.t-meta-strong {font:600 13px/18px var(--font); letter-spacing:0.02em;  font-variant-numeric:tabular-nums;}
+
+/* ============ Trang ============ */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--muted);color:var(--ink-1)}
+body{font-family:var(--font);-webkit-font-smoothing:antialiased;padding:48px 16px 80px}
+.page{max-width:960px;margin:0 auto}
+.kicker{color:var(--on-primary-soft)}
+.lede{color:var(--ink-2);max-width:62ch;margin-top:8px}
+section{margin-top:40px}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.sec-head .t-meta{color:var(--ink-3)}
+
+/* Specimen */
+.specimen{background:var(--bg);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.spec-row{display:grid;grid-template-columns:220px 1fr;gap:24px;padding:24px;border-top:1px solid var(--border);align-items:center}
+.spec-row:first-child{border-top:0}
+.spec-meta{display:flex;flex-direction:column;gap:2px}
+.spec-meta .tok{color:var(--on-primary-soft)}
+.spec-meta .t-meta{color:var(--ink-3)}
+.spec-meta .use{color:var(--ink-2);margin-top:6px}
+.spec-meta .old{color:var(--ink-3)}
+.spec-sample{min-width:0;overflow-wrap:anywhere}
+.ladder{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;padding:20px 24px;background:var(--primary-soft);border-top:1px solid var(--border)}
+.ladder .step{display:flex;flex-direction:column;gap:4px;color:var(--on-primary-soft)}
+.ladder .x{color:var(--on-primary-soft);padding-bottom:6px}
+@media (max-width:680px){
+  .spec-row{grid-template-columns:1fr;gap:12px;padding:20px 16px}
+  .ladder{padding:16px}
+}
+
+/* Khung GV-103 */
+.stage{display:flex;flex-direction:column;align-items:center;gap:24px}
+.frame-scroll{max-width:100%;overflow-x:auto;padding:4px}
+.phone{width:360px;height:800px;background:var(--bg);border:1px solid var(--border);border-radius:28px;overflow:hidden;display:flex;flex-direction:column;position:relative;box-shadow:0 12px 40px rgba(31,31,31,.08)}
+.notes{max-width:560px;background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:20px 24px;color:var(--ink-2)}
+.notes p + p{margin-top:10px}
+.notes b{color:var(--ink-1);font-weight:600}
+
+/* ---- trong khung: chỉ dùng class t-* để đặt chữ ---- */
+.ic{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.ic-sm{width:20px;height:20px}
+.ic-xs{width:16px;height:16px}
+
+.statusbar{height:24px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 16px;color:var(--ink-1)}
+.statusbar .sys{display:flex;gap:6px;align-items:center}
+
+.appbar{height:64px;flex:none;display:flex;align-items:center;gap:4px;padding:0 16px 0 4px}
+.icon-btn{width:48px;height:48px;border:0;background:transparent;border-radius:24px;display:grid;place-items:center;color:var(--ink-1);cursor:pointer}
+.icon-btn:active{background:var(--muted)}
+.appbar .titles{display:flex;flex-direction:column;min-width:0}
+.appbar .sub{color:var(--ink-3)}
+
+.health{margin:4px 16px 0;padding:16px;border:1px solid var(--border);border-radius:16px}
+.stats{display:grid;grid-template-columns:1fr 1.35fr;gap:16px}
+.stat + .stat{border-left:1px solid var(--border);padding-left:16px}
+.stat .num{display:flex;align-items:baseline;gap:2px}
+.stat .lbl{color:var(--ink-3)}
+.stat .of{color:var(--ink-3)}
+.bar{height:6px;border-radius:3px;background:var(--muted);margin-top:8px;overflow:hidden}
+.bar i{display:block;height:100%;width:30%;background:var(--primary);border-radius:3px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
+.pill{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:14px}
+.pill .dot{width:6px;height:6px;border-radius:3px;background:currentColor}
+.pill.danger{background:var(--danger-soft);color:var(--danger)}
+.pill.warning{background:var(--warning-soft);color:var(--warning)}
+.pill.success{background:var(--success-soft);color:var(--success)}
+
+.tabs{display:flex;flex:none;margin-top:12px;border-bottom:1px solid var(--border)}
+.tab{flex:1;height:48px;border:0;background:transparent;color:var(--ink-3);position:relative;cursor:pointer}
+.tab[aria-selected="true"]{color:var(--primary)}
+.tab[aria-selected="true"]::after{content:"";position:absolute;left:24px;right:24px;bottom:-1px;height:3px;border-radius:3px 3px 0 0;background:var(--primary)}
+.tab:active{background:var(--muted)}
+
+.search{flex:none;margin:12px 16px 4px;height:48px;border-radius:12px;background:var(--muted);display:flex;align-items:center;gap:10px;padding:0 14px;color:var(--ink-3)}
+.search input{flex:1;min-width:0;border:0;background:transparent;color:var(--ink-1);outline:none;height:100%}
+.search input::placeholder{color:var(--ink-3);opacity:1}
+.search:focus-within{box-shadow:inset 0 0 0 2px var(--primary)}
+
+.list{flex:1;overflow-y:auto;scrollbar-width:none}
+.list::-webkit-scrollbar{display:none}
+.list-head{display:flex;align-items:center;gap:6px;height:40px;padding:0 16px;color:var(--ink-3)}
+.row{display:flex;align-items:center;gap:12px;min-height:72px;padding:12px 8px 12px 16px;text-decoration:none;color:inherit;border-top:1px solid var(--border)}
+.row:active{background:var(--muted)}
+.av{width:40px;height:40px;border-radius:20px;display:grid;place-items:center;flex:none;background:var(--muted);color:var(--ink-2)}
+.av.danger{background:var(--danger-soft);color:var(--danger)}
+.av.warning{background:var(--warning-soft);color:var(--warning)}
+.who{flex:1;min-width:0;display:flex;flex-direction:column}
+.who .name{color:var(--ink-1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.who .line2{color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.st-danger{color:var(--danger)}
+.st-warning{color:var(--warning)}
+.count{display:flex;align-items:baseline;justify-content:flex-end;min-width:40px}
+.count .of{color:var(--ink-3)}
+.c-danger{color:var(--danger)} .c-warning{color:var(--warning)} .c-ink{color:var(--ink-1)} .c-zero{color:var(--ink-3)}
+.chev{color:var(--ink-3)}
+.list-foot{padding:16px 16px 28px;color:var(--ink-3);text-align:center;border-top:1px solid var(--border)}
+</style>
+</head>
+<body>
+
+<!-- Lucide icons (inline sprite) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+  <symbol id="i-sort" viewBox="0 0 24 24"><path d="m3 16 4 4 4-4"/><path d="M7 20V4"/><path d="M11 4h10"/><path d="M11 8h7"/><path d="M11 12h4"/></symbol>
+  <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M12 20h.01"/><path d="M2 8.82a15 15 0 0 1 20 0"/><path d="M5 12.859a10 10 0 0 1 14 0"/><path d="M8.5 16.429a5 5 0 0 1 7 0"/></symbol>
+  <symbol id="i-signal" viewBox="0 0 24 24"><path d="M2 20h.01"/><path d="M7 20v-4"/><path d="M12 20v-8"/><path d="M17 20V8"/></symbol>
+  <symbol id="i-battery" viewBox="0 0 24 24"><rect width="16" height="10" x="2" y="7" rx="2" ry="2"/><line x1="22" x2="22" y1="11" y2="13"/><line x1="6" x2="6" y1="11" y2="13"/><line x1="10" x2="10" y1="11" y2="13"/><line x1="14" x2="14" y1="11" y2="13"/></symbol>
+</svg>
+
+<main class="page">
+  <header>
+    <div class="t-meta-strong kicker">CC-02 · Thang chữ app điểm danh giảng viên</div>
+    <h1 class="t-headline" style="margin-top:6px">Ít cỡ hơn, khoảng nhảy rõ hơn</h1>
+    <p class="t-body lede">Thang cũ có 7 cỡ từ 12 đến 28, phần lớn sát nhau (17 · 16 · 15 · 14 · 13) và gần như kiểu nào cũng Bold hoặc SemiBold, nên mọi thứ trông "to bằng nhau, đậm bằng nhau". Thang mới gom về 5 cỡ, 3 độ đậm, và dùng font Be Vietnam Pro: font được vẽ riêng cho tiếng Việt, dấu chồng như "ể", "ữ", "Ẫ" gọn và không đụng dòng trên, lại có chữ số đều bề rộng (tabular) để cột "x/4" thẳng hàng.</p>
+  </header>
+
+  <!-- ===================== VIỆC 1 ===================== -->
+  <section aria-labelledby="h-spec">
+    <div class="sec-head">
+      <h2 id="h-spec" class="t-title">1 · Bảng mẫu thang chữ</h2>
+      <span class="t-meta">Be Vietnam Pro · 400 / 600 / 700 · đơn vị dp ≈ px</span>
+    </div>
+
+    <div class="specimen">
+      <div class="spec-row">
+        <div class="spec-meta">
+          <span class="t-meta-strong tok">display</span>
+          <span class="t-meta">36 / 44 · Bold 700 · −0.02em · tabular</span>
+          <span class="t-meta use">Số liệu lớn: "6/20", "35", "3/4"</span>
+          <span class="t-meta old">Thay cho: display 28</span>
+        </div>
+        <div class="spec-sample t-display">3/4 buổi · 6/20</div>
+      </div>
+
+      <div class="spec-row">
+        <div class="spec-meta">
+          <span class="t-meta-strong tok">headline</span>
+          <span class="t-meta">24 / 32 · Bold 700 · −0.01em</span>
+          <span class="t-meta use">Tiêu đề màn mọi cấp (cấp 0, 1, 2)</span>
+          <span class="t-meta old">Gộp: title-lg 22 + title 17 (phần tiêu đề màn)</span>
+        </div>
+        <div class="spec-sample t-headline">Nguyễn Thị Hường vắng 3/4 buổi</div>
+      </div>
+
+      <div class="spec-row">
+        <div class="spec-meta">
+          <span class="t-meta-strong tok">title</span>
+          <span class="t-meta">18 / 24 · SemiBold 600 · −0.005em · tabular</span>
+          <span class="t-meta use">Tiêu đề nhóm, giờ trên thẻ slot, số vắng trong hàng</span>
+          <span class="t-meta old">Gộp: section 16 + title 17 (giờ slot)</span>
+        </div>
+        <div class="spec-sample t-title">Tiết 2 lúc 9:30 · Lớp SE1801 vắng nhiều</div>
+      </div>
+
+      <div class="spec-row">
+        <div class="spec-meta">
+          <span class="t-meta-strong tok">body</span>
+          <span class="t-meta">15 / 22 · Regular 400 · 0</span>
+          <span class="t-meta use">Nội dung, đoạn mô tả, ô nhập liệu</span>
+          <span class="t-meta old">Thay cho: body 15 Medium</span>
+        </div>
+        <div class="spec-sample t-body">Nguyễn Thị Hường vắng 3/4 buổi, chỉ còn được nghỉ thêm một buổi nữa trước khi bị cấm thi cuối kỳ.</div>
+      </div>
+
+      <div class="spec-row">
+        <div class="spec-meta">
+          <span class="t-meta-strong tok">body-strong</span>
+          <span class="t-meta">15 / 22 · SemiBold 600 · 0</span>
+          <span class="t-meta use">Tên sinh viên, tên lớp, mã môn, nhãn nút, tab</span>
+          <span class="t-meta old">Gộp: body-strong 15 + label 14</span>
+        </div>
+        <div class="spec-sample t-body-strong">Trần Minh Long · Đỗ Gia Bảo · Bùi Ngọc Ánh</div>
+      </div>
+
+      <div class="spec-row">
+        <div class="spec-meta">
+          <span class="t-meta-strong tok">meta</span>
+          <span class="t-meta">13 / 18 · Regular 400 · +0.01em · tabular</span>
+          <span class="t-meta use">MSSV, giờ, phòng, dòng phụ, chú thích</span>
+          <span class="t-meta old">Thay cho: body-sm 13</span>
+        </div>
+        <div class="spec-sample t-meta">SE190171 · Phòng 407 · 7:30 – 9:10 · Buổi thứ 6/20 của học kỳ</div>
+      </div>
+
+      <div class="spec-row">
+        <div class="spec-meta">
+          <span class="t-meta-strong tok">meta-strong</span>
+          <span class="t-meta">13 / 18 · SemiBold 600 · +0.02em · tabular</span>
+          <span class="t-meta use">Chip, nhãn trạng thái, nhãn thanh điều hướng, chữ cái avatar</span>
+          <span class="t-meta old">Thay cho: caption 12 (nâng lên sàn 13)</span>
+        </div>
+        <div class="spec-sample t-meta-strong">Đã bị cấm thi · Sát ngưỡng · Hôm nay · Thông báo</div>
+      </div>
+
+      <div class="ladder" aria-label="Bậc cỡ chữ">
+        <div class="step"><span class="t-meta-strong">13</span><span class="t-meta">sàn</span></div>
+        <span class="t-meta x">←</span>
+        <div class="step"><span class="t-body-strong">15</span><span class="t-meta">gốc</span></div>
+        <span class="t-meta x">×1.25 →</span>
+        <div class="step"><span class="t-title">18</span><span class="t-meta">n=1</span></div>
+        <span class="t-meta x">×1.25 →</span>
+        <div class="step"><span class="t-headline">24</span><span class="t-meta">n=2</span></div>
+        <span class="t-meta x">×1.25² →</span>
+        <div class="step"><span class="t-display">36</span><span class="t-meta">n=4</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== VIỆC 2 ===================== -->
+  <section aria-labelledby="h-screen">
+    <div class="sec-head">
+      <h2 id="h-screen" class="t-title">2 · GV-103 Chi tiết lớp</h2>
+      <span class="t-meta">360 × 800 · màn cấp 2, không có thanh điều hướng dưới</span>
+    </div>
+
+    <div class="stage">
+      <div class="frame-scroll">
+        <div class="phone" role="region" aria-label="GV-103 Chi tiết lớp SE1801">
+
+          <div class="statusbar">
+            <span class="t-meta-strong">9:41</span>
+            <span class="sys">
+              <svg class="ic ic-xs"><use href="#i-signal"/></svg>
+              <svg class="ic ic-xs"><use href="#i-wifi"/></svg>
+              <svg class="ic ic-xs"><use href="#i-battery"/></svg>
+            </span>
+          </div>
+
+          <div class="appbar">
+            <button class="icon-btn" aria-label="Quay lại"><svg class="ic"><use href="#i-arrow-left"/></svg></button>
+            <div class="titles">
+              <h1 class="t-headline">SE1801</h1>
+              <span class="t-meta sub">PRM393 · Fall 2026</span>
+            </div>
+          </div>
+
+          <div class="health" aria-label="Sức khỏe chuyên cần">
+            <div class="stats">
+              <div class="stat">
+                <div class="num"><span class="t-display">35</span></div>
+                <div class="t-meta lbl">sinh viên</div>
+              </div>
+              <div class="stat">
+                <div class="num"><span class="t-display">6</span><span class="t-title of">/20</span></div>
+                <div class="t-meta lbl">buổi đã học · còn 14</div>
+                <div class="bar" role="progressbar" aria-valuenow="6" aria-valuemin="0" aria-valuemax="20" aria-label="6 trên 20 buổi"><i></i></div>
+              </div>
+            </div>
+            <div class="pills">
+              <span class="pill danger t-meta-strong"><span class="dot"></span>1 cấm thi</span>
+              <span class="pill warning t-meta-strong"><span class="dot"></span>1 sát ngưỡng</span>
+              <span class="pill success t-meta-strong"><span class="dot"></span>33 an toàn</span>
+            </div>
+          </div>
+
+          <div class="tabs" role="tablist">
+            <button class="tab t-body-strong" role="tab" aria-selected="true">Sinh viên</button>
+            <button class="tab t-body-strong" role="tab" aria-selected="false">Buổi học</button>
+          </div>
+
+          <label class="search">
+            <svg class="ic ic-sm"><use href="#i-search"/></svg>
+            <input class="t-body" type="search" placeholder="Tìm theo tên hoặc MSSV" aria-label="Tìm theo tên hoặc MSSV">
+          </label>
+
+          <div class="list">
+            <div class="list-head">
+              <svg class="ic ic-xs"><use href="#i-sort"/></svg>
+              <span class="t-meta">Vắng nhiều nhất trước · ngưỡng 4 buổi</span>
+            </div>
+
+            <a class="row" href="#">
+              <span class="av danger t-meta-strong">LT</span>
+              <span class="who"><span class="t-body-strong name">Lê Thu Trang</span><span class="line2"><span class="t-meta">SE190142 · </span><span class="t-meta-strong st-danger">Đã bị cấm thi</span></span></span>
+              <span class="count"><span class="t-title c-danger">5</span><span class="t-meta of">/4</span></span>
+              <svg class="ic ic-sm chev"><use href="#i-chevron-right"/></svg>
+            </a>
+            <a class="row" href="#">
+              <span class="av warning t-meta-strong">TL</span>
+              <span class="who"><span class="t-body-strong name">Trần Minh Long</span><span class="line2"><span class="t-meta">SE190155 · </span><span class="t-meta-strong st-warning">Còn vắng được 1 buổi</span></span></span>
+              <span class="count"><span class="t-title c-warning">3</span><span class="t-meta of">/4</span></span>
+              <svg class="ic ic-sm chev"><use href="#i-chevron-right"/></svg>
+            </a>
+            <a class="row" href="#">
+              <span class="av t-meta-strong">PH</span>
+              <span class="who"><span class="t-body-strong name">Phạm Quốc Huy</span><span class="t-meta line2">SE190163</span></span>
+              <span class="count"><span class="t-title c-ink">2</span><span class="t-meta of">/4</span></span>
+              <svg class="ic ic-sm chev"><use href="#i-chevron-right"/></svg>
+            </a>
+            <a class="row" href="#">
+              <span class="av t-meta-strong">NH</span>
+              <span class="who"><span class="t-body-strong name">Nguyễn Thị Hường</span><span class="t-meta line2">SE190171</span></span>
+              <span class="count"><span class="t-title c-ink">2</span><span class="t-meta of">/4</span></span>
+              <svg class="ic ic-sm chev"><use href="#i-chevron-right"/></svg>
+            </a>
+            <a class="row" href="#">
+              <span class="av t-meta-strong">ĐB</span>
+              <span class="who"><span class="t-body-strong name">Đỗ Gia Bảo</span><span class="t-meta line2">SE190178</span></span>
+              <span class="count"><span class="t-title c-ink">1</span><span class="t-meta of">/4</span></span>
+              <svg class="ic ic-sm chev"><use href="#i-chevron-right"/></svg>
+            </a>
+            <a class="row" href="#">
+              <span class="av t-meta-strong">VL</span>
+              <span class="who"><span class="t-body-strong name">Vũ Khánh Linh</span><span class="t-meta line2">SE190184</span></span>
+              <span class="count"><span class="t-title c-ink">1</span><span class="t-meta of">/4</span></span>
+              <svg class="ic ic-sm chev"><use href="#i-chevron-right"/></svg>
+            </a>
+            <a class="row" href="#">
+              <span class="av t-meta-strong">HA</span>
+              <span class="who"><span class="t-body-strong name">Hoàng Đức Anh</span><span class="t-meta line2">SE190190</span></span>
+              <span class="count"><span class="t-title c-zero">0</span><span class="t-meta of">/4</span></span>
+              <svg class="ic ic-sm chev"><use href="#i-chevron-right"/></svg>
+            </a>
+            <a class="row" href="#">
+              <span class="av t-meta-strong">BÁ</span>
+              <span class="who"><span class="t-body-strong name">Bùi Ngọc Ánh</span><span class="t-meta line2">SE190196</span></span>
+              <span class="count"><span class="t-title c-zero">0</span><span class="t-meta of">/4</span></span>
+              <svg class="ic ic-sm chev"><use href="#i-chevron-right"/></svg>
+            </a>
+            <div class="list-foot t-meta">Còn 27 sinh viên khác, đều 0/4</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="notes t-body">
+        <p><b>Nguyên tắc:</b> gốc 15 nhân tỉ lệ 1.25 (quãng ba trưởng), lấy các bậc n = 1, 2, 4 làm tròn thành 18, 24, 36; bậc n = 3 (≈29) bị bỏ để số liệu tách hẳn khỏi tiêu đề, còn phía dưới gốc dừng ở 13 vì đó là sàn đọc tối thiểu.</p>
+        <p>Có 7 kiểu vì mỗi kiểu ứng với một vai không thay được (số liệu, tiêu đề màn, tiêu đề nhóm, đọc, nhấn, phụ, nhãn), và tương phản giờ đến từ cả cỡ lẫn độ đậm: Regular 400 cho chữ đọc, SemiBold 600 cho thứ cần chạm hoặc gọi tên, Bold 700 chỉ cho hai cỡ lớn nhất.</p>
+        <p><b>Đánh đổi:</b> mất các sắc thái trung gian 14, 16, 17 nên tiêu đề màn cấp 1–2 phải dùng chung 24 và cần bố cục gánh phần phân cấp; số 36 chiếm thêm chiều cao; bỏ cỡ 12 khiến nhãn thanh điều hướng cần rộng hơn; còn đổi từ Nunito sang Be Vietnam Pro thì mất nét tròn thân thiện và phải rà lại mọi màn đã có.</p>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>
