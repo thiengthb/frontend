@@ -12,6 +12,19 @@
 - Squint test: làm mờ, hỏi mảng nào thắng, bao nhiêu mảng tranh nhau, có thấy nhóm không.
 - Nhất quán = cùng một thang; đồng phục = chỉ một bậc của thang.
 
+## 1b. Video (người dùng bỏ qua do thiếu thời gian, 2026-10-31) — tóm tắt thay thế
+Schoger, *Practical Solutions to Common UI Design Problems*. Tóm tắt dựa trên nội dung talk và sách *Refactoring UI* cùng tác giả; Claude không xem lại được video nên thứ tự/ví dụ có thể lệch.
+1. Phân cấp không chỉ bằng cỡ: dùng độ đậm và màu (đen / xám đậm / xám nhạt) cho 3 tầng.
+2. Nhấn bằng cách hạ cấp thứ xung quanh (vd tab không active nhạt đi, thay vì tô màu tab active).
+3. Nhãn là phương án cuối: gộp nhãn vào giá trị ("còn được vắng 1" thay vì "Số buổi còn lại: 1").
+4. Không đặt chữ xám trên nền màu; dùng sắc độ cùng hue với nền.
+5. Bớt viền: tách bằng nền khác màu, bóng, hoặc khoảng cách.
+6. Khoảng cách không mơ hồ: trong nhóm < giữa nhóm.
+7. Bắt đầu với dư khoảng trắng rồi bớt dần.
+8. Nút theo phân cấp, không theo ngữ nghĩa: primary đặc, secondary viền, tertiary dạng link.
+9. Cân trọng lượng–tương phản: icon đặc/nặng thì hạ tương phản để không lấn chữ.
+- Dự đoán trước khi xem bài: **bỏ qua** khối này (người dùng thiếu thời gian).
+
 ## 2. Ví dụ
 - Demo inline (trong chat): màn ôn tập "đồng phục" (4 ô KPI + nút cùng viền) vs "có phân cấp" (số 56px, nút đặc, chỉ số phụ thành 1 dòng xám), kèm thanh làm mờ.
 
