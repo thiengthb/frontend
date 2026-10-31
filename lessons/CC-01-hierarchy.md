@@ -1,6 +1,6 @@
 # CC-01 — Phân cấp, tương phản, điểm nhấn
 - **Ngày:** 2026-10-30
-- **Trạng thái:** đang học (đã giảng, chờ dự đoán và phê bình của người dùng)
+- **Trạng thái:** xong (2026-10-31)
 - **Thuật ngữ mới:** visual hierarchy, focal point, Von Restorff (isolation) effect, squint test, de-emphasize, consistency vs uniformity
 - **Bài subagent:** `demos/CC-01/gv001-3-layouts.html` (3 phương án GV-001)
 
@@ -32,7 +32,7 @@ Schoger, *Practical Solutions to Common UI Design Problems*. Tóm tắt dựa tr
 - Bảng dữ liệu cần so sánh: đồng phục là đúng; phân cấp ở cấp bảng và hàng bất thường.
 - Màn nhiều việc ngang hàng (launcher, cài đặt): đừng ép điểm nhấn giả, phân cấp bằng nhóm.
 - Hiểu lầm: "phân cấp = tiêu đề to hơn"; "điểm nhấn = thứ to nhất".
-- Ý kiến của người dùng: (chờ)
+- Ý kiến của người dùng: phương án C (trục giờ) hợp với tab Lịch hơn Tổng quan → UX-002.
 
 ## 4. Bài tập (Critique Loop)
 - Dự đoán của người dùng: (chờ)
@@ -95,12 +95,26 @@ Vấn đề "phải tìm thấy" để Recall 2/2: ít nhất 3 trong {#1, #2, #
 **Hiểu lầm cần sửa:** tiêu đề ngày không phải điểm nhấn → VIS-004.
 
 ## 6. Luật rút ra
-- `VIS-004` (draft) — Tiêu đề màn không phải điểm nhấn mặc định
-- `VIS-005` (draft) — Bo góc lồng nhau phải đồng tâm
-- `UX-002` (draft) — Mỗi tab trả lời một câu hỏi khác nhau
+- `VIS-004` (adopted) — Tiêu đề màn không phải điểm nhấn mặc định
+- `VIS-005` (adopted) — Bo góc lồng nhau phải đồng tâm
+- `UX-002` (adopted) — Mỗi tab trả lời một câu hỏi khác nhau
 
 ## Tóm tắt cho khối sau
-(viết khi kết thúc khối)
+- Đã học: phân cấp (6 đòn bẩy), tương phản theo tỉ lệ, Von Restorff, squint test, nhất quán ≠ đồng phục. Video thay bằng tóm tắt 9 ý Schoger (§1b).
+- Bài subagent 7/10: bỏ được lưới KPI, nhưng màu cam bị pha loãng, ngày quá đậm, thứ tự giờ đảo ở A, vùng chạm lồng nhau.
+- Người dùng 3/10: **mắt tốt hơn miệng**. Cảm giác đúng ("bo góc xấu", "C giống màn Lịch") nhưng chưa gọi tên, không xếp ưu tiên, ít hướng sửa. Một lời chê sai hướng: muốn ngày to hơn tiêu đề card.
+- Thắng Claude một điểm: phát hiện C trùng tab Lịch (IA).
+- **Đầu CC-02 (D-016):** 5 phút phê bình lại **phương án B** của CC-01 (artifact "GV-001 ba bố cục" hoặc `demos/CC-01/`), bắt buộc mỗi ý có thuật ngữ + mức nặng + hướng sửa. Chấm nhanh, ghi vào `critique-scores.md` dòng "CC-01b".
+- Nối sang CC-02: thang chữ lab2 (22→17→16→15→14→13) có nhiều bậc sát nhau (×1.06–1.07), chính là "tương phản theo tỉ lệ" của CC-01 áp vào chữ.
 
 ## Quiz nhớ lại (cho đầu CC-02)
-(viết khi kết thúc khối)
+1. Một màn có tiêu đề nhóm 16px đậm, nội dung 15px, chữ phụ 13px. Vì sao trông phẳng? Kể **hai** đòn bẩy khác cỡ chữ để tách tầng.
+2. Khối bo góc 24px, đệm 20px, bên trong có nút. Nút nên bo khoảng bao nhiêu, và lỗi khi làm sai gọi là gì?
+3. Vì sao "Thứ Ba, 20/10" không nên là chữ to nhất ở tab Tổng quan? Nêu một trường hợp tiêu đề **nên** là điểm nhấn.
+
+<details><summary>Đáp án (Claude chấm, người dùng đừng mở trước)</summary>
+
+1. Bước 16→15 chỉ ×1.07, mắt gần như không phân biệt (tương phản theo tỉ lệ). Đòn bẩy khác: độ đậm (400 vs 700), màu (đen / xám đậm / xám nhạt), khoảng trắng phía trên nhóm, vị trí. Thêm: hạ cấp chữ phụ thay vì phóng to tiêu đề.
+2. ≈ 24 − 20 = 4px. Bo góc không đồng tâm (VIS-005): khe ở góc rộng hẹp không đều.
+3. Người dùng đã biết hôm nay là thứ mấy; chữ to nhất nên dành cho việc họ mở màn để làm (VIS-004, Von Restorff). Tiêu đề nên là điểm nhấn ở trang đọc dài (tên bài), màn chi tiết của một đối tượng (tên sản phẩm, tên lớp khi đó là nội dung), màn trạng thái ("Đã gửi").
+</details>

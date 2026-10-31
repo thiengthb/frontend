@@ -13,7 +13,7 @@
 ---
 ### UX-002 — Mỗi tab trả lời một câu hỏi khác nhau
 - **Loại:** heuristic
-- **Trạng thái:** draft
+- **Trạng thái:** adopted (2026-10-31, D-015)
 - **Luật:** Trước khi thiết kế một tab, viết câu hỏi nó trả lời (Tổng quan: "Bây giờ tôi cần làm gì, có gì bất thường?"; Lịch: "Hôm nay/tuần này tôi dạy gì, ở đâu?"). Nếu bố cục của tab A trả lời câu hỏi của tab B, nó đang trùng lặp.
 - **Lý do:** Hai tab trả lời cùng một câu hỏi thì một tab thừa, và người dùng không biết nên mở tab nào (information architecture).
 - **Ví dụ:** ❌ CC-01 phương án C: trục giờ trong ngày là câu trả lời của tab Lịch, đặt vào Tổng quan. **Người dùng phát hiện**, Claude bỏ sót trong phê bình tham chiếu.

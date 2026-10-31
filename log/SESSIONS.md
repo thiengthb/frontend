@@ -18,3 +18,9 @@
 - Thêm `docs/05-crash-course.md` (13 khối, mindmap), `templates/critique.md`, `log/critique-scores.md`, danh sách video đã kiểm link.
 - Giải thích spring bằng demo tương tác.
 - (Phiên 3, tiếp) Duyệt PRC-004; thêm PRC-005 (Figma chỉ đọc) và PRC-006 (mỗi Mốc một chat); thêm bước quiz nhớ lại đầu khối; viết sẵn `docs/briefs/CC-01.md`. Kết thúc chat, Mốc 1 mở ở chat mới.
+
+## 2026-10-30/31 · Phiên 4 · Khối CC-01
+- Subagent làm 3 bố cục GV-001 (`demos/CC-01/`, publish artifact). Giảng phân cấp, demo squint test; video thay bằng tóm tắt 9 ý Schoger (D-017).
+- Người dùng phê bình 3/10 (mắt đúng, thiếu thuật ngữ và hướng sửa); subagent 7/10. Người dùng tìm ra C trùng tab Lịch, Claude bỏ sót.
+- Adopted VIS-004, VIS-005, UX-002 (D-015). D-016: không làm lại CC-01, phê bình lại phương án B ở đầu CC-02.
+- Viết `docs/briefs/CC-02.md` (thang chữ mới + GV-103). Tiếp theo: CC-02 ở chat mới.

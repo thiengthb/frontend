@@ -35,7 +35,7 @@
 ---
 ### VIS-004 — Tiêu đề màn không phải điểm nhấn mặc định
 - **Loại:** heuristic
-- **Trạng thái:** draft
+- **Trạng thái:** adopted (2026-10-31, D-015)
 - **Luật:** Trong app có tab, tiêu đề màn hoặc ngày hôm nay đứng ở cấp nhãn (13–16px, không nhất thiết đậm). Bậc chữ lớn nhất dành cho thứ người dùng mở màn để xem hoặc làm.
 - **Lý do:** Người dùng đã biết mình đang ở tab nào, hôm nay là thứ mấy. Đặt bậc chữ lớn nhất cho thông tin đã biết là phí điểm nhấn (Von Restorff), và nó tranh với điểm nhấn thật.
 - **Áp dụng khi:** màn trong app có thanh tab/điều hướng cố định.
@@ -47,7 +47,7 @@
 ---
 ### VIS-005 — Bo góc lồng nhau phải đồng tâm
 - **Loại:** heuristic (gần chuẩn hình học)
-- **Trạng thái:** draft
+- **Trạng thái:** adopted (2026-10-31, D-015)
 - **Luật:** Khi một khối bo góc nằm trong khối bo góc khác: bo trong = bo ngoài − khoảng đệm (tối thiểu 0–4px).
 - **Lý do:** Hai đường cong không đồng tâm làm khe hở ở góc rộng hẹp không đều, mắt thấy "lệch" dù không gọi được tên.
 - **Ví dụ:** ❌ CC-01 phương án A: khối cam bo 24, đệm 20, nút trắng bên trong bo 16 (đúng ra ≈ 4). Người dùng cảm thấy "bo góc rất xấu" mà chưa có từ để gọi.

@@ -18,3 +18,6 @@
 | D-012 | 2026-10-30 | Mỗi Mốc một chat mới (PRC-006); Claude chủ động đề xuất cải tiến cách học | Tránh ngữ cảnh quá dài | người dùng |
 | D-013 | 2026-10-30 | Figma của người dùng mặc định chỉ đọc (PRC-005, draft) | Phiên trước đã làm hỏng file lab2 | Claude đề xuất |
 | D-014 | 2026-10-30 | Sửa D-012: mỗi **khối** CC-xx một chat (không phải mỗi Mốc); chat kết thúc phải viết sẵn brief khối sau | Người dùng làm rõ | người dùng |
+| D-015 | 2026-10-31 | Duyệt VIS-004, VIS-005, UX-002 sang `adopted` | Rút từ CC-01; người dùng đồng ý | người dùng |
+| D-016 | 2026-10-31 | CC-01 được 3/10 (< 4) nhưng **không làm lại cả khối**: mở đầu CC-02 bằng 5 phút phê bình lại một khung của CC-01, bắt buộc dùng thuật ngữ và hướng sửa | Mục tiêu khối 1 vốn là 3–4/10; chỗ yếu là ngôn ngữ và hướng sửa, không phải mắt; người dùng thiếu thời gian | Claude đề xuất, người dùng có thể bác ở đầu CC-02 |
+| D-017 | 2026-10-31 | Khi thiếu thời gian, người dùng được thay video bằng bản tóm tắt của Claude và bỏ bước dự đoán | Người dùng yêu cầu ở CC-01 | người dùng |
