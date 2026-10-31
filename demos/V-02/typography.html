@@ -117,13 +117,19 @@ td .yes{color:var(--ok);font-weight:700}
 
 /* Chữ số */
 .num-wrap{display:flex;flex-wrap:wrap;gap:28px;margin-top:20px;align-items:flex-start}
-.numcard{width:340px;max-width:100%;background:var(--s-bg);color:var(--s-t1);border-radius:16px;box-shadow:0 0 0 1px var(--line);padding:14px 16px}
-.numcard .row{display:grid;grid-template-columns:1fr auto auto;gap:14px;padding:7px 0;border-bottom:1px solid var(--s-line);font-size:15px}
-.numcard .row:last-child{border-bottom:0}
+.numcard{width:340px;max-width:100%;background:var(--s-bg);color:var(--s-t1);border-radius:16px;box-shadow:0 0 0 1px var(--line);padding:6px 16px;
+  display:grid;grid-template-columns:1fr auto auto;column-gap:18px;font-size:15px}
+.numcard .row{display:contents}
+.numcard .row>span{padding:9px 0;border-bottom:1px solid var(--s-line)}
+.numcard .row:last-child>span{border-bottom:0}
 .numcard .t,.numcard .c{font-size:17px;font-weight:700}
-.numcard.prop .t,.numcard.prop .c{font-variant-numeric:proportional-nums;text-align:left}
-.numcard.tab .t,.numcard.tab .c{font-variant-numeric:tabular-nums;text-align:right}
-
+.numcard.prop .t,.numcard.prop .c,.ruler.prop{font-variant-numeric:proportional-nums}
+.numcard.tab .t,.numcard.tab .c,.ruler.tab{font-variant-numeric:tabular-nums}
+.numcard.al-l .t,.numcard.al-l .c{text-align:left}
+.numcard.al-r .t,.numcard.al-r .c{text-align:right}
+.ruler{display:inline-flex;flex-direction:column;align-items:flex-start;font-size:30px;font-weight:700;line-height:1.1;background:var(--s-bg);color:var(--s-t1);padding:10px 14px;border-radius:12px;box-shadow:0 0 0 1px var(--line)}
+.ruler span{background:var(--s-p-soft)}
+.num-side{flex:1;min-width:240px;display:flex;flex-direction:column;gap:12px}
 /* Tiếng Việt */
 .viet{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;margin-top:20px}
 .vbox{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;min-width:0;overflow:hidden}
@@ -292,18 +298,27 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--line);font-si
   <div class="ctl">
     <span class="lab" id="num-lab">Chữ số</span>
     <div class="seg" role="group" aria-labelledby="num-lab" id="num-seg">
-      <button type="button" data-n="prop" aria-pressed="true">Proportional, căn trái</button>
-      <button type="button" data-n="tab" aria-pressed="false">Tabular, căn phải</button>
+      <button type="button" data-n="prop" aria-pressed="true">Proportional</button>
+      <button type="button" data-n="tab" aria-pressed="false">Tabular</button>
+    </div>
+    <span class="lab" id="al-lab">Căn</span>
+    <div class="seg" role="group" aria-labelledby="al-lab" id="al-seg">
+      <button type="button" data-a="al-l" aria-pressed="true">Trái</button>
+      <button type="button" data-a="al-r" aria-pressed="false">Phải</button>
     </div>
   </div>
   <div class="num-wrap">
-    <div class="numcard prop" id="numcard">
+    <div class="numcard prop al-l" id="numcard">
       <div class="row"><span>PRM393 · SE1801</span><span class="t">07:00</span><span class="c">11/20</span></div>
       <div class="row"><span>MMA301 · SE1805</span><span class="t">12:30</span><span class="c">8/20</span></div>
       <div class="row"><span>PRN231 · SE1811</span><span class="t">14:50</span><span class="c">17/20</span></div>
       <div class="row"><span>SWD392 · SE1819</span><span class="t">17:10</span><span class="c">1/20</span></div>
     </div>
-    <p class="small" style="flex:1;min-width:240px">Ở chế độ proportional, "11" hẹp hơn "17", "1/20" lệch hẳn so với "17/20": mắt phải dò từng hàng. Nunito có sẵn chữ số tabular, chỉ cần bật.</p>
+    <div class="num-side">
+      <div><div class="ruler prop" id="ruler"><span>1111</span><span>8888</span></div></div>
+      <p class="small" id="num-note" aria-live="polite"></p>
+      <p class="small">Hai nút gạt tách riêng để bạn thấy từng tác dụng. <b>Căn phải</b> luôn thấy rõ: hàng đơn vị của "8/20" và "17/20" thẳng nhau. <b>Tabular</b> chỉ thấy rõ khi font có hai bộ chữ số khác nhau; thước đo bên trên cho biết font đang dùng có khác hay không.</p>
+    </div>
   </div>
 </section>
 
@@ -555,7 +570,20 @@ footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--line);font-si
   seg('wt-seg',function(b){wt(b.dataset.w)}); wt('all');
 
   /* ---- Chữ số ---- */
-  seg('num-seg',function(b){document.getElementById('numcard').className='numcard '+b.dataset.n});
+  var nMode='prop', aMode='al-l';
+  function nums(){
+    document.getElementById('numcard').className='numcard '+nMode+' '+aMode;
+    var ru=document.getElementById('ruler'); ru.className='ruler '+nMode;
+    var sp=ru.querySelectorAll('span'), w1=sp[0].getBoundingClientRect().width, w8=sp[1].getBoundingClientRect().width;
+    var note=document.getElementById('num-note'), d=Math.abs(w8-w1);
+    note.textContent = d<0.5
+      ? 'Thước đo: "1111" và "8888" đang rộng bằng nhau ('+w1.toFixed(1)+' px). Ở chế độ này, mọi chữ số cùng bề rộng.'
+      : 'Thước đo: "1111" rộng '+w1.toFixed(1)+' px, "8888" rộng '+w8.toFixed(1)+' px. Chữ số 1 hẹp hơn, nên cột số bị lệch.';
+  }
+  seg('num-seg',function(b){nMode=b.dataset.n;nums()});
+  seg('al-seg',function(b){aMode=b.dataset.a;nums()});
+  nums();
+  if(document.fonts&&document.fonts.ready){document.fonts.ready.then(nums)}
 
   /* ---- Line-height ---- */
   var lh=document.getElementById('lh');
