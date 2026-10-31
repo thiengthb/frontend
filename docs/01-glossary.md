@@ -25,13 +25,16 @@
 |---|---|---|
 | **Typeface vs Font** | Họ chữ (Inter) và một biến thể cụ thể (Inter Bold 16px) | Dùng đúng từ khi ra đề cho AI |
 | **Serif / Sans-serif / Mono / Display** | Các nhóm chữ | Mỗi nhóm mang một "giọng" khác nhau |
-| **Type scale** | Thang cỡ chữ theo tỉ lệ (vd 1.25 – Major Third) | Đảm bảo nhất quán, tránh 13px, 15px, 17px lộn xộn |
-| **Weight** | Độ đậm (100–900) | Là công cụ phân cấp thứ hai sau cỡ chữ |
-| **Line-height (leading)** | Khoảng cách dòng | Ảnh hưởng trực tiếp đến độ dễ đọc |
+| **Type scale** ✅ | Thang cỡ chữ theo tỉ lệ (vd 1.25 – Major Third) | Đảm bảo nhất quán, tránh 13px, 15px, 17px lộn xộn |
+| **Weight** ✅ | Độ đậm (100–900) | Là công cụ phân cấp thứ hai sau cỡ chữ |
+| **Line-height (leading)** ✅ | Khoảng cách dòng | Ảnh hưởng trực tiếp đến độ dễ đọc |
 | **Letter-spacing (tracking)** | Khoảng cách chữ | Chữ in hoa và chữ lớn thường cần chỉnh |
-| **Measure / Line length** | Độ dài dòng (~45–75 ký tự) | Dòng quá dài khiến mắt mỏi và lạc dòng |
+| **Measure / Line length** ✅ | Độ dài dòng (~45–75 ký tự) | Dòng quá dài khiến mắt mỏi và lạc dòng |
+| **Modular scale** ✅ | Thang tỉ lệ: cỡ gốc nhân liên tục với một tỉ lệ (1.2 / 1.25 / 1.333 / 1.5) | Ít bậc, cách xa; được bỏ bậc để tạo khoảng nhảy (V-02) |
+| **Tabular figures** ✅ | Chữ số đều bề rộng (`font-variant-numeric: tabular-nums`) | Cột số, giờ, x/4 thẳng hàng, so nhanh (V-02) |
+| **Dấu chồng (stacked diacritics)** ✅ | Hai dấu trên một chữ tiếng Việt (ễ, ữ, ẫ) | Cần line-height ≥ 1.4 cho đoạn; chọn font vẽ dấu tốt (V-02) |
 | **Font pairing** | Ghép 2 font | Nên tương phản rõ hoặc cùng một họ, tránh "gần giống nhau" |
-| **Italic / Underline / Bold** | Nhấn mạnh | Mỗi kiểu có vai trò riêng; underline trên web thường được hiểu là **link** |
+| **Italic / Underline / Bold** ✅ | Nhấn mạnh | Mỗi kiểu có vai trò riêng; underline trên web thường được hiểu là **link** |
 
 ## C. Màu sắc (Color)
 | Thuật ngữ | Nghĩa | Vì sao quan trọng |

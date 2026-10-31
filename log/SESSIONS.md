@@ -34,3 +34,5 @@
 - Dựng và publish artifact V-01 Phân cấp (`demos/V-01/hierarchy.html`): 7 đòn bẩy bật tắt, squint test, thanh tỉ lệ bước, 5 cặp tệ/tốt, công thức mặc định, 3 phương án CC-01 có chú thích, 6 câu lệnh AI, tự kiểm tra.
 - Glossary đánh ✅ 5 thuật ngữ, thêm de-emphasize, consistency ≠ uniformity, concentric radius. Từ điển thêm dòng "cam ở khắp nơi".
 - Viết `docs/briefs/V-02.md`. Tiếp theo: V-02 Typography.
+- (tiếp) Người dùng đọc xong V-01. Dựng và publish V-02 Typography (`demos/V-02/typography.html`): thang chữ sống (gốc + tỉ lệ, so thang cũ), độ đậm có vai, ma trận nhấn mạnh, tabular, line-height/measure tiếng Việt, 5 cặp, bài AI GV-103 có chú thích + bản sửa.
+- Glossary ✅ thêm 8, từ điển thêm dòng "số to mà chẳng để làm gì". Viết `docs/briefs/V-03.md`. Tiếp theo: V-03 Màu ở chat mới.

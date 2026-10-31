@@ -1,0 +1,596 @@
+<title>V-02 Typography</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&family=Be+Vietnam+Pro:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* Bố cục: cùng khung với V-01 (cột đọc 760px, demo bung 1100px). Chữ mẫu luôn là Nunito của lab2. */
+:root{
+  --bg:#FBFAF8; --surface:#FFFFFF; --sunk:#F4F1EE;
+  --ink:#1F1F1F; --ink2:#3C3C3C; --ink3:#6B6B6B; --line:#E7E2DD;
+  --accent:#B9551F; --accent-ink:#9A4518; --accent-soft:#FBEFE8;
+  --bad:#B42318; --bad-soft:#FEF0EF; --ok:#15803D; --ok-soft:#ECFDF3;
+  --s-bg:#FFFFFF; --s-muted:#F4F4F4; --s-line:#E5E5E5; --s-t1:#1F1F1F; --s-t2:#3C3C3C; --s-t3:#6B6B6B;
+  --s-p:#B9551F; --s-p-soft:#FBEFE8; --s-p-ink:#9A4518; --s-bad:#B42318; --s-bad-soft:#FEF0EF; --s-warn:#A15C00; --s-warn-soft:#FFF6DD; --s-ok:#15803D; --s-ok-soft:#ECFDF3;
+  --f-body:"Nunito", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --f-bvp:"Be Vietnam Pro", system-ui, sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#161412; --surface:#1F1C1A; --sunk:#262220;
+  --ink:#F2EEEA; --ink2:#D3CCC5; --ink3:#A39A92; --line:#3A3531;
+  --accent:#E8925E; --accent-ink:#F0A97E; --accent-soft:#3A2418;
+  --bad:#F2877E; --bad-soft:#3A1C1A; --ok:#6CCB8D; --ok-soft:#15301F; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#161412; --surface:#1F1C1A; --sunk:#262220;
+  --ink:#F2EEEA; --ink2:#D3CCC5; --ink3:#A39A92; --line:#3A3531;
+  --accent:#E8925E; --accent-ink:#F0A97E; --accent-soft:#3A2418;
+  --bad:#F2877E; --bad-soft:#3A1C1A; --ok:#6CCB8D; --ok-soft:#15301F; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 80px}
+h1,h2,h3{line-height:1.2;text-wrap:balance;margin:0}
+p{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+.spine{max-width:760px;margin:0 auto}
+.wide{max-width:1100px;margin:0 auto}
+.head{max-width:760px}
+section{padding-top:72px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink)}
+h2{font-size:28px;font-weight:900;margin-top:6px}
+.lead{color:var(--ink2);margin-top:10px;max-width:65ch}
+.small{font-size:14px;color:var(--ink3)}
+code,.mono{font-family:var(--f-mono);font-size:.88em}
+.term{font-weight:800;color:var(--ink)}
+.tnum{font-variant-numeric:tabular-nums}
+
+.hero{padding-top:48px}
+.hero .tag{font-family:var(--f-mono);font-size:13px;color:var(--ink3)}
+.hero h1{font-size:clamp(34px,7vw,56px);font-weight:900;letter-spacing:-.02em;margin-top:14px;max-width:17ch}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{margin-top:16px;color:var(--ink2);max-width:58ch;font-size:17px}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.toc a{font-size:14px;font-weight:700;color:var(--ink2);text-decoration:none;padding:6px 12px;border:1px solid var(--line);border-radius:999px}
+.toc a:hover{border-color:var(--accent);color:var(--accent-ink)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:20px}
+.terms div{padding:14px 16px;background:var(--surface);border-left:3px solid var(--line)}
+.terms div:first-child{border-left-color:var(--accent)}
+.terms b{display:block;font-size:16px}
+.terms span{display:block;font-size:14px;color:var(--ink2);margin-top:2px;line-height:1.45}
+
+/* Điều khiển */
+.ctl{display:flex;align-items:center;gap:12px 16px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin-top:20px}
+.ctl label,.ctl .lab{font-weight:800;font-size:15px}
+.ctl input[type=range]{flex:1;min-width:150px;accent-color:var(--accent)}
+.ctl output{font-family:var(--f-mono);font-size:13px;color:var(--ink3);min-width:52px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;flex-wrap:wrap}
+.seg button{border:0;background:none;padding:8px 12px;font-size:14px;font-weight:700;color:var(--ink2);min-height:40px}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.badge{font-size:13px;font-weight:800;padding:4px 10px;border-radius:999px}
+.b-bad{background:var(--bad-soft);color:var(--bad)}
+.b-ok{background:var(--ok-soft);color:var(--ok)}
+.b-warn{background:var(--accent-soft);color:var(--accent-ink)}
+
+/* Mockup màn lab2 */
+.ph{width:320px;max-width:100%;background:var(--s-bg);color:var(--s-t1);border-radius:24px;overflow:hidden;
+  box-shadow:0 0 0 1px var(--line),0 12px 30px -18px rgba(0,0,0,.35);font-family:var(--f-body);display:flex;flex-direction:column;flex:none}
+.ph .sb{height:24px;display:flex;justify-content:space-between;align-items:center;padding:0 18px;font-size:11px;font-weight:800}
+.ph .scr{padding:8px 16px 16px;display:flex;flex-direction:column;gap:10px}
+.s-row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.s-pill{font-weight:700;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.pill-bad{background:var(--s-bad-soft);color:var(--s-bad)}
+.pill-warn{background:var(--s-warn-soft);color:var(--s-warn)}
+.pill-ok{background:var(--s-ok-soft);color:var(--s-ok)}
+.av{width:30px;height:30px;border-radius:50%;background:var(--s-p-soft);color:var(--s-p-ink);font-size:12px;font-weight:700;display:grid;place-items:center;flex:none}
+.stu{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--s-line)}
+.stu .who{flex:1;min-width:0}
+.stu .cnt{text-align:right;font-variant-numeric:tabular-nums;min-width:40px}
+
+/* Thang sống */
+.scale-wrap{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:28px;margin-top:24px;align-items:start}
+.ladder{display:flex;flex-direction:column;gap:2px;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px 20px;min-width:0;overflow:hidden}
+.rung{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;align-items:baseline;padding:6px 0;border-bottom:1px dashed var(--line)}
+.rung:last-child{border-bottom:0}
+.rung .k{font-family:var(--f-mono);font-size:12px;color:var(--ink3)}
+.rung .k b{display:block;color:var(--ink);font-size:13px}
+.rung .v{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.2}
+.phcol{display:flex;flex-direction:column;align-items:center;gap:8px}
+.phcol .cap{font-size:13px;font-weight:800;color:var(--ink2)}
+
+/* Đậm */
+.wt-wrap{display:flex;flex-wrap:wrap;gap:28px;margin-top:20px;align-items:flex-start}
+.wt-note{flex:1;min-width:240px;display:flex;flex-direction:column;gap:10px}
+.wt-note p{font-size:15px;color:var(--ink2)}
+
+/* Ma trận */
+.tbl-wrap{overflow-x:auto;margin-top:20px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:15px}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+th{font-size:13px;font-family:var(--f-mono);color:var(--ink3);font-weight:700}
+td.sample{font-size:16px;white-space:nowrap}
+td .no{color:var(--bad);font-weight:700}
+td .yes{color:var(--ok);font-weight:700}
+
+/* Chữ số */
+.num-wrap{display:flex;flex-wrap:wrap;gap:28px;margin-top:20px;align-items:flex-start}
+.numcard{width:340px;max-width:100%;background:var(--s-bg);color:var(--s-t1);border-radius:16px;box-shadow:0 0 0 1px var(--line);padding:14px 16px}
+.numcard .row{display:grid;grid-template-columns:1fr auto auto;gap:14px;padding:7px 0;border-bottom:1px solid var(--s-line);font-size:15px}
+.numcard .row:last-child{border-bottom:0}
+.numcard .t,.numcard .c{font-size:17px;font-weight:700}
+.numcard.prop .t,.numcard.prop .c{font-variant-numeric:proportional-nums;text-align:left}
+.numcard.tab .t,.numcard.tab .c{font-variant-numeric:tabular-nums;text-align:right}
+
+/* Tiếng Việt */
+.viet{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;margin-top:20px}
+.vbox{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;min-width:0;overflow:hidden}
+.caps{font-size:30px;font-weight:800;text-transform:uppercase;color:var(--ink)}
+.para{font-size:16px;color:var(--ink2);margin-top:14px}
+.measure-box{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;margin-top:16px;overflow:hidden}
+.measure-text{font-size:16px;color:var(--ink2);max-width:100%;transition:max-width .15s}
+
+/* Cặp */
+.pair{margin-top:40px}
+.pair h3{font-size:20px;font-weight:900}
+.pair .why{color:var(--ink2);margin-top:6px;max-width:68ch;font-size:15px}
+.pair-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:16px}
+.side{border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;align-items:center;background:var(--sunk);min-width:0}
+.side .lbl{align-self:flex-start;font-family:var(--f-mono);font-size:12px;font-weight:700;letter-spacing:.06em;padding:3px 9px;border-radius:6px}
+.side.bad .lbl{background:var(--bad-soft);color:var(--bad)}
+.side.good .lbl{background:var(--ok-soft);color:var(--ok)}
+.side .note{align-self:stretch;font-size:13.5px;color:var(--ink2);line-height:1.45}
+.mini{width:290px;max-width:100%;background:var(--s-bg);color:var(--s-t1);border-radius:16px;padding:14px;box-shadow:0 0 0 1px var(--line);display:flex;flex-direction:column;gap:6px;line-height:1.3}
+.rule-id{font-family:var(--f-mono);font-size:12px;color:var(--ink3);margin-left:6px;font-weight:500}
+
+/* lab2 */
+.lab{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin-top:28px}
+.lab article{display:flex;flex-direction:column;gap:14px;align-items:center;min-width:0}
+.lab h3{font-size:18px;font-weight:900;align-self:flex-start}
+.calls{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;align-self:stretch}
+.calls li{display:grid;grid-template-columns:22px 1fr;gap:8px;font-size:14px;line-height:1.45;color:var(--ink2)}
+.calls li b{color:var(--ink)}
+.n{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;font-family:var(--f-mono);font-size:11px;font-weight:700;color:#fff}
+.n.g{background:#15803D}.n.r{background:#B42318}
+.pinwrap{position:relative}
+.pin{position:absolute;z-index:2;top:-8px;right:-8px}
+.pin.l{right:auto;left:-8px}
+.bvp{font-family:var(--f-bvp)}
+
+/* Mặc định */
+.recipe{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin-top:20px}
+.recipe div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.recipe b{display:block;font-size:13px;font-family:var(--f-mono);color:var(--accent-ink);font-weight:700}
+.recipe span{display:block;margin-top:4px;font-size:15px;color:var(--ink2)}
+.counter{margin-top:20px;padding:14px 18px;border-left:3px solid var(--accent);background:var(--accent-soft);font-size:15px;color:var(--ink)}
+
+.prompts{display:flex;flex-direction:column;gap:12px;margin-top:20px}
+.prompt{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 14px;align-items:start}
+.prompt .feel{font-size:13px;color:var(--ink3);font-weight:700}
+.prompt .say{font-size:15px;color:var(--ink);grid-column:1}
+.copy{grid-row:1 / span 2;grid-column:2;background:var(--ink);color:var(--bg);border:0;border-radius:10px;padding:8px 14px;font-size:13px;font-weight:800;min-height:40px}
+.copy.done{background:var(--ok)}
+details.q{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-top:12px}
+details.q summary{cursor:pointer;font-weight:800;list-style:none;display:flex;gap:10px}
+details.q summary::-webkit-details-marker{display:none}
+details.q summary::before{content:"+";font-family:var(--f-mono);color:var(--accent-ink);font-weight:700}
+details.q[open] summary::before{content:"−"}
+details.q .ans{margin-top:10px;color:var(--ink2);font-size:15px;padding-left:20px}
+footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--line);font-size:14px;color:var(--ink3)}
+
+@media (max-width:980px){.scale-wrap{grid-template-columns:1fr 1fr}.ladder{grid-column:1 / -1}}
+@media (max-width:820px){.viet,.lab{grid-template-columns:1fr}}
+@media (max-width:680px){.scale-wrap{grid-template-columns:1fr}.phcol{width:100%}}
+@media (max-width:620px){.pair-grid{grid-template-columns:1fr}h2{font-size:24px}.prompt{grid-template-columns:1fr}.copy{grid-row:auto;grid-column:1;justify-self:start}.rung{grid-template-columns:76px minmax(0,1fr)}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<header class="spine hero">
+  <div class="tag">Crash course trực quan · khối V-02 / 15 · ~25 phút</div>
+  <h1>Ít cỡ chữ, <em>cách xa</em> nhau.</h1>
+  <p>Thang chữ là công cụ. Chọn cái gì to là chuyện của nội dung, đã học ở V-01. Trang này chỉ bấm, kéo, nhìn; mọi chữ mẫu là Nunito của lab2.</p>
+  <nav class="toc" aria-label="Mục lục">
+    <a href="#ban-do">Bản đồ</a><a href="#thang">Thang chữ</a><a href="#dam">Độ đậm</a><a href="#ma-tran">Nhấn mạnh</a><a href="#chu-so">Chữ số</a><a href="#tieng-viet">Tiếng Việt</a><a href="#cap">Tệ ↔ tốt</a><a href="#lab2">Trên lab2</a><a href="#mac-dinh">Mặc định</a><a href="#lenh">Lệnh cho AI</a><a href="#kiem-tra">Tự kiểm tra</a>
+  </nav>
+</header>
+
+<section id="ban-do" class="spine">
+  <div class="eyebrow">Bản đồ nhanh</div>
+  <h2>Bảy từ cần gọi được tên</h2>
+  <div class="terms">
+    <div><b>Modular scale</b><span>Thang tỉ lệ: lấy cỡ gốc rồi nhân liên tục với một tỉ lệ (vd 15 × 1.25 = 18.75 → 18). Các cỡ "hợp nhau" vì cùng một phép nhân.</span></div>
+    <div><b>Type ramp</b><span>Danh sách các kiểu chữ có tên vai (display, headline, title, body, meta) kèm cỡ, dòng, độ đậm.</span></div>
+    <div><b>Weight</b><span>Độ đậm 100–900. Mỗi độ đậm nên có một vai, không rải 600 khắp nơi.</span></div>
+    <div><b>Tabular figures</b><span>Chữ số đều bề rộng: số 1 rộng bằng số 8, nên cột số thẳng hàng. Bật bằng <code>font-variant-numeric: tabular-nums</code>.</span></div>
+    <div><b>Line-height</b><span>Chiều cao một dòng so với cỡ chữ (1.5 = 150%). Tiếng Việt cần cao hơn vì dấu chồng.</span></div>
+    <div><b>Measure</b><span>Độ dài một dòng chữ, đo bằng số ký tự. Dễ đọc trong khoảng 45–75.</span></div>
+    <div><b>Dấu chồng</b><span>Hai dấu trên một chữ (ễ, ữ, ẫ). Vươn cao hơn chữ Latin, dễ đụng dòng trên.</span></div>
+  </div>
+</section>
+
+<section id="thang" class="wide">
+  <div class="head">
+    <div class="eyebrow">Thang chữ sống</div>
+    <h2>Chọn gốc và tỉ lệ, xem màn GV-103 đổi theo</h2>
+    <p class="lead">Thang dựng 5 bậc: <b>meta</b> (gốc ÷ tỉ lệ, không dưới sàn 13), <b>body</b> (gốc), <b>title</b> (×1), <b>headline</b> (×2), <b>display</b> (×4, cố ý bỏ bậc ×3 để số lớn tách hẳn khỏi tiêu đề). Bên phải là thang cũ lab2 để so.</p>
+  </div>
+  <div class="ctl">
+    <span class="lab" id="ratio-lab">Tỉ lệ</span>
+    <div class="seg" role="group" aria-labelledby="ratio-lab" id="ratio-seg">
+      <button type="button" data-r="1.07" aria-pressed="false">×1.07 lab2</button>
+      <button type="button" data-r="1.2" aria-pressed="false">×1.2 quãng ba thứ</button>
+      <button type="button" data-r="1.25" aria-pressed="true">×1.25 quãng ba trưởng</button>
+      <button type="button" data-r="1.333" aria-pressed="false">×1.333 quãng bốn</button>
+      <button type="button" data-r="1.5" aria-pressed="false">×1.5 quãng năm</button>
+    </div>
+    <label for="base">Gốc</label>
+    <input id="base" type="range" min="13" max="17" step="1" value="15">
+    <output id="base-out" for="base">15 px</output>
+    <span class="badge b-ok" id="scale-badge">rõ, hợp app</span>
+  </div>
+  <div class="scale-wrap">
+    <div class="ladder" id="ladder"></div>
+    <div class="phcol"><span class="cap">Thang bạn chọn</span><div class="ph" id="ph-new"></div></div>
+    <div class="phcol"><span class="cap">Thang cũ lab2 (28·22·16·15·13)</span><div class="ph" id="ph-old"></div></div>
+  </div>
+  <p class="small" style="margin-top:14px;max-width:70ch">Tên quãng nhạc (ba thứ, ba trưởng…) chỉ là cách gọi các tỉ lệ cho dễ nhớ, mượn từ âm nhạc. Không có phép màu: giá trị thật là <b>ít bậc và cách xa</b>. Sàn 13px vì nhỏ hơn thì khó đọc trên điện thoại: tương phản đi <b>lên</b>, không đi xuống.</p>
+</section>
+
+<section id="dam" class="wide">
+  <div class="head">
+    <div class="eyebrow">Độ đậm có vai</div>
+    <h2>Gạt giữa "600 khắp nơi" và "ba vai"</h2>
+  </div>
+  <div class="ctl">
+    <span class="lab" id="wt-lab">Độ đậm</span>
+    <div class="seg" role="group" aria-labelledby="wt-lab" id="wt-seg">
+      <button type="button" data-w="all" aria-pressed="true">600 khắp nơi</button>
+      <button type="button" data-w="roles" aria-pressed="false">Ba vai</button>
+    </div>
+  </div>
+  <div class="wt-wrap">
+    <div class="mini" id="wt-card" style="width:320px;gap:0;padding:6px 16px">
+      <div class="stu"><span class="av">LT</span><div class="who"><div class="w-name" style="font-size:15px">Lê Thu Trang</div><div class="w-meta" style="font-size:13px;color:var(--s-t3)">SE190142 · Đã bị cấm thi</div></div><div class="cnt w-num" style="font-size:18px">5<span class="w-den" style="color:var(--s-t3)">/4</span></div></div>
+      <div class="stu"><span class="av">TL</span><div class="who"><div class="w-name" style="font-size:15px">Trần Minh Long</div><div class="w-meta" style="font-size:13px;color:var(--s-t3)">SE190155 · còn được vắng 1</div></div><div class="cnt w-num" style="font-size:18px">3<span class="w-den" style="color:var(--s-t3)">/4</span></div></div>
+      <div class="stu"><span class="av">PH</span><div class="who"><div class="w-name" style="font-size:15px">Phạm Quốc Huy</div><div class="w-meta" style="font-size:13px;color:var(--s-t3)">SE190163</div></div><div class="cnt w-num w-quiet" style="font-size:18px">2<span class="w-den" style="color:var(--s-t3)">/4</span></div></div>
+      <div class="stu" style="border-bottom:0"><span class="av">HA</span><div class="who"><div class="w-name" style="font-size:15px">Hoàng Đức Anh</div><div class="w-meta" style="font-size:13px;color:var(--s-t3)">SE190190</div></div><div class="cnt w-num w-quiet" style="font-size:18px">0<span class="w-den" style="color:var(--s-t3)">/4</span></div></div>
+    </div>
+    <div class="wt-note">
+      <p><b>600 khắp nơi:</b> tên, mã số, con số, nhãn đều SemiBold. Mắt không biết đọc gì trước. Đây là "đồng phục" ở trục độ đậm (W2).</p>
+      <p><b>Ba vai:</b> <span class="term">400</span> cho chữ đọc và chữ phụ · <span class="term">600</span> cho thứ gọi tên hoặc bấm được (tên sinh viên, nhãn nút) · <span class="term">700</span> chỉ cho hai cỡ lớn nhất. Số an toàn (2/4, 0/4) hạ về 400 xám; số vượt ngưỡng giữ đậm.</p>
+      <p class="small">Thứ tự nên thử: hạ cấp chữ phụ (400, xám) trước, rồi mới tính chuyện làm chữ chính đậm hơn.</p>
+    </div>
+  </div>
+</section>
+
+<section id="ma-tran" class="wide">
+  <div class="head">
+    <div class="eyebrow">Ma trận nhấn mạnh</div>
+    <h2>Bốn cách nhấn, mỗi cách một việc</h2>
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Cách</th><th>Mẫu</th><th>Dùng khi</th><th>Cấm khi</th></tr></thead>
+      <tbody>
+        <tr><td><b>Đậm</b></td><td class="sample">Vắng <b>3/4</b> buổi</td><td><span class="yes">✓</span> tách tầng khi cùng cỡ; tên, nhãn bấm được</td><td><span class="no">✗</span> cả đoạn văn; mọi thứ cùng 600</td></tr>
+        <tr><td><b>Nghiêng</b></td><td class="sample">Em <i>chưa</i> quét mã</td><td><span class="yes">✓</span> nhấn một từ trong câu; tên sách, thuật ngữ nước ngoài</td><td><span class="no">✗</span> nhãn, nút, tiêu đề; đoạn dài (khó đọc)</td></tr>
+        <tr><td><b>Gạch chân</b></td><td class="sample"><u>Xem tất cả</u></td><td><span class="yes">✓</span> chỉ cho link. Người dùng web đã quen "gạch chân = bấm được"</td><td><span class="no">✗</span> để nhấn mạnh. Người dùng sẽ thử bấm</td></tr>
+        <tr><td><b>In hoa</b></td><td class="sample" style="font-size:13px;font-weight:700;letter-spacing:.06em">ĐANG DIỄN RA</td><td><span class="yes">✓</span> nhãn 1–2 từ, cỡ nhỏ, kèm letter-spacing +0.05em</td><td><span class="no">✗</span> câu dài (đọc chậm, như đang hét); chữ to có dấu chồng</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="chu-so" class="wide">
+  <div class="head">
+    <div class="eyebrow">Chữ số</div>
+    <h2>Gạt proportional ↔ tabular, nhìn cột số</h2>
+    <p class="lead"><span class="term">Proportional</span>: mỗi chữ số rộng theo hình dạng (số 1 hẹp), hợp với số nằm trong câu văn. <span class="term">Tabular</span>: mọi chữ số rộng bằng nhau, hợp với cột, giờ, bộ đếm. Đi kèm: căn phải để hàng đơn vị thẳng nhau.</p>
+  </div>
+  <div class="ctl">
+    <span class="lab" id="num-lab">Chữ số</span>
+    <div class="seg" role="group" aria-labelledby="num-lab" id="num-seg">
+      <button type="button" data-n="prop" aria-pressed="true">Proportional, căn trái</button>
+      <button type="button" data-n="tab" aria-pressed="false">Tabular, căn phải</button>
+    </div>
+  </div>
+  <div class="num-wrap">
+    <div class="numcard prop" id="numcard">
+      <div class="row"><span>PRM393 · SE1801</span><span class="t">07:00</span><span class="c">11/20</span></div>
+      <div class="row"><span>MMA301 · SE1805</span><span class="t">12:30</span><span class="c">8/20</span></div>
+      <div class="row"><span>PRN231 · SE1811</span><span class="t">14:50</span><span class="c">17/20</span></div>
+      <div class="row"><span>SWD392 · SE1819</span><span class="t">17:10</span><span class="c">1/20</span></div>
+    </div>
+    <p class="small" style="flex:1;min-width:240px">Ở chế độ proportional, "11" hẹp hơn "17", "1/20" lệch hẳn so với "17/20": mắt phải dò từng hàng. Nunito có sẵn chữ số tabular, chỉ cần bật.</p>
+  </div>
+</section>
+
+<section id="tieng-viet" class="wide">
+  <div class="head">
+    <div class="eyebrow">Tiếng Việt</div>
+    <h2>Dấu chồng cần chỗ thở, mắt cần dòng vừa</h2>
+  </div>
+  <div class="ctl">
+    <label for="lh">Line-height</label>
+    <input id="lh" type="range" min="1" max="1.8" step="0.05" value="1.1">
+    <output id="lh-out" for="lh">1.10</output>
+    <span class="badge b-bad" id="lh-badge">dấu đụng dòng trên</span>
+  </div>
+  <div class="viet">
+    <div class="vbox"><div class="caps" id="caps">Nguyễn Thị Hường<br>ỄỮẪ ỀỂỖ ẨẬẪ</div></div>
+    <div class="vbox"><p class="para" id="para" style="margin:0">Nguyễn Thị Hường vắng 3/4 buổi, chỉ còn được nghỉ thêm một buổi nữa trước khi bị cấm thi. Giảng viên nên nhắc em trong buổi học tới, trước khi chốt điểm danh cuối kỳ.</p></div>
+  </div>
+  <p class="small" style="margin-top:10px">Mốc: chữ đọc nhiều dòng 1.4–1.6; dưới khoảng 1.25 dấu chồng bắt đầu chạm dòng trên. Display một dòng được thấp hơn (1.1–1.2) vì không có dòng trên.</p>
+
+  <div class="ctl">
+    <label for="ms">Measure</label>
+    <input id="ms" type="range" min="25" max="110" step="1" value="100">
+    <output id="ms-out" for="ms">100 ch</output>
+    <span class="badge b-bad" id="ms-badge">quá dài</span>
+  </div>
+  <div class="measure-box"><p class="measure-text" id="mtext">Khi một dòng quá dài, mắt đi hết dòng rồi phải quay về đầu dòng sau, và rất dễ quay nhầm, đọc lại một dòng hai lần hoặc nhảy cóc. Khi một dòng quá ngắn, mắt phải đổi dòng liên tục, nhịp đọc bị cắt vụn, và câu tách ra từng mảnh nhỏ. Vùng dễ chịu cho phần lớn người đọc nằm trong khoảng bốn mươi lăm tới bảy mươi lăm ký tự mỗi dòng. Trên màn 360 dp của điện thoại, chữ 15 px gần như tự rơi vào khoảng này, nên vấn đề measure chủ yếu xuất hiện trên máy tính bảng và web.</p></div>
+</section>
+
+<section id="cap" class="wide">
+  <div class="head">
+    <div class="eyebrow">Tệ ↔ tốt</div>
+    <h2>Năm cặp, mỗi cặp chỉ đổi một biến</h2>
+  </div>
+
+  <div class="pair">
+    <h3>Bước cỡ sát nhau</h3>
+    <p class="why">Lỗi: <span class="term">thang phẳng</span> (×1.06). 17 → 16 → 15 mắt không phân biệt; ba cỡ làm việc của một.</p>
+    <div class="pair-grid">
+      <div class="side bad"><span class="lbl">TỆ · 17 / 16 / 15</span>
+        <div class="mini"><div style="font-size:17px;font-weight:700">Sinh viên cần chú ý</div><div style="font-size:16px;font-weight:700">Lê Thu Trang</div><div style="font-size:15px;font-weight:600">SE190142 · vắng 5/4</div></div>
+        <p class="note">Ba dòng trông như một khối đậm.</p></div>
+      <div class="side good"><span class="lbl">TỐT · 13 / 15 / 24</span>
+        <div class="mini"><div style="font-size:13px;font-weight:700;color:var(--s-t2)">Sinh viên cần chú ý</div><div style="font-size:24px;font-weight:700;line-height:1.15">Lê Thu Trang</div><div style="font-size:15px;color:var(--s-t3)">SE190142 · vắng 5/4</div></div>
+        <p class="note">Nhãn nhóm nhỏ xám, tên to, chi tiết vừa. Ba tầng rõ.</p></div>
+    </div>
+  </div>
+
+  <div class="pair">
+    <h3>600 khắp nơi</h3>
+    <p class="why">Lỗi: <span class="term">đồng phục ở trục độ đậm</span>. Khi mọi thứ cùng đậm, đậm hết tác dụng.</p>
+    <div class="pair-grid">
+      <div class="side bad"><span class="lbl">TỆ</span>
+        <div class="mini" style="font-weight:600"><div style="font-size:15px">Trần Minh Long</div><div style="font-size:13px">SE190155 · SE1801</div><div style="font-size:13px">Vắng 3/4 · Sát ngưỡng</div></div>
+        <p class="note">Mã số và tên nặng ngang nhau.</p></div>
+      <div class="side good"><span class="lbl">TỐT</span>
+        <div class="mini"><div style="font-size:15px;font-weight:600">Trần Minh Long</div><div style="font-size:13px;color:var(--s-t3)">SE190155 · SE1801</div><div style="font-size:13px;color:var(--s-warn);font-weight:600">còn được vắng 1</div></div>
+        <p class="note">Tên 600; mã 400 xám; hệ quả 600 màu cảnh báo.</p></div>
+    </div>
+  </div>
+
+  <div class="pair">
+    <h3>Cột số lệch</h3>
+    <p class="why">Lỗi: <span class="term">proportional figures trong bảng</span>. So sánh số cần thẳng cột.</p>
+    <div class="pair-grid">
+      <div class="side bad"><span class="lbl">TỆ</span>
+        <div class="mini" style="font-variant-numeric:proportional-nums;font-size:17px;font-weight:700"><div>11/20</div><div>1/20</div><div>17/20</div></div>
+        <p class="note">Căn trái, chữ số rộng khác nhau.</p></div>
+      <div class="side good"><span class="lbl">TỐT</span>
+        <div class="mini" style="font-variant-numeric:tabular-nums;font-size:17px;font-weight:700;text-align:right"><div>11/20</div><div>1/20</div><div>17/20</div></div>
+        <p class="note">Tabular, căn phải: hàng đơn vị thẳng nhau.</p></div>
+    </div>
+  </div>
+
+  <div class="pair">
+    <h3>In hoa chật</h3>
+    <p class="why">Lỗi: <span class="term">all caps không tracking</span>. Chữ in hoa sát nhau đọc như một khối; dấu tiếng Việt càng chật.</p>
+    <div class="pair-grid">
+      <div class="side bad"><span class="lbl">TỆ</span>
+        <div class="mini"><div style="font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:-.01em">Sinh viên vắng nhiều nhất trong học kỳ</div></div>
+        <p class="note">Câu dài in hoa, không nới chữ.</p></div>
+      <div class="side good"><span class="lbl">TỐT</span>
+        <div class="mini"><div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--s-t2)">Vắng nhiều</div></div>
+        <p class="note">Nhãn 2 từ, letter-spacing +0.07em, xám đậm.</p></div>
+    </div>
+  </div>
+
+  <div class="pair">
+    <h3>Gạch chân để nhấn</h3>
+    <p class="why">Lỗi: <span class="term">signifier sai</span>. Trên màn hình, gạch chân nghĩa là link. Người dùng sẽ bấm thử.</p>
+    <div class="pair-grid">
+      <div class="side bad"><span class="lbl">TỆ</span>
+        <div class="mini" style="font-size:15px">Hạn chốt điểm danh là <u>trước 23:59 hôm nay</u>.</div>
+        <p class="note">Trông như link mở lịch.</p></div>
+      <div class="side good"><span class="lbl">TỐT</span>
+        <div class="mini" style="font-size:15px">Hạn chốt điểm danh là <b>trước 23:59 hôm nay</b>.</div>
+        <p class="note">Đậm để nhấn; gạch chân để dành cho link thật.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="lab2" class="wide">
+  <div class="head">
+    <div class="eyebrow">Trên lab2</div>
+    <h2>Bài AI làm ở CC-02: thang đúng, điểm nhấn sai</h2>
+    <p class="lead">Dựng lại giản lược GV-103 Chi tiết lớp từ <code>demos/CC-02/</code>. AI đặt cỡ to nhất vào hai con số không dẫn tới quyết định nào. Bên phải: cùng thang, cùng dữ liệu, chỉ đổi chỗ đặt cỡ display.</p>
+  </div>
+  <div class="lab">
+    <article>
+      <h3>Bản AI (Be Vietnam Pro)</h3>
+      <div class="ph bvp">
+        <div class="sb"><span>9:41</span><span>● ● ▮</span></div>
+        <div class="scr" style="font-family:var(--f-bvp)">
+          <div><div style="font-size:24px;font-weight:700">SE1801</div><div style="font-size:13px;color:var(--s-t3)">PRM393 · Fall 2026</div></div>
+          <div class="pinwrap" style="border:1px solid var(--s-line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:10px">
+            <span class="pin n r">1</span>
+            <div style="display:flex;gap:16px">
+              <div><span style="font-size:36px;font-weight:700;line-height:1">35</span><div style="font-size:13px;color:var(--s-t3)">sinh viên</div></div>
+              <div style="border-left:1px solid var(--s-line);padding-left:16px"><span style="font-size:36px;font-weight:700;line-height:1">6</span><span style="font-size:18px;color:var(--s-t3)">/20</span><div style="font-size:13px;color:var(--s-t3)">buổi đã học</div></div>
+            </div>
+            <div style="height:6px;border-radius:3px;background:var(--s-muted)" class="pinwrap"><span class="pin n r" style="top:-7px">3</span><div style="width:30%;height:100%;background:var(--s-p);border-radius:3px"></div></div>
+            <div style="display:flex;gap:6px;flex-wrap:wrap;font-size:12px"><span class="s-pill pill-bad">1 cấm thi</span><span class="s-pill pill-warn">1 sát ngưỡng</span><span class="s-pill pill-ok">33 an toàn</span></div>
+          </div>
+          <div style="font-size:13px;color:var(--s-t3)">Vắng nhiều nhất trước · ngưỡng 4 buổi</div>
+          <div class="pinwrap">
+            <span class="pin n g">4</span>
+            <div class="stu"><span class="av">LT</span><div class="who"><div style="font-size:15px;font-weight:600">Lê Thu Trang</div><div style="font-size:13px;color:var(--s-bad)">Đã bị cấm thi</div></div><div class="cnt" style="font-size:18px;font-weight:600;color:var(--s-bad)">5<span style="color:var(--s-t3)">/4</span></div></div>
+            <div class="stu"><span class="av">TL</span><div class="who"><div style="font-size:15px;font-weight:600">Trần Minh Long</div><div style="font-size:13px;color:var(--s-warn)">Sát ngưỡng</div></div><div class="cnt" style="font-size:18px;font-weight:600">3<span style="color:var(--s-t3)">/4</span></div></div>
+            <div class="stu"><span class="av">PH</span><div class="who"><div style="font-size:15px;font-weight:600">Phạm Quốc Huy</div><div style="font-size:13px;color:var(--s-t3)">SE190163</div></div><div class="cnt" style="font-size:18px;font-weight:600">2<span style="color:var(--s-t3)">/4</span></div></div>
+          </div>
+          <div class="pinwrap" style="font-size:13px;color:var(--s-t3);text-align:center"><span class="pin n r">2</span>Còn 27 sinh viên khác, đều 0/4</div>
+        </div>
+      </div>
+      <ul class="calls">
+        <li><span class="n r">1</span><span><b>Focal point sai chỗ</b>: cỡ 36 (bậc mạnh nhất) dành cho "35" và "6/20". Số trả lời câu hỏi "lớp này có ổn không" chỉ nằm trong pill 12px. Lặp lại vanity metric của V-01.</span></li>
+        <li><span class="n r">2</span><span><b>Dữ liệu bịa</b>: đề chỉ nói "còn 27 em khác"; "đều 0/4" do AI tự đặt. Màn chuyên cần mà sai số liệu thì mất lòng tin.</span></li>
+        <li><span class="n r">3</span><span><b>Cam dùng để trang trí</b>: thanh tiến độ là thông tin, không phải hành động.</span></li>
+        <li><span class="n g">4</span><span><b>Điểm tốt</b>: thang 13/15/18/24/36, ba độ đậm có vai, cột x/4 tabular căn phải, "/4" hạ xám, màu đỏ có kèm chữ.</span></li>
+        <li><span class="n r">5</span><span><b>Đổi hai biến cùng lúc</b>: đổi thang và đổi font Nunito → Be Vietnam Pro. So trước/sau không biết cái nào có tác dụng; lại mất nét tròn thân thiện của lab2.</span></li>
+      </ul>
+    </article>
+
+    <article>
+      <h3>Bản sửa (Nunito, cùng thang)</h3>
+      <div class="ph">
+        <div class="sb"><span>9:41</span><span>● ● ▮</span></div>
+        <div class="scr">
+          <div><div style="font-size:24px;font-weight:700">SE1801</div><div style="font-size:13px;color:var(--s-t3)" class="tnum">PRM393 · 35 sinh viên · đã học 6/20 buổi</div></div>
+          <div class="pinwrap" style="background:var(--s-muted);border-radius:12px;padding:12px">
+            <span class="pin n g">1</span>
+            <div style="font-size:36px;font-weight:700;line-height:1.05">2 em cần chú ý</div>
+            <div style="font-size:15px;color:var(--s-t2);margin-top:4px">1 đã bị cấm thi · 1 còn được vắng 1 buổi</div>
+          </div>
+          <div style="font-size:13px;color:var(--s-t3)">Vắng nhiều nhất trước · ngưỡng 4 buổi</div>
+          <div>
+            <div class="stu"><span class="av">LT</span><div class="who"><div style="font-size:15px;font-weight:600">Lê Thu Trang</div><div style="font-size:13px;color:var(--s-bad);font-weight:600">Đã bị cấm thi</div></div><div class="cnt" style="font-size:18px;font-weight:700;color:var(--s-bad)">5<span style="color:var(--s-t3);font-weight:400">/4</span></div></div>
+            <div class="stu"><span class="av">TL</span><div class="who"><div style="font-size:15px;font-weight:600">Trần Minh Long</div><div style="font-size:13px;color:var(--s-warn);font-weight:600">còn được vắng 1</div></div><div class="cnt" style="font-size:18px;font-weight:700">3<span style="color:var(--s-t3);font-weight:400">/4</span></div></div>
+            <div class="stu"><span class="av">PH</span><div class="who"><div style="font-size:15px;font-weight:600">Phạm Quốc Huy</div><div style="font-size:13px;color:var(--s-t3)">SE190163</div></div><div class="cnt" style="font-size:18px;color:var(--s-t3)">2<span>/4</span></div></div>
+            <div class="stu" style="border-bottom:0"><span class="av">NH</span><div class="who"><div style="font-size:15px;font-weight:600">Nguyễn Thị Hường</div><div style="font-size:13px;color:var(--s-t3)">SE190171</div></div><div class="cnt" style="font-size:18px;color:var(--s-t3)">2<span>/4</span></div></div>
+          </div>
+          <div class="pinwrap" style="font-size:13px;color:var(--s-t3)"><span class="pin n g">2</span>Cuộn để xem 31 em còn lại</div>
+        </div>
+      </div>
+      <ul class="calls">
+        <li><span class="n g">1</span><span><b>Display vào đúng câu trả lời</b>: "2 em cần chú ý". 35 và 6/20 thu về một dòng meta. Thang không đổi, chỉ đổi chỗ đặt cỡ to.</span></li>
+        <li><span class="n g">2</span><span><b>Không tự bịa tổng kết</b>: hiện hàng thật, cho cuộn. Số an toàn hạ về 400 xám.</span></li>
+        <li><span class="n g">·</span><span>Không còn khung lồng khung (viền card + viền dọc + pill màu): nhóm bằng nền xám nhạt. Không còn cam vì màn này không có hành động chính.</span></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section id="mac-dinh" class="wide">
+  <div class="head">
+    <div class="eyebrow">Phương án tốt nhất mặc định</div>
+    <h2>Không biết chọn gì thì dùng bộ này cho app di động</h2>
+  </div>
+  <div class="recipe">
+    <div><b>THANG</b><span>Gốc 15, ×1.25, năm bậc <span class="tnum">13 / 15 / 18 / 24 / 36</span>. Không dùng cỡ lẻ ngoài thang.</span></div>
+    <div><b>ĐỘ ĐẬM</b><span>400 đọc · 600 gọi tên, bấm được · 700 chỉ cho 24 và 36.</span></div>
+    <div><b>LINE-HEIGHT</b><span>1.5 cho chữ đọc · 1.3 cho tiêu đề · 1.1–1.15 cho display một dòng.</span></div>
+    <div><b>MÀU CHỮ</b><span>Ba tầng: <code>#1F1F1F</code> chính, <code>#3C3C3C</code> phụ, <code>#6B6B6B</code> chú thích (từ V-01).</span></div>
+    <div><b>CHỮ SỐ</b><span>Tabular + căn phải cho mọi số cần so: giờ, x/4, điểm, đếm.</span></div>
+    <div><b>NHẤN</b><span>Đậm để nhấn; nghiêng trong câu; gạch chân chỉ cho link; in hoa chỉ nhãn 1–2 từ.</span></div>
+  </div>
+  <p class="spine counter" style="margin-left:0"><b>Mặc định AI hay gặp:</b> thang Tailwind có đủ 12/14/16/18/20/24 dùng lẫn lộn; tiêu đề "Xin chào!" cỡ to nhất; Inter cho mọi sản phẩm; 600 cho mọi nhãn; số liệu lớn cho vanity metric. <b>Khi nào luật sai:</b> trang báo chí, landing page cần tỉ lệ gắt hơn (×1.333–1.5); bảng dữ liệu dày cần thang hẹp hơn (×1.125–1.2).</p>
+</section>
+
+<section id="lenh" class="spine">
+  <div class="eyebrow">Câu lệnh mẫu cho AI</div>
+  <h2>Cảm giác mơ hồ → câu lệnh có thuật ngữ</h2>
+  <div class="prompts" id="prompts"></div>
+</section>
+
+<section id="kiem-tra" class="spine">
+  <div class="eyebrow">Tự kiểm tra (tuỳ chọn, không ghi điểm)</div>
+  <h2>Ba câu, bấm để lộ đáp án</h2>
+  <details class="q"><summary>Vì sao bước 16 → 15 gần như vô hình, còn 15 → 24 thì rõ?</summary>
+    <div class="ans">Mắt so theo tỉ lệ, không theo hiệu số. 16/15 ≈ ×1.07, dưới ngưỡng nhận ra; 24/15 = ×1.6. Muốn tách tầng thì bước tối thiểu khoảng ×1.2, hoặc dùng thêm đòn bẩy khác (độ đậm, màu).</div></details>
+  <details class="q"><summary>Khi nào bật tabular figures, khi nào để mặc định?</summary>
+    <div class="ans">Bật cho số cần so theo cột hoặc thay đổi tại chỗ: bảng, giờ, x/4, bộ đếm, đồng hồ. Để proportional cho số nằm trong câu văn ("vắng 3 buổi"), vì đều bề rộng trông thưa.</div></details>
+  <details class="q"><summary>Vì sao không gạch chân để nhấn mạnh trên giao diện?</summary>
+    <div class="ans">Trên web và app, gạch chân là signifier của link. Gạch chân để nhấn khiến người dùng bấm thử rồi thấy không có gì xảy ra. Nhấn bằng đậm hoặc màu chữ.</div></details>
+</section>
+
+<footer class="spine">V-02 · nguồn: <code>lessons/CC-02-typography.md</code>, <code>demos/CC-02/type-scale-gv103.html</code>. Khối kế: V-03 Màu.</footer>
+
+<script>
+(function(){
+  function seg(id,cb){var g=document.getElementById(id),bs=[].slice.call(g.querySelectorAll('button'));
+    bs.forEach(function(b){b.addEventListener('click',function(){bs.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});cb(b)})});}
+
+  /* ---- Thang sống ---- */
+  var ratio=1.25, base=15, baseIn=document.getElementById('base');
+  function phone(s){
+    return '<div class="sb"><span>9:41</span><span>● ● ▮</span></div><div class="scr">'+
+      '<div><div style="font-size:'+s.h+'px;font-weight:700;line-height:1.2">SE1801</div><div style="font-size:'+s.m+'px;color:var(--s-t3)">PRM393 · 35 sinh viên · 6/20 buổi</div></div>'+
+      '<div style="background:var(--s-muted);border-radius:12px;padding:10px 12px"><div style="font-size:'+s.d+'px;font-weight:700;line-height:1.1">2 em cần chú ý</div><div style="font-size:'+s.b+'px;color:var(--s-t2);margin-top:2px">1 cấm thi · 1 còn được vắng 1</div></div>'+
+      '<div style="font-size:'+s.t+'px;font-weight:700;margin-top:4px">Vắng nhiều nhất</div>'+
+      '<div class="stu"><span class="av">LT</span><div class="who"><div style="font-size:'+s.b+'px;font-weight:600">Lê Thu Trang</div><div style="font-size:'+s.m+'px;color:var(--s-t3)">SE190142</div></div><div class="cnt" style="font-size:'+s.t+'px;font-weight:700;color:var(--s-bad)">5/4</div></div>'+
+      '<div class="stu" style="border-bottom:0"><span class="av">TL</span><div class="who"><div style="font-size:'+s.b+'px;font-weight:600">Trần Minh Long</div><div style="font-size:'+s.m+'px;color:var(--s-t3)">SE190155</div></div><div class="cnt" style="font-size:'+s.t+'px;font-weight:700">3/4</div></div></div>';
+  }
+  function build(){
+    var m=Math.max(13,Math.round(base/ratio)), t=Math.round(base*ratio), h=Math.round(base*ratio*ratio), d=Math.floor(base*Math.pow(ratio,4));
+    var s={m:m,b:base,t:t,h:h,d:d};
+    var rows=[['display','×'+ratio+'⁴',d,'2 em cần chú ý',700],['headline','×'+ratio+'²',h,'SE1801 · PRM393',700],['title','×'+ratio,t,'Vắng nhiều nhất',700],['body','gốc',base,'Nguyễn Thị Hường vắng 3/4 buổi',400],['meta','÷'+ratio+' (sàn 13)',m,'SE190171 · phòng 407',400]];
+    document.getElementById('ladder').innerHTML=rows.map(function(r){return '<div class="rung"><div class="k"><b>'+r[0]+' '+r[2]+'</b>'+r[1]+'</div><div class="v" style="font-size:'+r[2]+'px;font-weight:'+r[4]+'">'+r[3]+'</div></div>'}).join('');
+    document.getElementById('ph-new').innerHTML=phone(s);
+    document.getElementById('base-out').textContent=base+' px';
+    var bd=document.getElementById('scale-badge');
+    if(ratio<1.15){bd.className='badge b-bad';bd.textContent='phẳng'}
+    else if(ratio<=1.25){bd.className='badge b-ok';bd.textContent='rõ, hợp app'}
+    else if(ratio<=1.34){bd.className='badge b-ok';bd.textContent='rõ, hơi rộng cho 360dp'}
+    else{bd.className='badge b-warn';bd.textContent='gắt: display '+d+'px tràn màn'}
+  }
+  document.getElementById('ph-old').innerHTML=phone({m:13,b:15,t:16,h:22,d:28});
+  seg('ratio-seg',function(b){ratio=parseFloat(b.dataset.r);build()});
+  baseIn.addEventListener('input',function(){base=parseInt(baseIn.value,10);build()});
+  build();
+
+  /* ---- Độ đậm ---- */
+  var card=document.getElementById('wt-card');
+  function wt(mode){
+    [].forEach.call(card.querySelectorAll('.w-name'),function(e){e.style.fontWeight=600});
+    [].forEach.call(card.querySelectorAll('.w-meta'),function(e){e.style.fontWeight=mode==='all'?600:400});
+    [].forEach.call(card.querySelectorAll('.w-num'),function(e){var q=e.classList.contains('w-quiet');e.style.fontWeight=mode==='all'?600:(q?400:700);e.style.color=(mode==='roles'&&q)?'var(--s-t3)':'var(--s-t1)'});
+    [].forEach.call(card.querySelectorAll('.w-den'),function(e){e.style.fontWeight=mode==='all'?600:400});
+  }
+  seg('wt-seg',function(b){wt(b.dataset.w)}); wt('all');
+
+  /* ---- Chữ số ---- */
+  seg('num-seg',function(b){document.getElementById('numcard').className='numcard '+b.dataset.n});
+
+  /* ---- Line-height ---- */
+  var lh=document.getElementById('lh');
+  function setLh(){var v=parseFloat(lh.value);document.getElementById('caps').style.lineHeight=v;document.getElementById('para').style.lineHeight=v;
+    document.getElementById('lh-out').textContent=v.toFixed(2);var b=document.getElementById('lh-badge');
+    if(v<1.25){b.className='badge b-bad';b.textContent='dấu đụng dòng trên'}else if(v<1.4){b.className='badge b-warn';b.textContent='được cho tiêu đề, chật cho đoạn'}else if(v<=1.65){b.className='badge b-ok';b.textContent='tốt cho chữ đọc'}else{b.className='badge b-warn';b.textContent='thưa, dòng rời nhau'}}
+  lh.addEventListener('input',setLh); setLh();
+
+  /* ---- Measure ---- */
+  var ms=document.getElementById('ms');
+  function setMs(){var v=parseInt(ms.value,10);document.getElementById('mtext').style.maxWidth=v+'ch';document.getElementById('ms-out').textContent=v+' ch';var b=document.getElementById('ms-badge');
+    if(v<45){b.className='badge b-warn';b.textContent='quá ngắn'}else if(v<=75){b.className='badge b-ok';b.textContent='dễ đọc'}else{b.className='badge b-bad';b.textContent='quá dài'}}
+  ms.addEventListener('input',setMs); setMs();
+
+  /* ---- Prompt ---- */
+  var P=[
+    ['"Chữ phẳng, không phân tầng"','Dùng modular scale gốc 15px tỉ lệ 1.25, tối đa 5 cỡ (13 / 15 / 18 / 24 / 36). Được bỏ bậc để tạo khoảng nhảy ở điểm nhấn. Không dùng cỡ lẻ ngoài thang.'],
+    ['"Chữ nào cũng đậm"','Độ đậm có vai: 400 cho chữ đọc, 600 cho tên và nhãn bấm được, 700 chỉ cho 2 cỡ lớn nhất. Tách tầng bằng cách hạ cấp chữ phụ (400, xám) trước khi phóng to chữ chính.'],
+    ['"Cột số lệch"','Dùng tabular figures (font-variant-numeric: tabular-nums) và căn phải cho mọi cột số, giờ, x/4.'],
+    ['"Dấu tiếng Việt bị đụng"','line-height ≥ 1.4 cho chữ nhiều dòng; chữ in hoa tiếng Việt cần rộng hơn. Chọn font vẽ dấu chồng tốt (thử "Nguyễn Thị Hường – ỄỮẪ").'],
+    ['"Nhấn mạnh kiểu gì"','Gạch chân chỉ cho link. Nghiêng chỉ để nhấn trong câu. In hoa chỉ cho nhãn 1–2 từ, kèm letter-spacing +0.05em.'],
+    ['"Số to mà chẳng để làm gì"','Cỡ display chỉ dành cho con số trả lời câu hỏi chính của màn (vd số sinh viên cần chú ý). Số đếm tổng (sĩ số, số buổi) thu về một dòng meta 13px.']
+  ];
+  var box=document.getElementById('prompts');
+  P.forEach(function(p,i){
+    var d=document.createElement('div'); d.className='prompt';
+    d.innerHTML='<div class="feel"></div><div class="say"></div><button type="button" class="copy" id="copy-'+i+'">Copy</button>';
+    d.querySelector('.feel').textContent='Bạn thấy: '+p[0]; d.querySelector('.say').textContent=p[1];
+    var btn=d.querySelector('.copy');
+    btn.addEventListener('click',function(){
+      function ok(){btn.textContent='Đã copy';btn.classList.add('done');setTimeout(function(){btn.textContent='Copy';btn.classList.remove('done')},1600)}
+      function fallback(){var s=window.getSelection(),rg=document.createRange();rg.selectNodeContents(d.querySelector('.say'));s.removeAllRanges();s.addRange(rg);btn.textContent='Đã chọn, nhấn Ctrl+C'}
+      try{navigator.clipboard.writeText(p[1]).then(ok,fallback)}catch(e){fallback()}
+    });
+    box.appendChild(d);
+  });
+})();
+</script>
