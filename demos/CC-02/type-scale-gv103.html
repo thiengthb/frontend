@@ -89,8 +89,8 @@ section{margin-top:40px}
 .stat .of{color:var(--ink-3)}
 .bar{height:6px;border-radius:3px;background:var(--muted);margin-top:8px;overflow:hidden}
 .bar i{display:block;height:100%;width:30%;background:var(--primary);border-radius:3px}
-.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
-.pill{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;border-radius:14px}
+.pills{display:flex;gap:6px;flex-wrap:nowrap;margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
+.pill{flex:1 1 auto;justify-content:center;display:inline-flex;align-items:center;gap:5px;height:28px;padding:0 8px;white-space:nowrap;border-radius:14px}
 .pill .dot{width:6px;height:6px;border-radius:3px;background:currentColor}
 .pill.danger{background:var(--danger-soft);color:var(--danger)}
 .pill.warning{background:var(--warning-soft);color:var(--warning)}
@@ -280,9 +280,9 @@ section{margin-top:40px}
               </div>
             </div>
             <div class="pills">
-              <span class="pill danger t-meta-strong"><span class="dot"></span>1 cấm thi</span>
-              <span class="pill warning t-meta-strong"><span class="dot"></span>1 sát ngưỡng</span>
-              <span class="pill success t-meta-strong"><span class="dot"></span>33 an toàn</span>
+              <span class="pill danger t-meta-strong">1 cấm thi</span>
+              <span class="pill warning t-meta-strong">1 sát ngưỡng</span>
+              <span class="pill success t-meta-strong">33 an toàn</span>
             </div>
           </div>
 
@@ -310,7 +310,7 @@ section{margin-top:40px}
             </a>
             <a class="row" href="#">
               <span class="av warning t-meta-strong">TL</span>
-              <span class="who"><span class="t-body-strong name">Trần Minh Long</span><span class="line2"><span class="t-meta">SE190155 · </span><span class="t-meta-strong st-warning">Còn vắng được 1 buổi</span></span></span>
+              <span class="who"><span class="t-body-strong name">Trần Minh Long</span><span class="line2"><span class="t-meta">SE190155 · </span><span class="t-meta-strong st-warning">Sát ngưỡng</span></span></span>
               <span class="count"><span class="t-title c-warning">3</span><span class="t-meta of">/4</span></span>
               <svg class="ic ic-sm chev"><use href="#i-chevron-right"/></svg>
             </a>
