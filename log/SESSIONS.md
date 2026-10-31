@@ -43,4 +43,6 @@
 - Glossary ✅ 8 + thêm OKLCH, chroma, accent dilution, color-not-alone. Từ điển thêm mục V-03. Viết `docs/briefs/V-04.md`.
 - (tiếp) Dựng và publish V-04 Khoảng cách (`demos/V-04/spacing.html`): thang 4/8 vs số tuỳ hứng, proximity 2 thanh trượt (mốc lab2 12/16 → "đều đều"), ba tầng 8/24/40, nhịp, lưới 4 cột bật tắt lệch/theo lưới, mật độ 48/60/76, 5 cặp, GV-102 trước/sau. Mọi khoảng cách là phần tử thật nên có lớp phủ đo như DevTools.
 - Glossary ✅ grid, spacing scale, rhythm, proximity, alignment, density; thêm gutter/margin, whitespace micro/macro, padding vs gap. Từ điển thêm V-04. Viết `docs/briefs/V-05.md`.
+- (tiếp) Dựng và publish V-05 Chiều sâu (`demos/V-05/depth.html`): năm cách tách khối, elevation một lớp vs hai lớp, máy đếm nổi/bấm được trên GV-001 (bản cam: 11 nổi, 7 nói dối), bo đồng tâm có thanh trượt, thang bo sakubun vs 3 bậc, gờ dày đúng/sai (W4), dark mode surface tint, 5 cặp, GV-001 trước/sau. Hết Ngày 1.
+- Glossary ✅ affordance/signifier; thêm elevation, shadow hai lớp, ledge, surface tint. Từ điển thêm V-05. Viết `docs/briefs/V-06.md`.
 

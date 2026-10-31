@@ -43,3 +43,13 @@
 | "Trông lệch lệch" | "Căn theo **lưới 4 cột, margin 16, gutter 16** cho màn 360dp. Mọi mép trái nằm trên cùng một đường; nút đôi mỗi nút đúng 2 cột." |
 | "Danh sách dài, cuộn mãi" | "Chọn **density** theo việc: danh sách làm việc dùng compact, hàng 48 một dòng; màn đọc lướt 56–64. Vùng chạm không dưới 48. Danh sách dùng đường kẻ, không bọc mỗi hàng một thẻ." |
 
+## V-05 · Chiều sâu & hình khối
+| Bạn cảm thấy | Câu lệnh cho AI |
+|---|---|
+| "Cái gì cũng nổi, nặng nề" | "Chỉ phần tử bấm được mới có bóng hoặc gờ (**signifier**). Thẻ thông tin phẳng, tách bằng khoảng trắng hoặc nền muted. Nút chính là thứ nổi rõ nhất màn." |
+| "Bóng trông bẩn, cũ" | "Dùng **bóng hai lớp** nhạt (một lớp gần sắc, một lớp xa mờ, alpha 0.06–0.16) theo thang **elevation** 0–4. Không dùng một lớp đen đậm." |
+| "Thẻ rối, nhiều đường viền" | "Mỗi khối chỉ **một tín hiệu** tách nền: khoảng trắng, hoặc nền, hoặc viền 1px, hoặc bóng. Không chồng viền + nền + bóng." |
+| "Bo góc trông lệch" | "Bo lồng nhau **đồng tâm**: bo trong = bo ngoài − padding. Thang bo ba bậc cách xa + pill: nút 8, thẻ 12, sheet 20, chip pill." |
+| "Dark mode phẳng lì" | "Trong dark mode bỏ bóng; thể hiện elevation bằng **surface tint** (nền sáng dần theo độ cao), vd #161412 → #24201D → #332E2A." |
+| "Muốn vui như app học" | "Nút **gờ dày** chỉ dùng khi cả hệ cùng giọng: chữ to đậm, màu bão hoà, minh hoạ, chuyển động nảy. Nếu không, giữ phẳng và chỉ nút chính có gờ 2–4px." |
+

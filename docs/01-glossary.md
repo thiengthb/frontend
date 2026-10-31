@@ -18,7 +18,11 @@
 | **Alignment** ✅ | Căn theo trục chung | Mép lệch 3–10px cộng lại thành "luộm thuộm" (V-04) |
 | **White space / Negative space** | Khoảng trống | Không phải là phí chỗ: nó tách nhóm, tạo nhịp, tạo cảm giác cao cấp |
 | **Gestalt principles** | Các nguyên lý tri giác: proximity, similarity, closure, continuity, figure–ground, common region | Giải thích *vì sao* mắt người nhóm và hiểu các hình |
-| **Affordance / Signifier** | Gợi ý cách dùng (nút trông như bấm được) | Người dùng không phải đoán |
+| **Affordance / Signifier** ✅ | Affordance: khả năng thật (bấm được). Signifier: dấu hiệu báo khả năng đó (bóng, gờ, mũi tên ›) | Signifier không có affordance = nói dối (V-05) |
+| **Elevation** ✅ | Độ cao giả lập trên trục z, thang 0–4 | Nền sáng: bóng; nền tối: nền sáng dần (V-05) |
+| **Shadow (hai lớp)** ✅ | Một lớp gần sắc + một lớp xa mờ, alpha thấp | Bóng một lớp đen đậm trông bẩn, cũ (V-05) |
+| **Ledge (gờ đáy)** ✅ | Dải đặc dưới đáy khối, giả nút vật lý | Tín hiệu bấm mạnh nhất; chỉ cho nút chính (V-05) |
+| **Surface tint** ✅ | Dark mode: vật càng cao nền càng sáng | Thay cho bóng, vì bóng vô hình trên nền tối (V-05) |
 
 ## B. Typography
 | Thuật ngữ | Nghĩa | Vì sao quan trọng |
@@ -130,5 +134,5 @@
 | **Vanity metric** ✅ | Số liệu đẹp nhưng không dẫn tới quyết định hay hành động |
 | **Squint test** ✅ | Nheo mắt nhìn màn hình: cái gì còn nổi bật là điểm nhấn thật |
 | **Recognition vs recall** | Nhận ra (thấy nhãn) dễ hơn nhớ lại (đoán icon) — Nielsen #6 |
-| **Signifier** | Dấu hiệu cho biết có thể tương tác (Norman). Khác với affordance là khả năng thật |
+| **Signifier** ✅ | Dấu hiệu cho biết có thể tương tác (Norman). Khác với affordance là khả năng thật (V-05) |
 | **Figure–ground** ✅ | Tách hình khỏi nền. Tầng màu phụ 20% thường đóng vai trò "nền tổ chức" (V-03) |
