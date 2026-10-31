@@ -36,3 +36,9 @@
 - Viết `docs/briefs/V-02.md`. Tiếp theo: V-02 Typography.
 - (tiếp) Người dùng đọc xong V-01. Dựng và publish V-02 Typography (`demos/V-02/typography.html`): thang chữ sống (gốc + tỉ lệ, so thang cũ), độ đậm có vai, ma trận nhấn mạnh, tabular, line-height/measure tiếng Việt, 5 cặp, bài AI GV-103 có chú thích + bản sửa.
 - Glossary ✅ thêm 8, từ điển thêm dòng "số to mà chẳng để làm gì". Viết `docs/briefs/V-03.md`. Tiếp theo: V-03 Màu ở chat mới.
+
+## 2026-10-31 · Phiên 7 · V-03
+- Chat mới. Dựng và publish V-03 Màu (`demos/V-03/color.html`): OKLCH vs HSL (xem bằng xám, thang theo hue), neutral thuần/ấm/lạnh, máy đo 70-20-10 tự đo diện tích trên GV-001 (2 thanh trượt, 4 phương án, đếm số chỗ dùng cam), tầng 20% đúng/sai, semantic + mô phỏng mù màu, 5 cặp, công cụ contrast WCAG, lab2 cam → B → sửa có đo.
+- Phát hiện: warning lab2 `#A15C00` gần cam nhấn (hue 62° vs 45°, cùng L ≈ 0.55), phải kèm icon/chữ.
+- Glossary ✅ 8 + thêm OKLCH, chroma, accent dilution, color-not-alone. Từ điển thêm mục V-03. Viết `docs/briefs/V-04.md`.
+

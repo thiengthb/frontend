@@ -22,3 +22,13 @@
 | "Dấu tiếng Việt bị đụng" | "**line-height** ≥ 1.4 cho chữ nhiều dòng; chữ in hoa tiếng Việt cần rộng hơn. Chọn font vẽ dấu chồng tốt (thử 'Nguyễn Thị Hường – ỄỮẪ')." |
 | "Số to mà chẳng để làm gì" | "Cỡ **display** chỉ dành cho con số trả lời câu hỏi chính của màn. Số đếm tổng (sĩ số, số buổi) thu về **một dòng meta** 13px." |
 | "Nhấn mạnh kiểu gì" | "Gạch chân **chỉ cho link**. Nghiêng chỉ để nhấn trong câu. In hoa chỉ cho nhãn 1–2 từ, kèm letter-spacing +0.05em." |
+
+## V-03 · Màu
+| Bạn cảm thấy | Câu lệnh cho AI |
+|---|---|
+| "Đơn điệu, toàn trắng với xám" | "Thêm **tầng phụ** khoảng 20% diện tích bằng **một mặt phẳng nền** (accent-soft) gom [nhóm việc chính] để tạo **figure–ground**. Không tô màu từng thẻ để trang trí, không thêm hue mới." |
+| "Màu rối, cam ở khắp nơi" | "Kiểm phân bổ **70-20-10 theo diện tích**. Màu nhấn tối đa ~10% và chỉ cho hành động chính; link, tab đang chọn, avatar, chấm trạng thái chuyển về **trung tính đậm** (tránh **accent dilution**)." |
+| "Xám trông chết, lạnh" | "Dùng **neutral pha sắc** theo màu nhấn: trong **OKLCH** giữ hue [45], **chroma 0.005–0.015** cho nền, viền và chữ phụ. Không dùng xám thuần." |
+| "Bảng màu tự chế lệch sáng tối" | "Sinh thang 50–900 bằng **OKLCH**: giữ hue, L giảm đều, chroma cao nhất ở giữa thang. Không sinh bằng HSL." |
+| "Đỏ, vàng, xanh dùng lung tung" | "**Semantic color** (success / warning / danger / info) chỉ cho trạng thái thật, mỗi màu một cặp nền nhạt + chữ đậm, luôn kèm chữ hoặc icon (**color-not-alone**). Không dùng semantic để trang trí." |
+| "Chữ trên nền màu khó đọc, xỉn" | "Chữ trên nền màu dùng **sắc độ cùng hue**, không dùng xám. Kiểm **contrast ratio**: chữ thường ≥ 4.5:1, chữ lớn và viền control ≥ 3:1." |

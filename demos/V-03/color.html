@@ -1,0 +1,845 @@
+<title>V-03 Màu</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* Bố cục: cùng khung V-01/V-02 (cột đọc 760px, demo bung 1100px). Màn mẫu luôn là bảng màu lab2, sáng ở cả hai theme vì nó là ảnh chụp app. */
+:root{
+  --bg:#FBFAF8; --surface:#FFFFFF; --sunk:#F4F1EE;
+  --ink:#1F1F1F; --ink2:#3C3C3C; --ink3:#6B6B6B; --line:#E7E2DD;
+  --accent:#B9551F; --accent-ink:#9A4518; --accent-soft:#FBEFE8;
+  --bad:#B42318; --bad-soft:#FEF0EF; --ok:#15803D; --ok-soft:#ECFDF3; --warn:#A15C00; --warn-soft:#FFF6DD;
+  --s-bg:#FFFFFF; --s-muted:#F4F4F4; --s-line:#E5E5E5; --s-t1:#1F1F1F; --s-t2:#3C3C3C; --s-t3:#6B6B6B;
+  --s-p:#B9551F; --s-p-press:#8A3D14; --s-p-soft:#FBEFE8; --s-p-ink:#9A4518; --s-bad:#B42318; --s-bad-soft:#FEF0EF; --s-warn:#A15C00; --s-warn-soft:#FFF6DD; --s-ok:#15803D; --s-ok-soft:#ECFDF3;
+  --f-body:"Nunito", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#161412; --surface:#1F1C1A; --sunk:#262220;
+  --ink:#F2EEEA; --ink2:#D3CCC5; --ink3:#A39A92; --line:#3A3531;
+  --accent:#E8925E; --accent-ink:#F0A97E; --accent-soft:#3A2418;
+  --bad:#F2877E; --bad-soft:#3A1C1A; --ok:#6CCB8D; --ok-soft:#15301F; --warn:#E3AE55; --warn-soft:#352A14; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#161412; --surface:#1F1C1A; --sunk:#262220;
+  --ink:#F2EEEA; --ink2:#D3CCC5; --ink3:#A39A92; --line:#3A3531;
+  --accent:#E8925E; --accent-ink:#F0A97E; --accent-soft:#3A2418;
+  --bad:#F2877E; --bad-soft:#3A1C1A; --ok:#6CCB8D; --ok-soft:#15301F; --warn:#E3AE55; --warn-soft:#352A14; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 80px}
+h1,h2,h3{line-height:1.2;text-wrap:balance;margin:0}
+p{margin:0}
+button,select{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+.spine{max-width:760px;margin:0 auto}
+.wide{max-width:1100px;margin:0 auto}
+.head{max-width:760px}
+section{padding-top:72px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink)}
+h2{font-size:28px;font-weight:900;margin-top:6px}
+.lead{color:var(--ink2);margin-top:10px;max-width:65ch}
+.small{font-size:14px;color:var(--ink3)}
+code,.mono{font-family:var(--f-mono);font-size:.88em}
+.term{font-weight:800;color:var(--ink)}
+.tnum{font-variant-numeric:tabular-nums}
+
+.hero{padding-top:48px}
+.hero .tag{font-family:var(--f-mono);font-size:13px;color:var(--ink3)}
+.hero h1{font-size:clamp(34px,7vw,56px);font-weight:900;letter-spacing:-.02em;margin-top:14px;max-width:16ch}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{margin-top:16px;color:var(--ink2);max-width:58ch;font-size:17px}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.toc a{font-size:14px;font-weight:700;color:var(--ink2);text-decoration:none;padding:6px 12px;border:1px solid var(--line);border-radius:999px}
+.toc a:hover{border-color:var(--accent);color:var(--accent-ink)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:20px}
+.terms div{padding:14px 16px;background:var(--surface);border-left:3px solid var(--line)}
+.terms div:first-child{border-left-color:var(--accent)}
+.terms b{display:block;font-size:16px}
+.terms span{display:block;font-size:14px;color:var(--ink2);margin-top:2px;line-height:1.45}
+
+/* Điều khiển */
+.ctl{display:flex;align-items:center;gap:12px 16px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin-top:20px}
+.ctl label,.ctl .lab{font-weight:800;font-size:15px}
+.ctl input[type=range]{flex:1;min-width:150px;accent-color:var(--accent)}
+.ctl output{font-family:var(--f-mono);font-size:13px;color:var(--ink3);min-width:52px}
+.ctl select{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px 10px;min-height:40px;font-size:14px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;flex-wrap:wrap}
+.seg button{border:0;background:none;padding:8px 12px;font-size:14px;font-weight:700;color:var(--ink2);min-height:40px}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.badge{font-size:13px;font-weight:800;padding:4px 10px;border-radius:999px}
+.b-bad{background:var(--bad-soft);color:var(--bad)}
+.b-ok{background:var(--ok-soft);color:var(--ok)}
+.b-warn{background:var(--warn-soft);color:var(--warn)}
+.ghost{border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:8px 12px;font-size:14px;font-weight:700;min-height:40px}
+.ghost:hover{border-color:var(--accent)}
+
+/* OKLCH */
+.hue-rows{display:flex;flex-direction:column;gap:14px;margin-top:20px}
+.hrow{display:grid;grid-template-columns:110px minmax(0,1fr);gap:12px;align-items:center}
+.hrow .k{font-family:var(--f-mono);font-size:12px;color:var(--ink3);line-height:1.35}
+.hrow .k b{display:block;color:var(--ink);font-size:13px}
+.chips{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:4px;border-radius:12px;overflow:hidden}
+.chips div{height:52px}
+.ramp{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:0;border-radius:12px;overflow:hidden}
+.ramp div{height:64px;display:flex;flex-direction:column;justify-content:space-between;padding:6px 6px;font-size:11px;font-weight:800;line-height:1}
+.ramp div span{font-family:var(--f-mono);font-weight:500;font-size:10px;opacity:.85}
+.gs .chips,.gs .ramp{filter:grayscale(1)}
+.lch{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:20px}
+.lch div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.lch b{font-family:var(--f-mono);font-size:20px;color:var(--accent-ink)}
+.lch p{font-size:14px;color:var(--ink2);margin-top:4px;line-height:1.45}
+.lch .bar{height:14px;border-radius:7px;margin-top:10px}
+
+/* Mockup lab2 */
+.ph{width:320px;max-width:100%;background:var(--s-bg);color:var(--s-t1);border-radius:24px;overflow:hidden;
+  box-shadow:0 0 0 1px var(--line),0 12px 30px -18px rgba(0,0,0,.35);font-family:var(--f-body);display:flex;flex-direction:column;flex:none;line-height:1.3}
+.sb{height:24px;display:flex;justify-content:space-between;align-items:center;padding:0 18px;font-size:11px;font-weight:800}
+.g-band{display:flex;flex-direction:column}
+.g-head{padding:6px 16px 12px}
+.g-head .d{font-size:20px;font-weight:800}
+.g-head .m{font-size:12px;color:var(--s-t3)}
+.g-body{padding:0 16px 14px;display:flex;flex-direction:column;gap:10px}
+.g-ref{padding:12px 16px 14px;display:flex;flex-direction:column;gap:10px}
+.kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.kpi{background:var(--s-bg);border:1px solid var(--s-line);border-bottom-width:3px;border-radius:10px;padding:8px 10px}
+.kpi b{display:block;font-size:20px;font-weight:800;line-height:1.1}
+.kpi span{font-size:11px;color:var(--s-t3)}
+.kline{font-size:12px;color:var(--s-t3)}
+.slot{border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:4px;background:var(--s-bg);border:1px solid var(--s-line)}
+.slot .lb{font-size:11px;font-weight:800;color:var(--s-t3)}
+.slot .t{font-size:18px;font-weight:800}
+.slot .m{font-size:12px;color:var(--s-t3)}
+.slot.hot{background:var(--s-p);border-color:var(--s-p);color:#fff}
+.slot.hot .lb,.slot.hot .m{color:#FBEFE8}
+.btn{margin-top:6px;border-radius:10px;text-align:center;font-weight:800;font-size:14px;padding:10px;background:var(--s-t1);color:#fff}
+.btn.acc{background:var(--s-p)}
+.btn.inv{background:#fff;color:var(--s-p-ink)}
+.next{font-size:12px;border:1px solid var(--s-line);border-radius:12px;padding:10px 12px;background:var(--s-bg)}
+.sec{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;font-weight:800}
+.sec a{font-size:12px;font-weight:700;color:var(--s-t2);text-decoration:none}
+.sec a.acc{color:var(--s-p)}
+.who-row{display:flex;align-items:center;gap:10px;font-size:13px}
+.who-row .nm{flex:1;min-width:0}
+.who-row .nm small{display:block;font-size:11px;color:var(--s-t3)}
+.av{width:28px;height:28px;border-radius:50%;background:var(--s-muted);color:var(--s-t2);font-size:11px;font-weight:800;display:grid;place-items:center;flex:none}
+.av.soft{background:var(--s-p-soft);color:var(--s-p-ink)}
+.av.solid{background:var(--s-p);color:#fff}
+.s-pill{font-size:11px;font-weight:800;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.pill-bad{background:var(--s-bad-soft);color:var(--s-bad)}
+.pill-warn{background:var(--s-warn-soft);color:var(--s-warn)}
+.pill-ok{background:var(--s-ok-soft);color:var(--s-ok)}
+.nav{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--s-line);padding:6px 4px 8px;margin-top:auto;background:var(--s-bg)}
+.nav div{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10px;color:var(--s-t3);font-weight:700}
+.nav i{display:block;width:40px;height:22px;border-radius:11px;position:relative}
+.nav i::after{content:"";position:absolute;inset:6px 15px;border-radius:3px;border:2px solid var(--s-t3)}
+.nav .on{color:var(--s-t1)}
+.nav .on i{background:var(--s-muted)}
+.nav .on i::after{border-color:var(--s-t1)}
+.nav .on.acc{color:var(--s-p)}
+.nav .on.acc i{background:var(--s-p)}
+.nav .on.acc i::after{border-color:#fff}
+
+/* Máy đo */
+.meter-wrap{display:grid;grid-template-columns:auto minmax(0,1fr);gap:32px;margin-top:24px;align-items:start}
+.meter-side{display:flex;flex-direction:column;gap:16px;min-width:0}
+.meter{display:flex;flex-direction:column;gap:8px;width:100%}
+.mbar{display:flex;height:34px;border-radius:10px;overflow:hidden;box-shadow:0 0 0 1px var(--line)}
+.mbar div{height:100%;transition:width .25s}
+.mbar .mn{background:#FFFFFF}
+.mbar .ms{background:var(--s-p-soft)}
+.mbar .ma{background:var(--s-p)}
+.mleg{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:14px;color:var(--ink2)}
+.mleg b{font-variant-numeric:tabular-nums;color:var(--ink)}
+.dot{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:6px;box-shadow:0 0 0 1px var(--line)}
+.target{font-size:13px;color:var(--ink3)}
+.sliders{display:flex;flex-direction:column;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.sl{display:grid;grid-template-columns:96px minmax(0,1fr);gap:4px 12px;align-items:center}
+.sl label{font-weight:800;font-size:15px}
+.sl input{width:100%;accent-color:var(--accent)}
+.sl output{grid-column:2;font-size:13px;color:var(--ink3);line-height:1.4}
+.presets{display:flex;flex-wrap:wrap;gap:8px}
+
+/* Neutral */
+.neu-wrap{display:flex;flex-wrap:wrap;gap:28px;margin-top:20px;align-items:flex-start}
+.neu-note{flex:1;min-width:240px;display:flex;flex-direction:column;gap:10px;font-size:15px;color:var(--ink2)}
+.sw{display:flex;gap:6px;flex-wrap:wrap}
+.sw span{width:56px;height:40px;border-radius:8px;box-shadow:0 0 0 1px var(--line);display:flex;align-items:flex-end;padding:3px 4px;font-family:var(--f-mono);font-size:9px}
+.ncard{width:320px;max-width:100%;border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:10px;background:var(--n-bg);box-shadow:0 0 0 1px var(--line)}
+.ncard .in{background:#fff;border:1px solid var(--n-line);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+.ncard .t1{font-size:15px;font-weight:700;color:var(--n-t1)}
+.ncard .t2{font-size:13px;color:var(--n-t2)}
+.ncard .t3{font-size:12px;color:var(--n-t3)}
+.ncard .av{background:var(--n-bg);color:var(--n-t2)}
+.ncard .btn{background:var(--s-p)}
+
+/* Semantic */
+.sem{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:20px}
+.sem div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.sem .r{font-family:var(--f-mono);font-size:12px;font-weight:700;color:var(--ink3)}
+.sem p{font-size:14px;color:var(--ink2);line-height:1.45}
+.cvd-wrap{display:flex;flex-wrap:wrap;gap:28px;margin-top:20px;align-items:flex-start}
+.slist{width:320px;max-width:100%;background:var(--s-bg);color:var(--s-t1);border-radius:16px;box-shadow:0 0 0 1px var(--line);padding:4px 16px}
+.slist .who-row{padding:10px 0;border-bottom:1px solid var(--s-line)}
+.slist .who-row:last-child{border-bottom:0}
+.sd{width:12px;height:12px;border-radius:50%;flex:none}
+.cvd-deut{filter:url(#deut)}
+.cvd-gray{filter:grayscale(1)}
+
+/* Cặp */
+.pair{margin-top:40px}
+.pair h3{font-size:20px;font-weight:900}
+.pair .why{color:var(--ink2);margin-top:6px;max-width:68ch;font-size:15px}
+.pair-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:16px}
+.side{border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;align-items:center;background:var(--sunk);min-width:0}
+.side .lbl{align-self:flex-start;font-family:var(--f-mono);font-size:12px;font-weight:700;letter-spacing:.06em;padding:3px 9px;border-radius:6px}
+.side.bad .lbl{background:var(--bad-soft);color:var(--bad)}
+.side.good .lbl{background:var(--ok-soft);color:var(--ok)}
+.side .note{align-self:stretch;font-size:13.5px;color:var(--ink2);line-height:1.45}
+.mini{width:290px;max-width:100%;background:var(--s-bg);color:var(--s-t1);border-radius:16px;padding:14px;box-shadow:0 0 0 1px var(--line);display:flex;flex-direction:column;gap:8px;line-height:1.3;font-size:13px}
+.sw-row{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:13px}
+.tog{width:34px;height:20px;border-radius:10px;background:var(--s-ok);position:relative;flex:none}
+.tog::after{content:"";position:absolute;width:16px;height:16px;border-radius:50%;background:#fff;top:2px;right:2px}
+.mk{display:flex;gap:6px}
+.mk span{width:36px;height:30px;border-radius:8px;border:1px solid var(--s-line);display:grid;place-items:center;font-weight:800;color:var(--s-t2)}
+.rule-id{font-family:var(--f-mono);font-size:12px;color:var(--ink3);margin-left:6px;font-weight:500}
+
+/* Contrast */
+.cr-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;margin-top:20px;align-items:start}
+.cr-sample{border-radius:16px;padding:22px;box-shadow:0 0 0 1px var(--line);display:flex;flex-direction:column;gap:8px;min-width:0}
+.cr-sample .s{font-size:15px}
+.cr-sample .l{font-size:24px;font-weight:800;line-height:1.2}
+.cr-res{display:flex;flex-direction:column;gap:12px}
+.cr-num{font-size:48px;font-weight:900;font-variant-numeric:tabular-nums;line-height:1}
+.cr-num small{font-size:20px;color:var(--ink3);font-weight:700}
+.cr-checks{display:flex;flex-direction:column;gap:8px;font-size:15px}
+.cr-checks div{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+
+/* lab2 */
+.lab{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:28px}
+.lab article{display:flex;flex-direction:column;gap:14px;align-items:center;min-width:0}
+.lab h3{font-size:18px;font-weight:900;align-self:flex-start}
+.lab .meter{align-self:stretch}
+.calls{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;align-self:stretch}
+.calls li{display:grid;grid-template-columns:22px 1fr;gap:8px;font-size:14px;line-height:1.45;color:var(--ink2)}
+.calls li b{color:var(--ink)}
+.n{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;font-family:var(--f-mono);font-size:11px;font-weight:700;color:#fff}
+.n.g{background:#15803D}.n.r{background:#B42318}
+
+/* Mặc định */
+.recipe{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin-top:20px}
+.recipe div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.recipe b{display:block;font-size:13px;font-family:var(--f-mono);color:var(--accent-ink);font-weight:700}
+.recipe span{display:block;margin-top:4px;font-size:15px;color:var(--ink2)}
+.counter{margin-top:20px;padding:14px 18px;border-left:3px solid var(--accent);background:var(--accent-soft);font-size:15px;color:var(--ink)}
+
+.prompts{display:flex;flex-direction:column;gap:12px;margin-top:20px}
+.prompt{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 14px;align-items:start}
+.prompt .feel{font-size:13px;color:var(--ink3);font-weight:700}
+.prompt .say{font-size:15px;color:var(--ink);grid-column:1}
+.copy{grid-row:1 / span 2;grid-column:2;background:var(--ink);color:var(--bg);border:0;border-radius:10px;padding:8px 14px;font-size:13px;font-weight:800;min-height:40px}
+.copy.done{background:var(--ok)}
+details.q{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-top:12px}
+details.q summary{cursor:pointer;font-weight:800;list-style:none;display:flex;gap:10px}
+details.q summary::-webkit-details-marker{display:none}
+details.q summary::before{content:"+";font-family:var(--f-mono);color:var(--accent-ink);font-weight:700}
+details.q[open] summary::before{content:"−"}
+details.q .ans{margin-top:10px;color:var(--ink2);font-size:15px;padding-left:20px}
+footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--line);font-size:14px;color:var(--ink3)}
+
+@media (max-width:1000px){.lab{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:820px){.meter-wrap,.cr-wrap{grid-template-columns:1fr}.lch{grid-template-columns:1fr}}
+@media (max-width:680px){.lab{grid-template-columns:1fr}}
+@media (max-width:620px){.pair-grid{grid-template-columns:1fr}h2{font-size:24px}.prompt{grid-template-columns:1fr}.copy{grid-row:auto;grid-column:1;justify-self:start}
+  .hrow{grid-template-columns:1fr}.chips div{height:40px}.ramp div{height:56px;padding:4px 3px;font-size:10px}.ramp div span{font-size:8px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <filter id="deut"><feColorMatrix type="matrix" values="0.625 0.375 0 0 0  0.7 0.3 0 0 0  0 0.3 0.7 0 0  0 0 0 1 0"/></filter>
+</svg>
+
+<header class="spine hero">
+  <div class="tag">Crash course trực quan · khối V-03 / 15 · ~25 phút</div>
+  <h1>Màu nhấn hiếm thì mới <em>có nghĩa</em>.</h1>
+  <p>Màu phụ là mặt phẳng tổ chức nội dung, không phải sơn trang trí. Trang này chỉ bấm, kéo, nhìn; mọi màn mẫu dùng đúng bảng màu lab2 (cam đất, Nunito).</p>
+  <nav class="toc" aria-label="Mục lục">
+    <a href="#ban-do">Bản đồ</a><a href="#oklch">OKLCH</a><a href="#neutral">Xám có sắc</a><a href="#do">Máy đo 70-20-10</a><a href="#semantic">Màu có nghĩa</a><a href="#cap">Tệ ↔ tốt</a><a href="#tuong-phan">Tương phản</a><a href="#lab2">Trên lab2</a><a href="#mac-dinh">Mặc định</a><a href="#lenh">Lệnh cho AI</a><a href="#kiem-tra">Tự kiểm tra</a>
+  </nav>
+</header>
+
+<section id="ban-do" class="spine">
+  <div class="eyebrow">Bản đồ nhanh</div>
+  <h2>Chín từ cần gọi được tên</h2>
+  <div class="terms">
+    <div><b>Hue · Chroma · Lightness</b><span>Ba trục của một màu: sắc (cam, xanh…), độ rực (xám ↔ chói), độ sáng (đen ↔ trắng).</span></div>
+    <div><b>OKLCH</b><span>Cách ghi màu theo ba trục trên, đo theo cảm nhận của mắt. Cùng L thì trông sáng như nhau, bất kể hue.</span></div>
+    <div><b>Neutral</b><span>Các màu xám: nền, viền, chữ. Chiếm phần lớn diện tích. Xám tốt thường pha một chút hue của màu nhấn.</span></div>
+    <div><b>Accent</b><span>Màu nhấn (cam lab2). Dành cho hành động chính và ít thứ quan trọng nhất.</span></div>
+    <div><b>Semantic color</b><span>Màu mang nghĩa trạng thái: success (xanh lá), warning (vàng), danger (đỏ), info. Không dùng để trang trí.</span></div>
+    <div><b>60-30-10 / 70-20-10</b><span>Phân bổ diện tích: nền ~70%, phụ ~20%, nhấn ~10%. Tính theo diện tích, không theo số phần tử.</span></div>
+    <div><b>Figure–ground</b><span>Tách hình khỏi nền. Một mặt nền màu nhạt gom một nhóm lại, mắt đọc nó là "một khu".</span></div>
+    <div><b>Contrast ratio</b><span>Tỉ lệ sáng giữa chữ và nền (1:1 đến 21:1). Chuẩn WCAG: 4.5:1 chữ thường, 3:1 chữ lớn và viền control.</span></div>
+    <div><b>Color-not-alone</b><span>Không truyền thông tin chỉ bằng màu: luôn kèm chữ hoặc icon, vì khoảng 1/12 nam giới nhìn lẫn đỏ và lục.</span></div>
+  </div>
+</section>
+
+<section id="oklch" class="wide">
+  <div class="head">
+    <div class="eyebrow">OKLCH vs HSL</div>
+    <h2>Cùng "độ sáng 50%", mắt lại thấy khác hẳn</h2>
+    <p class="lead"><b>HSL</b> (hue, saturation, lightness) là phép toán trên ba kênh RGB của màn hình, không theo mắt người. Mắt nhạy với lục và vàng hơn xanh dương, nên vàng 50% trông chói còn xanh dương 50% trông tối. <b>OKLCH</b> đo L theo cảm nhận: cùng L là cùng độ sáng thật. Bấm "Xem bằng xám" để bỏ màu, chỉ còn độ sáng.</p>
+  </div>
+  <div class="ctl">
+    <span class="lab" id="gs-lab">Hiển thị</span>
+    <div class="seg" role="group" aria-labelledby="gs-lab" id="gs-seg">
+      <button type="button" data-g="0" aria-pressed="true">Màu</button>
+      <button type="button" data-g="1" aria-pressed="false">Xem bằng xám</button>
+    </div>
+    <label for="hue">Hue thang dưới</label>
+    <input id="hue" type="range" min="0" max="359" step="1" value="45">
+    <output id="hue-out" for="hue">45°</output>
+  </div>
+  <div class="hue-rows" id="oklch-box">
+    <div class="hrow"><div class="k"><b>HSL</b>12 hue · S 85% · L 50%</div><div class="chips" id="row-hsl"></div></div>
+    <div class="hrow"><div class="k"><b>OKLCH</b>12 hue · L 0.68 · C 0.14</div><div class="chips" id="row-ok"></div></div>
+    <div class="hrow"><div class="k"><b>Thang HSL</b>9 bậc, chỉnh L</div><div class="ramp" id="ramp-hsl"></div></div>
+    <div class="hrow"><div class="k"><b>Thang OKLCH</b>9 bậc, chỉnh L và C</div><div class="ramp" id="ramp-ok"></div></div>
+  </div>
+  <p class="small" style="margin-top:12px;max-width:72ch" id="hue-note"></p>
+  <div class="lch">
+    <div><b>L</b> · Lightness<p>0 là đen, 1 là trắng. Cam lab2 <code>#B9551F</code> có L ≈ 0.57.</p><div class="bar" style="background:linear-gradient(90deg,oklch(0.2 0.1 45),oklch(0.57 0.144 45),oklch(0.97 0.02 45))"></div></div>
+    <div><b>C</b> · Chroma<p>0 là xám, càng lớn càng rực. Cam lab2 ≈ 0.14. Nền cam nhạt chỉ ≈ 0.016.</p><div class="bar" style="background:linear-gradient(90deg,oklch(0.57 0 45),oklch(0.57 0.144 45),oklch(0.62 0.2 45))"></div></div>
+    <div><b>H</b> · Hue<p>Góc trên vòng màu, 0–360°. Cam lab2 ≈ 45°. Giữ nguyên H là giữ "họ màu".</p><div class="bar" style="background:linear-gradient(90deg,oklch(0.68 0.13 0),oklch(0.68 0.13 90),oklch(0.68 0.13 180),oklch(0.68 0.13 270),oklch(0.68 0.13 360))"></div></div>
+  </div>
+  <p class="small" style="margin-top:14px;max-width:72ch">Trong CSS viết thẳng <code>oklch(0.57 0.14 45)</code>. Muốn thang 50–950: giữ H, cho L giảm đều, C cao nhất ở giữa thang và thấp ở hai đầu. Màu quá rực có thể nằm ngoài vùng màn hình hiển thị được; trình duyệt sẽ tự kéo về màu gần nhất.</p>
+</section>
+
+<section id="neutral" class="wide">
+  <div class="head">
+    <div class="eyebrow">Neutral có pha sắc</div>
+    <h2>Gạt giữa xám thuần, xám ấm và xám lạnh</h2>
+    <p class="lead">Neutral chiếm khoảng 70% màn, nên một chút hue trong xám đổi cả không khí. Cùng một thẻ GV-001, chỉ đổi nền, viền và chữ phụ; nút cam giữ nguyên.</p>
+  </div>
+  <div class="ctl">
+    <span class="lab" id="neu-lab">Xám</span>
+    <div class="seg" role="group" aria-labelledby="neu-lab" id="neu-seg">
+      <button type="button" data-n="pure" aria-pressed="true">Thuần (lab2)</button>
+      <button type="button" data-n="warm" aria-pressed="false">Pha ấm theo cam</button>
+      <button type="button" data-n="cool" aria-pressed="false">Pha lạnh</button>
+    </div>
+  </div>
+  <div class="neu-wrap">
+    <div class="ncard" id="ncard">
+      <div class="in">
+        <div class="t3">ĐANG DIỄN RA · 07:00–09:15</div>
+        <div class="t1">PRM393 · SE1801</div>
+        <div class="t2">Phòng P.305 · 35 sinh viên</div>
+        <div class="btn">Điểm danh</div>
+      </div>
+      <div class="in">
+        <div class="who-row"><span class="av">LT</span><div class="nm"><div class="t1" style="font-size:14px">Lê Thu Trang</div><div class="t3">SE190142 · SE1801</div></div></div>
+        <div class="who-row"><span class="av">TL</span><div class="nm"><div class="t1" style="font-size:14px">Trần Minh Long</div><div class="t3">SE190155 · SE1801</div></div></div>
+      </div>
+    </div>
+    <div class="neu-note">
+      <div class="sw" id="neu-sw"></div>
+      <p id="neu-text"></p>
+      <p class="small">Lượng pha rất nhỏ: chroma 0.005–0.015 trong OKLCH. Nhìn từng ô thì gần như không thấy; nhìn cả màn thì thấy "ấm" hay "lạnh". Pha ấm hợp với cam vì cùng họ hue; pha lạnh cạnh cam tạo cảm giác hơi lệch tông.</p>
+    </div>
+  </div>
+</section>
+
+<section id="do" class="wide">
+  <div class="head">
+    <div class="eyebrow">Máy đo 70-20-10</div>
+    <h2>Kéo tầng phụ và màu nhấn, xem diện tích đổi theo</h2>
+    <p class="lead">Màn GV-001 lúc 07:05. Trang tự đo diện tích nền của từng phần tử (chữ không tính, chấm trạng thái đỏ/vàng cũng không tính vì là semantic). Mốc bắt đầu là <b>bản cam thật</b>: gần như không có tầng phụ.</p>
+  </div>
+  <div class="meter-wrap">
+    <div class="ph" id="ph-meter"></div>
+    <div class="meter-side">
+      <div class="sliders">
+        <div class="sl"><label for="sub">Tầng phụ</label><input id="sub" type="range" min="0" max="3" step="1" value="0"><output id="sub-out" for="sub"></output></div>
+        <div class="sl"><label for="acc">Màu nhấn</label><input id="acc" type="range" min="0" max="4" step="1" value="2"><output id="acc-out" for="acc"></output></div>
+      </div>
+      <div class="presets" role="group" aria-label="Phương án có sẵn">
+        <button type="button" class="ghost" data-p="0,2">Bản cam thật</button>
+        <button type="button" class="ghost" data-p="2,3">B của CC-01</button>
+        <button type="button" class="ghost" data-p="1,4">Rối</button>
+        <button type="button" class="ghost" data-p="2,1">Đề xuất</button>
+      </div>
+      <div class="meter" id="m-main"></div>
+      <p id="m-verdict" style="font-size:15px;color:var(--ink2)"></p>
+      <p class="small">Thầy đúng ở chỗ: bản cam thiếu hẳn tầng 20%, mắt nhảy thẳng từ "không có gì" sang "cam". Nhưng con số chỉ là mốc khởi đầu. Màn dữ liệu, trang thương hiệu táo bạo hay dark mode có tỉ lệ khác. Câu hỏi đúng: <b>mỗi màu đang làm việc gì?</b></p>
+    </div>
+  </div>
+</section>
+
+<section id="tang-phu" class="wide">
+  <div class="head">
+    <div class="eyebrow">Tầng 20% đúng và sai</div>
+    <h2>Cùng diện tích màu, khác hẳn ý nghĩa</h2>
+  </div>
+  <div class="pair-grid" style="margin-top:20px">
+    <div class="side bad"><span class="lbl">TỆ · SƠN TỪNG THẺ</span>
+      <div class="mini">
+        <div style="background:#E8F1FB;border-radius:10px;padding:10px"><b>PRM393 · 07:00</b><div style="color:var(--s-t3)">SE1801 · P.305</div></div>
+        <div style="background:#EAF7EE;border-radius:10px;padding:10px"><b>MMA301 · 12:30</b><div style="color:var(--s-t3)">SE1805 · P.402</div></div>
+        <div style="background:#FFF4DC;border-radius:10px;padding:10px"><b>2 yêu cầu sửa điểm danh</b></div>
+        <div style="background:#F3ECFB;border-radius:10px;padding:10px"><b>94% có mặt tuần này</b></div>
+      </div>
+      <p class="note">Bốn màu pastel, mỗi thẻ một màu "cho vui". Màu không nói gì: xanh lá ở đây có nghĩa là thành công không? Vàng là cảnh báo không? Người dùng phải đoán. Lại thêm ba hue mới ngoài bảng màu.</p></div>
+    <div class="side good"><span class="lbl">TỐT · MỘT MẶT PHẲNG</span>
+      <div class="mini" style="padding:0;overflow:hidden;gap:0">
+        <div style="background:var(--s-p-soft);padding:12px 14px;display:flex;flex-direction:column;gap:8px">
+          <div style="font-size:11px;font-weight:800;color:var(--s-p-ink)">HÔM NAY</div>
+          <div style="background:#fff;border-radius:10px;padding:10px"><b>PRM393 · 07:00</b><div style="color:var(--s-t3)">SE1801 · P.305</div></div>
+          <div style="background:#fff;border-radius:10px;padding:10px"><b>MMA301 · 12:30</b><div style="color:var(--s-t3)">SE1805 · P.402</div></div>
+        </div>
+        <div style="padding:12px 14px;display:flex;flex-direction:column;gap:6px;color:var(--s-t2)">
+          <div>2 yêu cầu sửa điểm danh</div><div>94% có mặt tuần này</div>
+        </div>
+      </div>
+      <p class="note">Một mặt nền cam nhạt gom "việc hôm nay"; phần dưới trắng là "thông tin tham khảo". Màu phụ trả lời câu hỏi "cái gì thuộc nhóm nào" (figure–ground, common region).</p></div>
+  </div>
+</section>
+
+<section id="semantic" class="wide">
+  <div class="head">
+    <div class="eyebrow">Semantic color</div>
+    <h2>Đỏ, vàng, xanh lá là lời nói, không phải trang trí</h2>
+    <p class="lead">Mỗi màu semantic là một lời hứa với người dùng: thấy đỏ là có chuyện. Dùng đỏ để trang trí một lần là lời hứa mất giá.</p>
+  </div>
+  <div class="sem">
+    <div><span class="r">SUCCESS</span><span class="s-pill pill-ok" style="align-self:flex-start;font-size:13px">✓ Đã điểm danh</span><p>Việc đã xong, an toàn. Không dùng cho nút "Lưu" chỉ vì "xanh là tích cực".</p></div>
+    <div><span class="r">WARNING</span><span class="s-pill pill-warn" style="align-self:flex-start;font-size:13px">! còn được vắng 1</span><p>Sắp có chuyện, còn kịp xử lý. Ở lab2 vàng <code>#A15C00</code> rất gần cam nhấn (hue 62° và 45°, cùng độ sáng): luôn kèm icon và chữ.</p></div>
+    <div><span class="r">DANGER</span><span class="s-pill pill-bad" style="align-self:flex-start;font-size:13px">✕ Đã bị cấm thi</span><p>Lỗi, mất mát, không thể đảo ngược. Không dùng đỏ cho tiêu đề "Cần chú ý" để gây chú ý.</p></div>
+    <div><span class="r">INFO</span><span class="s-pill" style="align-self:flex-start;font-size:13px;background:var(--s-muted);color:var(--s-t2)">i Lịch đổi phòng</span><p>Thông tin trung tính. Lab2 chưa có màu info; trung tính đậm là đủ, đừng mượn cam.</p></div>
+  </div>
+  <div class="ctl">
+    <span class="lab" id="cna-lab">Trạng thái</span>
+    <div class="seg" role="group" aria-labelledby="cna-lab" id="cna-seg">
+      <button type="button" data-c="dot" aria-pressed="true">Chỉ bằng màu</button>
+      <button type="button" data-c="txt" aria-pressed="false">Màu + chữ + icon</button>
+    </div>
+    <span class="lab" id="cvd-lab">Mắt nhìn</span>
+    <div class="seg" role="group" aria-labelledby="cvd-lab" id="cvd-seg">
+      <button type="button" data-v="" aria-pressed="true">Thường</button>
+      <button type="button" data-v="cvd-deut" aria-pressed="false">Mù màu đỏ–lục</button>
+      <button type="button" data-v="cvd-gray" aria-pressed="false">Xám</button>
+    </div>
+  </div>
+  <div class="cvd-wrap">
+    <div class="slist" id="slist"></div>
+    <div class="neu-note">
+      <p id="cna-text"></p>
+      <p class="small">Mô phỏng mù màu ở đây là gần đúng (ma trận màu đơn giản), đủ để thấy đỏ và lục dồn về cùng một màu nâu xám. Khoảng 8% nam giới có dạng mù màu đỏ–lục. Chi tiết trợ năng để V-11.</p>
+    </div>
+  </div>
+</section>
+
+<section id="cap" class="wide">
+  <div class="head">
+    <div class="eyebrow">Tệ ↔ tốt</div>
+    <h2>Năm cặp, mỗi cặp chỉ đổi một biến</h2>
+  </div>
+
+  <div class="pair">
+    <h3>Cam pha loãng sáu vai</h3>
+    <p class="why">Lỗi: <span class="term">accent dilution</span>. Cam ở tiêu đề, link, avatar, chip, tab và nút. Sáu thứ cùng cam thì cam không còn nghĩa "bấm vào đây".</p>
+    <div class="pair-grid">
+      <div class="side bad"><span class="lbl">TỆ · CAM 6 CHỖ</span>
+        <div class="mini">
+          <div class="sec" style="color:var(--s-p)">Cần chú ý <a class="acc">Xem tất cả</a></div>
+          <div class="who-row"><span class="av solid">LT</span><div class="nm">Lê Thu Trang<small>SE190142</small></div><span class="s-pill" style="background:var(--s-p-soft);color:var(--s-p-ink)">5/4</span></div>
+          <div class="btn acc">Điểm danh PRM393</div>
+          <div style="display:flex;justify-content:space-around;font-size:11px;font-weight:700;color:var(--s-t3)"><span style="color:var(--s-p)">● Tổng quan</span><span>Lịch</span><span>Lớp</span></div>
+        </div>
+        <p class="note">Squint test: bốn đốm cam tranh nhau. Nút chính không thắng.</p></div>
+      <div class="side good"><span class="lbl">TỐT · CAM 1 CHỖ</span>
+        <div class="mini">
+          <div class="sec">Cần chú ý <a>Xem tất cả ›</a></div>
+          <div class="who-row"><span class="av">LT</span><div class="nm">Lê Thu Trang<small>SE190142</small></div><span class="s-pill pill-bad">✕ 5/4</span></div>
+          <div class="btn acc">Điểm danh PRM393</div>
+          <div style="display:flex;justify-content:space-around;font-size:11px;font-weight:700;color:var(--s-t3)"><span style="color:var(--s-t1)">● Tổng quan</span><span>Lịch</span><span>Lớp</span></div>
+        </div>
+        <p class="note">Link, tab, avatar về trung tính đậm. Số vắng dùng màu danger vì nó là trạng thái. Cam chỉ còn ở nút.</p></div>
+    </div>
+  </div>
+
+  <div class="pair">
+    <h3>32 switch xanh lá <span class="rule-id">GV-102 · W6</span></h3>
+    <p class="why">Lỗi: <span class="term">mảng màu lớn nhất cho thứ không quan trọng nhất</span>. 32 switch "có mặt" màu success thành mảng xanh lá to nhất màn, trong khi việc thật là xử lý 3 em chưa quét.</p>
+    <div class="pair-grid">
+      <div class="side bad"><span class="lbl">TỆ</span>
+        <div class="mini">
+          <div class="sw-row">Nguyễn Văn An<span class="tog"></span></div>
+          <div class="sw-row">Bùi Thị Bích<span class="tog"></span></div>
+          <div class="sw-row">Đỗ Minh Châu<span class="tog"></span></div>
+          <div class="sw-row">Hoàng Đức Anh<span class="tog"></span></div>
+          <div class="sw-row">Lê Thu Trang<span class="tog" style="background:var(--s-line)"></span></div>
+          <div class="sw-row" style="color:var(--s-t3)">… 30 dòng nữa, đa số xanh</div>
+        </div>
+        <p class="note">Xanh lá lặp 32 lần thành nền. Ba em cần xử lý chìm giữa danh sách.</p></div>
+      <div class="side good"><span class="lbl">TỐT</span>
+        <div class="mini">
+          <div style="color:var(--s-t3)"><span style="color:var(--s-ok);font-weight:800">✓</span> 32 em đã quét mã · <u>Xem</u></div>
+          <div style="font-weight:800;margin-top:4px">3 em chưa quét</div>
+          <div class="sw-row">Lê Thu Trang<span class="mk"><span>✓</span><span>✕</span></span></div>
+          <div class="sw-row">Trần Minh Long<span class="mk"><span>✓</span><span>✕</span></span></div>
+          <div class="sw-row">Phạm Quốc Huy<span class="mk"><span>✓</span><span>✕</span></span></div>
+        </div>
+        <p class="note">Gộp 32 em thành một dòng xám, chỉ một dấu ✓ xanh. Màu dành cho chỗ cần quyết định.</p></div>
+    </div>
+  </div>
+
+  <div class="pair">
+    <h3>Chữ xám trên nền màu</h3>
+    <p class="why">Lỗi: <span class="term">grey on color</span>. Xám <code>#6B6B6B</code> trên cam đặc chỉ đạt 1.11:1, gần như vô hình. Trên nền màu, chữ phụ dùng <b>cùng hue</b> nhạt hơn hoặc trắng giảm độ đậm (gợi ý của Steve Schoger, <i>Refactoring UI</i>).</p>
+    <div class="pair-grid">
+      <div class="side bad"><span class="lbl">TỆ · 1.11:1</span>
+        <div class="mini" style="background:var(--s-p);color:#fff"><div style="font-size:11px;font-weight:800;color:var(--s-t3)">ĐANG DIỄN RA</div><div style="font-size:18px;font-weight:800">PRM393 · SE1801</div><div style="color:var(--s-t3)">P.305 · 07:00–09:15</div></div>
+        <p class="note">Chữ phụ copy từ màn nền trắng sang thẻ cam.</p></div>
+      <div class="side good"><span class="lbl">TỐT · 4.25:1</span>
+        <div class="mini" style="background:var(--s-p);color:#fff"><div style="font-size:11px;font-weight:800;color:#FBEFE8">ĐANG DIỄN RA</div><div style="font-size:18px;font-weight:800">PRM393 · SE1801</div><div style="color:#FBEFE8">P.305 · 07:00–09:15</div></div>
+        <p class="note">Cam rất nhạt <code>#FBEFE8</code> trên cam: cùng họ, đọc được. 4.25:1 vẫn dưới 4.5 cho chữ 12px; muốn chắc thì dùng trắng (4.79:1).</p></div>
+    </div>
+  </div>
+
+  <div class="pair">
+    <h3>Semantic làm trang trí</h3>
+    <p class="why">Lỗi: <span class="term">semantic misuse</span>. Tiêu đề đỏ "cho nổi", nhãn "Mới" xanh lá "cho vui". Đến khi có lỗi thật, đỏ đã mất sức.</p>
+    <div class="pair-grid">
+      <div class="side bad"><span class="lbl">TỆ</span>
+        <div class="mini">
+          <div class="sec" style="color:var(--s-bad)">Cần chú ý!</div>
+          <div class="who-row"><span class="av">LT</span><div class="nm">Lê Thu Trang<small>SE190142</small></div><span class="s-pill pill-bad">5/4</span></div>
+          <div class="who-row"><span class="av">TL</span><div class="nm">Trần Minh Long<small>SE190155</small></div><span class="s-pill pill-bad">3/4</span></div>
+          <div class="next">12:30 MMA301 <span class="s-pill pill-ok">Mới</span></div>
+        </div>
+        <p class="note">Ba thứ đỏ, nhưng chỉ một em thật sự bị cấm thi. Xanh lá "Mới" không có nghĩa thành công.</p></div>
+      <div class="side good"><span class="lbl">TỐT</span>
+        <div class="mini">
+          <div class="sec">Cần chú ý</div>
+          <div class="who-row"><span class="av">LT</span><div class="nm">Lê Thu Trang<small>SE190142</small></div><span class="s-pill pill-bad">✕ Cấm thi</span></div>
+          <div class="who-row"><span class="av">TL</span><div class="nm">Trần Minh Long<small>SE190155</small></div><span class="s-pill pill-warn">! còn vắng 1</span></div>
+          <div class="next">12:30 MMA301 · SE1805</div>
+        </div>
+        <p class="note">Đỏ một chỗ, vàng một chỗ, đúng mức độ. Tiêu đề trung tính.</p></div>
+    </div>
+  </div>
+
+  <div class="pair">
+    <h3>Cảnh báo mượn màu nhấn</h3>
+    <p class="why">Lỗi: <span class="term">semantic collision</span>. Pill "sắp chạm ngưỡng" tô cam nhạt vì "hợp tông". Người dùng đọc cam là "bấm được" hoặc "thương hiệu", không đọc ra "cảnh báo".</p>
+    <div class="pair-grid">
+      <div class="side bad"><span class="lbl">TỆ</span>
+        <div class="mini">
+          <div class="who-row"><span class="av">TL</span><div class="nm">Trần Minh Long<small>SE190155</small></div><span class="s-pill" style="background:var(--s-p-soft);color:var(--s-p-ink)">3/4</span></div>
+          <div class="btn acc">Điểm danh</div>
+        </div>
+        <p class="note">Pill và nút cùng họ cam: một cái là trạng thái, một cái là hành động.</p></div>
+      <div class="side good"><span class="lbl">TỐT</span>
+        <div class="mini">
+          <div class="who-row"><span class="av">TL</span><div class="nm">Trần Minh Long<small>SE190155</small></div><span class="s-pill pill-warn">! còn được vắng 1</span></div>
+          <div class="btn acc">Điểm danh</div>
+        </div>
+        <p class="note">Token warning riêng, kèm icon và chữ nói hệ quả. Vì vàng lab2 gần cam, chữ và icon là thứ phân biệt chính.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="tuong-phan" class="wide">
+  <div class="head">
+    <div class="eyebrow">Tương phản nhanh</div>
+    <h2>Chọn chữ và nền từ bảng lab2, xem tỉ lệ WCAG</h2>
+    <p class="lead">Tỉ lệ tính từ độ sáng tương đối của hai màu, từ 1:1 (giống hệt) tới 21:1 (đen trên trắng). Mốc: <b>4.5:1</b> cho chữ thường, <b>3:1</b> cho chữ lớn (từ 24px, hoặc 19px đậm) và viền, icon của control.</p>
+  </div>
+  <div class="ctl">
+    <label for="cr-fg">Chữ</label><select id="cr-fg"></select>
+    <label for="cr-bg">Nền</label><select id="cr-bg"></select>
+    <button type="button" class="ghost" id="cr-swap">Đảo</button>
+  </div>
+  <div class="presets" style="margin-top:12px" role="group" aria-label="Cặp mẫu">
+    <button type="button" class="ghost" data-cr="#FFFFFF,#B9551F">Trắng trên nút cam</button>
+    <button type="button" class="ghost" data-cr="#6B6B6B,#FBEFE8">Xám trên cam nhạt</button>
+    <button type="button" class="ghost" data-cr="#6B6B6B,#B9551F">Xám trên cam đặc</button>
+    <button type="button" class="ghost" data-cr="#B9551F,#F4F4F4">Cam trên nền muted</button>
+  </div>
+  <div class="cr-wrap">
+    <div class="cr-sample" id="cr-sample">
+      <div class="l">Điểm danh PRM393</div>
+      <div class="s">SE1801 · P.305 · 07:00–09:15 · còn được vắng 1 buổi</div>
+    </div>
+    <div class="cr-res">
+      <div class="cr-num" id="cr-num">4.79<small>:1</small></div>
+      <div class="cr-checks">
+        <div><span class="badge" id="cr-b1"></span><span>Chữ thường (dưới 24px): cần 4.5:1</span></div>
+        <div><span class="badge" id="cr-b2"></span><span>Chữ lớn, viền và icon control: cần 3:1</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="lab2" class="wide">
+  <div class="head">
+    <div class="eyebrow">Trên lab2</div>
+    <h2>GV-001: bản cam → phương án B → bản sửa</h2>
+    <p class="lead">Ba màn dựng giản lược, đo bằng cùng một máy. Bản B của CC-01 đã đúng tầng 20% nhưng rải cam khắp nơi; bản sửa giữ mặt phẳng và rút cam về một chỗ.</p>
+  </div>
+  <div class="lab">
+    <article>
+      <h3>Bản cam thật</h3>
+      <div class="ph" id="ph-l1"></div>
+      <div class="meter" id="m-l1"></div>
+      <ul class="calls">
+        <li><span class="n r">1</span><span><b>Không có tầng phụ</b>: trắng, xám nhạt rồi cam. Không có mặt bằng trung gian nên trông "trắng trơn" (đơn điệu).</span></li>
+        <li><span class="n r">2</span><span><b>Cam là khối đặc lớn nhất</b>, nhưng lại nằm dưới lưới KPI (lỗi phân cấp của V-01).</span></li>
+        <li><span class="n r">3</span><span><b>Gờ đáy trên ô KPI</b> làm chúng trông bấm được dù chỉ là số.</span></li>
+      </ul>
+    </article>
+    <article>
+      <h3>Phương án B (CC-01)</h3>
+      <div class="ph" id="ph-l2"></div>
+      <div class="meter" id="m-l2"></div>
+      <ul class="calls">
+        <li><span class="n g">1</span><span><b>Tầng 20% đúng nghĩa</b>: mặt nền cam nhạt gom việc hôm nay (figure–ground).</span></li>
+        <li><span class="n r">2</span><span><b>Cam pha loãng</b>: nút, link, avatar, tab đều cam.</span></li>
+        <li><span class="n r">3</span><span><b>Lưới KPI vẫn còn</b>, chỉ bị đẩy xuống.</span></li>
+      </ul>
+    </article>
+    <article>
+      <h3>Bản sửa</h3>
+      <div class="ph" id="ph-l3"></div>
+      <div class="meter" id="m-l3"></div>
+      <ul class="calls">
+        <li><span class="n g">1</span><span><b>Giữ mặt phẳng hôm nay</b>; thông tin tham khảo nằm trên nền trắng.</span></li>
+        <li><span class="n g">2</span><span><b>Cam chỉ còn nút Điểm danh</b>: hành động chính duy nhất lúc 07:05.</span></li>
+        <li><span class="n g">3</span><span><b>Link, tab, avatar về trung tính đậm</b>; đỏ và vàng chỉ trên trạng thái, kèm chữ.</span></li>
+        <li><span class="n g">4</span><span><b>KPI thu về một dòng meta</b> (V-01, V-02).</span></li>
+      </ul>
+    </article>
+  </div>
+  <p class="spine counter" style="margin:28px 0 0">Bản sửa đo ra phần nhấn thấp hơn 10% nhiều. Không sao: <b>10% là trần</b>, không phải chỉ tiêu. Một nút cam đứng một mình trên mặt phẳng nhạt đã đủ thắng squint test.</p>
+</section>
+
+<section id="mac-dinh" class="wide">
+  <div class="head">
+    <div class="eyebrow">Phương án tốt nhất mặc định</div>
+    <h2>Không biết chọn gì thì dựng hệ màu này</h2>
+  </div>
+  <div class="recipe">
+    <div><b>NEUTRAL</b><span>Một thang xám 50–950 pha hue của màu nhấn (chroma 0.005–0.015). Ba tầng chữ: chính, phụ, chú thích.</span></div>
+    <div><b>ACCENT</b><span>Một màu nhấn duy nhất, có bậc pressed và soft. Chỉ cho hành động chính và trạng thái "đang chọn" của control quan trọng.</span></div>
+    <div><b>TẦNG PHỤ</b><span>Accent-soft hoặc muted làm <b>mặt nền section</b>, khoảng 15–30% diện tích. Không tô từng thẻ.</span></div>
+    <div><b>SEMANTIC</b><span>Bốn màu success / warning / danger / info, mỗi màu một cặp nền nhạt + chữ đậm. Chỉ cho trạng thái, luôn kèm chữ hoặc icon.</span></div>
+    <div><b>TƯƠNG PHẢN</b><span>Chữ ≥ 4.5:1; chữ lớn, viền và icon control ≥ 3:1. Chữ trên nền màu dùng cùng hue, không dùng xám.</span></div>
+    <div><b>CÁCH TẠO</b><span>Sinh thang bằng OKLCH: giữ H, L giảm đều, C cao nhất ở giữa. Không sinh bằng HSL.</span></div>
+  </div>
+  <p class="spine counter" style="margin-left:0"><b>Mặc định AI hay gặp:</b> gradient tím–xanh cho hero; <code>blue-500</code> của Tailwind cho mọi nút và link; <code>gray-500</code> trên nền màu; mỗi card một màu pastel; xanh lá cho nút "Lưu"; xám thuần không pha. <b>Khi nào 70-20-10 sai:</b> dashboard (màu dành để mã hoá dữ liệu), trang thương hiệu táo bạo (màu chủ đạo phủ cả màn là chủ ý), ảnh và minh hoạ lớn (chúng có màu riêng).</p>
+</section>
+
+<section id="lenh" class="spine">
+  <div class="eyebrow">Câu lệnh mẫu cho AI</div>
+  <h2>Cảm giác mơ hồ → câu lệnh có thuật ngữ</h2>
+  <div class="prompts" id="prompts"></div>
+</section>
+
+<section id="kiem-tra" class="spine">
+  <div class="eyebrow">Tự kiểm tra (tuỳ chọn, không ghi điểm)</div>
+  <h2>Ba câu, bấm để lộ đáp án</h2>
+  <details class="q"><summary>Quy tắc 70-20-10 tính theo cái gì?</summary>
+    <div class="ans">Theo diện tích thị giác của màn, không theo số phần tử. Một nút cam to có thể "nặng" hơn mười chấm cam nhỏ. Và đó là mốc khởi đầu, không phải luật cứng: dashboard và trang thương hiệu có tỉ lệ khác.</div></details>
+  <details class="q"><summary>Vì sao thang màu tạo bằng OKLCH đều mắt hơn HSL?</summary>
+    <div class="ans">L của HSL là phép toán trên RGB, không tính chuyện mắt nhạy với lục và vàng hơn xanh dương; nên cùng L 50% mà vàng chói, xanh dương tối. L của OKLCH được đo theo cảm nhận: cùng L là cùng độ sáng thật, đổi hue không làm lệch.</div></details>
+  <details class="q"><summary>Tầng phụ 20% nên là gì?</summary>
+    <div class="ans">Một mặt phẳng tổ chức nội dung: nền section gom một nhóm (vd "việc hôm nay") để tạo figure–ground. Không phải tô màu từng thẻ cho đỡ trắng.</div></details>
+</section>
+
+<footer class="spine">V-03 · nguồn: <code>rules/color.md</code> (COL-001), <code>lessons/M0-01-baseline.md</code> §3, <code>docs/00-perspective.md</code> §4, phương án B của <code>demos/CC-01/</code>. Khối kế: V-04 Khoảng cách, lưới, nhịp.</footer>
+
+<script>
+(function(){
+  function $(id){return document.getElementById(id)}
+  function seg(id,cb){var g=$(id),bs=[].slice.call(g.querySelectorAll('button'));
+    bs.forEach(function(b){b.addEventListener('click',function(){bs.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});cb(b)})});}
+
+  /* ---- OKLCH vs HSL ---- */
+  var hues=[]; for(var i=0;i<12;i++) hues.push(i*30);
+  $('row-hsl').innerHTML=hues.map(function(h){return '<div style="background:hsl('+h+' 85% 50%)" title="hsl('+h+' 85% 50%)"></div>'}).join('');
+  $('row-ok').innerHTML=hues.map(function(h){return '<div style="background:oklch(0.68 0.14 '+h+')" title="oklch(0.68 0.14 '+h+')"></div>'}).join('');
+  var steps=[50,100,200,300,400,500,600,700,800];
+  var hslL=[96,90,80,68,56,45,36,27,18];
+  var okL=[0.97,0.93,0.86,0.77,0.67,0.58,0.49,0.40,0.31], okC=[0.02,0.04,0.08,0.12,0.15,0.15,0.13,0.10,0.07];
+  function ramps(){
+    var h=parseInt($('hue').value,10); $('hue-out').textContent=h+'°';
+    $('ramp-hsl').innerHTML=steps.map(function(s,i){return '<div style="background:hsl('+h+' 70% '+hslL[i]+'%);color:'+(hslL[i]>55?'#1F1F1F':'#fff')+'">Aa<span>'+s+'</span></div>'}).join('');
+    $('ramp-ok').innerHTML=steps.map(function(s,i){return '<div style="background:oklch('+okL[i]+' '+okC[i]+' '+h+');color:'+(okL[i]>0.65?'#1F1F1F':'#fff')+'">Aa<span>'+s+'</span></div>'}).join('');
+    var n=$('hue-note');
+    if(h>=50&&h<=110) n.textContent='Hue '+h+'° (vàng): bậc 400–500 của HSL sáng chói, gần như không đọc được chữ trắng; OKLCH giữ đúng độ sáng như mọi hue khác.';
+    else if(h>=220&&h<=290) n.textContent='Hue '+h+'° (xanh dương, tím): bậc 400–500 của HSL tối hẳn đi so với bậc cùng số ở hue vàng; OKLCH không bị.';
+    else n.textContent='Kéo hue sang khoảng 60–100° (vàng) rồi 230–280° (xanh dương), bật "Xem bằng xám": thang HSL lệch sáng tối theo hue, thang OKLCH đứng yên.';
+  }
+  $('hue').addEventListener('input',ramps); ramps();
+  seg('gs-seg',function(b){$('oklch-box').classList.toggle('gs',b.dataset.g==='1')});
+
+  /* ---- Neutral ---- */
+  var NEU={
+    pure:{bg:'#F4F4F4',line:'#E5E5E5',t1:'#1F1F1F',t2:'#3C3C3C',t3:'#6B6B6B',txt:'Xám thuần (chroma 0) của lab2. Sạch, nhưng hơi "văn phòng", không thuộc về sản phẩm nào. Cạnh cam ấm, xám thuần trông hơi lạnh và bệch.'},
+    warm:{bg:'#F6F3F1',line:'#E8E2DE',t1:'#211D1A',t2:'#433B36',t3:'#70665F',txt:'Xám pha hue 45° (họ cam), chroma ~0.01. Cả màn ấm lên, nền và nút cam cùng một họ. Đây là cách các hệ màu tốt làm neutral.'},
+    cool:{bg:'#F1F4F7',line:'#E1E6EB',t1:'#1B1E22',t2:'#363C42',t3:'#646C75',txt:'Xám pha hue 250° (xanh dương). Hợp với sản phẩm có nhấn xanh dương; cạnh cam thì hai nhiệt độ màu kéo nhau.'}
+  };
+  function neu(k){var n=NEU[k],c=$('ncard');
+    c.style.setProperty('--n-bg',n.bg);c.style.setProperty('--n-line',n.line);c.style.setProperty('--n-t1',n.t1);c.style.setProperty('--n-t2',n.t2);c.style.setProperty('--n-t3',n.t3);
+    $('neu-sw').innerHTML=[n.bg,n.line,n.t3,n.t2,n.t1].map(function(x,i){return '<span style="background:'+x+';color:'+(i<2?'#3C3C3C':'#fff')+'">'+x.slice(1)+'</span>'}).join('');
+    $('neu-text').textContent=n.txt;}
+  seg('neu-seg',function(b){neu(b.dataset.n)}); neu('pure');
+
+  /* ---- Màn GV-001 có thể đo ---- */
+  // o: sub 0–3, acc 0–4, kpi 'grid'|'line', order 'kpi'|'slot'
+  function gv(o){
+    var sub=o.sub, acc=o.acc;
+    var headSolid=acc>=4;
+    var bandC=headSolid?'a" data-k="1':(sub>=1?'s':null);
+    var bandBg=headSolid?'var(--s-p)':(sub>=1?'var(--s-p-soft)':'transparent');
+    var headInk=headSolid?'#fff':'var(--s-t1)', headMeta=headSolid?'#FBEFE8':'var(--s-t3)';
+    var head='<div class="sb"><span>07:05</span><span>● ● ▮</span></div><div class="g-head"><div class="d" style="color:'+headInk+'">Thứ Ba, 20/10</div><div class="m" style="color:'+headMeta+'">Fall 2026 · Tổng quan</div></div>';
+    var kpis=o.kpi==='grid'
+      ? '<div class="kpis"><div class="kpi" data-c="n"><b>4</b><span>lớp đang dạy</span></div><div class="kpi" data-c="n"><b>131</b><span>sinh viên</span></div><div class="kpi" data-c="n"><b>94%</b><span>có mặt tuần này</span></div><div class="kpi" data-c="n"><b>2</b><span>yêu cầu sửa</span></div></div>'
+      : '<div class="kline">4 lớp · 131 sinh viên · 94% có mặt tuần này · 2 yêu cầu sửa</div>';
+    var hot=acc>=2;
+    var btn=acc>=2?'<div class="btn inv" data-c="n">Điểm danh</div>':(acc===1?'<div class="btn acc" data-c="a" data-k="1">Điểm danh</div>':'<div class="btn" data-c="n">Điểm danh</div>');
+    var slot='<div class="slot'+(hot?' hot':'')+'" data-c="'+(hot?'a" data-k="1':'n')+'"><div class="lb">ĐANG DIỄN RA · CHƯA ĐIỂM DANH</div><div class="t">PRM393 · SE1801</div><div class="m">P.305 · 07:00–09:15</div>'+btn+'</div>';
+    var next='<div class="next" data-c="n"><b>12:30</b> MMA301 · SE1805 · P.402</div>';
+    var avc=acc>=4?'av solid" data-k="1" data-c="a':(acc>=3?'av soft" data-k="1" data-c="s':'av');
+    var link=acc>=3?'<a class="acc" data-k="1">Xem tất cả</a>':'<a>Xem tất cả ›</a>';
+    var warnPill=acc>=3?'<span class="s-pill" data-k="1" style="background:var(--s-p-soft);color:var(--s-p-ink)">3/4</span>':'<span class="s-pill pill-warn">! còn vắng 1</span>';
+    var att='<div class="sec">Cần chú ý'+link+'</div>'+
+      '<div class="who-row"><span class="'+avc+'">LT</span><div class="nm">Lê Thu Trang<small>SE190142 · SE1801</small></div><span class="s-pill pill-bad">✕ 5/4</span></div>'+
+      '<div class="who-row"><span class="'+avc+'">TL</span><div class="nm">Trần Minh Long<small>SE190155 · SE1801</small></div>'+warnPill+'</div>';
+    var today, ref;
+    if(o.order==='kpi'){
+      // bản cam thật: KPI trước slot, mọi thứ một cột
+      today = kpis+slot+next;
+      ref = att;
+    } else {
+      today = slot+next;
+      ref = att+kpis;
+    }
+    var html;
+    if(sub>=2 && !headSolid){
+      html='<div class="g-band" data-c="s" style="background:var(--s-p-soft)">'+head+'<div class="g-body">'+today+'</div></div>';
+    } else {
+      html='<div class="g-band"'+(bandC?' data-c="'+bandC+'"':'')+' style="background:'+bandBg+'">'+head+'</div>'+
+           (sub>=2&&headSolid?'<div class="g-body" data-c="s" style="background:var(--s-p-soft);padding-top:12px">'+today+'</div>':'<div class="g-body">'+today+'</div>');
+    }
+    html+='<div class="g-ref"'+(sub>=3?' data-c="s" style="background:var(--s-muted)"':'')+'>'+ref+'</div>';
+    var tabOn=acc>=2?'<div class="on acc"><i data-c="a" data-k="1"></i>Tổng quan</div>':'<div class="on"><i></i>Tổng quan</div>';
+    html+='<div class="nav">'+tabOn+'<div><i></i>Lịch</div><div><i></i>Lớp</div><div><i></i>Tài khoản</div></div>';
+    return html;
+  }
+  function area(el){var r=el.getBoundingClientRect();return r.width*r.height}
+  function measure(ph){
+    var tot={n:0,s:0,a:0}, all=[].slice.call(ph.querySelectorAll('[data-c]'));
+    function own(el){var a=area(el);all.forEach(function(d){if(d!==el&&d.parentElement.closest('[data-c],.ph')===el)a-=area(d)});return Math.max(0,a)}
+    // phone itself counts as nền
+    var rootOwn=area(ph); all.forEach(function(d){if(d.parentElement.closest('[data-c],.ph')===ph)rootOwn-=area(d)});
+    tot.n+=Math.max(0,rootOwn);
+    all.forEach(function(el){tot[el.dataset.c]+=own(el)});
+    var sum=tot.n+tot.s+tot.a||1;
+    return {n:tot.n/sum*100,s:tot.s/sum*100,a:tot.a/sum*100,k:ph.querySelectorAll('[data-k]').length};
+  }
+  function meterHTML(m){
+    var r=function(x){return Math.round(x)};
+    return '<div class="mbar" role="img" aria-label="Nền '+r(m.n)+'%, phụ '+r(m.s)+'%, nhấn '+r(m.a)+'%"><div class="mn" style="width:'+m.n+'%"></div><div class="ms" style="width:'+m.s+'%"></div><div class="ma" style="width:'+m.a+'%"></div></div>'+
+      '<div class="mleg">'+(function(v){return '<span class="badge '+v[0]+'">'+v[1]+'</span>'})(verdict(m))+'<span><i class="dot" style="background:#fff"></i>Nền <b>'+r(m.n)+'%</b></span><span><i class="dot" style="background:var(--s-p-soft)"></i>Phụ <b>'+r(m.s)+'%</b></span><span><i class="dot" style="background:var(--s-p)"></i>Nhấn <b>'+r(m.a)+'%</b></span></div>';
+  }
+  function verdict(m){
+    if(m.a<1) return ['b-warn','không có điểm nhấn','Không còn màu nhấn: mắt không biết bấm đâu. Cần ít nhất một mảng cam cho hành động chính.'];
+    if(m.a>20) return ['b-bad','rối','Nhấn vượt 20% diện tích: cam phủ mảng lớn và ở khắp nơi. Rút cam về một chỗ.'];
+    if(m.k>=4) return ['b-bad','cam pha loãng','Cam xuất hiện ở '+m.k+' chỗ (nút, link, avatar, tab…): diện tích có thể vừa, nhưng cam không còn nghĩa "hành động".'];
+    if(m.s<8) return ['b-warn','đơn điệu','Thiếu tầng phụ: màn chỉ có trắng và cam, không có mặt phẳng nào gom nhóm.'];
+    if(m.s>40) return ['b-warn','tầng phụ lấn nền','Mặt phẳng phụ phủ quá nửa màn, nó thành nền mới và mất tác dụng tách nhóm.'];
+    return ['b-ok','cân','Có nền, có mặt phẳng gom nhóm, có một điểm nhấn. Giờ hỏi tiếp: mỗi mảng màu đang làm việc gì?'];
+  }
+  var SUBL=['0 · không có','1 · dải nền ấm ở đầu màn','2 · mặt phẳng "hôm nay" (đầu màn + các slot)','3 · thêm nền xám cho phần tham khảo'];
+  var ACCL=['0 · không có cam','1 · chỉ nút Điểm danh','2 · cả thẻ slot đặc cam + tab (bản thật)','3 · thêm link, avatar, chấm, pill','4 · thêm header đặc cam, avatar đặc'];
+  function renderMain(){
+    var s=parseInt($('sub').value,10), a=parseInt($('acc').value,10);
+    $('sub-out').textContent=SUBL[s]; $('acc-out').textContent=ACCL[a];
+    var ph=$('ph-meter'); ph.innerHTML=gv({sub:s,acc:a,kpi:'grid',order:s>=2?'slot':'kpi'});
+    var m=measure(ph); var v=verdict(m);
+    $('m-main').innerHTML=meterHTML(m)+'<div class="target">Mốc tham khảo: nền ~70 · phụ ~20 · nhấn ≤ 10</div>';
+    $('m-verdict').innerHTML='<span class="badge '+v[0]+'">'+v[1]+'</span> '+v[2];
+  }
+  $('sub').addEventListener('input',renderMain); $('acc').addEventListener('input',renderMain);
+  [].forEach.call(document.querySelectorAll('[data-p]'),function(b){b.addEventListener('click',function(){var p=b.dataset.p.split(',');$('sub').value=p[0];$('acc').value=p[1];renderMain()})});
+
+  var LAB=[['l1',{sub:0,acc:2,kpi:'grid',order:'kpi'}],['l2',{sub:2,acc:3,kpi:'grid',order:'slot'}],['l3',{sub:2,acc:1,kpi:'line',order:'slot'}]];
+  function renderLab(){LAB.forEach(function(x){var ph=$('ph-'+x[0]);ph.innerHTML=gv(x[1]);$('m-'+x[0]).innerHTML=meterHTML(measure(ph))})}
+  function measureAll(){renderMain();renderLab()}
+  measureAll();
+  if(document.fonts&&document.fonts.ready){document.fonts.ready.then(measureAll)}
+  var rt; window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(measureAll,150)});
+
+  /* ---- Semantic: color-not-alone ---- */
+  var STU=[['LT','Lê Thu Trang','SE190142','bad','✕','Đã bị cấm thi'],['TL','Trần Minh Long','SE190155','warn','!','còn được vắng 1'],['PH','Phạm Quốc Huy','SE190163','ok','✓','an toàn'],['NH','Nguyễn Thị Hường','SE190171','ok','✓','an toàn']];
+  var cMode='dot', vMode='';
+  function slist(){
+    $('slist').className='slist '+vMode;
+    $('slist').innerHTML=STU.map(function(s){
+      var mark=cMode==='dot'?'<span class="sd" style="background:var(--s-'+s[3]+')"></span>':'<span class="s-pill pill-'+s[3]+'">'+s[4]+' '+s[5]+'</span>';
+      return '<div class="who-row"><span class="av">'+s[0]+'</span><div class="nm">'+s[1]+'<small>'+s[2]+'</small></div>'+mark+'</div>'}).join('');
+    var t;
+    if(cMode==='dot') t=vMode?'Chỉ bằng chấm màu: ở chế độ này đỏ, vàng, xanh lá gần như cùng một màu. Người mù màu không biết em nào bị cấm thi.':'Chỉ bằng chấm màu: người mắt thường đọc được nếu đã học quy ước. Thử chuyển sang "Mù màu đỏ–lục".';
+    else t=vMode?'Màu đã lẫn, nhưng chữ và icon (✕ ! ✓) vẫn nói đủ. Đây là color-not-alone.':'Màu + icon + chữ nói hệ quả. Mắt thường quét bằng màu, người mù màu đọc bằng chữ.';
+    $('cna-text').textContent=t;
+  }
+  seg('cna-seg',function(b){cMode=b.dataset.c;slist()});
+  seg('cvd-seg',function(b){vMode=b.dataset.v;slist()});
+  slist();
+
+  /* ---- Contrast ---- */
+  var PAL=[['#FFFFFF','nền trắng'],['#F4F4F4','muted'],['#FBEFE8','cam soft'],['#1F1F1F','chữ chính'],['#3C3C3C','chữ phụ'],['#6B6B6B','chữ chú thích'],['#B9551F','cam primary'],['#8A3D14','cam pressed'],['#9A4518','chữ trên soft'],['#15803D','success'],['#A15C00','warning'],['#B42318','danger'],['#ECFDF3','success soft'],['#FFF6DD','warning soft'],['#FEF0EF','danger soft']];
+  var opts=PAL.map(function(p){return '<option value="'+p[0]+'">'+p[0]+' · '+p[1]+'</option>'}).join('');
+  $('cr-fg').innerHTML=opts; $('cr-bg').innerHTML=opts; $('cr-fg').value='#FFFFFF'; $('cr-bg').value='#B9551F';
+  function lum(hex){var c=[1,3,5].map(function(i){var v=parseInt(hex.substr(i,2),16)/255;return v<=0.04045?v/12.92:Math.pow((v+0.055)/1.055,2.4)});return 0.2126*c[0]+0.7152*c[1]+0.0722*c[2]}
+  function cr(){
+    var f=$('cr-fg').value,b=$('cr-bg').value,l1=lum(f),l2=lum(b),r=(Math.max(l1,l2)+0.05)/(Math.min(l1,l2)+0.05);
+    var s=$('cr-sample'); s.style.background=b; s.style.color=f;
+    $('cr-num').innerHTML=r.toFixed(2)+'<small>:1</small>';
+    function bd(el,ok){el.className='badge '+(ok?'b-ok':'b-bad');el.textContent=ok?'Đạt':'Không đạt'}
+    bd($('cr-b1'),r>=4.5); bd($('cr-b2'),r>=3);
+  }
+  $('cr-fg').addEventListener('change',cr); $('cr-bg').addEventListener('change',cr);
+  $('cr-swap').addEventListener('click',function(){var a=$('cr-fg').value;$('cr-fg').value=$('cr-bg').value;$('cr-bg').value=a;cr()});
+  [].forEach.call(document.querySelectorAll('[data-cr]'),function(b){b.addEventListener('click',function(){var p=b.dataset.cr.split(',');$('cr-fg').value=p[0];$('cr-bg').value=p[1];cr()})});
+  cr();
+
+  /* ---- Prompt ---- */
+  var P=[
+    ['"Đơn điệu, toàn trắng với xám"','Thêm tầng phụ khoảng 20% diện tích bằng một mặt phẳng nền (accent-soft) gom [nhóm việc chính] để tạo figure–ground. Không tô màu từng thẻ để trang trí, không thêm hue mới.'],
+    ['"Màu rối, cam ở khắp nơi"','Kiểm phân bổ 70-20-10 theo diện tích. Màu nhấn tối đa ~10% và chỉ cho hành động chính; link, tab đang chọn, avatar, chấm trạng thái chuyển về trung tính đậm.'],
+    ['"Xám trông chết, lạnh"','Dùng neutral pha sắc theo màu nhấn: trong OKLCH giữ hue [45], chroma 0.005–0.015 cho nền, viền và chữ phụ. Không dùng xám thuần.'],
+    ['"Bảng màu tự chế bị lệch sáng tối"','Sinh thang màu 50–900 bằng OKLCH: giữ hue, L giảm đều từng bậc, chroma cao nhất ở giữa thang và thấp ở hai đầu. Không sinh bằng HSL.'],
+    ['"Đỏ, vàng, xanh dùng lung tung"','Semantic color (success / warning / danger / info) chỉ dùng cho trạng thái thật, mỗi màu một cặp nền nhạt + chữ đậm, và luôn kèm chữ hoặc icon (color-not-alone). Không dùng semantic để trang trí hay làm tiêu đề.'],
+    ['"Chữ trên nền màu khó đọc, xỉn"','Chữ trên nền màu dùng sắc độ cùng hue (đậm hơn trên nền nhạt, nhạt hơn hoặc trắng trên nền đậm), không dùng xám. Kiểm contrast ratio: chữ thường ≥ 4.5:1, chữ lớn và viền control ≥ 3:1.']
+  ];
+  var box=$('prompts');
+  P.forEach(function(p,i){
+    var d=document.createElement('div'); d.className='prompt';
+    d.innerHTML='<div class="feel"></div><div class="say"></div><button type="button" class="copy" id="copy-'+i+'">Copy</button>';
+    d.querySelector('.feel').textContent='Bạn thấy: '+p[0]; d.querySelector('.say').textContent=p[1];
+    var btn=d.querySelector('.copy');
+    btn.addEventListener('click',function(){
+      function ok(){btn.textContent='Đã copy';btn.classList.add('done');setTimeout(function(){btn.textContent='Copy';btn.classList.remove('done')},1600)}
+      function fallback(){var s=window.getSelection(),rg=document.createRange();rg.selectNodeContents(d.querySelector('.say'));s.removeAllRanges();s.addRange(rg);btn.textContent='Đã chọn, nhấn Ctrl+C'}
+      try{navigator.clipboard.writeText(p[1]).then(ok,fallback)}catch(e){fallback()}
+    });
+    box.appendChild(d);
+  });
+})();
+</script>

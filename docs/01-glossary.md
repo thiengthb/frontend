@@ -39,12 +39,16 @@
 ## C. Màu sắc (Color)
 | Thuật ngữ | Nghĩa | Vì sao quan trọng |
 |---|---|---|
-| **Hue / Saturation / Lightness** | Sắc / độ bão hoà / độ sáng (HSL, OKLCH) | Hiểu ba trục này thì tự tạo được bảng màu |
+| **Hue / Saturation / Lightness** ✅ | Sắc / độ bão hoà / độ sáng (HSL, OKLCH) | Hiểu ba trục này thì tự tạo được bảng màu (V-03) |
+| **OKLCH** ✅ | Ghi màu bằng L (độ sáng theo mắt) · C (độ rực) · H (góc hue). CSS: `oklch(0.57 0.14 45)` | Cùng L là cùng độ sáng thật; thang màu đều hơn HSL (V-03) |
+| **Chroma** ✅ | Độ rực trong OKLCH: 0 là xám | Neutral pha sắc dùng chroma 0.005–0.015 (V-03) |
 | **Palette / Shades (50–900)** | Dải sắc độ của một màu | Các design system đều dùng thang này |
-| **Semantic color** | Màu theo ý nghĩa: primary, success, warning, danger, info | Màu phải truyền đạt ý nghĩa, không chỉ để trang trí |
-| **Neutral** | Xám (thường pha chút màu chủ đạo) | Chiếm phần lớn diện tích giao diện |
-| **60-30-10 / 70-20-10** | Tỉ lệ diện tích nền / phụ / nhấn | Kiểm soát độ đơn điệu và độ rối |
-| **Contrast ratio (WCAG)** | Tỉ lệ tương phản chữ/nền: 4.5:1 cho chữ thường, 3:1 cho chữ lớn | Là chuẩn trợ năng, mức bắt buộc |
+| **Semantic color** ✅ | Màu theo ý nghĩa: success, warning, danger, info | Chỉ cho trạng thái; dùng để trang trí thì mất giá (V-03) |
+| **Neutral** ✅ | Xám (thường pha chút màu chủ đạo) | Chiếm phần lớn diện tích giao diện; xám thuần trông vô chủ (V-03) |
+| **Accent dilution** ✅ | Màu nhấn rải ra nhiều vai (link, avatar, tab, nút) | Cam ở 6 chỗ thì cam hết nghĩa "hành động" (V-03) |
+| **60-30-10 / 70-20-10** ✅ | Tỉ lệ diện tích nền / phụ / nhấn | Tính theo diện tích; tầng phụ là mặt phẳng tổ chức; 10% là trần (V-03) |
+| **Contrast ratio (WCAG)** ✅ | Tỉ lệ tương phản chữ/nền: 4.5:1 cho chữ thường, 3:1 cho chữ lớn và viền control | Là chuẩn trợ năng, mức bắt buộc (V-03, sâu ở V-11) |
+| **Color-not-alone** ✅ | Không truyền thông tin chỉ bằng màu: kèm chữ hoặc icon | ~8% nam giới lẫn đỏ–lục (V-03) |
 | **Color harmony** | Bổ sung, tương đồng, bộ ba… | Giúp chọn màu phụ/nhấn có cơ sở |
 
 ## D. Bố cục (Layout & Spacing)
@@ -124,4 +128,4 @@
 | **Squint test** ✅ | Nheo mắt nhìn màn hình: cái gì còn nổi bật là điểm nhấn thật |
 | **Recognition vs recall** | Nhận ra (thấy nhãn) dễ hơn nhớ lại (đoán icon) — Nielsen #6 |
 | **Signifier** | Dấu hiệu cho biết có thể tương tác (Norman). Khác với affordance là khả năng thật |
-| **Figure–ground** | Tách hình khỏi nền. Tầng màu phụ 20% thường đóng vai trò "nền tổ chức" |
+| **Figure–ground** ✅ | Tách hình khỏi nền. Tầng màu phụ 20% thường đóng vai trò "nền tổ chức" (V-03) |
