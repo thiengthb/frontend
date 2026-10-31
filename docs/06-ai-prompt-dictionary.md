@@ -32,3 +32,14 @@
 | "Bảng màu tự chế lệch sáng tối" | "Sinh thang 50–900 bằng **OKLCH**: giữ hue, L giảm đều, chroma cao nhất ở giữa thang. Không sinh bằng HSL." |
 | "Đỏ, vàng, xanh dùng lung tung" | "**Semantic color** (success / warning / danger / info) chỉ cho trạng thái thật, mỗi màu một cặp nền nhạt + chữ đậm, luôn kèm chữ hoặc icon (**color-not-alone**). Không dùng semantic để trang trí." |
 | "Chữ trên nền màu khó đọc, xỉn" | "Chữ trên nền màu dùng **sắc độ cùng hue**, không dùng xám. Kiểm **contrast ratio**: chữ thường ≥ 4.5:1, chữ lớn và viền control ≥ 3:1." |
+
+## V-04 · Khoảng cách, lưới, nhịp
+| Bạn cảm thấy | Câu lệnh cho AI |
+|---|---|
+| "Đều đều, không thấy nhóm" | "Dùng **proximity** để nhóm: khoảng trong nhóm 8, giữa nhóm 24, giữa section 32–48 (mỗi bậc **≥ 2×** bậc dưới). Nhóm bằng khoảng trắng trước khi thêm viền hay nền." |
+| "Khoảng cách lộn xộn" | "Chỉ dùng **spacing scale** 4/8: 4, 8, 12, 16, 24, 32, 48. Không dùng giá trị ngoài thang. Dùng **gap** của flex/grid thay cho margin trên từng phần tử." |
+| "Chật, ngột" | "Lề màn 16, **padding** thẻ 16 (lớn hơn khoảng bên trong thẻ). Tăng **whitespace macro** giữa section trước khi thu nhỏ chữ." |
+| "Nhàm, khối nào cũng như nhau" | "Tạo **rhythm**: lặp cấu trúc nhưng có biến tấu. Khối quan trọng nhất có khoảng thở lớn; danh sách thì dày. Nhất quán (cùng thang) ≠ đồng phục (cùng một giá trị)." |
+| "Trông lệch lệch" | "Căn theo **lưới 4 cột, margin 16, gutter 16** cho màn 360dp. Mọi mép trái nằm trên cùng một đường; nút đôi mỗi nút đúng 2 cột." |
+| "Danh sách dài, cuộn mãi" | "Chọn **density** theo việc: danh sách làm việc dùng compact, hàng 48 một dòng; màn đọc lướt 56–64. Vùng chạm không dưới 48. Danh sách dùng đường kẻ, không bọc mỗi hàng một thẻ." |
+

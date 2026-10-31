@@ -13,9 +13,9 @@
 | **Contrast** | Sự khác biệt (kích thước, màu, độ đậm, khoảng cách, hình dạng) | Không có tương phản thì không có phân cấp, dẫn đến "đơn điệu" |
 | **Emphasis / Focal point** ✅ | Điểm nhấn, nơi mắt dừng lại đầu tiên | Mỗi màn hình nên có một điểm nhấn chính |
 | **Balance** | Cân bằng thị giác (đối xứng hoặc bất đối xứng) | Tạo cảm giác ổn định hoặc động |
-| **Rhythm / Repetition** | Lặp lại có chủ đích (spacing, kiểu section) | Tạo nhất quán. Lặp mà không biến tấu thì sinh ra nhàm chán |
-| **Proximity** | Phần tử gần nhau được xem là một nhóm | Là công cụ nhóm thông tin mạnh nhất, mạnh hơn cả khung viền |
-| **Alignment** | Căn theo trục chung | Tạo trật tự, giúp giao diện trông "chuyên nghiệp" |
+| **Rhythm / Repetition** ✅ | Lặp lại có chủ đích (spacing, kiểu section) | Lặp có biến tấu; lặp y hệt thì đều đều (V-04) |
+| **Proximity** ✅ | Phần tử gần nhau được xem là một nhóm | Mạnh hơn khung viền. Giữa nhóm ≥ 2× trong nhóm (V-04) |
+| **Alignment** ✅ | Căn theo trục chung | Mép lệch 3–10px cộng lại thành "luộm thuộm" (V-04) |
 | **White space / Negative space** | Khoảng trống | Không phải là phí chỗ: nó tách nhóm, tạo nhịp, tạo cảm giác cao cấp |
 | **Gestalt principles** | Các nguyên lý tri giác: proximity, similarity, closure, continuity, figure–ground, common region | Giải thích *vì sao* mắt người nhóm và hiểu các hình |
 | **Affordance / Signifier** | Gợi ý cách dùng (nút trông như bấm được) | Người dùng không phải đoán |
@@ -54,13 +54,16 @@
 ## D. Bố cục (Layout & Spacing)
 | Thuật ngữ | Nghĩa | Vì sao quan trọng |
 |---|---|---|
-| **Grid system** | Lưới cột (12 cột), gutter, margin | Là xương sống của bố cục |
-| **8pt grid / Spacing scale** | Thang spacing 4/8/16/24/32/48/64 | Hai yếu tố quan trọng nhất cho sự nhất quán |
+| **Grid system** ✅ | Lưới cột (mobile 4 cột, desktop 12), gutter, margin | Giữ ít đường căn; mobile: margin 16, gutter 16 (V-04) |
+| **Gutter / Margin** ✅ | Gutter: khe giữa cột. Margin: lề hai bên màn | Lề 16 tránh chữ sát mép máy (V-04) |
+| **8pt grid / Spacing scale** ✅ | Thang spacing 4/8/12/16/24/32/48 | Chỉ chọn trong thang; bậc cách xa nhau (V-04) |
+| **Whitespace (micro / macro)** ✅ | Khoảng trống trong khối (chữ, nút) / giữa khối, section | Macro tạo nhóm và nhịp (V-04) |
+| **Padding vs gap** ✅ | Padding: mép hộp → nội dung. Gap: giữa các phần tử anh em | Padding thẻ ≥ gap bên trong thẻ (V-04) |
 | **F-pattern / Z-pattern** | Kiểu mắt quét trang | Đặt nội dung quan trọng đúng vị trí mắt nhìn |
 | **Above the fold** | Phần hiển thị trước khi cuộn | Ảnh hưởng đến ấn tượng đầu |
 | **Responsive / Breakpoint** | Thích ứng theo kích thước màn hình | Mobile chiếm phần lớn lượng truy cập |
 | **Container / Max-width** | Giới hạn chiều rộng nội dung | Giữ độ dài dòng hợp lý |
-| **Density** | Mật độ thông tin (thoáng hay dày) | Dashboard khác landing page |
+| **Density** ✅ | Mật độ thông tin: compact / comfortable / spacious | Chọn theo việc; vùng chạm luôn ≥ 48 (V-04) |
 
 ## E. Nguyên lý & định luật UX
 | Thuật ngữ | Nghĩa ngắn |

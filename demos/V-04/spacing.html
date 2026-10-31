@@ -1,0 +1,622 @@
+<title>V-04 Khoảng cách</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* Bố cục: cùng khung V-01..V-03 (cột đọc 760px, demo bung 1100px). Màn mẫu dùng bảng màu lab2; lớp phủ đo khoảng cách dùng 3 màu cho 3 tầng. */
+:root{
+  --bg:#FBFAF8; --surface:#FFFFFF; --sunk:#F4F1EE;
+  --ink:#1F1F1F; --ink2:#3C3C3C; --ink3:#6B6B6B; --line:#E7E2DD;
+  --accent:#B9551F; --accent-ink:#9A4518; --accent-soft:#FBEFE8;
+  --bad:#B42318; --bad-soft:#FEF0EF; --ok:#15803D; --ok-soft:#ECFDF3; --warn:#A15C00; --warn-soft:#FFF6DD;
+  --s-bg:#FFFFFF; --s-muted:#F4F4F4; --s-line:#E5E5E5; --s-t1:#1F1F1F; --s-t2:#3C3C3C; --s-t3:#6B6B6B;
+  --s-p:#B9551F; --s-p-soft:#FBEFE8; --s-p-ink:#9A4518; --s-bad:#B42318; --s-bad-soft:#FEF0EF; --s-warn:#A15C00; --s-warn-soft:#FFF6DD; --s-ok:#15803D; --s-ok-soft:#ECFDF3;
+  --t1:rgba(37,99,235,.28); --t1-ink:#1D4ED8; --t2:rgba(219,39,119,.24); --t2-ink:#BE185D; --t3:rgba(5,150,105,.26); --t3-ink:#047857; --col:rgba(219,39,119,.12);
+  --f-body:"Nunito", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#161412; --surface:#1F1C1A; --sunk:#262220;
+  --ink:#F2EEEA; --ink2:#D3CCC5; --ink3:#A39A92; --line:#3A3531;
+  --accent:#E8925E; --accent-ink:#F0A97E; --accent-soft:#3A2418;
+  --bad:#F2877E; --bad-soft:#3A1C1A; --ok:#6CCB8D; --ok-soft:#15301F; --warn:#E3AE55; --warn-soft:#352A14; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#161412; --surface:#1F1C1A; --sunk:#262220;
+  --ink:#F2EEEA; --ink2:#D3CCC5; --ink3:#A39A92; --line:#3A3531;
+  --accent:#E8925E; --accent-ink:#F0A97E; --accent-soft:#3A2418;
+  --bad:#F2877E; --bad-soft:#3A1C1A; --ok:#6CCB8D; --ok-soft:#15301F; --warn:#E3AE55; --warn-soft:#352A14; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 80px}
+h1,h2,h3{line-height:1.2;text-wrap:balance;margin:0}
+p{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+.spine{max-width:760px;margin:0 auto}
+.wide{max-width:1100px;margin:0 auto}
+.head{max-width:760px}
+section{padding-top:72px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink)}
+h2{font-size:28px;font-weight:900;margin-top:6px}
+.lead{color:var(--ink2);margin-top:10px;max-width:65ch}
+.small{font-size:14px;color:var(--ink3)}
+code,.mono{font-family:var(--f-mono);font-size:.88em}
+.term{font-weight:800;color:var(--ink)}
+.tnum{font-variant-numeric:tabular-nums}
+
+.hero{padding-top:48px}
+.hero .tag{font-family:var(--f-mono);font-size:13px;color:var(--ink3)}
+.hero h1{font-size:clamp(34px,7vw,56px);font-weight:900;letter-spacing:-.02em;margin-top:14px;max-width:16ch}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{margin-top:16px;color:var(--ink2);max-width:58ch;font-size:17px}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.toc a{font-size:14px;font-weight:700;color:var(--ink2);text-decoration:none;padding:6px 12px;border:1px solid var(--line);border-radius:999px}
+.toc a:hover{border-color:var(--accent);color:var(--accent-ink)}
+.terms{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:20px}
+.terms div{padding:14px 16px;background:var(--surface);border-left:3px solid var(--line)}
+.terms div:first-child{border-left-color:var(--accent)}
+.terms b{display:block;font-size:16px}
+.terms span{display:block;font-size:14px;color:var(--ink2);margin-top:2px;line-height:1.45}
+
+.ctl{display:flex;align-items:center;gap:12px 16px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin-top:20px}
+.ctl label,.ctl .lab{font-weight:800;font-size:15px}
+.ctl output{font-family:var(--f-mono);font-size:13px;color:var(--ink3);min-width:52px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;flex-wrap:wrap}
+.seg button{border:0;background:none;padding:8px 12px;font-size:14px;font-weight:700;color:var(--ink2);min-height:40px}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.badge{font-size:13px;font-weight:800;padding:4px 10px;border-radius:999px}
+.b-bad{background:var(--bad-soft);color:var(--bad)}
+.b-ok{background:var(--ok-soft);color:var(--ok)}
+.b-warn{background:var(--warn-soft);color:var(--warn)}
+.sliders{display:flex;flex-direction:column;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.sl{display:grid;grid-template-columns:120px minmax(0,1fr) 56px;gap:12px;align-items:center}
+.sl label{font-weight:800;font-size:15px}
+.sl input{width:100%;accent-color:var(--accent)}
+.sl output{font-family:var(--f-mono);font-size:13px;color:var(--ink3)}
+
+/* Màn mẫu */
+.ph{width:320px;max-width:100%;background:var(--s-bg);color:var(--s-t1);border-radius:24px;overflow:hidden;position:relative;
+  box-shadow:0 0 0 1px var(--line),0 12px 30px -18px rgba(0,0,0,.35);font-family:var(--f-body);display:flex;flex-direction:column;flex:none;line-height:1.3}
+.sb{height:24px;display:flex;justify-content:space-between;align-items:center;padding:0 18px;font-size:11px;font-weight:800;flex:none}
+.scr{padding:0 16px 16px;display:flex;flex-direction:column}
+.mini{width:290px;max-width:100%;background:var(--s-bg);color:var(--s-t1);border-radius:16px;box-shadow:0 0 0 1px var(--line);display:flex;flex-direction:column;line-height:1.3;font-size:13px;position:relative}
+.gt{font-size:13px;font-weight:800;color:var(--s-t2)}
+.row{display:flex;align-items:center;gap:10px;font-size:14px}
+.row .nm{flex:1;min-width:0}
+.row .nm small{display:block;font-size:12px;color:var(--s-t3)}
+.av{width:28px;height:28px;border-radius:50%;background:var(--s-muted);color:var(--s-t2);font-size:11px;font-weight:800;display:grid;place-items:center;flex:none}
+.s-pill{font-size:11px;font-weight:800;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.pill-bad{background:var(--s-bad-soft);color:var(--s-bad)}
+.pill-warn{background:var(--s-warn-soft);color:var(--s-warn)}
+.pill-ok{background:var(--s-ok-soft);color:var(--s-ok)}
+.card{border:1px solid var(--s-line);border-radius:12px;background:var(--s-bg)}
+.btn{border-radius:10px;text-align:center;font-weight:800;font-size:14px;padding:12px;background:var(--s-p);color:#fff}
+.btn2{border-radius:10px;text-align:center;font-weight:800;font-size:13px;padding:10px;border:1px solid var(--s-line);color:var(--s-t1)}
+.mk{display:flex;gap:6px}
+.mk span{width:36px;height:30px;border-radius:8px;border:1px solid var(--s-line);display:grid;place-items:center;font-weight:800;color:var(--s-t2)}
+
+/* Spacer đo được: khoảng cách là một phần tử thật, bật lớp phủ thì hiện màu và số */
+.sp{flex:none;position:relative}
+.ov .sp{background:var(--tc)}
+.ov .sp::after{content:attr(data-px);position:absolute;right:2px;top:50%;transform:translateY(-50%);font-family:var(--f-mono);font-size:9px;font-weight:700;line-height:1;color:var(--ti);background:#fff;padding:1px 3px;border-radius:3px}
+.sp.k1{--tc:var(--t1);--ti:var(--t1-ink)} .sp.k2{--tc:var(--t2);--ti:var(--t2-ink)} .sp.k3{--tc:var(--t3);--ti:var(--t3-ink)}
+.ov .sp[data-px="0"]::after,.ov .sp.tiny::after,.ov .sp.k0::after{display:none}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:14px;color:var(--ink2)}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:-2px;margin-right:6px}
+
+/* Bố cục demo */
+.duo{display:flex;flex-wrap:wrap;gap:28px;margin-top:20px;align-items:flex-start}
+.note-col{flex:1;min-width:240px;display:flex;flex-direction:column;gap:12px;font-size:15px;color:var(--ink2)}
+.vals{display:flex;flex-wrap:wrap;gap:6px}
+.vals span{font-family:var(--f-mono);font-size:12px;font-weight:700;padding:3px 8px;border-radius:6px;background:var(--surface);border:1px solid var(--line)}
+.vals span.off{background:var(--bad-soft);color:var(--bad);border-color:transparent}
+.ruler4{display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap}
+.ruler4 div{display:flex;flex-direction:column;align-items:center;gap:4px;font-family:var(--f-mono);font-size:11px;color:var(--ink3)}
+.ruler4 i{display:block;background:var(--accent);border-radius:2px;width:14px}
+
+/* Lưới */
+.gridph .lay{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:16px;row-gap:12px;padding:8px 16px 18px}
+.gridph .colov{position:absolute;inset:24px 16px 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:16px;pointer-events:none}
+.gridph .colov i{background:var(--col);border-left:1px solid rgba(219,39,119,.35);border-right:1px solid rgba(219,39,119,.35)}
+.gridph .margin-l,.gridph .margin-r{position:absolute;top:24px;bottom:0;width:16px;background:rgba(37,99,235,.12);pointer-events:none}
+.gridph .margin-l{left:0}.gridph .margin-r{right:0}
+.span4{grid-column:span 4}.span2{grid-column:span 2}
+.offg .o1{margin-left:5px}.offg .o2{margin-right:-9px;margin-left:10px}.offg .o3{margin-left:-6px;margin-right:6px}.offg .o4{margin-left:13px}
+
+/* Mật độ */
+.dlist .row{border-bottom:1px solid var(--s-line);padding:0}
+.dlist .row:last-child{border-bottom:0}
+
+/* Cặp */
+.pair{margin-top:40px}
+.pair h3{font-size:20px;font-weight:900}
+.pair .why{color:var(--ink2);margin-top:6px;max-width:68ch;font-size:15px}
+.pair-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:16px}
+.side{border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;align-items:center;background:var(--sunk);min-width:0}
+.side .lbl{align-self:flex-start;font-family:var(--f-mono);font-size:12px;font-weight:700;letter-spacing:.06em;padding:3px 9px;border-radius:6px}
+.side.bad .lbl{background:var(--bad-soft);color:var(--bad)}
+.side.good .lbl{background:var(--ok-soft);color:var(--ok)}
+.side .note{align-self:stretch;font-size:13.5px;color:var(--ink2);line-height:1.45}
+.field{font-size:12px;font-weight:800;color:var(--s-t2)}
+.inp{border:1px solid var(--s-line);border-radius:10px;padding:10px 12px;font-size:14px;color:var(--s-t3)}
+
+/* lab2 */
+.lab{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin-top:28px}
+.lab article{display:flex;flex-direction:column;gap:14px;align-items:center;min-width:0}
+.lab h3{font-size:18px;font-weight:900;align-self:flex-start}
+.calls{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;align-self:stretch}
+.calls li{display:grid;grid-template-columns:22px 1fr;gap:8px;font-size:14px;line-height:1.45;color:var(--ink2)}
+.calls li b{color:var(--ink)}
+.n{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;font-family:var(--f-mono);font-size:11px;font-weight:700;color:#fff}
+.n.g{background:#15803D}.n.r{background:#B42318}
+
+.recipe{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin-top:20px}
+.recipe div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.recipe b{display:block;font-size:13px;font-family:var(--f-mono);color:var(--accent-ink);font-weight:700}
+.recipe span{display:block;margin-top:4px;font-size:15px;color:var(--ink2)}
+.counter{margin-top:20px;padding:14px 18px;border-left:3px solid var(--accent);background:var(--accent-soft);font-size:15px;color:var(--ink)}
+
+.prompts{display:flex;flex-direction:column;gap:12px;margin-top:20px}
+.prompt{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 14px;align-items:start}
+.prompt .feel{font-size:13px;color:var(--ink3);font-weight:700}
+.prompt .say{font-size:15px;color:var(--ink);grid-column:1}
+.copy{grid-row:1 / span 2;grid-column:2;background:var(--ink);color:var(--bg);border:0;border-radius:10px;padding:8px 14px;font-size:13px;font-weight:800;min-height:40px}
+.copy.done{background:var(--ok)}
+details.q{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-top:12px}
+details.q summary{cursor:pointer;font-weight:800;list-style:none;display:flex;gap:10px}
+details.q summary::-webkit-details-marker{display:none}
+details.q summary::before{content:"+";font-family:var(--f-mono);color:var(--accent-ink);font-weight:700}
+details.q[open] summary::before{content:"−"}
+details.q .ans{margin-top:10px;color:var(--ink2);font-size:15px;padding-left:20px}
+footer{margin-top:72px;padding-top:20px;border-top:1px solid var(--line);font-size:14px;color:var(--ink3)}
+
+@media (max-width:820px){.lab{grid-template-columns:1fr}}
+@media (max-width:620px){.pair-grid{grid-template-columns:1fr}h2{font-size:24px}.prompt{grid-template-columns:1fr}.copy{grid-row:auto;grid-column:1;justify-self:start}.sl{grid-template-columns:1fr 56px}.sl label{grid-column:1 / -1}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<header class="spine hero">
+  <div class="tag">Crash course trực quan · khối V-04 / 15 · ~25 phút</div>
+  <h1>Khoảng cách là <em>ngữ pháp</em>.</h1>
+  <p>Gần nhau là cùng nhóm, xa nhau là khác nhóm. Khoảng nào cũng bằng nhau thì màn không nói gì. Mọi màn mẫu có nút "Hiện khoảng cách" để thấy từng khoảng trống như DevTools.</p>
+  <nav class="toc" aria-label="Mục lục">
+    <a href="#ban-do">Bản đồ</a><a href="#thang">Thang 4/8</a><a href="#proximity">Proximity</a><a href="#ba-tang">Ba tầng</a><a href="#nhip">Nhịp</a><a href="#luoi">Lưới</a><a href="#mat-do">Mật độ</a><a href="#cap">Tệ ↔ tốt</a><a href="#lab2">Trên lab2</a><a href="#mac-dinh">Mặc định</a><a href="#lenh">Lệnh cho AI</a><a href="#kiem-tra">Tự kiểm tra</a>
+  </nav>
+</header>
+
+<section id="ban-do" class="spine">
+  <div class="eyebrow">Bản đồ nhanh</div>
+  <h2>Tám từ cần gọi được tên</h2>
+  <div class="terms">
+    <div><b>Proximity</b><span>Định luật Gestalt: thứ gần nhau được mắt xem là một nhóm. Công cụ nhóm mạnh nhất, mạnh hơn cả khung viền.</span></div>
+    <div><b>Spacing scale</b><span>Thang khoảng cách cố định, thường là bội số của 4 hoặc 8: 4, 8, 12, 16, 24, 32, 48. Chỉ chọn trong thang.</span></div>
+    <div><b>Whitespace</b><span>Khoảng trống (không nhất thiết màu trắng). Micro: giữa chữ, giữa dòng, trong nút. Macro: giữa các khối, các section.</span></div>
+    <div><b>Padding vs gap</b><span>Padding: khoảng từ mép hộp vào nội dung. Gap: khoảng giữa các phần tử anh em. Hai việc khác nhau.</span></div>
+    <div><b>Rhythm</b><span>Nhịp: cách khoảng cách và khối lặp lại. Lặp có biến tấu thì dễ chịu; lặp y hệt thì đều đều.</span></div>
+    <div><b>Grid</b><span>Lưới cột. Mobile thường 4 cột; <b>margin</b> là lề hai bên màn, <b>gutter</b> là khe giữa các cột.</span></div>
+    <div><b>Density</b><span>Mật độ: bao nhiêu nội dung trên một màn. Compact, comfortable, spacious. Chọn theo việc người dùng làm.</span></div>
+    <div><b>Alignment</b><span>Căn mép: mọi mép trái nằm trên vài đường thẳng. Mép lệch 3–5px là thứ mắt thấy "sai sai" mà không gọi tên được.</span></div>
+  </div>
+</section>
+
+<section id="thang" class="wide">
+  <div class="head">
+    <div class="eyebrow">Thang spacing</div>
+    <h2>Gạt giữa "số tuỳ hứng" và "thang 4/8"</h2>
+    <p class="lead">Cùng một thẻ slot. Bản tuỳ hứng dùng số chọn bằng cảm giác (7, 10, 13, 18, 22); bản thang chỉ dùng 4, 8, 16, 24. Bật "Hiện khoảng cách" để thấy từng khoảng.</p>
+  </div>
+  <div class="ctl">
+    <span class="lab" id="sc-lab">Khoảng cách</span>
+    <div class="seg" role="group" aria-labelledby="sc-lab" id="sc-seg">
+      <button type="button" data-s="free" aria-pressed="true">Số tuỳ hứng</button>
+      <button type="button" data-s="scale" aria-pressed="false">Thang 4/8</button>
+    </div>
+    <span class="lab" id="ov1-lab">Lớp phủ</span>
+    <div class="seg" role="group" aria-labelledby="ov1-lab" id="ov1-seg">
+      <button type="button" data-o="0" aria-pressed="false">Ẩn</button>
+      <button type="button" data-o="1" aria-pressed="true">Hiện khoảng cách</button>
+    </div>
+  </div>
+  <div class="duo">
+    <div class="mini ov" id="sc-card"></div>
+    <div class="note-col">
+      <div><b>Giá trị đang dùng</b><div class="vals" id="sc-vals" style="margin-top:6px"></div></div>
+      <p id="sc-text"></p>
+      <div class="ruler4" aria-hidden="true">
+        <div><i style="height:4px"></i>4</div><div><i style="height:8px"></i>8</div><div><i style="height:12px"></i>12</div><div><i style="height:16px"></i>16</div><div><i style="height:24px"></i>24</div><div><i style="height:32px"></i>32</div><div><i style="height:48px"></i>48</div>
+      </div>
+      <p class="small"><b>Vì sao bội số của 4:</b> màn điện thoại có mật độ 1.5×, 2×, 3×; số chia hết cho 4 ra số nguyên điểm ảnh ở mọi mật độ nên mép sắc. Lý do lớn hơn: thang chỉ có 7 lựa chọn, nên quyết định nhanh, và các khoảng hơn kém nhau đủ rõ để mắt phân biệt (giống thang chữ ở V-02).</p>
+    </div>
+  </div>
+</section>
+
+<section id="proximity" class="wide">
+  <div class="head">
+    <div class="eyebrow">Proximity</div>
+    <h2>Kéo hai khoảng, xem nhóm hiện ra hay tan đi</h2>
+    <p class="lead">Không khung, không nền, không đường kẻ: chỉ có khoảng cách. Mốc bắt đầu là lab2 (trong nhóm 12, giữa nhóm 16). Mắt cần <b>khoảng giữa nhóm ≥ 2 lần khoảng trong nhóm</b> mới thấy ranh giới.</p>
+  </div>
+  <div class="duo">
+    <div class="mini ov" id="px-card" style="padding:4px 16px 16px"></div>
+    <div class="note-col">
+      <div class="sliders">
+        <div class="sl"><label for="pin">Trong nhóm</label><input id="pin" type="range" min="0" max="40" step="4" value="12"><output id="pin-out" for="pin">12px</output></div>
+        <div class="sl"><label for="pout">Giữa nhóm</label><input id="pout" type="range" min="0" max="64" step="4" value="16"><output id="pout-out" for="pout">16px</output></div>
+      </div>
+      <div class="legend"><span><i style="background:var(--t1)"></i>trong nhóm</span><span><i style="background:var(--t2)"></i>giữa nhóm</span></div>
+      <p id="px-verdict"></p>
+      <p class="small">Đây là lý do "đơn điệu" không chỉ do màu: khi mọi khoảng gần bằng nhau, màn thành một dải đều, mắt không biết đâu là một cụm để đọc.</p>
+    </div>
+  </div>
+</section>
+
+<section id="ba-tang" class="wide">
+  <div class="head">
+    <div class="eyebrow">Ba tầng khoảng cách</div>
+    <h2>Trong nhóm &lt; giữa nhóm &lt; giữa section</h2>
+    <p class="lead">Một màn có ba cấp quan hệ, nên cần ít nhất ba bậc khoảng cách, cách xa nhau: ví dụ <b>8 / 24 / 40</b>. Bật lớp phủ: xanh dương là trong nhóm, hồng là giữa nhóm, xanh lá là giữa section.</p>
+  </div>
+  <div class="ctl">
+    <span class="lab" id="ov3-lab">Lớp phủ</span>
+    <div class="seg" role="group" aria-labelledby="ov3-lab" id="ov3-seg">
+      <button type="button" data-o="0" aria-pressed="false">Ẩn</button>
+      <button type="button" data-o="1" aria-pressed="true">Hiện khoảng cách</button>
+    </div>
+  </div>
+  <div class="duo">
+    <div class="ph ov" id="tier-ph"></div>
+    <div class="note-col">
+      <div class="legend"><span><i style="background:var(--t1)"></i>trong nhóm · 4–8</span><span><i style="background:var(--t2)"></i>giữa nhóm · 16–24</span><span><i style="background:var(--t3)"></i>giữa section · 32–40</span></div>
+      <p><b>Trong nhóm (4–8):</b> tên với mã số, các hàng cùng danh sách. Sát nhau vì là một ý.</p>
+      <p><b>Giữa nhóm (16–24):</b> slot đang dạy với slot sau; nhóm "Cần chú ý" với nhóm "Yêu cầu".</p>
+      <p><b>Giữa section (32–40):</b> "Hôm nay" với "Thông tin tham khảo". Ranh giới lớn nhất, có thể kèm đổi nền (tầng phụ của V-03).</p>
+      <p class="small">Nếu đã có khung viền hay nền, khoảng giữa nhóm được phép nhỏ hơn, vì khung đã làm một phần việc nhóm.</p>
+    </div>
+  </div>
+</section>
+
+<section id="nhip" class="wide">
+  <div class="head">
+    <div class="eyebrow">Nhịp</div>
+    <h2>Đều đều ↔ lặp có biến tấu</h2>
+    <p class="lead">Nhịp giống nhạc: phách mạnh, phách nhẹ, chỗ nghỉ. Một màn mà khối nào cũng cùng cao, cùng khoảng, cùng kiểu thì giống trống gõ một nhịp. Đây là "nhất quán ≠ đồng phục" của V-01, áp vào khoảng cách.</p>
+  </div>
+  <div class="pair-grid" style="margin-top:20px">
+    <div class="side bad"><span class="lbl">ĐỀU ĐỀU · MỌI KHỐI 12</span>
+      <div class="mini" style="padding:14px;gap:12px">
+        <div class="card" style="padding:12px"><b>PRM393 · SE1801</b><div style="color:var(--s-t3)">07:00 · P.305</div></div>
+        <div class="card" style="padding:12px"><b>Đã quét 32/35</b></div>
+        <div class="card" style="padding:12px"><b>Lê Thu Trang</b><div style="color:var(--s-t3)">chưa quét</div></div>
+        <div class="card" style="padding:12px"><b>Trần Minh Long</b><div style="color:var(--s-t3)">chưa quét</div></div>
+        <div class="card" style="padding:12px"><b>Phạm Quốc Huy</b><div style="color:var(--s-t3)">chưa quét</div></div>
+      </div>
+      <p class="note">Năm hộp giống nhau, cách đều 12. Tiêu đề lớp, số liệu và từng sinh viên nặng ngang nhau.</p></div>
+    <div class="side good"><span class="lbl">CÓ NHỊP</span>
+      <div class="mini" style="padding:14px">
+        <div style="font-size:18px;font-weight:800">PRM393 · SE1801</div>
+        <div style="color:var(--s-t3)">07:00 · P.305 · đã quét 32/35</div>
+        <div style="height:28px"></div>
+        <div class="gt">3 em chưa quét</div>
+        <div style="height:4px"></div>
+        <div class="row" style="padding:8px 0;border-bottom:1px solid var(--s-line)"><span class="nm">Lê Thu Trang</span><span class="mk"><span>✓</span><span>✕</span></span></div>
+        <div class="row" style="padding:8px 0;border-bottom:1px solid var(--s-line)"><span class="nm">Trần Minh Long</span><span class="mk"><span>✓</span><span>✕</span></span></div>
+        <div class="row" style="padding:8px 0"><span class="nm">Phạm Quốc Huy</span><span class="mk"><span>✓</span><span>✕</span></span></div>
+      </div>
+      <p class="note">Phách mạnh: đầu màn thoáng (khoảng nghỉ 28). Phách nhẹ: danh sách dày, hàng sát nhau. Mắt biết đâu là "đầu", đâu là "việc".</p></div>
+  </div>
+</section>
+
+<section id="luoi" class="wide">
+  <div class="head">
+    <div class="eyebrow">Lưới</div>
+    <h2>Bật lưới 4 cột, xem mép nào lệch</h2>
+    <p class="lead">Màn 360dp của lab2 (vẽ thu nhỏ). Lưới mobile thường là <b>4 cột, margin 16, gutter 16</b>. Phần tử chiếm 1, 2 hoặc 4 cột; mép trái của mọi thứ rơi đúng một đường cột.</p>
+  </div>
+  <div class="ctl">
+    <span class="lab" id="gr-lab">Lưới</span>
+    <div class="seg" role="group" aria-labelledby="gr-lab" id="gr-seg">
+      <button type="button" data-g="0" aria-pressed="false">Ẩn</button>
+      <button type="button" data-g="1" aria-pressed="true">Hiện cột</button>
+    </div>
+    <span class="lab" id="al-lab">Bố cục</span>
+    <div class="seg" role="group" aria-labelledby="al-lab" id="al-seg">
+      <button type="button" data-a="off" aria-pressed="true">Lệch lưới</button>
+      <button type="button" data-a="on" aria-pressed="false">Theo lưới</button>
+    </div>
+  </div>
+  <div class="duo">
+    <div class="ph gridph offg" id="grid-ph">
+      <div class="sb"><span>07:05</span><span>● ● ▮</span></div>
+      <div class="lay">
+        <div class="span4 o1"><div style="font-size:20px;font-weight:800">Thứ Ba, 20/10</div><div style="font-size:12px;color:var(--s-t3)">Fall 2026</div></div>
+        <div class="span4 card o2" style="padding:12px"><div style="font-size:11px;font-weight:800;color:var(--s-t3)">ĐANG DIỄN RA</div><div style="font-size:17px;font-weight:800">PRM393 · SE1801</div><div style="font-size:12px;color:var(--s-t3)">P.305 · 07:00–09:15</div></div>
+        <div class="span2 btn o3">Điểm danh</div>
+        <div class="span2 btn2 o4">Mã QR</div>
+        <div class="span4 o1" style="font-size:13px;font-weight:800;margin-top:6px">Cần chú ý</div>
+        <div class="span4 row o3"><span class="av">LT</span><span class="nm">Lê Thu Trang<small>SE190142</small></span><span class="s-pill pill-bad">✕ 5/4</span></div>
+        <div class="span4 row o2"><span class="av">TL</span><span class="nm">Trần Minh Long<small>SE190155</small></span><span class="s-pill pill-warn">! 3/4</span></div>
+      </div>
+      <div class="colov" id="colov"><i></i><i></i><i></i><i></i></div>
+      <div class="margin-l" id="ml"></div><div class="margin-r" id="mr"></div>
+    </div>
+    <div class="note-col">
+      <div class="legend"><span><i style="background:rgba(37,99,235,.2)"></i>margin 16</span><span><i style="background:rgba(219,39,119,.2)"></i>cột</span><span>khe trắng giữa cột = gutter 16</span></div>
+      <p id="grid-text"></p>
+      <p class="small">Trên điện thoại, lưới chủ yếu giữ <b>mép trái thẳng</b> và chia đôi, chia tư cho nút. Desktop mới dùng 12 cột. Không cần ép mọi thứ vào cột; cần là <b>ít đường căn</b>.</p>
+    </div>
+  </div>
+</section>
+
+<section id="mat-do" class="wide">
+  <div class="head">
+    <div class="eyebrow">Mật độ</div>
+    <h2>Cùng danh sách, ba mật độ</h2>
+    <p class="lead">Mật độ chọn theo việc. Điểm danh 35 em cần thấy nhiều hàng một lúc (compact). Màn tổng quan đọc lướt thì thoáng hơn. Vùng chạm không bao giờ dưới 48: compact thu khoảng trống, không thu vùng bấm.</p>
+  </div>
+  <div class="ctl">
+    <span class="lab" id="dn-lab">Mật độ</span>
+    <div class="seg" role="group" aria-labelledby="dn-lab" id="dn-seg">
+      <button type="button" data-d="48" aria-pressed="false">Compact · hàng 48</button>
+      <button type="button" data-d="60" aria-pressed="true">Comfortable · 60</button>
+      <button type="button" data-d="76" aria-pressed="false">Spacious · 76</button>
+    </div>
+    <span class="badge b-ok tnum" id="dn-badge"></span>
+  </div>
+  <div class="duo">
+    <div class="mini dlist" id="dn-list" style="padding:0 16px;height:420px;overflow:hidden"></div>
+    <div class="note-col">
+      <p id="dn-text"></p>
+      <p class="small">Con số "thấy được" tính cho vùng danh sách khoảng 560px trên màn 360×800 (trừ thanh trạng thái, tiêu đề và thanh điều hướng).</p>
+    </div>
+  </div>
+</section>
+
+<section id="cap" class="wide">
+  <div class="head">
+    <div class="eyebrow">Tệ ↔ tốt</div>
+    <h2>Năm cặp, mỗi cặp chỉ đổi một biến</h2>
+  </div>
+
+  <div class="pair">
+    <h3>Khoảng đều mọi nơi</h3>
+    <p class="why">Lỗi: <span class="term">flat spacing</span>. Một giá trị 12 cho mọi quan hệ. Tên lớp cách giờ học bằng khoảng nhóm này cách nhóm kia.</p>
+    <div class="pair-grid">
+      <div class="side bad"><span class="lbl">TỆ · 12 / 12 / 12</span>
+        <div class="mini" style="padding:14px;gap:12px">
+          <b>PRM393 · SE1801</b><span style="color:var(--s-t3)">07:00 · P.305</span><b>MMA301 · SE1805</b><span style="color:var(--s-t3)">12:30 · P.402</span><b>Cần chú ý</b><span>Lê Thu Trang · 5/4</span>
+        </div>
+        <p class="note">Mỗi dòng trôi một mình. "07:00" thuộc lớp trên hay dưới?</p></div>
+      <div class="side good"><span class="lbl">TỐT · 4 / 16 / 32</span>
+        <div class="mini" style="padding:14px">
+          <b>PRM393 · SE1801</b><span style="color:var(--s-t3);margin-top:4px">07:00 · P.305</span><b style="margin-top:16px">MMA301 · SE1805</b><span style="color:var(--s-t3);margin-top:4px">12:30 · P.402</span><b style="margin-top:32px">Cần chú ý</b><span style="margin-top:4px">Lê Thu Trang · 5/4</span>
+        </div>
+        <p class="note">Ba bậc, mỗi bậc gấp đôi trở lên. Không thêm khung nào mà nhóm vẫn rõ.</p></div>
+    </div>
+  </div>
+
+  <div class="pair">
+    <h3>Padding thẻ chật</h3>
+    <p class="why">Lỗi: <span class="term">cramped padding</span>. Padding 8 trong thẻ: chữ dính viền, thẻ trông rẻ. Padding thường lớn hơn gap bên trong thẻ.</p>
+    <div class="pair-grid">
+      <div class="side bad"><span class="lbl">TỆ · PADDING 8</span>
+        <div class="mini" style="padding:14px"><div class="card" style="padding:8px"><div style="font-size:11px;font-weight:800;color:var(--s-t3)">ĐANG DIỄN RA</div><div style="font-size:17px;font-weight:800">PRM393 · SE1801</div><div class="btn" style="margin-top:8px">Điểm danh</div></div></div>
+        <p class="note">Nút gần như chạm viền thẻ; chữ không có chỗ thở.</p></div>
+      <div class="side good"><span class="lbl">TỐT · PADDING 16</span>
+        <div class="mini" style="padding:14px"><div class="card" style="padding:16px"><div style="font-size:11px;font-weight:800;color:var(--s-t3)">ĐANG DIỄN RA</div><div style="font-size:17px;font-weight:800">PRM393 · SE1801</div><div class="btn" style="margin-top:12px">Điểm danh</div></div></div>
+        <p class="note">Padding 16 &gt; khoảng trong 12 &gt; khoảng chữ 4. Nội dung thuộc về thẻ.</p></div>
+    </div>
+  </div>
+
+  <div class="pair">
+    <h3>Nhóm bằng khung lồng khung</h3>
+    <p class="why">Lỗi: <span class="term">box-in-box</span>. Khoảng cách chưa đủ nhóm nên AI vẽ thêm viền. Mỗi khung là một đường mắt phải đọc qua.</p>
+    <div class="pair-grid">
+      <div class="side bad"><span class="lbl">TỆ · 3 LỚP KHUNG</span>
+        <div class="mini" style="padding:12px"><div class="card" style="padding:10px;display:flex;flex-direction:column;gap:8px"><b>Cần chú ý</b><div class="card" style="padding:8px">Lê Thu Trang · 5/4</div><div class="card" style="padding:8px">Trần Minh Long · 3/4</div></div></div>
+        <p class="note">Khung ngoài, khung trong, viền mini: ba lớp viền cho hai dòng.</p></div>
+      <div class="side good"><span class="lbl">TỐT · KHOẢNG TRẮNG</span>
+        <div class="mini" style="padding:16px"><b>Cần chú ý</b><div style="height:8px"></div><div>Lê Thu Trang · 5/4</div><div style="height:6px"></div><div>Trần Minh Long · 3/4</div></div>
+        <p class="note">Proximity làm việc nhóm. Viền để dành cho thứ thật sự là một vật riêng (thẻ bấm được).</p></div>
+    </div>
+  </div>
+
+  <div class="pair">
+    <h3>Nhãn xa ô nhập</h3>
+    <p class="why">Lỗi: <span class="term">ambiguous label</span>. Nhãn cách ô của nó 16, cách ô phía trên chỉ 8. Mắt ghép nhãn với ô sai.</p>
+    <div class="pair-grid">
+      <div class="side bad"><span class="lbl">TỆ</span>
+        <div class="mini" style="padding:16px"><div class="field">Lý do sửa điểm danh</div><div style="height:16px"></div><div class="inp">Em có mặt nhưng quên quét</div><div style="height:8px"></div><div class="field">Minh chứng</div><div style="height:16px"></div><div class="inp">Chọn ảnh</div></div>
+        <p class="note">"Minh chứng" trông như chú thích của ô trên.</p></div>
+      <div class="side good"><span class="lbl">TỐT</span>
+        <div class="mini" style="padding:16px"><div class="field">Lý do sửa điểm danh</div><div style="height:6px"></div><div class="inp">Em có mặt nhưng quên quét</div><div style="height:20px"></div><div class="field">Minh chứng</div><div style="height:6px"></div><div class="inp">Chọn ảnh</div></div>
+        <p class="note">Nhãn sát ô của nó (6), cách cặp trước 20.</p></div>
+    </div>
+  </div>
+
+  <div class="pair">
+    <h3>Lề màn quá hẹp</h3>
+    <p class="why">Lỗi: <span class="term">no margin</span>. Lề 8: chữ sát mép điện thoại, dễ bị viền bo của máy và ốp lưng che.</p>
+    <div class="pair-grid">
+      <div class="side bad"><span class="lbl">TỆ · LỀ 8</span>
+        <div class="mini" style="padding:12px 8px"><div style="font-size:18px;font-weight:800">Thứ Ba, 20/10</div><div style="color:var(--s-t3)">Fall 2026 · 4 lớp đang dạy</div><div class="btn" style="margin-top:12px">Điểm danh PRM393</div></div>
+        <p class="note">Nội dung chạm gần mép.</p></div>
+      <div class="side good"><span class="lbl">TỐT · LỀ 16</span>
+        <div class="mini" style="padding:12px 16px"><div style="font-size:18px;font-weight:800">Thứ Ba, 20/10</div><div style="color:var(--s-t3)">Fall 2026 · 4 lớp đang dạy</div><div class="btn" style="margin-top:12px">Điểm danh PRM393</div></div>
+        <p class="note">Lề 16 là mặc định của Material và phần lớn app; màn rộng hơn thì 20–24.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="lab2" class="wide">
+  <div class="head">
+    <div class="eyebrow">Trên lab2</div>
+    <h2>GV-102 Điểm danh: nhịp 12/16 → ba tầng</h2>
+    <p class="lead">Dựng giản lược màn GV-102 bản cam (thẻ cách thẻ 8–12, nhóm cách nhóm 16) và bản sửa. Lớp phủ bật sẵn; bấm để tắt và nhìn bằng mắt thường.</p>
+  </div>
+  <div class="ctl">
+    <span class="lab" id="ovl-lab">Lớp phủ</span>
+    <div class="seg" role="group" aria-labelledby="ovl-lab" id="ovl-seg">
+      <button type="button" data-o="0" aria-pressed="false">Ẩn</button>
+      <button type="button" data-o="1" aria-pressed="true">Hiện khoảng cách</button>
+    </div>
+  </div>
+  <div class="lab" id="lab-box">
+    <article>
+      <h3>Bản cam (khoảng gần bằng nhau)</h3>
+      <div class="ph ov" id="l-before"></div>
+      <ul class="calls">
+        <li><span class="n r">1</span><span><b>Ba tầng dồn về một</b>: 8, 12, 16 khó phân biệt; tỉ lệ giữa nhóm / trong nhóm chỉ ~1.3.</span></li>
+        <li><span class="n r">2</span><span><b>Mỗi sinh viên một thẻ</b>: 35 thẻ có viền cộng khoảng 8 làm danh sách dài gấp đôi và nặng nề.</span></li>
+        <li><span class="n r">3</span><span><b>Nút Chốt không có khoảng nghỉ</b> trước nó: trông như thêm một hàng danh sách.</span></li>
+      </ul>
+    </article>
+    <article>
+      <h3>Bản sửa (4 / 8 / 24 / 32)</h3>
+      <div class="ph ov" id="l-after"></div>
+      <ul class="calls">
+        <li><span class="n g">1</span><span><b>Ba tầng cách xa</b>: 4 trong ý, 8 dưới tiêu đề nhóm, 24 giữa nhóm, 32 trước vùng hành động. Hàng trong danh sách tách bằng đường kẻ.</span></li>
+        <li><span class="n g">2</span><span><b>Danh sách bằng đường kẻ, không bằng thẻ</b>: hàng compact 48, vẫn đủ vùng chạm.</span></li>
+        <li><span class="n g">3</span><span><b>32 em đã quét gộp một dòng</b> (V-03): bớt cả màu lẫn chiều dài.</span></li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section id="mac-dinh" class="wide">
+  <div class="head">
+    <div class="eyebrow">Phương án tốt nhất mặc định</div>
+    <h2>Không biết chọn gì thì dùng bộ số này cho app di động</h2>
+  </div>
+  <div class="recipe">
+    <div><b>THANG</b><span class="tnum">4 · 8 · 12 · 16 · 24 · 32 · 48. Không dùng số ngoài thang.</span></div>
+    <div><b>LỀ MÀN</b><span>16 hai bên (màn 360dp). Lưới 4 cột, gutter 16.</span></div>
+    <div><b>TRONG NHÓM</b><span>4 giữa dòng của cùng một ý; 8–12 giữa các hàng.</span></div>
+    <div><b>GIỮA NHÓM / SECTION</b><span>24 giữa nhóm; 32–48 giữa section. Mỗi bậc ≥ 2× bậc dưới.</span></div>
+    <div><b>PADDING</b><span>Thẻ 16; nút 12×16; padding thẻ ≥ khoảng bên trong thẻ.</span></div>
+    <div><b>MẬT ĐỘ</b><span>Danh sách làm việc: hàng 48. Đọc lướt: 56–64. Vùng chạm luôn ≥ 48.</span></div>
+  </div>
+  <p class="spine counter" style="margin-left:0"><b>Mặc định AI hay gặp:</b> <code>gap-4</code> (16) cho mọi thứ; <code>p-4</code> cho mọi thẻ; mỗi phần tử một card có viền; <code>space-y-2</code> lẫn <code>mt-3</code> lẫn <code>mb-5</code> trong cùng một màn. <b>Khi nào luật sai:</b> trang editorial cố ý dùng khoảng cực lớn để tạo kịch tính; bảng dữ liệu dày (spreadsheet) cần hàng 32–36 với chuột, không phải 48 với ngón tay.</p>
+</section>
+
+<section id="lenh" class="spine">
+  <div class="eyebrow">Câu lệnh mẫu cho AI</div>
+  <h2>Cảm giác mơ hồ → câu lệnh có thuật ngữ</h2>
+  <div class="prompts" id="prompts"></div>
+</section>
+
+<section id="kiem-tra" class="spine">
+  <div class="eyebrow">Tự kiểm tra (tuỳ chọn, không ghi điểm)</div>
+  <h2>Ba câu, bấm để lộ đáp án</h2>
+  <details class="q"><summary>Vì sao thang khoảng cách dùng bội số của 4 hoặc 8?</summary>
+    <div class="ans">Chia đều ra số nguyên điểm ảnh ở mật độ 1.5×, 2×, 3×, nên mép sắc. Quan trọng hơn: thang ít bậc giúp quyết định nhanh và nhất quán, và các bậc hơn kém nhau đủ rõ để mắt thấy khác biệt.</div></details>
+  <details class="q"><summary>Khoảng trong nhóm và khoảng giữa nhóm nên chênh nhau bao nhiêu?</summary>
+    <div class="ans">Khoảng giữa nhóm nên ít nhất gấp đôi khoảng trong nhóm (vd 8 và 24). Gần bằng nhau (12 và 16) thì mắt không thấy ranh giới, màn thành một dải đều.</div></details>
+  <details class="q"><summary>Khi nào nên nhóm bằng khung viền thay vì khoảng trắng?</summary>
+    <div class="ans">Khi nhóm là một vật riêng có thể bấm hoặc kéo (thẻ, ô nhập), hoặc khi không đủ chỗ để dùng khoảng trắng (màn rất dày). Còn lại, proximity làm việc nhóm rẻ hơn và sạch hơn khung.</div></details>
+</section>
+
+<footer class="spine">V-04 · nguồn: <code>lessons/M0-01-baseline.md</code> W2 (khoảng cách), <code>docs/02-roadmap.md</code> M1-06, M4-01. Khối kế: V-05 Chiều sâu và hình khối.</footer>
+
+<script>
+(function(){
+  function $(id){return document.getElementById(id)}
+  function seg(id,cb){var g=$(id),bs=[].slice.call(g.querySelectorAll('button'));
+    bs.forEach(function(b){b.addEventListener('click',function(){bs.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});cb(b)})});}
+  function sp(px,k,extra){return '<div class="sp k'+k+(px<6?' tiny':'')+'" data-px="'+px+'" style="height:'+px+'px'+(extra||'')+'"></div>'}
+
+  /* ---- Thang ---- */
+  var SC={
+    free:{pad:'13px 10px',v:[7,10,13,18,22],a:7,b:13,c:10,d:18,e:22,txt:'Năm giá trị lẻ, không cái nào quan hệ với cái nào. Chênh 10 với 13 mắt không thấy, nhưng mép vẫn hơi lệch nhau. Mỗi lần sửa lại phải "chọn bằng cảm giác" lần nữa.'},
+    scale:{pad:'16px 16px',v:[4,8,16,24],a:4,b:8,c:16,d:16,e:24,txt:'Bốn giá trị trong thang, mỗi giá trị một vai: 4 dính ý, 8 giữa hàng, 16 padding và trước nút, 24 giữa nhóm. Lần sau sửa không cần nghĩ lại.'}
+  };
+  var all=[4,7,8,10,12,13,16,18,22,24,32];
+  function scale(k){var s=SC[k];
+    $('sc-card').style.padding=s.pad;
+    $('sc-card').innerHTML='<div style="font-size:11px;font-weight:800;color:var(--s-t3)">ĐANG DIỄN RA</div>'+sp(s.a,1)+'<div style="font-size:17px;font-weight:800">PRM393 · SE1801</div>'+sp(s.a,1)+'<div style="color:var(--s-t3)">P.305 · 07:00–09:15</div>'+sp(s.d,2)+'<div class="btn">Điểm danh</div>'+sp(s.e,3)+'<div class="gt">Cần chú ý</div>'+sp(s.b,1)+'<div class="row"><span class="av">LT</span><span class="nm">Lê Thu Trang<small>SE190142</small></span><span class="s-pill pill-bad">✕ 5/4</span></div>'+sp(s.c,1)+'<div class="row"><span class="av">TL</span><span class="nm">Trần Minh Long<small>SE190155</small></span><span class="s-pill pill-warn">! 3/4</span></div>';
+    $('sc-vals').innerHTML=s.v.map(function(x){return '<span class="'+([4,8,12,16,24,32,48].indexOf(x)<0?'off':'')+'">'+x+'</span>'}).join('')+(k==='free'?'<span class="off">padding 13 / 10</span>':'<span>padding 16</span>');
+    $('sc-text').textContent=s.txt;}
+  seg('sc-seg',function(b){scale(b.dataset.s)}); scale('free');
+  seg('ov1-seg',function(b){$('sc-card').classList.toggle('ov',b.dataset.o==='1')});
+
+  /* ---- Proximity ---- */
+  function prox(){
+    var a=parseInt($('pin').value,10), b=parseInt($('pout').value,10);
+    $('pin-out').textContent=a+'px'; $('pout-out').textContent=b+'px';
+    var row=function(av,n,m,p){return '<div class="row"><span class="av">'+av+'</span><span class="nm">'+n+'<small>'+m+'</small></span>'+p+'</div>'};
+    $('px-card').innerHTML=sp(12,0,';visibility:hidden')+'<div class="gt">Hôm nay</div>'+sp(a,1)+row('07','PRM393 · SE1801','07:00 · P.305','')+sp(a,1)+row('12','MMA301 · SE1805','12:30 · P.402','')+
+      sp(b,2)+'<div class="gt">Cần chú ý</div>'+sp(a,1)+row('LT','Lê Thu Trang','SE190142','<span class="s-pill pill-bad">✕ 5/4</span>')+sp(a,1)+row('TL','Trần Minh Long','SE190155','<span class="s-pill pill-warn">! 3/4</span>')+
+      sp(b,2)+'<div class="gt">Yêu cầu</div>'+sp(a,1)+row('HA','Hoàng Đức Anh','sửa điểm danh 13/10','');
+    var r=a===0?99:b/a, v=$('px-verdict'), cls, lab, txt;
+    if(b<=a){cls='b-bad';lab='nhóm biến mất';txt='Khoảng giữa nhóm không lớn hơn khoảng trong nhóm: tiêu đề "Cần chú ý" trông như một hàng nữa của "Hôm nay".'}
+    else if(a>=24){cls='b-warn';lab='rời rạc';txt='Khoảng trong nhóm quá lớn: các hàng của cùng một nhóm trôi xa nhau, màn dài ra mà không thêm thông tin.'}
+    else if(r<2){cls='b-warn';lab='đều đều';txt='Giữa nhóm mới gấp '+r.toFixed(1)+' lần trong nhóm. Nhìn kỹ mới thấy ranh giới; liếc qua thì thấy một dải đều.'}
+    else{cls='b-ok';lab='rõ nhóm';txt='Giữa nhóm gấp '+(a===0?'nhiều':r.toFixed(1))+' lần trong nhóm: ba cụm hiện ra mà không cần khung hay nền.'}
+    v.innerHTML='<span class="badge '+cls+'">'+lab+'</span> '+txt;
+  }
+  $('pin').addEventListener('input',prox); $('pout').addEventListener('input',prox); prox();
+
+  /* ---- Ba tầng ---- */
+  $('tier-ph').innerHTML='<div class="sb"><span>07:05</span><span>● ● ▮</span></div><div class="scr">'+
+    sp(8,0,';visibility:hidden')+'<div style="font-size:20px;font-weight:800">Thứ Ba, 20/10</div>'+sp(4,1)+'<div style="font-size:12px;color:var(--s-t3)">Fall 2026 · 4 lớp, 131 sinh viên</div>'+sp(24,2)+
+    '<div class="card" style="padding:12px 14px"><div style="font-size:11px;font-weight:800;color:var(--s-t3)">ĐANG DIỄN RA</div>'+sp(4,1)+'<div style="font-size:17px;font-weight:800">PRM393 · SE1801</div>'+sp(4,1)+'<div style="font-size:12px;color:var(--s-t3)">P.305 · 07:00–09:15</div>'+sp(12,1)+'<div class="btn">Điểm danh</div></div>'+sp(16,2)+
+    '<div class="card" style="padding:10px 14px;font-size:13px"><b>12:30</b> MMA301 · SE1805 · P.402</div>'+sp(40,3)+
+    '<div class="gt">Cần chú ý</div>'+sp(8,1)+'<div class="row"><span class="av">LT</span><span class="nm">Lê Thu Trang<small>SE190142</small></span><span class="s-pill pill-bad">✕ 5/4</span></div>'+sp(8,1)+'<div class="row"><span class="av">TL</span><span class="nm">Trần Minh Long<small>SE190155</small></span><span class="s-pill pill-warn">! 3/4</span></div>'+sp(24,2)+
+    '<div class="gt">Yêu cầu sửa điểm danh</div>'+sp(8,1)+'<div style="font-size:13px;color:var(--s-t2)">2 yêu cầu đang chờ · Xem ›</div></div>';
+  seg('ov3-seg',function(b){$('tier-ph').classList.toggle('ov',b.dataset.o==='1')});
+
+  /* ---- Lưới ---- */
+  function gridTxt(){var off=$('grid-ph').classList.contains('offg');
+    $('grid-text').textContent=off?'Lệch lưới: tiêu đề thụt 5px, thẻ lệch 10px sang phải, hai nút lệch nhau. Mỗi thứ chỉ lệch chút ít, nhưng cộng lại thành năm đường mép trái khác nhau: cảm giác "luộm thuộm" mà khó chỉ ra vì sao.':'Theo lưới: mọi mép trái nằm trên đường cột 1; hai nút mỗi nút đúng 2 cột, khe giữa đúng bằng gutter. Màn trông "chắc" mà không cần thêm gì.';}
+  seg('gr-seg',function(b){var on=b.dataset.g==='1';$('colov').hidden=!on;$('ml').hidden=!on;$('mr').hidden=!on});
+  seg('al-seg',function(b){$('grid-ph').classList.toggle('offg',b.dataset.a==='off');gridTxt()}); gridTxt();
+
+  /* ---- Mật độ ---- */
+  var NAMES=[['LT','Lê Thu Trang','SE190142'],['TL','Trần Minh Long','SE190155'],['PH','Phạm Quốc Huy','SE190163'],['NH','Nguyễn Thị Hường','SE190171'],['HA','Hoàng Đức Anh','SE190190'],['NA','Nguyễn Văn An','SE190101'],['BB','Bùi Thị Bích','SE190104'],['DC','Đỗ Minh Châu','SE190108'],['VK','Võ Gia Khang','SE190112'],['TM','Trương Mỹ','SE190117']];
+  function dens(h){
+    $('dn-list').innerHTML=NAMES.map(function(s){return '<div class="row" style="min-height:'+h+'px"><span class="av">'+s[0]+'</span><span class="nm">'+s[1]+(h>=60?'<small>'+s[2]+'</small>':'')+'</span>'+(h===48?'<small style="color:var(--s-t3);font-size:12px">'+s[2]+'</small>':'')+'<span class="mk"><span>✓</span><span>✕</span></span></div>'}).join('');
+    var n=Math.floor(560/h); $('dn-badge').textContent='thấy khoảng '+n+'/35 em mỗi màn';
+    $('dn-text').textContent=h===48?'Compact: một dòng mỗi em, mã số dồn sang phải. Hợp với điểm danh: giảng viên quét nhanh, ít cuộn. Hàng 48 vẫn đúng vùng chạm tối thiểu.':h===60?'Comfortable: tên và mã hai dòng. Mặc định tốt cho đa số danh sách.':'Spacious: thoáng, dễ đọc, nhưng điểm danh 35 em phải cuộn 4–5 màn. Hợp với danh sách ngắn hoặc màn đọc lướt.';}
+  seg('dn-seg',function(b){dens(parseInt(b.dataset.d,10))}); dens(60);
+
+  /* ---- lab2 GV-102 ---- */
+  var unscanned=[['LT','Lê Thu Trang','SE190142'],['TL','Trần Minh Long','SE190155'],['PH','Phạm Quốc Huy','SE190163']];
+  var head='<div class="sb"><span>07:12</span><span>● ● ▮</span></div>';
+  $('l-before').innerHTML=head+'<div class="scr">'+sp(8,0,';visibility:hidden')+
+    '<div class="card" style="padding:12px"><div style="font-size:18px;font-weight:800">PRM393 · SE1801</div><div style="font-size:12px;color:var(--s-t3)">07:00–09:15 · P.305</div></div>'+sp(12,2)+
+    '<div class="card" style="padding:12px;font-size:13px"><b>Đã quét 32/35</b></div>'+sp(16,2)+'<div class="gt">Chưa quét</div>'+sp(12,1)+
+    unscanned.map(function(s,i){return (i?sp(8,1):'')+'<div class="card row" style="padding:10px"><span class="av">'+s[0]+'</span><span class="nm">'+s[1]+'<small>'+s[2]+'</small></span><span class="mk"><span>✓</span><span>✕</span></span></div>'}).join('')+sp(16,2)+'<div class="gt">Đã quét</div>'+sp(12,1)+
+    '<div class="card row" style="padding:10px"><span class="av">NA</span><span class="nm">Nguyễn Văn An<small>SE190101</small></span></div>'+sp(8,1)+'<div class="card row" style="padding:10px"><span class="av">BB</span><span class="nm">Bùi Thị Bích<small>SE190104</small></span></div>'+sp(12,2)+'<div class="btn">Chốt điểm danh</div></div>';
+  $('l-after').innerHTML=head+'<div class="scr">'+sp(8,0,';visibility:hidden')+
+    '<div style="font-size:20px;font-weight:800">PRM393 · SE1801</div>'+sp(4,1)+'<div style="font-size:12px;color:var(--s-t3)">07:00–09:15 · P.305 · <span style="color:var(--s-ok);font-weight:800">✓</span> 32/35 đã quét</div>'+sp(24,2)+
+    '<div class="gt">3 em chưa quét</div>'+sp(8,1)+
+    unscanned.map(function(s,i){return '<div class="row" style="min-height:48px;'+(i<2?'border-bottom:1px solid var(--s-line)':'')+'"><span class="av">'+s[0]+'</span><span class="nm">'+s[1]+'<small>'+s[2]+'</small></span><span class="mk"><span>✓</span><span>✕</span></span></div>'}).join('')+sp(24,2)+
+    '<div style="font-size:13px;color:var(--s-t2)">32 em đã quét · Xem danh sách ›</div>'+sp(32,3)+'<div class="btn">Chốt điểm danh</div></div>';
+  seg('ovl-seg',function(b){var on=b.dataset.o==='1';$('l-before').classList.toggle('ov',on);$('l-after').classList.toggle('ov',on)});
+
+  /* ---- Prompt ---- */
+  var P=[
+    ['"Đều đều, không thấy nhóm"','Dùng proximity để nhóm: khoảng trong nhóm 8, giữa nhóm 24, giữa section 32–48 (mỗi bậc ≥ 2× bậc dưới). Nhóm bằng khoảng trắng trước khi thêm viền hay nền.'],
+    ['"Khoảng cách lộn xộn"','Chỉ dùng spacing scale 4/8: 4, 8, 12, 16, 24, 32, 48. Không dùng giá trị ngoài thang. Dùng gap của flex/grid thay cho margin trên từng phần tử.'],
+    ['"Chật, ngột"','Lề màn 16, padding thẻ 16 (lớn hơn khoảng bên trong thẻ). Tăng whitespace macro giữa section trước khi thu nhỏ chữ.'],
+    ['"Nhàm, khối nào cũng như nhau"','Tạo rhythm: lặp cấu trúc nhưng có biến tấu. Khối quan trọng nhất có khoảng thở lớn; danh sách thì dày. Nhất quán (cùng thang) ≠ đồng phục (cùng một giá trị).'],
+    ['"Trông lệch lệch"','Căn theo lưới 4 cột, margin 16, gutter 16 cho màn 360dp. Mọi mép trái nằm trên cùng một đường; nút đôi mỗi nút chiếm đúng 2 cột.'],
+    ['"Danh sách dài, cuộn mãi"','Chọn density theo việc: danh sách làm việc (điểm danh) dùng compact, hàng 48 một dòng; màn đọc lướt dùng 56–64. Vùng chạm không dưới 48. Danh sách dùng đường kẻ, không bọc mỗi hàng một thẻ.']
+  ];
+  var box=$('prompts');
+  P.forEach(function(p,i){
+    var d=document.createElement('div'); d.className='prompt';
+    d.innerHTML='<div class="feel"></div><div class="say"></div><button type="button" class="copy" id="copy-'+i+'">Copy</button>';
+    d.querySelector('.feel').textContent='Bạn thấy: '+p[0]; d.querySelector('.say').textContent=p[1];
+    var btn=d.querySelector('.copy');
+    btn.addEventListener('click',function(){
+      function ok(){btn.textContent='Đã copy';btn.classList.add('done');setTimeout(function(){btn.textContent='Copy';btn.classList.remove('done')},1600)}
+      function fallback(){var s=window.getSelection(),rg=document.createRange();rg.selectNodeContents(d.querySelector('.say'));s.removeAllRanges();s.addRange(rg);btn.textContent='Đã chọn, nhấn Ctrl+C'}
+      try{navigator.clipboard.writeText(p[1]).then(ok,fallback)}catch(e){fallback()}
+    });
+    box.appendChild(d);
+  });
+})();
+</script>

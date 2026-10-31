@@ -41,4 +41,6 @@
 - Chat mới. Dựng và publish V-03 Màu (`demos/V-03/color.html`): OKLCH vs HSL (xem bằng xám, thang theo hue), neutral thuần/ấm/lạnh, máy đo 70-20-10 tự đo diện tích trên GV-001 (2 thanh trượt, 4 phương án, đếm số chỗ dùng cam), tầng 20% đúng/sai, semantic + mô phỏng mù màu, 5 cặp, công cụ contrast WCAG, lab2 cam → B → sửa có đo.
 - Phát hiện: warning lab2 `#A15C00` gần cam nhấn (hue 62° vs 45°, cùng L ≈ 0.55), phải kèm icon/chữ.
 - Glossary ✅ 8 + thêm OKLCH, chroma, accent dilution, color-not-alone. Từ điển thêm mục V-03. Viết `docs/briefs/V-04.md`.
+- (tiếp) Dựng và publish V-04 Khoảng cách (`demos/V-04/spacing.html`): thang 4/8 vs số tuỳ hứng, proximity 2 thanh trượt (mốc lab2 12/16 → "đều đều"), ba tầng 8/24/40, nhịp, lưới 4 cột bật tắt lệch/theo lưới, mật độ 48/60/76, 5 cặp, GV-102 trước/sau. Mọi khoảng cách là phần tử thật nên có lớp phủ đo như DevTools.
+- Glossary ✅ grid, spacing scale, rhythm, proximity, alignment, density; thêm gutter/margin, whitespace micro/macro, padding vs gap. Từ điển thêm V-04. Viết `docs/briefs/V-05.md`.
 
