@@ -12,6 +12,7 @@ về frontend design. Nó có hai mục đích:
 
 ## 2. Thứ tự đọc khi bắt đầu phiên (BẮT BUỘC)
 1. `log/PROGRESS.md`: đang ở đâu, bước tiếp theo là gì. **Đây là nguồn sự thật về tiến độ.**
+   Kèm `docs/07-communication-style.md`: cách viết cho người dùng (bắt buộc).
 2. `log/DECISIONS.md`: các quyết định đã chốt, không được tự ý đảo ngược.
 3. `rules/README.md` và các file luật liên quan tới bài đang học.
 4. Bài học hiện tại trong `lessons/` (nếu có).
@@ -54,6 +55,7 @@ Kết quả của mỗi bài là file `lessons/<module>-<số>-<slug>.md` (theo 
 - Người dùng **chưa nắm kiến thức nền** sau các artefact AI đã làm hộ (W10, M0-01 §8). Đừng giả định người dùng hiểu một thuật ngữ chỉ vì nó có trong repo của họ: **giải thích từ gốc**.
 
 ## 4. Quy tắc giao tiếp và đồng thuận
+- **Cách viết (BẮT BUỘC, D-020):** mọi tin nhắn và mọi chữ trong artifact theo `docs/07-communication-style.md`: cũ trước mới sau, có câu nối giữa các ý, ví dụ trước rồi mới gọi tên thuật ngữ, nghĩa tiếng Việt đi ngay bên thuật ngữ, không dùng ký hiệu (→, ↔) hay mã (W2, VIS-003) thay cho lời. Đọc file này mỗi đầu phiên.
 - **Không tự ý sửa luật đã `adopted`.** Muốn đổi thì đề xuất trong phiên, nêu lý do, chờ người dùng đồng ý, rồi ghi vào `DECISIONS.md`.
 - **Phân biệt rõ**: *luật cứng* (chuẩn như WCAG, quy ước nền tảng), *heuristic* (kinh nghiệm, có ngoại lệ) và *sở thích* (gu riêng của người dùng). Mỗi luật phải gắn nhãn loại.
 - **Luôn nêu lý do (rationale).** Luật không có "vì sao" thì không được ghi vào repo.

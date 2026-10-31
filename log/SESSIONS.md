@@ -45,4 +45,4 @@
 - Glossary ✅ grid, spacing scale, rhythm, proximity, alignment, density; thêm gutter/margin, whitespace micro/macro, padding vs gap. Từ điển thêm V-04. Viết `docs/briefs/V-05.md`.
 - (tiếp) Dựng và publish V-05 Chiều sâu (`demos/V-05/depth.html`): năm cách tách khối, elevation một lớp vs hai lớp, máy đếm nổi/bấm được trên GV-001 (bản cam: 11 nổi, 7 nói dối), bo đồng tâm có thanh trượt, thang bo sakubun vs 3 bậc, gờ dày đúng/sai (W4), dark mode surface tint, 5 cặp, GV-001 trước/sau. Hết Ngày 1.
 - Glossary ✅ affordance/signifier; thêm elevation, shadow hai lớp, ledge, surface tint. Từ điển thêm V-05. Viết `docs/briefs/V-06.md`.
-
+- (tiếp) Người dùng góp ý cách viết khó hiểu, thiếu chuyển tiếp. Tra nguồn (ISO 24495, CPSC, known-new contract, curse of knowledge, Briswell) → viết `docs/07-communication-style.md` (10 quy tắc + ví dụ sửa câu của chính Claude), D-020, CLAUDE.md §2 và §4 trỏ tới, brief V-06 cập nhật.

@@ -11,6 +11,7 @@
 - **Đã xong (v2):** **V-03 Màu** (2026-10-31): `demos/V-03/color.html`, artifact "V-03 Màu" (https://claude.ai/artifact/2v5aB6144b1NQLVfwagqr8).
 - **Đã xong (v2):** **V-04 Khoảng cách, lưới, nhịp** (2026-10-31): `demos/V-04/spacing.html`, artifact "V-04 Khoảng cách" (https://claude.ai/artifact/KGywbwkZMX8xFHQVYe3rXW).
 - **Đã xong (v2):** **V-05 Chiều sâu & hình khối** (2026-10-31): `demos/V-05/depth.html`, artifact "V-05 Chiều sâu" (https://claude.ai/artifact/5Y7Mfy4v46H5zAPk8fJiJN). **Hết Ngày 1 · NHÌN.**
+- **Cách viết mới (D-020):** từ V-06, chat và artifact theo `docs/07-communication-style.md`. Có thể sửa lại chữ V-01..V-05 theo chuẩn này nếu người dùng muốn.
 - **Khối tiếp theo:** **V-06 Bố cục màn mobile kinh điển** (brief: `docs/briefs/V-06.md`). Chat V-03..V-05 đã dài: **mở chat mới**.
 - **Luật:** adopted: PRC-004 (tạm ngưng), PRC-006 (sửa D-019), PRC-007, VIS-004, VIS-005, UX-002. Draft: VIS-001..003, UX-001, CMP-001, COL-001, PRC-001, 002, 005. Deprecated: PRC-003
 - **Từ điển ra lệnh AI:** `docs/06-ai-prompt-dictionary.md` (đã có V-01..V-05; mỗi mục 6 câu)
