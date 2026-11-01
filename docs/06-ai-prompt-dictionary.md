@@ -123,3 +123,13 @@
 | "Không biết hộp từ đâu ra" | "Chuyển động xuất phát từ chính phần tử người dùng vừa chạm: hộp mở rộng từ nút (**container transform**), và khi đóng thì thu về đúng nút đó. Mục tiêu là nối nhân và quả." |
 | "Mọi thứ cùng bay vào một lúc" | "Áp **staging**: khi có dữ liệu mới, chỉ phần tử mới hoặc vừa thay đổi được chuyển động; phần tử cũ chỉ dời chỗ nhường đường. Không cho cả danh sách bay vào lại khi tải lại hay khi cuộn." |
 | "AI bảo thêm animation cho mượt" | "Với mỗi chuyển động, ghi rõ: **mục đích** (định hướng không gian, nối nhân quả, hướng chú ý, trạng thái hệ thống, hoặc cá tính), thời lượng tính bằng ms, easing dạng cubic-bezier, và bản thay thế khi prefers-reduced-motion. Chuyển động không có mục đích thì bỏ." |
+
+## V-13 · Chuyển động 2
+| Bạn cảm thấy | Câu lệnh cho AI |
+|---|---|
+| "Kéo thả trông cứng, thả tay là khựng" | "Dùng **spring** cho mọi chuyển động do người dùng điều khiển hoặc có thể bị ngắt (kéo sheet, vuốt, nhấn). Khi thả tay, truyền vận tốc của cử chỉ vào spring. Tween với thời lượng cố định chỉ dùng cho thứ hệ thống tự khởi phát." |
+| "Mọi thứ nảy tưng tưng" | "Spring cho giao diện thường có **damping ratio 0.8–1** (gần như không nảy). Chỉ dùng damping ratio khoảng 0.5 cho một hai điểm nhấn vui; hộp thoại, cảnh báo và thao tác phá huỷ không được nảy. Ghi rõ stiffness, damping, mass cho từng spring." |
+| "Danh sách hiện ra lâu" | "**Stagger** 30–50ms mỗi mục, chỉ cho các mục nhìn thấy trong màn đầu (khoảng 8 mục); các mục còn lại hiện ngay. Tổng thời gian dưới 500ms. Không stagger khi tải lại hay khi cuộn." |
+| "Bấm nút không biết đã ăn chưa" | "Mỗi nút có **trạng thái nhấn** tức thì: scale 0.97 trong khoảng 100ms khi pointerdown, trả về khi nhả. Thao tác mất thời gian thì hiện tiến trình trên chính nút, xong thì đổi nhãn theo trạng thái mới (ví dụ "Chốt" thành "Sửa điểm danh")." |
+| "Hoạt hình giật trên máy yếu" | "Chỉ animate **transform và opacity**. Không animate top, left, width, height, margin hay box-shadow; muốn đổi kích thước thì dùng scale, muốn di chuyển thì dùng translate. Chỉ thêm will-change cho phần tử đang chuyển động." |
+| "Token chuyển động đổi mà app không đổi" | "Kiểm **token spring từ đầu tới cuối**: in ra stiffness, damping, mass mà thư viện thật sự nhận lúc chạy, cho từng token. Không dùng "as unknown as" hay ép kiểu để che lỗi kiểu dữ liệu. Script sinh token phải giữ nguyên object, không ép thành chuỗi." |
