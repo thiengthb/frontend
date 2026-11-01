@@ -133,3 +133,13 @@
 | "Bấm nút không biết đã ăn chưa" | "Mỗi nút có **trạng thái nhấn** tức thì: scale 0.97 trong khoảng 100ms khi pointerdown, trả về khi nhả. Thao tác mất thời gian thì hiện tiến trình trên chính nút, xong thì đổi nhãn theo trạng thái mới (ví dụ "Chốt" thành "Sửa điểm danh")." |
 | "Hoạt hình giật trên máy yếu" | "Chỉ animate **transform và opacity**. Không animate top, left, width, height, margin hay box-shadow; muốn đổi kích thước thì dùng scale, muốn di chuyển thì dùng translate. Chỉ thêm will-change cho phần tử đang chuyển động." |
 | "Token chuyển động đổi mà app không đổi" | "Kiểm **token spring từ đầu tới cuối**: in ra stiffness, damping, mass mà thư viện thật sự nhận lúc chạy, cho từng token. Không dùng "as unknown as" hay ép kiểu để che lỗi kiểu dữ liệu. Script sinh token phải giữ nguyên object, không ép thành chuỗi." |
+
+## V-14 · Phong cách & "AI slop"
+| Bạn cảm thấy | Câu lệnh cho AI |
+|---|---|
+| "Đẹp nhưng giống mọi app khác" | "Thiết kế theo phong cách **flat của Material 3** cho Android, dùng màu tonal từ token tôi đưa. Không dùng gradient tím xanh, không lưới bốn ô số ngang hàng, không emoji làm icon, không căn giữa nội dung. Mỗi màn có đúng một điểm nhấn." |
+| "AI cho nút nổi mềm, trông sang mà khó thấy" | "Không dùng **neumorphism** cho nút chính hay cho cả màn. Nếu giữ bóng mềm cho thẻ, nút chính phải là nút màu đặc, chữ đạt 4.5:1 và hình nút đạt 3:1 so với nền ngay sau nó. Trạng thái nhấn phải đổi màu, không chỉ đảo bóng." |
+| "Lớp kính đẹp nhưng chữ khó đọc" | "Chỉ dùng **glassmorphism** cho lớp nổi tạm thời trên ảnh hoặc video. Lớp kính có màu nền đủ đặc (khoảng 60–70%) để chữ đạt 4.5:1 ở **vùng nền sáng nhất** phía sau. Ghi tỉ lệ contrast đo ở vùng đó." |
+| "Bento mà ô nào cũng như nhau" | "Dùng **bento grid** với kích thước ô theo mức quan trọng: ô lớn nhất (chiếm cả hàng) cho việc chính lúc này, các ô phụ nhỏ hơn. Không để mọi ô cùng cỡ. Giải thích vì sao mỗi ô có kích thước đó." |
+| "Màn tổng quan toàn số liệu" | "Bỏ **lưới KPI** ở đầu màn. Màn bắt đầu bằng hành động chính lúc này; chỉ giữ một con số dẫn tới hành động đó, các số còn lại gộp thành một dòng phụ bên dưới." |
+| "Không biết chọn hướng nào" | "Đưa **ba hướng thị giác** khác nhau cho cùng màn, cùng nội dung và cùng token: mỗi hướng gọi tên phong cách, một câu về điểm nhấn, và tỉ lệ contrast của nút chính. Không tự chọn hướng tốt nhất; tôi sẽ chọn." |

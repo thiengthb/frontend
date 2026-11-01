@@ -162,6 +162,18 @@
 | **Spring mặc định của Motion** ✅ | stiffness 100, damping 10, mass 1 (tỉ lệ 0,5), đọc từ mã nguồn motion-dom 12; docs ghi stiffness 1 là sai (V-13) |
 | **Compositor-only properties** ✅ | `transform`, `opacity`: animate mượt vì không gây layout hay paint lại |
 
+## J. Phong cách thị giác & AI slop (V-14)
+| Thuật ngữ | Nghĩa ngắn |
+|---|---|
+| **Skeuomorphism** ✅ | Giả vật liệu thật (da, gỗ, kim loại). Flat ra đời để phản ứng lại nó (V-14) |
+| **Flat** ✅ | Màu đặc, không bóng, không vân. Windows Phone Metro (~2010), iOS 7 (2013). Phân cấp phải đến từ chữ, màu, khoảng trắng. Lab2 là flat thêm gờ đáy (V-14) |
+| **Material** ✅ | Ngôn ngữ thiết kế của Google (2014), "giấy và mực": lớp cao hơn bóng rõ hơn; M3 thêm màu tonal. Quy ước của Android (V-14) |
+| **Neumorphism** ✅ | Nút cùng màu nền, tách bằng bóng sáng và tối. Dribbble cuối 2019 (Oleksandr Plyuto), tên do Jason Kelley đặt, Michal Malewicz phổ biến. Hình nút ~1:1 với nền nên khó đạt trợ năng (V-14) |
+| **Glassmorphism** ✅ | Lớp kính mờ nhìn xuyên thấy nền; tên phổ biến ~2020 (Malewicz), Windows 11 Acrylic/Mica, Apple Liquid Glass 2025. Chữ đổi độ rõ theo nền: đo ở vùng sáng nhất (V-14) |
+| **Brutalism (web)** ✅ | Thô cố ý: viền đen dày, chữ đơn cách, không bo, bóng cứng (brutalistwebsites.com, ~2014–2016). Contrast cao nhưng hay phá quy ước (V-14) |
+| **Bento grid** ✅ | Ô chữ nhật khác cỡ ghép khít; ô to cho thứ quan trọng. Mọi ô cùng cỡ thì thành lưới thẻ (V-14) |
+| **AI slop** ✅ | Giao diện AI làm theo mặc định khi đề bài trống: gradient tím xanh, lưới 4 KPI, thẻ bo lớn có bóng mọi nơi, emoji làm icon, Inter mọi nơi, tiêu đề "Supercharge your…", căn giữa mọi thứ (V-14) |
+
 ## I. Thuật ngữ từ chẩn đoán M0-01
 | Thuật ngữ | Nghĩa ngắn |
 |---|---|
