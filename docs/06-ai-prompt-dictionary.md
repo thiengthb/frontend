@@ -113,3 +113,13 @@
 | "Dùng bàn phím không biết đang ở đâu" | "Không dùng outline:none mà không thay thế. Mọi phần tử bấm được có **vòng focus** rõ qua **:focus-visible**: viền 2–3px, outline-offset 2px, tương phản tối thiểu 3:1 với nền. Thứ tự Tab đi theo thứ tự đọc." |
 | "Nút icon không ai biết là gì" | "Mỗi nút chỉ có icon phải có **nhãn cho máy đọc màn hình** (aria-label trên web, contentDescription trên Android) là động từ kèm đối tượng. Mỗi ô nhập có nhãn thật nằm ngoài ô, không dùng placeholder thay nhãn." |
 | "Chuyển động làm chóng mặt" | "Tôn trọng **prefers-reduced-motion**: khi người dùng bật giảm chuyển động, thay trượt, phóng to và nảy bằng mờ dần ngắn (≤150ms). Không tắt hẳn phản hồi." |
+
+## V-12 · Chuyển động 1
+| Bạn cảm thấy | Câu lệnh cho AI |
+|---|---|
+| "Hộp mở ra trông giật, máy móc" | "Hộp, sheet và hộp thoại mở bằng **easing chậm dần** cubic-bezier(0.05, 0.7, 0.1, 1) trong 300–400ms; đóng bằng easing nhanh dần cubic-bezier(0.3, 0, 0.8, 0.15) trong 200–250ms. Không dùng linear cho thứ đi vào hay đi ra." |
+| "Hoạt hình chậm, phải chờ" | "Dùng thang **thời lượng** của Material 3: phản hồi nhỏ (nhấn, gạt) 100–150ms, chip và snackbar 150–200ms, hộp và sheet 300–400ms, chuyển cả màn tối đa 500ms. Thao tác lặp liên tục (gõ, cuộn) không có hoạt hình." |
+| "Đổi tab mà cả màn trượt ngang" | "Thanh tab dưới dùng **fade through** khoảng 250ms: màn cũ mờ đi, màn mới hiện lên và phóng nhẹ từ 92%. Không trượt ngang, vì các tab ngang hàng. Trượt ngang (**shared axis**) chỉ dành cho các bước có thứ tự." |
+| "Không biết hộp từ đâu ra" | "Chuyển động xuất phát từ chính phần tử người dùng vừa chạm: hộp mở rộng từ nút (**container transform**), và khi đóng thì thu về đúng nút đó. Mục tiêu là nối nhân và quả." |
+| "Mọi thứ cùng bay vào một lúc" | "Áp **staging**: khi có dữ liệu mới, chỉ phần tử mới hoặc vừa thay đổi được chuyển động; phần tử cũ chỉ dời chỗ nhường đường. Không cho cả danh sách bay vào lại khi tải lại hay khi cuộn." |
+| "AI bảo thêm animation cho mượt" | "Với mỗi chuyển động, ghi rõ: **mục đích** (định hướng không gian, nối nhân quả, hướng chú ý, trạng thái hệ thống, hoặc cá tính), thời lượng tính bằng ms, easing dạng cubic-bezier, và bản thay thế khi prefers-reduced-motion. Chuyển động không có mục đích thì bỏ." |

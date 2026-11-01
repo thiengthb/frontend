@@ -144,17 +144,20 @@
 ## H. Animation & motion (M9)
 | Thuật ngữ | Nghĩa ngắn |
 |---|---|
-| **Duration / Timing** | Thời lượng chuyển động. Phản hồi nhỏ ~100–150ms, chuyển trạng thái ~200–300ms, chuyển cảnh ~300–500ms (heuristic) |
-| **Easing / cubic-bezier** | Đường cong tốc độ. ease-out để *vào* (nhanh rồi chậm), ease-in để *ra* |
+| **Duration / Timing** ✅ | Thời lượng chuyển động. Token Material 3: short 50–200ms, medium 250–400ms, long 450–600ms, extra long 700–1000ms (quy ước). Phản hồi nhỏ ~100–150ms, hộp/sheet ~300–400ms, cả màn ≤ 500ms (V-12) |
+| **Easing / cubic-bezier** ✅ | Đường cong tốc độ. ease-out để *vào* (nhanh rồi chậm), ease-in để *ra*, ease-in-out khi dời chỗ trên màn, linear chỉ cho spinner. Material: standard (0.2,0,0,1), emphasized decelerate (0.05,0.7,0.1,1), emphasized accelerate (0.3,0,0.8,0.15) (V-12) |
 | **Spring (stiffness, damping, mass)** | Chuyển động theo mô hình lò xo vật lý, tự nhiên hơn tween khi bị ngắt giữa chừng |
 | **Tween vs Spring** | Tween có thời lượng cố định; spring được quyết định bởi các tham số vật lý |
-| **12 principles of animation** | 12 nguyên lý hoạt hình Disney: squash & stretch, anticipation, staging, follow-through, slow in/out, arc, timing… |
+| **12 principles of animation** ✅ | 12 nguyên lý hoạt hình Disney: squash & stretch, anticipation, staging, follow-through, slow in/out, arc, timing… |
 | **Choreography / Stagger** | Biên đạo nhiều phần tử: thứ tự, độ trễ lệch nhau |
 | **Shared element / Layout animation** | Một phần tử "bay" từ vị trí cũ sang vị trí mới, giữ liên tục về không gian |
 | **View Transitions API** | API trình duyệt cho chuyển cảnh giữa hai trạng thái DOM hoặc giữa hai trang |
 | **FLIP** | First–Last–Invert–Play: kỹ thuật animate thay đổi layout bằng transform |
 | **Microinteraction** | Trigger → rules → feedback → loops/modes (Dan Saffer) |
 | **Reduced motion** ✅ | `prefers-reduced-motion`: người dùng nhạy cảm tiền đình; thay chuyển động bằng opacity, đừng tắt phản hồi |
+| **Purpose of motion** ✅ | Năm mục đích: định hướng không gian, nối nhân và quả, hướng chú ý, cho thấy hệ thống đang làm, cá tính. Không có mục đích thì bỏ (V-12) |
+| **Staging / anticipation / follow-through** ✅ | Dàn cảnh (mỗi lúc một thứ diễn) / lấy đà (lùi nhẹ trước khi đi) / đà còn lại (vượt nhẹ rồi về) (V-12) |
+| **Fade through / shared axis** ✅ | Kiểu chuyển màn Material: mờ đi rồi hiện lại cho màn không liên quan (tab dưới) / trượt theo một trục cho màn có thứ tự (V-12) |
 | **Compositor-only properties** | `transform`, `opacity`: animate mượt vì không gây layout hay paint lại |
 
 ## I. Thuật ngữ từ chẩn đoán M0-01

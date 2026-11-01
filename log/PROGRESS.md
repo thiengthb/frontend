@@ -17,13 +17,14 @@
 - **Đã xong (v2):** **V-09 Trạng thái & phản hồi** (2026-11-01): `demos/V-09/states.html`, artifact "V-09 Trạng thái" (https://claude.ai/artifact/38ZdD6wwdfebeFhT4UNW6T).
 - **Đã xong (v2):** **V-10 Định luật UX bằng hình** (2026-11-01): `demos/V-10/laws.html`, artifact "V-10 Định luật UX" (https://claude.ai/artifact/Sf2VdJPWUVJnNh3A35acK3). **Hết Ngày 2 · PATTERN.**
 - **Đã xong (v2):** **V-11 Trợ năng bằng con số** (2026-11-01): `demos/V-11/a11y.html`, artifact "V-11 Trợ năng" (https://claude.ai/artifact/KUmnnNWvuFJGNrvLL4CaZm). Mở đầu Ngày 3.
+- **Đã xong (v2):** **V-12 Chuyển động 1** (2026-11-01): `demos/V-12/motion.html`, artifact "V-12 Chuyển động" (https://claude.ai/artifact/XgWXmu8R1z9wB45F3virwU).
 - **Cách viết mới (D-020):** từ V-06, chat và artifact theo `docs/07-communication-style.md`. Có thể sửa lại chữ V-01..V-05 theo chuẩn này nếu người dùng muốn.
-- **Khối tiếp theo:** **V-12 Chuyển động 1** (brief: `docs/briefs/V-12.md`). Chat V-11 còn ngắn: làm tiếp V-12 trong cùng chat nếu người dùng muốn.
+- **Khối tiếp theo:** **V-13 Chuyển động 2** (brief: `docs/briefs/V-13.md`). Chat này đã làm V-11, V-12: làm V-13 xong thì **mở chat mới** (PRC-006).
 - **Luật:** adopted: PRC-004 (tạm ngưng), PRC-006 (sửa D-019), PRC-007, VIS-004, VIS-005, UX-002. Draft: VIS-001..003, UX-001, CMP-001, COL-001, PRC-001, 002, 005. Deprecated: PRC-003
-- **Từ điển ra lệnh AI:** `docs/06-ai-prompt-dictionary.md` (đã có V-01..V-11; mỗi mục 6 câu)
+- **Từ điển ra lệnh AI:** `docs/06-ai-prompt-dictionary.md` (đã có V-01..V-12; mỗi mục 6 câu)
 
 ## Bước tiếp theo
-**Tiếp:** dựng **V-12** theo `docs/briefs/V-12.md` (load `artifact-design`, tái dùng khung `demos/V-11/a11y.html`, kiểm nguồn Material motion và 12 nguyên lý Disney trước khi ghi số, publish "V-12 Chuyển động") → giải thích ≤ 10 dòng theo ba nhịp. Nếu chat mới: clone → đọc file này → tóm tắt ≤ 2 dòng → dựng ngay.
+**Tiếp:** dựng **V-13** theo `docs/briefs/V-13.md` (load `artifact-design`, tái dùng khung `demos/V-12/motion.html`, kiểm nguồn spring trước khi ghi số, đọc mã spring của thienui, publish "V-13 Chuyển động 2") → giải thích ≤ 10 dòng theo ba nhịp. Nếu chat mới: clone → đọc file này → tóm tắt ≤ 2 dòng → dựng ngay.
 Cuối mỗi khối: `demos/V-xx/`, từ điển, glossary, brief khối kế, PROGRESS, push. Sau khi push, đồng bộ `log/PROGRESS.md` sang Project claude.ai (bản Project hay bị cũ).
 
 ## Câu hỏi còn mở
