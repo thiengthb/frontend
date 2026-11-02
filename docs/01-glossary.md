@@ -174,6 +174,14 @@
 | **Bento grid** ✅ | Ô chữ nhật khác cỡ ghép khít; ô to cho thứ quan trọng. Mọi ô cùng cỡ thì thành lưới thẻ (V-14) |
 | **AI slop** ✅ | Giao diện AI làm theo mặc định khi đề bài trống: gradient tím xanh, lưới 4 KPI, thẻ bo lớn có bóng mọi nơi, emoji làm icon, Inter mọi nơi, tiêu đề "Supercharge your…", căn giữa mọi thứ (V-14) |
 
+## K. Brief và ra lệnh AI (V-15)
+| Thuật ngữ | Nghĩa ngắn |
+|---|---|
+| **Design brief** ✅ | Đề bài thiết kế viết trước khi vẽ: mục tiêu và một hành động chính, người dùng, nội dung thật theo thứ tự, cá tính, ràng buộc, trạng thái, đầu ra. Mẫu `templates/design-brief.md`; bản lab2 ở `docs/lab2-brief-gv001.md` (V-15) |
+| **JTBD (jobs to be done)** ✅ | Tả người dùng bằng việc họ cần làm xong ("mở điểm danh đúng lớp trong vài giây"), không bằng chân dung (V-15) |
+| **Cá tính có phản đề** ✅ | Mỗi tính từ kèm một chữ KHÔNG ("ấm, KHÔNG trẻ con") để cắt cách hiểu mặc định của AI (V-15) |
+| **Checklist nhận diện** ✅ | Câu hỏi có hoặc không, mỗi câu một khối V-01..V-14, để soát bản AI trả về (V-15) |
+
 ## I. Thuật ngữ từ chẩn đoán M0-01
 | Thuật ngữ | Nghĩa ngắn |
 |---|---|

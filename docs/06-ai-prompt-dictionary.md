@@ -143,3 +143,13 @@
 | "Bento mà ô nào cũng như nhau" | "Dùng **bento grid** với kích thước ô theo mức quan trọng: ô lớn nhất (chiếm cả hàng) cho việc chính lúc này, các ô phụ nhỏ hơn. Không để mọi ô cùng cỡ. Giải thích vì sao mỗi ô có kích thước đó." |
 | "Màn tổng quan toàn số liệu" | "Bỏ **lưới KPI** ở đầu màn. Màn bắt đầu bằng hành động chính lúc này; chỉ giữ một con số dẫn tới hành động đó, các số còn lại gộp thành một dòng phụ bên dưới." |
 | "Không biết chọn hướng nào" | "Đưa **ba hướng thị giác** khác nhau cho cùng màn, cùng nội dung và cùng token: mỗi hướng gọi tên phong cách, một câu về điểm nhấn, và tỉ lệ contrast của nút chính. Không tự chọn hướng tốt nhất; tôi sẽ chọn." |
+
+## V-15 · Tổng hợp: ra lệnh AI làm lại lab2
+| Bạn cảm thấy | Câu lệnh cho AI |
+|---|---|
+| "Không biết bắt đầu ra lệnh thế nào" | "Đây là **design brief** cho màn [tên]. Đọc hết trước khi vẽ. Nếu brief thiếu hoặc mâu thuẫn, hỏi tôi tối đa ba câu trước khi bắt đầu; không tự đoán hành động chính." |
+| "AI đưa đúng một bản rồi thôi" | "Đưa **ba hướng khác nhau về cấu trúc**, không chỉ khác màu, cùng nội dung và token. Mỗi hướng ghi: tên phong cách, điểm nhấn trong một câu, điều nó hy sinh, tỉ lệ contrast của nút chính. Không chọn hộ tôi." |
+| "Sửa một chỗ thì AI làm lại cả màn" | "Giữ nguyên hướng [B]. Chỉ sửa [phần cần sửa]; không đổi bố cục, token hay nội dung khác. Cuối câu trả lời, liệt kê đúng những gì đã đổi." |
+| "Không biết bản AI trả về có ổn không" | "Tự soát bản vừa làm theo **checklist** sau, trả lời có hoặc không kèm bằng chứng cụ thể (vị trí, con số) cho từng câu: [dán checklist]. Câu nào "không" thì sửa rồi soát lại." |
+| "Màn chính ổn nhưng trạng thái khác bị bỏ" | "Từ hướng đã chọn, vẽ thêm các trạng thái: đang tải (skeleton), trống, lần đầu, lỗi, mất mạng. Giữ nguyên khung và vị trí các khối; chỉ đổi phần nội dung bên trong." |
+| "Làm xong mà không ghi lại được gì" | "Xuất **bảng token** đã dùng (màu kèm tỉ lệ contrast, cỡ chữ, khoảng cách, bo góc, thời lượng và easing) và danh sách quyết định, mỗi quyết định một câu lý do, để tôi đưa vào DESIGN.md." |

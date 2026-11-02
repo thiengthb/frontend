@@ -20,19 +20,21 @@
 - **Đã xong (v2):** **V-12 Chuyển động 1** (2026-11-01): `demos/V-12/motion.html`, artifact "V-12 Chuyển động" (https://claude.ai/artifact/XgWXmu8R1z9wB45F3virwU).
 - **Đã xong (v2):** **V-13 Chuyển động 2** (2026-11-01): `demos/V-13/motion2.html`, artifact "V-13 Chuyển động 2" (https://claude.ai/artifact/DEH7TXGC6y3Qmb96Qx44Eh). Gốc lỗi spring thienui đã tìm ra (xem Câu hỏi còn mở).
 - **Đã xong (v2):** **V-14 Phong cách & "AI slop"** (2026-11-01): `demos/V-14/styles.html`, artifact "V-14 Phong cách" (https://claude.ai/artifact/KHEaEmmnXEGHtp4vXM61sC). Hết phần kiến thức.
+- **Đã xong (v2):** **V-15 Tổng hợp: brief lab2** (2026-11-02): `demos/V-15/brief.html`, artifact "V-15 Brief lab2" (https://claude.ai/artifact/GfQN3phhfyg4Aw367dhYMx); bản chữ brief ở `docs/lab2-brief-gv001.md`. **Hết crash course.**
 - **Cách viết mới (D-020):** từ V-06, chat và artifact theo `docs/07-communication-style.md`. Có thể sửa lại chữ V-01..V-05 theo chuẩn này nếu người dùng muốn.
-- **Khối tiếp theo:** **V-15 Tổng hợp: brief GV-001 để ra lệnh AI làm lại lab2** (brief: `docs/briefs/V-15.md`). Chat này mới làm V-14, có thể làm tiếp V-15 ở đây.
+- **Bước kế:** **làm lại lab2 qua AI** theo `docs/briefs/LAB2-redo.md`, bắt đầu từ GV-001. Chưa quyết: bật lại phê bình (PRC-004) hay không.
 - **Luật:** adopted: PRC-004 (tạm ngưng), PRC-006 (sửa D-019), PRC-007, VIS-004, VIS-005, UX-002. Draft: VIS-001..003, UX-001, CMP-001, COL-001, PRC-001, 002, 005. Deprecated: PRC-003
-- **Từ điển ra lệnh AI:** `docs/06-ai-prompt-dictionary.md` (đã có V-01..V-14; mỗi mục 6 câu)
+- **Từ điển ra lệnh AI:** `docs/06-ai-prompt-dictionary.md` (đã có V-01..V-15; mỗi mục 6 câu)
 
 ## Bước tiếp theo
-**Dựng V-15** theo `docs/briefs/V-15.md` (load `artifact-design`, tái dùng khung `demos/V-14/styles.html`, publish "V-15 Brief lab2") → giải thích ≤ 10 dòng theo ba nhịp. Sau V-15: người dùng làm lại lab2 qua AI bằng brief; bật lại phê bình (PRC-004) nếu người dùng muốn.
-Cuối mỗi khối: `demos/V-xx/`, từ điển, glossary, brief khối kế (sau V-15 thì viết kế hoạch làm lab2), PROGRESS, push. Sau khi push, đồng bộ `log/PROGRESS.md` sang Project claude.ai.
+**Làm lại lab2** theo `docs/briefs/LAB2-redo.md`: người dùng chốt bảy quyết định trong artifact V-15, dán brief cho AI, đòi ba hướng cho GV-001, chọn, soát bằng checklist 15 câu. Claude hỗ trợ đọc và gọi tên lỗi trong bản AI trả về; nếu người dùng bật lại PRC-004 thì chấm theo `templates/review-checklist.md`.
+Figma lab2 vẫn **chỉ đọc** (PRC-005): muốn ghi thì xin phép từng lần, ghi vào bản sao. Sau mỗi phiên: PROGRESS, SESSIONS, push, đồng bộ `log/PROGRESS.md` sang Project claude.ai.
 
 ## Câu hỏi còn mở
 - Lab2 có nút cao 40 (trong thẻ) và 36 (trong hộp thoại): khi làm lại, ghi rõ vùng chạm vô hình mở rộng tới 48 hay chấp nhận dưới 48 (V-11, mục Trên lab2).
 - Lỗi spring `[object Object]` trong thienui: đã minh hoạ ở V-13. Gốc lỗi: `apps/docs/scripts/build-registry.mjs` dòng 45 dùng `JSON.stringify(String(v))` nên object spring thành chuỗi; `motion.ts` ép `as unknown as` che lỗi; Motion rơi về 100/10/1. Người dùng tự sửa (bài thực hành M9) hay để Claude mở PR? Chưa quyết.
 - Ba câu IA còn mập mờ của lab2 (ghi ở V-08, mục Trên lab2): yêu cầu sửa điểm danh ở Tổng quan hay Lớp; màn Điểm danh hai lối vào thì ‹ về đâu; chạm em sinh viên ở Tổng quan thì mở trong ngăn xếp Tổng quan hay nhảy sang Lớp. Người dùng tự chọn khi làm lại lab2.
+- Bảy quyết định lab2 đã gom thành ô chọn trong artifact V-15 (áo, vùng chạm, ba câu IA, mất mạng, nút Chốt); người dùng chốt khi bắt đầu làm lại.
 - Áo cho lab2 (ghi ở V-14): Claude đề xuất Material 3 (tonal) thay cho flat có gờ ở mọi thẻ; người dùng tự chọn khi làm lại.
 - Hai quyết định trạng thái cho lab2 (ghi ở V-09): GV-001 .X nên giữ dữ liệu cũ kèm dải báo thay vì thay cả màn (Claude đề xuất); nút Chốt có cả hộp xác nhận lẫn Hoàn tác, giữ hay bỏ hộp. Thêm gợi ý tự gửi lại khi có mạng và empty state "đã xử lý hết" cho GV-105.
 
